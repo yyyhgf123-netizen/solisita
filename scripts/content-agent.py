@@ -17,7 +17,7 @@ Usage:
   python scripts/content-agent.py --mode dry-run --filter-tags "Gold-Tone"
 """
 
-import os, sys, json, time, argparse, textwrap
+import os, sys, json, time, re, argparse, textwrap
 from dataclasses import dataclass, field
 from typing import Optional
 from urllib.parse import urljoin
@@ -317,17 +317,20 @@ class DeepSeekClient:
         if forbidden is None or len(forbidden) == 0:
             return ''  # Unknown or unrestricted type — pass through
 
-        # Check keywords
+        # Use regex word-boundary matching to avoid substring false positives
+        # e.g. "earrings" must NOT match the forbidden word "ring"
         for kw in result.keywords:
             kw_lower = kw.lower()
             for bad in forbidden:
-                if bad in kw_lower:
+                pattern = re.compile(r'\b' + re.escape(bad) + r'\b')
+                if pattern.search(kw_lower):
                     return f'keyword "{kw}" contains forbidden category word "{bad}" (product type: {product.product_type})'
 
-        # Check description
+        # Check description (word boundary match)
         desc_lower = result.new_desc.lower()
         for bad in forbidden:
-            if bad in desc_lower:
+            pattern = re.compile(r'\b' + re.escape(bad) + r'\b')
+            if pattern.search(desc_lower):
                 return f'description contains forbidden category word "{bad}" (product type: {product.product_type})'
 
         return ''  # Clean
