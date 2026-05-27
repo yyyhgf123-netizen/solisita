@@ -18,3 +18,6 @@ list_files.js
 find_non_product_files.js
 shop_info.js
 verify.js
+.env
+__pycache__/
+venv/
