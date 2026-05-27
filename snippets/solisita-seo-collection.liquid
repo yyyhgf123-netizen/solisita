@@ -1,0 +1,60 @@
+{%- comment -%}
+  ============================================================================
+  SOLISITA SEO — CollectionPage + ItemList Structured Data Module
+  ============================================================================
+  Dependency: ZERO. Reads from collection + product global objects.
+  Renders:    <script type="application/ld+json">CollectionPage + ItemList</script>
+  Placement:  In <head> via theme.liquid — collection pages only.
+  ============================================================================
+{%- endcomment -%}
+
+{%- if template contains 'collection' and collection -%}
+
+{%- capture item_list -%}
+[{% for product in collection.products limit: 20 %}
+  {
+    "@type": "ListItem",
+    "position": {{ forloop.index | json }},
+    "item": {
+      "@type": "Product",
+      "@id": {{ shop.url | append: product.url | append: '#product' | json }},
+      "name": {{ product.title | json }},
+      "url": {{ shop.url | append: product.url | json }}
+      {%- assign first_img = product.images[0] -%}
+      {%- if first_img -%}
+      ,"image": "https:{{ first_img | image_url: 'medium' }}"
+      {%- endif -%}
+      {%- assign var = product.selected_or_first_available_variant -%}
+      {%- if var -%}
+      ,"offers": {
+        "@type": "Offer",
+        "price": {{ var.price | money_without_currency | json }},
+        "priceCurrency": {{ cart.currency.iso_code | json }},
+        "availability": "https://schema.org/{% if var.available %}InStock{% else %}OutOfStock{% endif %}"
+      }
+      {%- endif -%}
+    }
+  }{% unless forloop.last %},{% endunless %}{% endfor %}]
+{%- endcapture -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": {{ shop.url | append: collection.url | append: '#collectionpage' | json }},
+  "name": {{ collection.title | json }},
+  "url": {{ shop.url | append: collection.url | json }},
+  "description": {{ collection.description | default: collection.title | strip_html | json }},
+  "isPartOf": {
+    "@id": {{ shop.url | append: '#website' | json }}
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": {{ collection.title | json }},
+    "numberOfItems": {{ collection.products_count | json }},
+    "itemListElement": {{ item_list | strip_newlines | strip }}
+  }
+}
+</script>
+
+{%- endif -%}

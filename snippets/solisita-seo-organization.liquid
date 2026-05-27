@@ -1,0 +1,76 @@
+{%- comment -%}
+  ============================================================================
+  SOLISITA SEO — Organization + WebSite Structured Data Module
+  ============================================================================
+  Dependency: ZERO. Reads exclusively from shop global object.
+  Renders:    <script type="application/ld+json">Organization + WebSite</script>
+  Placement:  In <head> via theme.liquid — homepage only (template == 'index').
+  Strategy:   Establishes brand entity for Knowledge Graph and Sitelinks.
+  ============================================================================
+{%- endcomment -%}
+
+{%- if template == 'index' -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": {{ shop.url | append: '#organization' | json }},
+  "name": {{ shop.name | json }},
+  "url": {{ shop.url | json }},
+  "description": "Tarnish-resistant jewellery for the life you actually live. Gold, rose gold and silver-tone finishes with crystal, pearl and enamel detailing — gift-ready and delivered across the UK.",
+  "email": {{ shop.email | json }},
+  "logo": "https://cdn.shopify.com/s/files/1/0974/2549/0244/files/solisita-logo-home.svg",
+  "image": "https://cdn.shopify.com/s/files/1/0974/2549/0244/files/solisita-logo-icon.svg",
+  "foundingDate": "2025",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Suite 13050 61 Bridge Street",
+    "addressLocality": "Kington",
+    "addressRegion": "England",
+    "postalCode": "HR5 3DJ",
+    "addressCountry": "GB"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": {{ shop.email | json }},
+    "availableLanguage": ["English"]
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Kingdom"
+  },
+  "sameAs": [
+    "https://www.instagram.com/solisita.jewellery",
+    "https://www.tiktok.com/@solisita.uk",
+    "https://www.pinterest.com/solisita",
+    "https://www.facebook.com/solisita.jewellery"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": {{ shop.url | append: '#website' | json }},
+  "url": {{ shop.url | json }},
+  "name": {{ shop.name | json }},
+  "inLanguage": "en-GB",
+  "description": "Tarnish-resistant jewellery for the life you actually live. Gold, rose gold and silver-tone finishes with crystal, pearl and enamel detailing — gift-ready and delivered across the UK.",
+  "publisher": {
+    "@id": {{ shop.url | append: '#organization' | json }}
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": {{ shop.url | append: '/search?q={search_term_string}' | json }}
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+{%- endif -%}

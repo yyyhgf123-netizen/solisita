@@ -1,0 +1,74 @@
+{%- comment -%}
+  ============================================================================
+  SOLISITA SEO — BreadcrumbList Structured Data Module
+  ============================================================================
+  Dependency: ZERO. Reads from template + collection + product global objects.
+  Renders:    <script type="application/ld+json">BreadcrumbList</script>
+  Placement:  In <head> via theme.liquid — all pages.
+  ============================================================================
+{%- endcomment -%}
+
+{%- assign breadcrumbs = '' -%}
+
+{%- capture home_crumb -%}
+  {"@type":"ListItem","position":1,"name":"Home","item":{{ shop.url | json }}}
+{%- endcapture -%}
+
+{%- case template.name -%}
+
+  {%- when 'product' -%}
+    {%- if collection -%}
+      {%- capture coll_crumb -%}
+        ,{"@type":"ListItem","position":2,"name":{{ collection.title | json }},"item":{{ shop.url | append: collection.url | json }}}
+      {%- endcapture -%}
+      {%- capture prod_crumb -%}
+        ,{"@type":"ListItem","position":3,"name":{{ product.title | json }},"item":{{ shop.url | append: product.url | json }}}
+      {%- endcapture -%}
+    {%- else -%}
+      {%- capture prod_crumb -%}
+        ,{"@type":"ListItem","position":2,"name":{{ product.title | json }},"item":{{ shop.url | append: product.url | json }}}
+      {%- endcapture -%}
+    {%- endif -%}
+
+  {%- when 'collection' -%}
+    {%- capture coll_crumb -%}
+      ,{"@type":"ListItem","position":2,"name":{{ collection.title | json }},"item":{{ shop.url | append: collection.url | json }}}
+    {%- endcapture -%}
+
+  {%- when 'page' -%}
+    {%- capture page_crumb -%}
+      ,{"@type":"ListItem","position":2,"name":{{ page.title | json }},"item":{{ shop.url | append: page.url | json }}}
+    {%- endcapture -%}
+
+  {%- when 'blog' -%}
+    {%- capture blog_crumb -%}
+      ,{"@type":"ListItem","position":2,"name":{{ blog.title | json }},"item":{{ shop.url | append: blog.url | json }}}
+    {%- endcapture -%}
+
+  {%- when 'article' -%}
+    {%- capture blog_crumb -%}
+      ,{"@type":"ListItem","position":2,"name":{{ blog.title | json }},"item":{{ shop.url | append: blog.url | json }}}
+    {%- endcapture -%}
+    {%- capture art_crumb -%}
+      ,{"@type":"ListItem","position":3,"name":{{ article.title | json }},"item":{{ shop.url | append: article.url | json }}}
+    {%- endcapture -%}
+
+  {%- when 'cart' -%}
+    {%- capture cart_crumb -%}
+      ,{"@type":"ListItem","position":2,"name":"Shopping Cart","item":{{ shop.url | append: '/cart' | json }}}
+    {%- endcapture -%}
+
+  {%- when 'search' -%}
+    {%- capture search_crumb -%}
+      ,{"@type":"ListItem","position":2,"name":"Search","item":{{ shop.url | append: '/search' | json }}}
+    {%- endcapture -%}
+
+{%- endcase -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{{ home_crumb }}{{ coll_crumb }}{{ prod_crumb }}{{ page_crumb }}{{ blog_crumb }}{{ art_crumb }}{{ cart_crumb }}{{ search_crumb }}]
+}
+</script>
