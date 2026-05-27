@@ -221,9 +221,19 @@ VOICE & TONE:
 STRUCTURE:
 - Keep the description compact — aim for 120–250 words.
 - Do NOT remove factual details: materials, dimensions, weight, metal type must remain.
-- Integrate 2–3 long-tail keywords naturally (e.g. "everyday gold necklace UK",
-  "tarnish-resistant bracelet for daily wear", "minimalist crystal ring gift") without
-  making them feel forced.
+- Integrate 2–3 long-tail keywords naturally (e.g. "tarnish-resistant gold bracelet for daily wear",
+  "minimalist everyday ring UK", "vintage crystal drop earrings gift") without
+  making them feel forced. Each keyword MUST match the exact product category
+  shown in Title and Type — do not invent keywords for the wrong category.
+
+CATEGORY-STRICT KEYWORD SYNCHRONISATION:
+- You MUST accurately identify the product's specific category from its Title and Tags
+  (e.g. bracelet, ring, necklace, earrings, jewellery set, bangle).
+- Every long-tail SEO keyword you generate MUST match the exact product category.
+- For example: if the product is a bracelet, all keywords must reference "bracelet"
+  or "bangle" — NEVER inject "ring", "necklace", "earrings" or any other category.
+- If the product is a set, keywords may reference the set type or "jewellery set".
+- This is a HARD RULE. Violating it will cause the output to be rejected.
 
 OUTPUT FORMAT:
 Return ONLY a valid JSON object with this exact structure:
@@ -243,6 +253,22 @@ class RewriteResult:
     raw_json:  str
     success:   bool = True
     error:     str = ''
+    retries:   int = 0
+
+
+# Category cross-check map: for each product type, which words are FORBIDDEN
+# in keywords and description. "Jewellery Set" has no restrictions.
+CATEGORY_FORBIDDEN_MAP = {
+    'Bracelet':       ['ring', 'necklace', 'earring', 'earrings', 'pendant'],
+    'Ring':           ['bracelet', 'necklace', 'earring', 'earrings', 'pendant', 'bangle'],
+    'Necklace':       ['bracelet', 'ring', 'earring', 'earrings', 'bangle'],
+    'Earrings':       ['bracelet', 'ring', 'necklace', 'pendant', 'bangle'],
+    'Earring':        ['bracelet', 'ring', 'necklace', 'pendant', 'bangle'],
+    'Jewellery Set':  [],  # Sets can contain any category — no restrictions
+    'Set':            [],
+}
+
+MAX_RETRIES = 3
 
 
 class DeepSeekClient:
@@ -251,6 +277,62 @@ class DeepSeekClient:
         self.api_url = urljoin(config.deepseek_base_url.rstrip('/') + '/', 'chat/completions')
 
     def rewrite(self, product: ProductCandidate) -> RewriteResult:
+        correction_note = ''
+        for attempt in range(1, MAX_RETRIES + 1):
+            result = self._single_rewrite(product, correction_note)
+            result.retries = attempt
+
+            if not result.success:
+                print(f'    ⚠️  Attempt {attempt}/{MAX_RETRIES} failed: {result.error}')
+                if attempt < MAX_RETRIES:
+                    correction_note = f'Your previous attempt failed: {result.error}'
+                    time.sleep(2)
+                continue
+
+            violation = self._validate_category(product, result)
+            if violation:
+                print(f'    ⚠️  Attempt {attempt}/{MAX_RETRIES} — category violation: {violation}')
+                if attempt < MAX_RETRIES:
+                    correction_note = (
+                        f'YOUR PREVIOUS RESPONSE WAS REJECTED. Reason: {violation}. '
+                        f'CRITICAL RULE: The product is a {product.product_type}. '
+                        f'Every keyword MUST contain "{product.product_type.lower()}" or a synonym of it. '
+                        f'Do NOT reference any other jewellery category. This is a hard rule.'
+                    )
+                    print(f'    ↻ Retrying with correction ...')
+                    time.sleep(2)
+                else:
+                    result.success = False
+                    result.error = f'Category violation after {MAX_RETRIES} retries: {violation}'
+                    print(f'    ❌ SKIPPED: {result.error}')
+                continue
+
+            print(f'    ✅ Validated (attempt {attempt})')
+            return result
+
+        return result
+
+    def _validate_category(self, product: ProductCandidate, result: RewriteResult) -> str:
+        forbidden = CATEGORY_FORBIDDEN_MAP.get(product.product_type)
+        if forbidden is None or len(forbidden) == 0:
+            return ''  # Unknown or unrestricted type — pass through
+
+        # Check keywords
+        for kw in result.keywords:
+            kw_lower = kw.lower()
+            for bad in forbidden:
+                if bad in kw_lower:
+                    return f'keyword "{kw}" contains forbidden category word "{bad}" (product type: {product.product_type})'
+
+        # Check description
+        desc_lower = result.new_desc.lower()
+        for bad in forbidden:
+            if bad in desc_lower:
+                return f'description contains forbidden category word "{bad}" (product type: {product.product_type})'
+
+        return ''  # Clean
+
+    def _single_rewrite(self, product: ProductCandidate, correction_note: str = '') -> RewriteResult:
         print(f'\n  ▶ Rewriting: {product.title} ...')
 
         user_message = (
@@ -260,6 +342,8 @@ class DeepSeekClient:
             f"Tags: {', '.join(product.tags)}\n"
             f"Current Description:\n{product.description}\n"
         )
+        if correction_note:
+            user_message += f"\n--- CORRECTION ---\n{correction_note}"
 
         payload = {
             'model': self.config.deepseek_model,
@@ -333,32 +417,34 @@ class ContentUpdater:
         if self.config.execution_mode != 'apply':
             return self._preview(result)
 
-        mutation = """
-        mutation($input: ProductInput!) {
-          productUpdate(product: $input) {
-            product {
+        # Use inline arguments (no typed variables) to avoid GraphQL type ambiguity
+        product_id = result.product.id
+        desc_html = result.new_desc.replace('\\', '\\\\').replace('"', '\\"').replace('\n', '<br>')
+        merged_tags = list(set(result.product.tags + result.keywords))
+        tags_json = json.dumps(merged_tags)
+
+        mutation = f"""
+        mutation {{
+          productUpdate(input: {{
+            id: "{product_id}",
+            descriptionHtml: "{desc_html}",
+            tags: {tags_json}
+          }}) {{
+            product {{
               id
               title
               description
-            }
-            userErrors {
+            }}
+            userErrors {{
               field
               message
-            }
-          }
-        }
+            }}
+          }}
+        }}
         """
 
-        variables = {
-            'input': {
-                'id': result.product.id,
-                'descriptionHtml': f'<p>{result.new_desc}</p>',
-                'tags': result.product.tags + result.keywords,
-            }
-        }
-
         try:
-            data = self.client.graphql(mutation, variables)
+            data = self.client.graphql(mutation)
             errors = data['productUpdate']['userErrors']
             if errors:
                 print(f'    ❌ Write error: {errors[0]["message"]}')
