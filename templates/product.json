@@ -1,0 +1,577 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "product-breadcrumb",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_breadcrumb": "#4e4e4e",
+        "text_align": "left"
+      }
+    },
+    "main": {
+      "type": "product-template",
+      "blocks": {
+        "single_product_image_qQ7qki": {
+          "type": "_single-product-image",
+          "name": "Single product image",
+          "settings": {
+            "width": "62% | 80% | 100%",
+            "padding": "0px 8px 30px 0px"
+          },
+          "blocks": {}
+        },
+        "single_product_info_pewHED": {
+          "type": "_single-product-info",
+          "name": "Single product info",
+          "settings": {
+            "width": "35% | 50% | 100%",
+            "padding": "0px 0px 0px 24px",
+            "sticky": true,
+            "top": 0
+          },
+          "blocks": {
+            "single_title_hygtzn": {
+              "type": "single-title",
+              "name": "Single product title",
+              "settings": {
+                "product_title_margin": "0 0 10px",
+                "title_size": 16,
+                "title_color": "#000000",
+                "title_transform": "uppercase"
+              },
+              "blocks": {}
+            },
+            "single_price_rWCFQG": {
+              "type": "single-price",
+              "name": "Single product price",
+              "settings": {
+                "product_price_margin": "8px 0 18px",
+                "price_size": 16,
+                "price_color": "#000000",
+                "price_color_sale": "#7e7e84"
+              },
+              "blocks": {}
+            },
+            "line_MPbEdE": {
+              "type": "line",
+              "name": "Line",
+              "settings": {
+                "padding": "",
+                "margin": "0px 0",
+                "width": "100",
+                "height": 1,
+                "background": "#e9e9e9",
+                "bg_opacity": 1,
+                "margin_line": "12px 0 16px"
+              },
+              "blocks": {}
+            },
+            "single_short_description_6QDXzB": {
+              "type": "single-short-description",
+              "name": "Single short description",
+              "disabled": true,
+              "settings": {
+                "content_short_description": "<p>{{ closest.product.metafields.custom.short_description | metafield_tag }}</p>",
+                "description_margin": "0 0 20px",
+                "description_size": 16,
+                "description_color": "#7e7e84"
+              },
+              "blocks": {}
+            },
+            "single_real_time_kzbcCU": {
+              "type": "single-real-time",
+              "name": "Single product real time",
+              "disabled": true,
+              "settings": {
+                "product_real_time_margin": "0 0 15px",
+                "product_real_time_count": "30-40",
+                "product_real_time_change": "5000",
+                "product_real_time_text": "people are viewing this right now",
+                "real_time_color": "#000000"
+              },
+              "blocks": {}
+            },
+            "single_count_sale_WXDgqa": {
+              "type": "single-count-sale",
+              "name": "Single product count sale",
+              "disabled": true,
+              "settings": {
+                "product_count_sale_margin": "0 0 20px",
+                "product_sale_count": "30-40",
+                "product_sale_time": "5-20",
+                "product_count_sale_text": "sold in last",
+                "product_count_sale_unit": "hours",
+                "count_sale_color": "#f11e1e"
+              },
+              "blocks": {}
+            },
+            "single_inventory_cUbwac": {
+              "type": "single-inventory",
+              "name": "Single product inventory",
+              "disabled": true,
+              "settings": {
+                "product_inventory_margin": "0 0 20px",
+                "inventory_size": 16,
+                "inventory_color": "#108043",
+                "inventory_outstock_color": "#e52828"
+              },
+              "blocks": {}
+            },
+            "single_countdown_Y3DXH4": {
+              "type": "single-countdown",
+              "name": "Single product countdown",
+              "disabled": true,
+              "settings": {
+                "metafield_product_countdowns": "",
+                "product_countdowns_margin": "",
+                "product_countdown_title": "Hurry up! Sale ends in :",
+                "product_countdown_day": "Days",
+                "product_countdown_hour": "Hours",
+                "product_countdown_min": "Mins",
+                "product_countdown_sec": "Secs"
+              },
+              "blocks": {}
+            },
+            "single_form_atc_iEEP6B": {
+              "type": "single-form-atc",
+              "name": "Single product form atc",
+              "settings": {
+                "show_back_in_stock": true,
+                "back_in_stock_title": "Notify me when available",
+                "back_in_stock_title_form": "Back in stock alert",
+                "back_in_stock_content": "We will send you a notification as soon as this product is available again.",
+                "bis_color": "#ffffff",
+                "bis_text_color": "#000000",
+                "bis_hover_color": "#000000",
+                "bis_text_hover_color": "#ffffff"
+              },
+              "blocks": {
+                "variants_form_JaCQdT": {
+                  "type": "_variants-form",
+                  "name": "Single variants",
+                  "settings": {
+                    "product_selector": "radio"
+                  },
+                  "blocks": {}
+                },
+                "single_sizeguide_T77xfJ": {
+                  "type": "single-sizeguide",
+                  "name": "Single Size guide",
+                  "disabled": true,
+                  "settings": {
+                    "text_button": "{{ closest.page.title }}",
+                    "type_sizechart": "html",
+                    "html_size_chart": "size-guide"
+                  },
+                  "blocks": {}
+                },
+                "single_inventory_quantity_hEE3qL": {
+                  "type": "single-inventory-quantity",
+                  "name": "Single inventory quantity",
+                  "disabled": true,
+                  "settings": {
+                    "total_product_solid": 80
+                  },
+                  "blocks": {}
+                },
+                "button_atc_mNwEiK": {
+                  "type": "_button-atc",
+                  "name": "Button atc",
+                  "settings": {
+                    "product_button_wishlist": true,
+                    "quantity_enabled": false,
+                    "quantity_selector": "text",
+                    "atc_button_color": "#000000",
+                    "enable_payment_button": false,
+                    "payment_button_color": "#ca3800",
+                    "payment_text_color": "#ffffff"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "variants_form_JaCQdT",
+                "single_sizeguide_T77xfJ",
+                "single_inventory_quantity_hEE3qL",
+                "button_atc_mNwEiK"
+              ]
+            },
+            "text_block_dXKFk9": {
+              "type": "text-block",
+              "name": "Text block",
+              "settings": {
+                "title": "✓ Everyday water-resistant styles<br>\n✓ Gift-ready packaging<br>\n✓Easy UK delivery & returns",
+                "font": "--font-family-base",
+                "text_transform": "none",
+                "font_style": "normal",
+                "color": "#555555",
+                "font_size": 13,
+                "line_height": 23,
+                "letter_spacing": 0,
+                "font_weight": "400",
+                "align": "left",
+                "padding": "",
+                "margin": "14px 0px 20px 0px",
+                "color_mobi": "#000000",
+                "font_size_mobi": 14,
+                "line_height_mobi": 24,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "left"
+              },
+              "blocks": {}
+            },
+            "single_ask_share_YEiq7A": {
+              "type": "single-ask-share",
+              "name": "Single ask and share",
+              "disabled": true,
+              "settings": {
+                "product_ask-share_margin": "0 0 15px"
+              },
+              "blocks": {
+                "single_button_compare_EfUgrT": {
+                  "type": "_single-button-compare",
+                  "name": "Single product compare",
+                  "settings": {},
+                  "blocks": {}
+                },
+                "single_ask_a_question_BqwAed": {
+                  "type": "_single-ask-a-question",
+                  "name": "Single ask a question",
+                  "settings": {
+                    "ask_a_question_title": "Ask a question",
+                    "label_name": "Your name",
+                    "label_email": "Your email",
+                    "label_phone": "Phone number",
+                    "label_message": "Your message...",
+                    "label_button": "Submit"
+                  },
+                  "blocks": {}
+                },
+                "single_delivery_return_Gkqfzp": {
+                  "type": "_single-delivery-return",
+                  "name": "Single delivery return",
+                  "settings": {
+                    "delivery_return_title": "Delivery & Return",
+                    "delivery_return_heading": "Shipping info",
+                    "delivery_return_content": "<p><b>Return Policy:</b> We will gladly accept returns for any reason within 30 days of receipt of delivery.</p>\n\n<p><b>Availability:</b> Ships anywhere in the United States</p>\n\n<p><b>Processing Time:</b> Allow 3-4 business days processing time for your order to ship.</p>"
+                  },
+                  "blocks": {}
+                },
+                "single_social_sharing_NreiBA": {
+                  "type": "_single-social-sharing",
+                  "name": "Single social share",
+                  "settings": {
+                    "product_share_title": "Share"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "single_button_compare_EfUgrT",
+                "single_ask_a_question_BqwAed",
+                "single_delivery_return_Gkqfzp",
+                "single_social_sharing_NreiBA"
+              ]
+            },
+            "single_estimated_delivery_DqmejQ": {
+              "type": "single-estimated-delivery",
+              "name": "Single delivery return",
+              "disabled": true,
+              "settings": {
+                "product_estimated_delivery_margin": "",
+                "estimated_delivery_day": 5
+              },
+              "blocks": {}
+            },
+            "single_buy_more_AUFHjV": {
+              "type": "single-buy-more",
+              "name": "Single buy more",
+              "disabled": true,
+              "settings": {
+                "product_buy_more_margin": "",
+                "product_buy_more_color": "#f6f6f6",
+                "buy_more_title": "Buy More Save More!",
+                "buy_more_collection": "rings",
+                "buy_more_content": "5 item(s) get <span>10% OFF</span>\n<p>on each product</p>",
+                "buy_more_quatily": 5
+              },
+              "blocks": {}
+            },
+            "single_pick_up_7Cr6pT": {
+              "type": "single-pick-up",
+              "name": "Single Pick Up",
+              "disabled": true,
+              "settings": {
+                "product_pick_up_margin": ""
+              },
+              "blocks": {}
+            },
+            "single_buy_it_with_VRUHwN": {
+              "type": "single-buy-it-with",
+              "name": "Single buy it with",
+              "disabled": true,
+              "settings": {
+                "product_buy_with_margin": "",
+                "product_buy_with_metafield": "",
+                "buy_it_with_title": "Buy It With",
+                "buy_it_with_button": "VIEW PRODUCT"
+              },
+              "blocks": {}
+            },
+            "single_trust_barget_WiLaqT": {
+              "type": "single-trust-barget",
+              "name": "Single trust barget",
+              "disabled": true,
+              "settings": {
+                "product_trust_barget_margin": "",
+                "trust_barget_bg": "#f3f3f3",
+                "trust_barget_title": "Guaranteed Checkout"
+              },
+              "blocks": {}
+            },
+            "single_buy_together_6pLxD7": {
+              "type": "single-buy-together",
+              "name": "Single buy together",
+              "disabled": true,
+              "settings": {
+                "metafields_buy_together": [],
+                "product_buy_together_margin": "0 0 50px",
+                "buy_together_title": "Frequently Bought Together"
+              },
+              "blocks": {}
+            },
+            "single_product_tab_trraiM": {
+              "type": "single-product-tab",
+              "name": "Single product tabs",
+              "settings": {
+                "product_product_tab_margin": "0px 0px 0px 0px",
+                "tab_title": "Details & Dimensions",
+                "product_tab_selector": "custom",
+                "tab_content": "<p>{{ closest.product.metafields.custom.short_description | metafield_tag }}</p>"
+              },
+              "blocks": {}
+            },
+            "single_product_tab_9QWQzR": {
+              "type": "single-product-tab",
+              "name": "Single product tabs",
+              "settings": {
+                "product_product_tab_margin": "0px 0px 0px 0px",
+                "tab_title": "Shipping & Returns",
+                "product_tab_selector": "custom",
+                "tab_content": "<p><strong>Delivery</strong><br/><br/>We currently deliver within the UK only.<br/><br/>Orders are processed within 1–3 business days. Standard UK delivery usually takes 7–10 working days after dispatch.<br/><br/>Standard UK delivery is £4.99, or free on orders over £59.<br/><br/><strong>Returns</strong><br/><br/>We hope you love your Solisita piece. If it is not quite right, you may return eligible items within 14 days of receiving your order.<br/><br/>Items must be unworn, unused and returned in their original packaging. UK returns are free for eligible items.<br/><br/>For hygiene reasons, earrings cannot be returned unless faulty. Personalised or custom-made items are also non-returnable unless faulty.<br/><br/><strong>Warranty</strong><br/><br/>Solisita jewellery comes with a 1-year warranty covering manufacturing faults. This does not cover general wear and tear, accidental damage or damage caused by improper care.</p>"
+              },
+              "blocks": {}
+            },
+            "single_product_tab_TecYTW": {
+              "type": "single-product-tab",
+              "name": "Single product tabs",
+              "settings": {
+                "product_product_tab_margin": "0px 0px 0px 0px",
+                "tab_title": "Materials & Care",
+                "product_tab_selector": "custom",
+                "tab_content": "<p><strong>Materials</strong><br/><br/>Our jewellery is mainly crafted from durable stainless steel, designed for everyday styling with a polished, easy-to-wear finish.<br/><br/>Some pieces feature stones, crystals, pearls or decorative details. Please check each product’s details for specific material information.<br/><br/><strong>Care<br/></strong><br/>Many Solisita pieces are designed to be water-resistant and tarnish-resistant, making them suitable for everyday wear. To keep your jewellery looking its best, we recommend gently drying it after contact with water and storing it separately when not in use.<br/><br/>Avoid direct contact with perfume, lotions and harsh chemicals where possible.<br/><br/><strong>Packaging</strong><br/><br/>Each order is packed in a complimentary gift box or jewellery pouch, ready to treat yourself or someone special.</p>"
+              },
+              "blocks": {}
+            },
+            "single_product_tab_4LmchF": {
+              "type": "single-product-tab",
+              "name": "Single product tabs",
+              "disabled": true,
+              "settings": {
+                "product_product_tab_margin": "",
+                "tab_title": "Return",
+                "product_tab_selector": "custom",
+                "tab_content": "<p>You can choose between a refund or a credit note on full priced items.</p><ul><li>Item(s) must be returned in their original condition and packaging: unworn, unwashed and with all tags attached.</li><li>Earrings cannot be returned due to health and safety reasons.</li><li>Return shipping methods and associated costs are the responsibility of the customer.</li><li>Sale items can not be refunded for change of mind.</li></ul>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "single_title_hygtzn",
+            "single_price_rWCFQG",
+            "line_MPbEdE",
+            "single_short_description_6QDXzB",
+            "single_real_time_kzbcCU",
+            "single_count_sale_WXDgqa",
+            "single_inventory_cUbwac",
+            "single_countdown_Y3DXH4",
+            "single_form_atc_iEEP6B",
+            "text_block_dXKFk9",
+            "single_ask_share_YEiq7A",
+            "single_estimated_delivery_DqmejQ",
+            "single_buy_more_AUFHjV",
+            "single_pick_up_7Cr6pT",
+            "single_buy_it_with_VRUHwN",
+            "single_trust_barget_WiLaqT",
+            "single_buy_together_6pLxD7",
+            "single_product_tab_trraiM",
+            "single_product_tab_9QWQzR",
+            "single_product_tab_TecYTW",
+            "single_product_tab_4LmchF"
+          ]
+        }
+      },
+      "block_order": [
+        "single_product_image_qQ7qki",
+        "single_product_info_pewHED"
+      ],
+      "custom_css": [
+        ".product-single__media--gird-two .slick-arrow {display: none !important;}",
+        ".product-single__media--gird-two .swiper-wrapper {display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important;}",
+        ".product-single__media--gird-two .swiper-slide {width: auto !important; margin: 0 !important; padding: 0 !important;}",
+        ".product-media__wrapper img {border-radius: 8px; width: 100%; height: 100%; object-fit: cover; display: block;}"
+      ],
+      "settings": {
+        "bg_section": "#ffffff",
+        "padding_section": "28px 0px 0px 0px",
+        "show_sticky_cart": false,
+        "media_layout": "gird-two",
+        "position_thumbnails": "left",
+        "thumbnail_count": 5,
+        "enable_video_looping": false
+      }
+    },
+    "custom_liquid_jbnARV": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "单品页 liquid",
+      "settings": {
+        "custom_liquid": "{% assign sd_text = product.metafields.custom.short_description.value | default: product.description | strip_html %}\n{% assign detail_raw = product.metafields.custom.short_description.value %}\n{% assign mat = product.metafields.custom.materials.value %}\n{% assign fit = product.metafields.custom.size_fit.value %}\n{% assign solisita_bc_collection = collection %}\n{% if solisita_bc_collection == blank and product.collections.size > 0 %}\n  {% assign solisita_bc_collection = product.collections.first %}\n{% endif %}\n\n<div id=\"solisita-pdp-breadcrumb\" class=\"solisita-pdp-breadcrumb\">\n  <a href=\"/\">Home</a>\n  {% if solisita_bc_collection != blank %}\n    <span class=\"solisita-pdp-breadcrumb__sep\">•</span>\n    <a href=\"{{ solisita_bc_collection.url }}\">{{ solisita_bc_collection.title }}</a>\n  {% endif %}\n</div>\n\n<div id=\"solisita-pdp-readmore\" class=\"solisita-pdp-readmore\">\n  <div class=\"solisita-pdp-readmore__text\">\n    <span class=\"solisita-pdp-readmore__copy\" data-full-text=\"{{ sd_text | escape }}\">{{ sd_text | truncate: 80 }}</span>\n    <button type=\"button\" class=\"solisita-open-drawer solisita-pdp-readmore__btn\" data-panel=\"details\">Read more</button>\n  </div>\n</div>\n\n<div class=\"solisita-drawer-overlay\"></div>\n\n<aside class=\"solisita-details-drawer\" aria-hidden=\"true\">\n  <header class=\"solisita-details-drawer__header\">\n    <h2 class=\"solisita-details-drawer__title\" data-drawer-title>DETAILS</h2>\n    <button type=\"button\" class=\"solisita-details-drawer__close\" aria-label=\"Close\">\n      <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n        <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M11.293 12L5.646 6.354l.708-.708L12 11.293l5.646-5.647.708.708L12.707 12l5.647 5.646-.708.708L12 12.707l-5.646 5.647-.708-.708L11.293 12Z\" fill=\"black\"/>\n      </svg>\n    </button>\n  </header>\n\n  <div class=\"solisita-details-drawer__scroll\">\n    <div class=\"solisita-drawer-panel\" data-panel-content=\"details\" data-panel-title=\"DETAILS\">\n      <div class=\"solisita-modal-content solisita-modal-content--details\">\n        {% if detail_raw != blank %}\n          {% if detail_raw contains '<' %}\n            {{ detail_raw }}\n          {% else %}\n            <div class=\"solisita-modal-section solisita-modal-section--dynamic\" data-detail-raw=\"{{ detail_raw | escape }}\">\n              <h3>THE SOLISITA TOUCH</h3>\n              <p>{{ detail_raw | newline_to_br }}</p>\n            </div>\n          {% endif %}\n        {% elsif product.description != blank %}\n          {{ product.description }}\n        {% endif %}\n\n        {% if mat != blank or fit != blank %}\n          <div class=\"solisita-modal-section\">\n            <h3>THE SPECS</h3>\n            <ul class=\"solisita-spec-list\">\n              {% if mat != blank %}\n                <li><strong>Material:</strong> {{ mat | newline_to_br }}</li>\n              {% endif %}\n              {% if fit != blank %}\n                <li><strong>Size & Fit:</strong> {{ fit | newline_to_br }}</li>\n              {% endif %}\n            </ul>\n          </div>\n        {% endif %}\n      </div>\n    </div>\n\n    <div class=\"solisita-drawer-panel\" data-panel-content=\"materials\" data-panel-title=\"MATERIALS & CARE\">\n      <div class=\"solisita-modal-content\">\n        <div class=\"solisita-care-block\">\n          <div class=\"solisita-care-heading\">\n            <span class=\"solisita-care-icon\">\n              <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n                <circle cx=\"12\" cy=\"12\" r=\"10\" stroke=\"black\"/>\n                <circle cx=\"12\" cy=\"12\" r=\"5.5\" stroke=\"black\"/>\n                <path d=\"M7.5 15.5C8.2 15.5 9.28 15.4 10.26 15.07C11.2 14.76 12.22 14.19 12.49 13.12C12.76 12.01 12.62 11.04 12.42 10.25C12.24 9.52 12 8.93 12 8.5C12 7.81 12.3 7.02 12.45 6.72\" stroke=\"black\"/>\n                <path d=\"M14.5 17C14.28 16.64 14 15.85 14 15C14 14.18 14.2 13.23 14.9 12.8C15.65 12.34 16.55 12.38 17.5 13\" stroke=\"black\"/>\n              </svg>\n            </span>\n            <h3>Caring For Your Jewellery</h3>\n          </div>\n          <div class=\"solisita-care-text\">\n            <p>Most Solisita pieces are made with <strong>titanium steel as the main base material</strong>, chosen for everyday wear, durability and a comfortable feel.</p>\n            <p>Some pieces include decorative details such as <strong>crystals, cubic zirconia, faux pearls, enamel or other stone-effect accents</strong>. Please check the product details for the specific finish and decoration of each piece.</p>\n            <p>Selected pieces are <strong>waterproof</strong> and <strong>tarnish-resistant</strong>, making them suitable for daily styling. To keep your jewellery looking its best, we still recommend storing it in a cool, dry place and gently cleaning it with a soft, non-abrasive cloth.</p>\n            <p>Avoid harsh chemicals, perfumes, lotions and cleaning products where possible, as these may affect the finish over time.</p>\n          </div>\n        </div>\n\n        <div class=\"solisita-modal-divider\"></div>\n\n        <div class=\"solisita-care-block\">\n          <div class=\"solisita-care-heading\">\n            <span class=\"solisita-care-icon\">\n              <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n                <path d=\"M4 8h16v12H4V8Z\" stroke=\"black\"/>\n                <path d=\"M4 8l8 5 8-5\" stroke=\"black\"/>\n                <path d=\"M12 8V5.5C12 4.12 10.88 3 9.5 3S7 4.12 7 5.5C7 6.88 8.12 8 9.5 8H12Z\" stroke=\"black\"/>\n                <path d=\"M12 8V5.5C12 4.12 13.12 3 14.5 3S17 4.12 17 5.5C17 6.88 15.88 8 14.5 8H12Z\" stroke=\"black\"/>\n              </svg>\n            </span>\n            <h3>Gift-Ready Packaging</h3>\n          </div>\n          <div class=\"solisita-care-text\">\n            <p>Your order will be packed in either a <strong>complimentary gift box</strong> or a <strong>jewellery pouch</strong>, depending on the piece. Designed to feel thoughtful whether you are treating yourself or gifting someone special.</p>\n          </div>\n        </div>\n\n        <div class=\"solisita-modal-divider\"></div>\n\n        <div class=\"solisita-care-block\">\n          <div class=\"solisita-care-heading\">\n            <span class=\"solisita-care-icon\">\n              <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n                <circle cx=\"12\" cy=\"8\" r=\"4\" stroke=\"black\"/>\n                <path d=\"M8 12v9l4-2.5 4 2.5v-9\" stroke=\"black\"/>\n              </svg>\n            </span>\n            <h3>Warranty</h3>\n          </div>\n          <div class=\"solisita-care-text\">\n            <p>Solisita jewellery comes with a <strong>1-year warranty</strong> covering manufacturing faults. This does not cover general wear and tear, accidental damage, loss, or damage caused by improper care.</p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"solisita-drawer-panel\" data-panel-content=\"shipping\" data-panel-title=\"SHIPPING & RETURNS\">\n      <div class=\"solisita-modal-content\">\n        <table class=\"solisita-shipping-table\">\n          <tbody>\n            <tr>\n              <th>Shipping Method</th>\n              <th>Cost</th>\n              <th>Timeframe</th>\n            </tr>\n            <tr>\n              <td>UK Standard Delivery<br><span>UK only</span></td>\n              <td>Free on orders over £59<br>£4.99 on orders below</td>\n              <td>7–10 working days</td>\n            </tr>\n            <tr>\n              <td>Next Day Delivery</td>\n              <td>Not currently available</td>\n              <td>—</td>\n            </tr>\n            <tr>\n              <td>International Delivery</td>\n              <td>Not currently available</td>\n              <td>—</td>\n            </tr>\n          </tbody>\n        </table>\n\n        <p class=\"solisita-modal-note\"><em>Orders are processed within <strong>1–3 business days</strong>. Standard UK delivery usually takes <strong>7–10 working days</strong> after dispatch.</em></p>\n\n        <div class=\"solisita-modal-divider\"></div>\n\n        <h3 class=\"solisita-block-title\">RETURNS</h3>\n        <div class=\"solisita-richtext\">\n          <p>We hope you love your Solisita piece. If it is not quite right, eligible items can be returned within <strong>14 days</strong> of receiving your order.</p>\n          <p>Items must be <strong>unworn, unused and returned in their original packaging</strong>. UK returns are free for eligible items.</p>\n          <p>For hygiene reasons, <strong>earrings cannot be returned unless faulty</strong>. Personalised or custom-made items are also <strong>non-returnable unless faulty</strong>.</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</aside>\n\n<div id=\"solisita-pdp-icons\" class=\"solisita-pdp-icons\">\n  <div class=\"solisita-pdp-icons__item\">\n    <span class=\"solisita-pdp-icons__icon\">\n      <svg width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\">\n        <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M20 6.97L12.23 4.83L4.45 6.97V9.83H5.27V8.08L11.82 10.06V19.1L5.27 17.11V15.33H4.45V17.73L11.82 19.96L12.23 20.08L12.64 19.96L20 17.73V6.97ZM18.56 7.4L12.23 5.64L5.89 7.4L12.23 9.32L18.56 7.4ZM12.64 10.06V19.1L19.18 17.11V8.08L12.64 10.06ZM1 11.08H7.5V11.83H1V11.08ZM7.5 13.33H2V14.08H7.5V13.33Z\" fill=\"black\"/>\n      </svg>\n    </span>\n    <p>Standard UK Shipping £4.99, FREE over £59</p>\n  </div>\n\n  <div class=\"solisita-pdp-icons__item\">\n    <span class=\"solisita-pdp-icons__icon\">\n      <svg width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\">\n        <circle cx=\"12\" cy=\"8.5\" r=\"4\" stroke=\"black\"/>\n        <path d=\"M8 12.5v9l4-2.5l4 2.5v-9\" stroke=\"black\"/>\n        <path d=\"M10.2 8.5l1.2 1.2l2.4-2.6\" stroke=\"black\"/>\n      </svg>\n    </span>\n    <p>1 Year Warranty</p>\n  </div>\n\n  <div class=\"solisita-pdp-icons__item\">\n    <span class=\"solisita-pdp-icons__icon\">\n      <svg width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\">\n        <path d=\"M7 7.5H4V4.5\" stroke=\"black\"/>\n        <path d=\"M4 7.5C5.6 4.9 8.5 3.5 11.7 3.9C16.2 4.4 19.5 8.2 19.5 12.5C19.5 17.2 15.7 21 11 21C8.1 21 5.6 19.6 4 17.4\" stroke=\"black\"/>\n        <path d=\"M8 12.5H16\" stroke=\"black\"/>\n        <path d=\"M13 9.5L16 12.5L13 15.5\" stroke=\"black\"/>\n      </svg>\n    </span>\n    <p>14-Day Returns</p>\n  </div>\n\n  <div class=\"solisita-pdp-icons__item\">\n    <span class=\"solisita-pdp-icons__icon\">\n      <svg width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\">\n        <path d=\"M4 8.5H20V20.5H4V8.5Z\" stroke=\"black\"/>\n        <path d=\"M4 8.5L12 13.5L20 8.5\" stroke=\"black\"/>\n        <path d=\"M12 8.5V20.5\" stroke=\"black\"/>\n        <path d=\"M12 8.5V6C12 4.62 10.88 3.5 9.5 3.5S7 4.62 7 6C7 7.38 8.12 8.5 9.5 8.5H12Z\" stroke=\"black\"/>\n        <path d=\"M12 8.5V6C12 4.62 13.12 3.5 14.5 3.5S17 4.62 17 6C17 7.38 15.88 8.5 14.5 8.5H12Z\" stroke=\"black\"/>\n      </svg>\n    </span>\n    <p>Gift-ready packaging</p>\n  </div>\n</div>\n\n<script>\n(function(){\nfunction cleanPdpText(text){\nif(!text)return'';\nvar t=String(text).replace(/\\r\\n/g,'\\n').replace(/\\r/g,'\\n').trim();\nt=t.replace(/^THE SOLISITA TOUCH\\s*/i,'');\nt=t.replace(/^DETAILS\\s*&?\\s*DIMENSIONS\\s*/i,'');\nt=t.replace(/^DESCRIPTION\\s*/i,'');\nt=t.replace(/\\n+/g,' ');\nt=t.replace(/\\s+/g,' ').trim();\nreturn t;\n}\n\nfunction smartTrimText(text,limit){\nif(!text)return'';\nvar clean=cleanPdpText(text);\nvar chars=Array.from(clean);\nif(chars.length<=limit)return clean;\nvar cut=chars.slice(0,limit).join('');\nvar marks=['.','!','?','。','！','？'];\nvar best=-1;\nmarks.forEach(function(m){best=Math.max(best,cut.lastIndexOf(m))});\nif(best>36)return cut.slice(0,best+1);\nvar space=cut.lastIndexOf(' ');\nif(space>42)return cut.slice(0,space);\nreturn cut.replace(/[,\\.;:\\-\\s，。；：、]+$/,'');\n}\n\nfunction setupReadmoreCopy(){\nvar el=document.querySelector('.solisita-pdp-readmore__copy');\nif(!el||el.getAttribute('data-trimmed')==='true')return;\nvar full=el.getAttribute('data-full-text')||el.textContent||'';\nvar clean=cleanPdpText(full);\nvar trimmed=smartTrimText(clean,92);\nif(Array.from(clean).length>Array.from(trimmed).length){el.textContent=trimmed+'...'}else{el.textContent=trimmed}\nel.setAttribute('data-trimmed','true');\n}\n\nfunction escapeHtml(str){\nreturn String(str).replace(/[&<>\"']/g,function(s){return{'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#039;'}[s]});\n}\n\nfunction formatLines(str){return escapeHtml(str).replace(/\\n/g,'<br>')}\n\nfunction buildDetailSections(){\nvar block=document.querySelector('.solisita-modal-section--dynamic');\nif(!block||block.getAttribute('data-built')==='true')return;\nvar raw=block.getAttribute('data-detail-raw')||'';\nraw=raw.replace(/\\r\\n/g,'\\n').replace(/\\r/g,'\\n').trim();\nif(!raw)return;\nvar parts=raw.split(/\\n\\s*\\n+/).filter(function(item){return item.trim()!==''});\nif(parts.length<2){block.setAttribute('data-built','true');return}\nvar html='';\nparts.forEach(function(part,index){\nvar lines=part.split('\\n').map(function(line){return line.trim()}).filter(Boolean);\nif(!lines.length)return;\nvar title='THE SOLISITA TOUCH';\nvar body=part.trim();\nif(lines.length>1&&lines[0].length<=42){title=lines[0];body=lines.slice(1).join('\\n')}else if(index>0){title='DETAILS'}\nhtml+='<div class=\"solisita-modal-section\"><h3>'+escapeHtml(title)+'</h3><p>'+formatLines(body)+'</p></div>';\n});\nif(html){block.insertAdjacentHTML('afterend',html);block.remove()}\n}\n\nfunction hideThemeBreadcrumb(){\ndocument.querySelectorAll('ol.breadcrumb,.breadcrumb').forEach(function(el){\nif(el.classList.contains('solisita-pdp-breadcrumb'))return;\nif(el.closest('.solisita-details-drawer'))return;\nel.style.display='none';\nel.style.height='0';\nel.style.minHeight='0';\nel.style.margin='0';\nel.style.padding='0';\nel.style.overflow='hidden';\nvar p=el.parentElement;\nif(p&&p!==document.body){\nvar pt=(p.textContent||'').replace(/\\s+/g,'').trim();\nvar et=(el.textContent||'').replace(/\\s+/g,'').trim();\nif(pt===et){\np.style.display='none';\np.style.height='0';\np.style.minHeight='0';\np.style.margin='0';\np.style.padding='0';\np.style.overflow='hidden';\n}\n}\n});\n}\n\nfunction moveSolisitaBreadcrumb(){\nvar crumb=document.getElementById('solisita-pdp-breadcrumb');\nvar title=document.querySelector('.product-single__title,.product_title,.product-title,.single-product-title,h1.product-single__title,h2.product-single__title');\nif(!crumb||!title)return false;\nvar titleBox=title.closest('.shopify-block')||title;\nif(titleBox.previousElementSibling!==crumb){titleBox.insertAdjacentElement('beforebegin',crumb)}\ncrumb.style.display='flex';\nreturn true;\n}\n\nfunction movePriceUnderTitle(){\nvar title=document.querySelector('.product-single__title,.product_title,.product-title,.single-product-title,h1.product-single__title,h2.product-single__title');\nvar price=document.querySelector('.price-container');\nif(!title||!price)return false;\nif(price.closest('.solisita-details-drawer'))return false;\nvar titleBox=title.closest('.shopify-block')||title;\nif(titleBox.nextElementSibling!==price){titleBox.insertAdjacentElement('afterend',price)}\nprice.style.display='flex';\nreturn true;\n}\n\nfunction openDrawer(panel){\nvar drawer=document.querySelector('.solisita-details-drawer');\nvar ov=document.querySelector('.solisita-drawer-overlay');\nif(!drawer||!ov)return;\ndocument.querySelectorAll('.solisita-drawer-panel').forEach(function(el){el.classList.remove('is-active')});\nvar active=document.querySelector('.solisita-drawer-panel[data-panel-content=\"'+panel+'\"]');\nif(active){\nactive.classList.add('is-active');\nvar title=active.getAttribute('data-panel-title')||'DETAILS';\nvar titleEl=drawer.querySelector('[data-drawer-title]');\nif(titleEl)titleEl.textContent=title;\n}\ndrawer.classList.add('is-open');\nov.classList.add('is-open');\ndrawer.setAttribute('aria-hidden','false');\ndocument.body.style.overflow='hidden';\n}\n\nfunction closeDrawer(){\nvar drawer=document.querySelector('.solisita-details-drawer');\nvar ov=document.querySelector('.solisita-drawer-overlay');\nif(!drawer||!ov)return;\ndrawer.classList.remove('is-open');\nov.classList.remove('is-open');\ndrawer.setAttribute('aria-hidden','true');\ndocument.body.style.overflow='';\n}\n\nfunction moveReadmore(){\nvar box=document.getElementById('solisita-pdp-readmore');\nvar price=document.querySelector('.price-container');\nif(!box||!price)return false;\nprice.insertAdjacentElement('afterend',box);\nbox.style.display='block';\nreturn true;\n}\n\nfunction moveIcons(){\nvar icons=document.getElementById('solisita-pdp-icons');\nif(!icons)return false;\nvar infos=[].slice.call(document.querySelectorAll('.product-more-info')).filter(function(el){return !el.closest('.solisita-details-drawer')&&el.offsetParent!==null});\nif(infos.length){\nvar lastInfo=infos[infos.length-1];\nlastInfo.insertAdjacentElement('afterend',icons);\nicons.style.display='block';\nreturn true;\n}\nvar tabs=[].slice.call(document.querySelectorAll('.single-product-tabs,.product-tabs')).filter(function(el){return !el.closest('.solisita-details-drawer')&&el.offsetParent!==null});\nif(tabs.length){\nvar lastTabs=tabs[tabs.length-1];\nlastTabs.insertAdjacentElement('afterend',icons);\nicons.style.display='block';\nreturn true;\n}\nreturn false;\n}\n\nhideThemeBreadcrumb();\nmoveSolisitaBreadcrumb();\nmovePriceUnderTitle();\nsetupReadmoreCopy();\nbuildDetailSections();\n\nvar tries=0;\nvar timer=setInterval(function(){\ntries++;\nhideThemeBreadcrumb();\nmoveSolisitaBreadcrumb();\nmovePriceUnderTitle();\nsetupReadmoreCopy();\nbuildDetailSections();\nvar movedReadmore=moveReadmore();\nvar movedIcons=moveIcons();\nif((movedReadmore&&movedIcons)||tries>40)clearInterval(timer);\n},200);\n\ndocument.addEventListener('click',function(e){\nvar btn=e.target.closest('.solisita-open-drawer');\nvar close=e.target.closest('.solisita-details-drawer__close');\nvar overlay=e.target.closest('.solisita-drawer-overlay');\nif(btn){e.preventDefault();openDrawer(btn.getAttribute('data-panel')||'details');return}\nif(close||overlay){e.preventDefault();closeDrawer();return}\nvar tab=e.target.closest('.product-more-info .collapse_title,.product-more-info [data-toggle=\"collapse\"],.product-more-info [data-bs-toggle=\"collapse\"],.product-more-info .accordion-button');\nif(tab){\nvar text=(tab.textContent||'').toLowerCase();\ne.preventDefault();\ne.stopPropagation();\nif(text.indexOf('shipping')>-1||text.indexOf('returns')>-1){openDrawer('shipping')}else if(text.indexOf('material')>-1||text.indexOf('care')>-1){openDrawer('materials')}else{openDrawer('details')}\n}\n},true);\n\ndocument.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer()});\n})();\n</script>"
+      }
+    },
+    "buy-together": {
+      "type": "buy-together",
+      "disabled": true,
+      "settings": {
+        "metafields_buy_together": [],
+        "bundler_title": "Frequently Bought Together",
+        "bundler_margin": "60px 0 0"
+      }
+    },
+    "product-tab": {
+      "type": "product-information",
+      "blocks": {
+        "tab_custom_xY6bTc": {
+          "type": "tab_custom",
+          "settings": {
+            "title_custom": "Description",
+            "content_custom": "{{ product.description }}"
+          }
+        },
+        "81d03f48-fab1-46ad-85e1-22a1c518009a": {
+          "type": "tab_review",
+          "settings": {
+            "title_review": "Reviews"
+          }
+        },
+        "35ba8ad6-8d45-4c06-818d-4fe29a1bdf75": {
+          "type": "tab_custom",
+          "settings": {
+            "title_custom": "Shipping",
+            "content_custom": "<p>For orders placed before 7am AEDT, we endeavour to process the same business day. Orders placed after 11am AEDT will be processed the next business day.</p><p>During sale events and new collection launches, there may be a slighly longer processing time.</p><p>All Auguste orders are hand-picked and packed with love from Byron Bay, Australie.</p>"
+          }
+        },
+        "1c519445-14ba-4b4f-a8df-6bf711832c78": {
+          "type": "tab_custom",
+          "settings": {
+            "title_custom": "Return",
+            "content_custom": "<p>You can choose between a refund or a credit note on full priced items.</p><ul><li>Item(s) must be returned in their original condition and packaging: unworn, unwashed and with all tags attached.</li></ul><ul><li>Earrings cannot be returned due to health and safety reasons.</li></ul><ul><li>Return shipping methods and associated costs are the responsibility of the customer.</li></ul><ul><li>Sale items can not be refunded for change of mind.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_custom_xY6bTc",
+        "81d03f48-fab1-46ad-85e1-22a1c518009a",
+        "35ba8ad6-8d45-4c06-818d-4fe29a1bdf75",
+        "1c519445-14ba-4b4f-a8df-6bf711832c78"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin": "50px 0 60px",
+        "tab_layout": "tab"
+      }
+    },
+    "1776968792ad17098b": {
+      "type": "apps",
+      "settings": {}
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "margin": "0 0 50px",
+        "heading": "Related Products",
+        "navigation": true,
+        "infinite": true,
+        "autoplay": true,
+        "autoplay_speed": "8000",
+        "columns": 4,
+        "space_columns": 30,
+        "column1440": 4,
+        "space_column1440": 30,
+        "column1": 3,
+        "space_column1": 15,
+        "column2": 2,
+        "space_column2": 15,
+        "column3": 1.5,
+        "space_column3": 15,
+        "column4": 1.5,
+        "space_column4": 15
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "margin": "30px 0",
+        "heading": "Recently Viewed Products",
+        "navigation": true,
+        "limit": 6,
+        "infinite": true,
+        "autoplay": true,
+        "autoplay_speed": "10000",
+        "columns": 4,
+        "space_columns": 30,
+        "column1440": 4,
+        "space_column1440": 30,
+        "column1": 3,
+        "space_column1": 15,
+        "column2": 2,
+        "space_column2": 15,
+        "column3": 1.5,
+        "space_column3": 15,
+        "column4": 1.5,
+        "space_column4": 15
+      }
+    },
+    "custom_liquid_i3K4fE": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "主页产品滚动liquid",
+      "settings": {
+        "custom_liquid": "{% assign related_collection = collections['all'] %}\n{% assign shown_count = 0 %}\n\n{% if related_collection != blank and related_collection.products_count > 1 %}\n<section class=\"solisita-you-may-like\" data-solisita-slider>\n  <div class=\"solisita-you-may-like__head\">\n    <h2>YOU MAY ALSO LIKE</h2>\n    <div class=\"solisita-you-may-like__arrows\">\n      <button type=\"button\" class=\"solisita-you-may-like__prev\" aria-label=\"Previous\">\n        <svg width=\"9\" height=\"16\" viewBox=\"0 0 9 16\" fill=\"none\"><path d=\"M9 15.266L1.51267 8L9 .733978L8.24367 0L0 8L8.24367 16L9 15.266Z\" fill=\"black\"/></svg>\n      </button>\n      <button type=\"button\" class=\"solisita-you-may-like__next\" aria-label=\"Next\">\n        <svg width=\"9\" height=\"16\" viewBox=\"0 0 9 16\" fill=\"none\"><path d=\"M0 15.266L7.48733 8L0 .733978L.756335 0L9 8L.756335 16L0 15.266Z\" fill=\"black\"/></svg>\n      </button>\n    </div>\n  </div>\n\n  <div class=\"solisita-you-may-like__track\">\n    {% for related_product in related_collection.products %}\n      {% if related_product.id != product.id and shown_count < 12 %}\n        {% assign shown_count = shown_count | plus: 1 %}\n        {% assign variant = related_product.selected_or_first_available_variant %}\n        {% assign second_image = related_product.images[1] %}\n\n        <div class=\"solisita-like-card\">\n          <a href=\"{{ related_product.url }}\" class=\"solisita-like-card__image\">\n            {% if related_product.compare_at_price_max > related_product.price %}\n              {% assign save_amount = related_product.compare_at_price_max | minus: related_product.price %}\n              {% assign save_percent = save_amount | times: 100 | divided_by: related_product.compare_at_price_max %}\n              <span class=\"solisita-like-card__badge\">-{{ save_percent }}%</span>\n            {% endif %}\n\n            {% if related_product.featured_image %}\n              <img class=\"solisita-like-card__img solisita-like-card__img--main\" src=\"{{ related_product.featured_image | image_url: width: 1000 }}\" alt=\"{{ related_product.featured_image.alt | escape }}\" loading=\"lazy\">\n            {% endif %}\n\n            {% if second_image %}\n              <img class=\"solisita-like-card__img solisita-like-card__img--hover\" src=\"{{ second_image | image_url: width: 1000 }}\" alt=\"{{ second_image.alt | escape }}\" loading=\"lazy\">\n            {% endif %}\n          </a>\n\n          <div class=\"solisita-like-card__body\">\n            <div class=\"solisita-like-card__swatches\">\n              {% assign colour_text = related_product.title | append: ' ' | append: variant.title | downcase %}\n              <span class=\"solisita-like-card__swatch {% if colour_text contains 'silver' %}is-silver{% elsif colour_text contains 'rose' %}is-rose{% elsif colour_text contains 'black' %}is-black{% elsif colour_text contains 'turquoise' %}is-turquoise{% else %}is-gold{% endif %}\"></span>\n            </div>\n\n            <a href=\"{{ related_product.url }}\" class=\"solisita-like-card__title\">{{ related_product.title }}</a>\n\n            {% unless variant.title == 'Default Title' %}\n              <div class=\"solisita-like-card__variant\">{{ variant.title }}</div>\n            {% endunless %}\n\n            <div class=\"solisita-like-card__price\">\n              {% if related_product.compare_at_price_max > related_product.price %}\n                <span class=\"solisita-like-card__compare\">{{ related_product.compare_at_price_max | money }}</span>\n              {% endif %}\n              <span>{{ related_product.price | money }}</span>\n            </div>\n          </div>\n        </div>\n      {% endif %}\n    {% endfor %}\n  </div>\n</section>\n{% endif %}\n\n<script>\n(function(){\n  var section=document.querySelector('[data-solisita-slider]');\n  if(!section)return;\n\n  var track=section.querySelector('.solisita-you-may-like__track');\n  var prev=section.querySelector('.solisita-you-may-like__prev');\n  var next=section.querySelector('.solisita-you-may-like__next');\n  if(!track)return;\n\n  if(prev&&next){\n    function move(dir){\n      var card=track.querySelector('.solisita-like-card');\n      var amount=card?card.offsetWidth+12:420;\n      track.scrollBy({left:amount*dir,behavior:'smooth'});\n    }\n    prev.addEventListener('click',function(){move(-1)});\n    next.addEventListener('click',function(){move(1)});\n  }\n\n  var isDown=false;\n  var startX=0;\n  var startScroll=0;\n  var lastX=0;\n  var lastTime=0;\n  var velocity=0;\n  var moved=false;\n  var raf=null;\n  var momentumFrame=null;\n  var targetScroll=0;\n\n  function setScroll(value){\n    targetScroll=value;\n    if(raf)return;\n    raf=requestAnimationFrame(function(){\n      track.scrollLeft=targetScroll;\n      raf=null;\n    });\n  }\n\n  function stopMomentum(){\n    if(momentumFrame){\n      cancelAnimationFrame(momentumFrame);\n      momentumFrame=null;\n    }\n  }\n\n  function momentum(){\n    velocity*=0.94;\n    if(Math.abs(velocity)<0.15){\n      momentumFrame=null;\n      return;\n    }\n    track.scrollLeft-=velocity;\n    momentumFrame=requestAnimationFrame(momentum);\n  }\n\n  track.addEventListener('pointerdown',function(e){\n    if(e.button!==undefined&&e.button!==0)return;\n    isDown=true;\n    moved=false;\n    startX=e.clientX;\n    lastX=e.clientX;\n    startScroll=track.scrollLeft;\n    lastTime=performance.now();\n    velocity=0;\n    stopMomentum();\n    track.classList.add('is-dragging');\n    if(track.setPointerCapture)track.setPointerCapture(e.pointerId);\n  });\n\n  track.addEventListener('pointermove',function(e){\n    if(!isDown)return;\n\n    var now=performance.now();\n    var dx=e.clientX-startX;\n    var moveX=e.clientX-lastX;\n    var dt=now-lastTime||16;\n\n    if(Math.abs(dx)>6)moved=true;\n\n    velocity=moveX/dt*16;\n    setScroll(startScroll-dx);\n\n    lastX=e.clientX;\n    lastTime=now;\n  });\n\n  function endDrag(e){\n    if(!isDown)return;\n    isDown=false;\n    track.classList.remove('is-dragging');\n\n    if(e&&track.releasePointerCapture){\n      try{track.releasePointerCapture(e.pointerId)}catch(err){}\n    }\n\n    if(Math.abs(velocity)>0.4){\n      stopMomentum();\n      momentumFrame=requestAnimationFrame(momentum);\n    }\n\n    setTimeout(function(){moved=false},90);\n  }\n\n  track.addEventListener('pointerup',endDrag);\n  track.addEventListener('pointercancel',endDrag);\n  track.addEventListener('pointerleave',endDrag);\n\n  track.addEventListener('click',function(e){\n    if(moved){\n      e.preventDefault();\n      e.stopPropagation();\n    }\n  },true);\n})();\n</script>"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "custom_liquid_jbnARV",
+    "buy-together",
+    "product-tab",
+    "1776968792ad17098b",
+    "product-recommendations",
+    "recently-viewed",
+    "custom_liquid_i3K4fE"
+  ]
+}

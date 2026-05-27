@@ -1,0 +1,284 @@
+{%- assign image 		= block.settings.image -%}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+      {%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .bwp-widget-policy{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	#shopify-block-{{ block.id }} .bwp-widget-policy .bwp-image{
+		width:{{ block.settings.size }};
+	}
+    #shopify-block-{{ block.id }} .bwp-widget-policy .banner-wrapper-infor {
+        margin:{{ block.settings.margin_icon }};
+    }
+    @media (max-width: 767px){
+      #shopify-block-{{ block.id }} .bwp-widget-policy .bwp-image{
+          width:{{ block.settings.size_mobi }};
+      }
+    }
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .bwp-widget-policy{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .bwp-widget-policy{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .bwp-widget-policy{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="wpbingo-block bwp-widget-policy wpbingo-block--{{ block.id }} {{block.settings.layout}}">
+    <div class="col-banner pos-align-{{ block.settings.align }}">
+      <div class="featured-banner bwp-effect-{{ block.settings.effects }}">
+          <div class="content-image image-parent">
+              <div class="bwp-image image-effect">
+                  {%- if image -%}
+                      <img class="lazyload fade-in" src="{{ image | image_url }}" width="{{ image.width }}" height="{{ image.height }}" />
+                  {%- else -%}
+                       <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="200" height="200" />
+                  {%- endif -%}
+              </div>
+          </div>
+          <div class="banner-wrapper-infor">
+              <div class="info">
+                  <div class="content">
+                        {% content_for "blocks" %}
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Policy",
+    "blocks": [{ "type": "@app" },{ "type": "@theme" }],
+    "settings": [
+         {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+       {
+           "type": "text",
+            "id": "size",
+            "label": "Size image"
+        },
+        {
+			"type": "textarea",
+			"id": "margin_icon",
+			"label": "Margin content to image",
+			"placeholder": "0px 0px 0px 0px"
+		},
+        {
+            "type": "select",
+            "id": "align",
+            "label": "Align",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "center"
+        },
+        {
+			"type": "select",
+			"id": "effects",
+			"label": "Effects",
+			"options": [
+				{
+					"value": "none",
+					"label": "None"
+				},
+				{
+					"value": "grow",
+					"label": "Grow"
+				},
+				{
+					"value": "shrink",
+					"label": "Shrink"
+				},
+				{
+					"value": "pulse",
+					"label": "Pulse"
+				},
+				{
+					"value": "pulse-grow",
+					"label": "Pulse Grow"
+				},
+				{
+					"value": "pulse-shrink",
+					"label": "Pulse Shrink"
+				},
+				{
+					"value": "push",
+					"label": "Push"
+				},
+				{
+					"value": "pop",
+					"label": "Pop"
+				},
+				{
+					"value": "bounce-in",
+					"label": "Bounce In"
+				},
+				{
+					"value": "bounce-out",
+					"label": "Bounce Out"
+				},
+				{
+					"value": "rotate",
+					"label": "Rotate"
+				},
+				{
+					"value": "grow-rotate",
+					"label": "Grow Rotate"
+				},
+				{
+					"value": "float",
+					"label": "Float"
+				},
+				{
+					"value": "sink",
+					"label": "Sink"
+				},
+				{
+					"value": "bob",
+					"label": "Bob"
+				},
+				{
+					"value": "hang",
+					"label": "Hang"
+				},
+				{
+					"value": "skew",
+					"label": "Skew"
+				},
+				{
+					"value": "skew-forward",
+					"label": "Skew Forward"
+				},
+				{
+					"value": "skew-backward",
+					"label": "Skew Backward"
+				},
+				{
+					"value": "wobble-vertical",
+					"label": "Wobble Vertical"
+				},
+				{
+					"value": "wobble-horizontal",
+					"label": "Wobble Horizontal"
+				},
+				{
+					"value": "wobble-to-bottom-right",
+					"label": "Wobble To Bottom Right"
+				},
+				{
+					"value": "wobble-to-top-right",
+					"label": "Wobble To Top Right"
+				},
+				{
+					"value": "wobble-top",
+					"label": "Wobble Top"
+				},
+				{
+					"value": "wobble-bottom",
+					"label": "Wobble Bottom"
+				},
+				{
+					"value": "wobble-skew",
+					"label": "Wobble Skew"
+				},
+				{
+					"value": "buzz",
+					"label": "Buzz"
+				},
+				{
+					"value": "buzz-out",
+					"label": "Buzz Out"
+				}
+			],
+			"default": "none"
+		},
+        {
+            "type": "header",
+            "content": "==Mobile",
+            "info": "screen < 767px"
+        },
+        {
+           "type": "text",
+            "id": "size_mobi",
+            "label": "Size image"
+        },
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "List style",
+            "options": [
+                {
+                    "value": "layout-1",
+                    "label": "Layout 1"
+                },
+                {
+                    "value": "layout-2",
+                    "label": "Layout 2"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Policy",
+            "blocks": [
+              {
+                  "type": "title"
+              },
+              {
+                  "type": "text-block"
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

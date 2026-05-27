@@ -1,0 +1,56 @@
+{%- if section.settings.enable -%}
+	{%- assign is_bg_image = section.settings.bgimage -%}
+	{%- if is_bg_image -%}
+		{%- assign class_name = 'wpbingo-breadcrumbs--image' -%}
+	{%- else -%}
+		{%- assign class_name = 'wpbingo-breadcrumbs--no-image' -%}
+	{%- endif -%}
+	<section class="wpbingo-breadcrumbs {{ class_name }}">
+		{%- assign bg_image = section.settings.image -%}
+		{%- if section.blocks.size > 0 -%}
+			{%- for block in section.blocks -%}
+				{%- if block.settings.collection == collection.handle -%}
+					{%- assign bg_image = block.settings.bgimage -%}
+					{%- break -%}
+				{%- endif -%}
+			{%- endfor -%}
+		{%- endif -%}
+		<div class="wpbingo-breadcrumbs__image"
+			{%- if is_bg_image -%}
+			style="background-image: url('{{ bg_image | image_url }}');background-size:cover; background-position:center center"{%- endif -%}>
+			<div class="container">
+				<div class="wpbingo-breadcrumbs__inner">
+					<h2 class="wpbingo-breadcrumbs__title">{{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: search.results_count }}</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Breadcrumb",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "bgimage",
+        "label": "Use background image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background image default",
+        "info": "Default size: 1920x480 pixels"
+      }
+    ]
+  }
+{% endschema %}

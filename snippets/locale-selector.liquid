@@ -1,0 +1,20 @@
+{%- if shop.enabled_locales.size > 1 -%}
+  {%- form 'localization', class: selectors_form_class -%}
+    <div class="js-disclosure header-selector header-selector--locale dropdown" data-disclosure-locale>
+      <h4 class="d-none">{{ 'general.language.dropdown_label' | t }}</h4>
+      <div class="header-selector__toggle" data-toggle="dropdown">{{ form.current_locale.endonym_name }}</div>
+      <div class="dropdown-menu dropdown-menu-right header-selector__dropdown">
+        <ul class="header-selector__list">
+          {%- for locale in form.available_locales -%}
+            <li class="header-selector__item{% if locale.iso_code == form.current_locale.iso_code %} locale-selector__item--current{% endif %}">
+              <a data-disclosure-option href="#" lang="{{ locale.iso_code }}" data-value="{{ locale.iso_code }}">
+                {{ locale.endonym_name }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <input data-disclosure-input type="hidden" name="locale_code" value="{{ form.current_locale.iso_code }}" />
+      </div>
+    </div>
+  {%- endform -%}
+{%- endif -%}

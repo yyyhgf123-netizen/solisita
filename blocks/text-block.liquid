@@ -1,0 +1,226 @@
+
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+    #shopify-block-{{ block.id }} .bwp-block-text>*{
+      font-size:{{ block.settings.font_size }}px;
+      line-height:{{ block.settings.line_height }}px;
+      font-weight:{{ block.settings.font_weight }};
+      letter-spacing:{{ block.settings.letter_spacing }}px;
+      color:{{ block.settings.color }};
+      text-align:{{ block.settings.align }};
+      font-family:var({{ block.settings.font }});
+      font-style:{{ block.settings.font_style }};
+      text-transform:{{ block.settings.text_transform }};
+    }
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .bwp-block-text>*{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .bwp-block-text>*{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .bwp-block-text>*{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .bwp-block-text>*{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+    @media (max-width:767px){
+      #shopify-block-{{ block.id }} .bwp-block-text>*{
+        font-size:{{ block.settings.font_size_mobi }}px;
+        line-height:{{ block.settings.line_height_mobi }}px;
+        letter-spacing:{{ block.settings.letter_spacing_mobi }}px;
+        color:{{ block.settings.color_mobi }};
+        text-align:{{ block.settings.align_mobi }};
+      }
+    }
+</style>
+<div class="bwp-block-text">
+    <div>{{ block.settings.title }}</div>
+</div>
+{% schema %}
+  {
+    "name": "Text block",
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Text block"
+        },
+         {
+            "type": "select",
+            "id": "font",
+            "label": "Font family",
+            "options": [
+                {
+                    "value": "--font-family-second",
+                    "label": "Font Heading"
+                },
+                {
+                    "value": "--font-family-base",
+                    "label": "Font Body"
+                },
+                {
+                    "value": "--font-family-pre",
+                    "label": "Font preventive"
+                }
+            ],
+            "default": "--font-family-base"
+        },
+        {
+            "type": "select",
+            "id": "text_transform",
+            "label": "Text Transform",
+            "options": [
+                {
+                    "value": "none",
+                    "label": "Default"
+                },
+                {
+                    "value": "capitalize",
+                    "label": "Capitalize"
+                },
+                {
+                    "value": "uppercase",
+                    "label": "Uppercase"
+                },
+                {
+                    "value": "lowercase",
+                    "label": "Lowercase"
+                }
+            ],
+            "default": "none"
+        },
+        {
+            "type": "select",
+            "id": "font_style",
+            "label": "Font Style",
+            "options": [
+                {
+                    "value": "normal",
+                    "label": "Default"
+                },
+                {
+                    "value": "italic",
+                    "label": "Italic"
+                }
+            ],
+            "default": "normal"
+        },
+        {
+            "type": "color",
+            "id": "color",
+            "label": "color",
+            "default": "#000"
+        },
+        {
+            "type": "number",
+            "id": "font_size",
+            "label": "Font size",
+            "default": 15,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height",
+            "label": "Line height",
+            "default": 25,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "letter_spacing",
+            "label": "Letter spacing",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "font_weight",
+            "label": "Font Weight",
+            "default": "400"
+        },
+        {
+            "type": "text_alignment",
+            "id": "align",
+            "label": "Text align",
+            "default": "left"
+        },
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+            "type": "header",
+            "content": "==Mobile",
+            "info": "screen < 767px"
+        },
+        {
+            "type": "color",
+            "id": "color_mobi",
+            "label": "color",
+            "default": "#000"
+        },
+        {
+            "type": "number",
+            "id": "font_size_mobi",
+            "label": "Font size",
+            "default": 14,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_mobi",
+            "label": "Line height",
+            "default": 24,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "letter_spacing_mobi",
+            "label": "Letter spacing",
+            "default": 0,
+            "info": "px"
+        },
+         {
+            "type": "text_alignment",
+            "id": "align_mobi",
+            "label": "Text align",
+            "default": "left"
+        }
+    ],
+    "presets": [
+        {
+          "name": "Text block"
+        } 
+     ]
+  }
+{% endschema %}

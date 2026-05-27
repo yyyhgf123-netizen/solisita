@@ -1,0 +1,23 @@
+{%- assign heading = section.settings.information_title -%}
+{%- assign content = section.settings.information_code -%}
+{%- if heading != bank -%}
+	{% capture block_heading %}
+		<h4 class="footer-block__title collapsed" data-toggle="collapse" data-target="#footer-block-1">{{ heading }}</h4>
+	{% endcapture %}
+	{% capture block_content %}
+		<div id="footer-block-1" class="footer-block__content collapse">
+		
+		</div>
+	{% endcapture %}
+{%- else -%}
+	{% capture block_heading %}{% endcapture %}
+	{% capture block_content %}
+    <div class="footer-block__content">
+		<div class="footer-html">{{ content }}</div>
+    </div>
+	{% endcapture %}
+{%- endif -%}
+<div class="footer-block footer-block--html">
+	{{ block_heading }}
+	{{ block_content }}
+</div>

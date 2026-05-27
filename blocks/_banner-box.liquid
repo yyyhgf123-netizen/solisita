@@ -1,0 +1,177 @@
+{%- assign position 	= block.settings.content_position -%}
+{%- assign vertical_position 	= block.settings.vertical_position -%}
+{%- assign horizontal_position 	= block.settings.horizontal_position -%}
+{%- assign text_align 	= block.settings.text_align -%}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+    #shopify-block-{{ block.id }} .info{
+        background:{{block.settings.background_content}};
+        border-radius:{{block.settings.border_radius_content}};
+    }
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .info{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .info{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .info{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .info{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="banner-wrapper-infor position-{{ position }} vertical-position-{{ vertical_position }} horizontal-position-{{ horizontal_position }} text-align-{{ text_align }}">
+    <div class="info">
+        <div class="content">
+             {% content_for "blocks" %}
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Content box",
+    "blocks": [{ "type": "@app" },{ "type": "@theme" }],
+    "settings": [
+        {
+            "type": "header",
+            "content": "Content settings"
+        },
+        {
+            "type": "select",
+            "id": "content_position",
+            "label": "Content position",
+            "options": [
+                {
+                    "value": "absolute",
+                    "label": "In the picture"
+                },
+                {
+                    "value": "unset",
+                    "label": "Bottom"
+                }
+            ],
+            "default": "absolute"
+        },
+        {
+            "type": "select",
+            "id": "vertical_position",
+            "label": "Vertical position",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "middle",
+                    "label": "Middle"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                }
+            ],
+            "default": "middle"
+        },
+        {
+            "type": "select",
+            "id": "horizontal_position",
+            "label": "Horizontal position",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "center"
+        },
+        {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text align",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "center"
+        },
+        {
+            "type": "color",
+            "id": "background_content",
+            "label": "Background content",
+            "default": "transparent"
+        },
+        {
+            "type": "text",
+            "id": "border_radius_content",
+            "label": "Border radius content",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left"
+        },
+         {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		}
+    ],
+    "presets": [
+        {
+            "name": "Content box",
+            "blocks": [
+             {
+                  "type": "title"
+              },
+              {
+                  "type": "text-block"
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

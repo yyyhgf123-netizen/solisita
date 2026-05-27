@@ -1,0 +1,78 @@
+{%- assign group_product 			= product.metafields.bwp_fields.group_product -%}
+{%- assign countdowns 				= product.metafields.bwp_fields.countdowns -%}
+{%- assign external 				= product.metafields.bwp_fields.external -%}
+{%- assign hover_style 				= settings.hover_style -%}
+
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}
+	{%- assign on_sale = true -%}
+{%- endif -%}
+{%- assign sold_out = true -%}
+{%- if product.available -%}
+	{%- assign sold_out = false -%}
+{%- endif -%}
+{%- if settings.product_within_collection -%}
+	{%- assign product_url = product.url | within: collection -%}
+{%- else -%}
+	{%- assign product_url = product.url -%}
+{%- endif -%}
+{%- assign variant 				= product.selected_or_first_available_variant -%}
+{%- assign featured_image 		= product.featured_media.preview_image %}
+{%- assign img_url 				= featured_image | image_url -%}
+{%- assign variant_count 		= product.variants | size -%}
+
+{%- assign filter_name_1 	= settings.filter_name_1 -%}
+{%- assign select_filter_1 	= settings.select_filter_1 -%}
+{%- assign filter_name_2 	= settings.filter_name_2 -%}
+{%- assign select_filter_2 	= settings.select_filter_2 -%}
+{%- assign filter_name_3 	= settings.filter_name_3 -%}
+{%- assign select_filter_3 	= settings.select_filter_3 -%}
+
+{%- assign short_description 		= product.metafields.bwp_fields.shortdesc -%}
+
+
+{%- if hover_style == 'hover_style_1' -%}
+	<div class="product-content-card swiper-slide">
+		{% render 'product-grid-hover-1', product:product %}
+	</div>
+{%- endif -%}
+{%- if hover_style == 'hover_style_2' -%}
+	<div class="product-content-card swiper-slide">
+		{% render 'product-grid-hover-2', product:product %}
+	</div>
+{%- endif -%}
+{%- if hover_style == 'hover_style_3' -%}
+	<div class="product-content-card swiper-slide">
+		{% render 'product-grid-hover-3', product:product %}
+	</div>
+{%- endif -%}
+{%- if hover_style == 'hover_style_4' -%}
+	<div class="product-content-card swiper-slide">
+		{% render 'product-grid-hover-4', product:product %}
+	</div>
+{%- endif -%}
+{%- if hover_style == 'hover_style_5' -%}
+	<div class="product-content-card swiper-slide">
+		{% render 'product-grid-hover-5', product:product %}
+	</div>
+{%- endif -%}
+{%- if hover_style == 'hover_style_6' -%}
+	<div class="product-content-card swiper-slide">
+		{% render 'product-grid-hover-6', product:product %}
+	</div>
+{%- endif -%}
+{%- if hover_style == 'hover_style_7' -%}
+	<div class="product-content-card swiper-slide">
+		{% render 'product-grid-hover-7', product:product %}
+	</div>
+{%- endif -%}
+{%- if hover_style == 'hover_style_8' -%}
+	<div class="product-content-card swiper-slide">
+		{% render 'product-grid-hover-8', product:product %}
+	</div>
+{%- endif -%}
+{%- if hover_style == 'hover_style_9' -%}
+	<div class="product-content-card swiper-slide">
+		{% render 'product-grid-hover-9', product:product %}
+	</div>
+{%- endif -%}

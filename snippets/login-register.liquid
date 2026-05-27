@@ -1,0 +1,77 @@
+<div class="login-popup {{ settings.login_style }}" data-login_popup data-section-id="login-register" data-section-type='login-register'>
+	<div class="remove-form-login-register" data-close_login_popup></div>
+	<div class="content-form-register {{ settings.login_style }}">
+		<div class="close-form-login" data-close_login_popup><span></span></div>
+		<div class="login__content">
+			<h3>{{ 'customer.login.title' | t }}</h3>
+			<div class="login_info">
+				<div class="js-login-form login-form">
+					<div class="js-recover-password-success recover-password__success alert alert-success d-none">
+						{{ 'customer.recover_password.success' | t }}
+					</div>
+					{% form 'customer_login' %}
+						{{ form.errors | default_errors }}
+						<div class="form-group">
+							<label class="d-none" for="customerEmail">{{ 'customer.login.email' | t }}</label>
+							<input id="customerEmail" class="form-control{% if form.errors contains 'email' %} is-invalid{% endif %}" name="customer[email]"
+								type="email" placeholder="{{ 'customer.login.email' | t }}" required autocorrect="off" autocapitalize="off" autofocus/>
+						</div>
+						{%- if form.password_needed -%}
+							<div class="form-group form-group--pasword">
+								<label class="d-none" for="customerPassword">{{ 'customer.login.password' | t }}</label>
+								<input id="customerPassword" class="form-control{% if form.errors contains 'password' %} is-invalid{% endif %}"
+									name="customer[password]" type="password" placeholder="{{ 'customer.login.password' | t }}" autocomplete="on" required/>
+								<a href="javascript:void(0)" class="js-password-toggle password-toggle">
+									<span class="text-show-password"><i class="feather-eye"></i></span>
+									<span class="text-hide-password"><i class="feather-eye-off"></i></span>
+								</a>
+							</div>
+						{%- endif -%}
+						{%- if form.password_needed -%}
+							<div class="form-link">
+								<a class="js-forget-password" href="{{routes.account_recover_url}}">{{ 'customer.login.forgot_password' | t }}</a>
+							</div>
+						{%- endif -%}
+						<div class="form-button">
+							<input type="submit" class="btn btn-primary" value="{{ 'customer.login.sign_in' | t }}">
+							<div class="register-account">{{ 'customer.login.register_account_html' | t : register: routes.account_register_url }}</div>
+						</div>
+					{% endform %}
+				</div>
+				<div class="js-recover-password recover-password d-none">
+					<h2 class="login-register__heading recover-password__heading">{{ 'customer.recover_password.title' | t }}</h2>
+					<p class="recover-password__summary">{{ 'customer.recover_password.subtext' | t }}</p>
+					<div class="recover-password__form">
+						{% form 'recover_customer_password' %}
+							{{ form.errors | default_errors }}
+							{%- if form.posted_successfully? -%}
+								<script>
+									window.resetPassword = true;
+								</script>
+							{%- endif -%}
+							<div class="form-group">
+								<label class="d-none" for="recoverEmail">{{ 'customer.login.password' | t }}</label>
+								<input id="recoverEmail" class="form-control" type="email" name="email" value="" placeholder="{{ 'customer.recover_password.email' | t }}"
+								required/>
+							</div>
+							<div class="form-button">
+								<input type="submit" class="btn btn-primary" value="{{ 'customer.recover_password.submit' | t }}">
+							</div>
+							<div class="form-link">
+								<a class="js-forget-password" href="#customers-login">{{ 'customer.recover_password.cancel' | t }}</a>
+							</div>
+						{% endform %}
+					</div>
+				</div>
+				{%- if shop.checkout.guest_login -%}
+					<div class="guest-form">
+						<h2 class="login-register__heading guest-form__heading">{{ 'customer.login.guest_title' | t }}</h2>
+						{% form 'guest_login' %}
+							<input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+						{% endform %}
+					</div>
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+</div>

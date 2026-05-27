@@ -1,0 +1,57 @@
+{%- assign header_catalog = section.settings.header_catalog -%}
+<div class="catalog-menu">
+  <h3 class="catalog-menu__title collapsed" data-toggle="collapse" data-target="#collapse-catalog">
+    <span>{{ section.settings.header_catalog_title | escape }}</span>
+  </h3>
+  <div id="collapse-catalog" class="catalog-menu__content collapse">
+    {%- if linklists[header_catalog].links != blank -%}
+      <ul class="catalog-menu__nav">
+        {%- for link in linklists[header_catalog].links -%}
+          {%- if link.links != blank -%}
+            {%- assign parent_index = forloop.index -%}
+            <li class="catalog-menu__item catalog-menu--has-dropdown">
+              <a
+                class="collapsed catalog-menu__collapse-toggle"
+                href="#collapse-catalog-{{ parent_index }}"
+                data-toggle="collapse">
+                {{ link.title | escape }}
+              </a>
+              <a href="{{ link.url }}">{{ link.title | escape }}</a>
+              <ul id="collapse-catalog-{{ parent_index }}" class="collapse catalog-menu__dropdown">
+                {%- for childlink in link.links -%}
+                  {%- if childlink.links != blank -%}
+                    {%- assign child_index = forloop.index -%}
+                    <li class="catalog-menu__item catalog-menu--has-dropdown">
+                      <a
+                        class="collapsed catalog-menu__collapse-toggle"
+                        href="#collapse-catalog-{{ parent_index }}-{{ child_index }}"
+                        data-toggle="collapse">
+                        {{ childlink.title | escape }}
+                      </a>
+                      <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                      <ul id="collapse-catalog-{{ parent_index }}-{{ child_index }}" class="collapse catalog-menu__dropdown">
+                        {%- for grandchildlink in childlink.links -%}
+                          <li class="catalog-menu__item">
+                            <a href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </li>
+                  {%- else -%}
+                    <li class="catalog-menu__item">
+                      <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </li>
+          {%- else -%}
+            <li class="catalog-menu__item">
+              <a href="{{ link.url }}">{{ link.title | escape }}</a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</div>

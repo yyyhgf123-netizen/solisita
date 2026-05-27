@@ -1,0 +1,492 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- elsif section.settings.max_width != blank -%}
+	{%- assign container = 'bwp-container' -%}
+{%- else -%}
+	{%- assign container = 'container' -%}
+{%- endif -%}
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- assign width_container = section.settings.max_width | plus: 0 -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+{% assign margin 			= section.settings.margin | split: "|" %}
+{% assign padding 			= section.settings.padding | split: "|" %}
+
+{%- if section.settings.show_topbar -%}
+	{%- style -%}
+		{% if section.settings.topbar_absolute %}
+			@media (min-width:1050px){
+				body.template-index .bwp-header-topbar{
+					position:absolute;width:100%;z-index: 100;
+					{%- if section.settings.bg_background2 -%}background:{{ section.settings.bg_background2 }};{%- endif -%}
+				}
+			}
+		{%- endif -%}
+		{% if section.settings.border %}
+			.bwp-header-topbar:before{
+				content:"";
+				position:absolute;
+				width:100%;
+				height:100%;
+				left: 0;
+				top: 0;
+				pointer-events: none;
+				border-style:solid;
+				border-width: {{ section.settings.border_width }};
+				border-color: {{ section.settings.border_color }};
+				opacity:{{ section.settings.border_opacity }};
+			}
+		{%- endif -%}
+		{%- if margin[0] != blank or padding[0] != blank or section.settings.bg_background or section.settings.font_size or section.settings.color_text -%}
+			.bwp-header-topbar{
+				{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+				{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+				{%- if section.settings.bg_background -%}background:{{ section.settings.bg_background }};{%- endif -%}
+				{%- if section.settings.font_size -%}font-size:{{ section.settings.font_size }}px;{%- endif -%}
+				{%- if section.settings.color_text -%}color:{{ section.settings.color_text }};{%- endif -%}
+				{%- if section.settings.font_weight -%}font-weight:{{ section.settings.font_weight }};{%- endif -%}
+			}
+			.bwp-header-topbar .header-selector__toggle:after{
+				{%- if section.settings.color_text -%}color:{{ section.settings.color_text }};{%- endif -%}
+			}
+		{%- endif -%}
+		{%- if section.blocks.size > 0 -%}
+			{% for block in section.blocks %}
+				{% assign color_custom_text 		= block.settings.color_custom_text %}
+				{% assign color_custom_text_link 	= block.settings.color_custom_text_link %}
+				{% assign color_custom_text_link_hover 	= block.settings.color_custom_text_link_hover %}
+				{%- if color_custom_text != blank -%}
+					.bwp-header-topbar .content-item-custom-text{
+						color: {{ color_custom_text }};
+					}
+				{%- endif -%}
+				{%- if color_custom_text_link != blank -%}
+					.bwp-header-topbar .content-item-custom-text a{
+						color: {{ color_custom_text_link }};
+					}
+					.bwp-header-topbar .content-item-custom-text a:hover{
+						color: {{ color_custom_text_link_hover }};
+					}
+                    .bwp-header-topbar .content-item-custom-text .custom-text{
+                        text-align:{{ block.settings.text_align }}
+                    }
+				{%- endif -%}
+				{%- if block.type == 'social' -%}
+					.bwp-header-topbar .social-icons a{
+						color: {{ block.settings.color_social }};
+						fill: {{ block.settings.color_social }};
+					}
+				{%- endif -%}
+                @media (max-width: 1200px){
+                  {%- if color_custom_text_link != blank -%}
+                      .bwp-header-topbar .content-item-custom-text .custom-text{
+                          text-align:{{ block.settings.text_align_mobi }}
+                      }
+                  {%- endif -%}
+                }
+			{%- endfor -%}
+		{%- endif -%}
+		@media (max-width:1200px){
+			{%- if margin[1] != blank or padding[1] != blank -%}
+				.bwp-header-topbar{
+					{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+					{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+				}
+			{%- endif -%}
+		}
+		@media (max-width:991px){
+			{%- if margin[2] != blank or padding[2] != blank -%}
+				.bwp-header-topbar{
+					{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+					{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+				}
+			{%- endif -%}
+		}
+		@media (max-width:767px){
+			{%- if margin[3] != blank or padding[3] != blank -%}
+				.bwp-header-topbar{
+					{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+					{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+				}
+			{%- endif -%}
+		}
+	{%- endstyle -%}
+	<div data-section-id="{{ section.id }}" data-section-type="header-topbar-section" class="bwp-header-topbar {% unless section.settings.show_mobile %} hide_mobile{%- endunless -%}">
+		<div class="header-topbar">
+			<div class="{{ container }}" {{ max_width }}>
+				<div class="content-topbar row{% if section.blocks.size == 1 %} text-center{%- endif -%}">
+				{%- if section.blocks.size > 0 -%}
+					{%- for block in section.blocks -%}
+						{%- case block.type -%}
+							  {%- when '@app' -%}
+                                          {% render block %}
+							{%- when 'language-currency' -%}
+							<div class="content-item-currency{% unless block.settings.show_mobile_currency %} hide_ipad{%- endunless -%}">
+								<div class="language-currency item">
+									{%- if settings.show_currency_selector -%}
+										{% render 'currency-selector' %}
+									{%- endif -%}
+									{%- if settings.show_locale_selector -%}
+										{% render 'locale-selector' %}
+									{%- endif -%}
+								</div>
+							</div>
+							{%- when 'social' -%}
+							<div class="content-item-social{% unless block.settings.show_mobile_social %} hide_ipad{%- endunless -%}">
+								<div class="social item">
+									{% render 'social-media', block: block, section: section %}
+								</div>
+							</div>
+                            {%- when 'login' -%}
+                                <div class="content-item-login{% unless block.settings.show_mobile_custom_login %} hide_laptop{%- endunless -%}">
+                                      <div class="login item " >
+    									{% render 'header-account-2', block: block, section: section %}
+        							</div>
+                                </div>
+							{%- when 'custom-text' -%}
+							<div class="content-item-custom-text{% unless block.settings.show_mobile_custom_text %} hide_ipad{%- endunless -%}">
+								<div class="custom-text item" style="--color-link:{{ block.settings.color_custom_text_link }}">
+									{{ block.settings.custom_text_content }}
+								</div>
+							</div>
+							{%- when 'text-with-icon' -%}
+							<div class="content-item-text-with-icon{% unless block.settings.show_mobile_text_icon %} hide_ipad{%- endunless -%}">
+								<div class="custom-text item">
+									{%- if  block.settings.text_icon_content1 != blank -%}
+									<div class="text-icon1" style="--color1:{{ block.settings.color_text_icon1 }}">
+										{{ block.settings.text_icon_content1 }}
+									</div>
+									{%- endif -%}
+									{%- if  block.settings.text_icon_content2 != blank -%}
+									<div class="text-icon2" style="--color2:{{ block.settings.color_text_icon2 }}">
+										{{ block.settings.text_icon_content2 }}
+									</div>
+									{%- endif -%}
+								</div>
+							</div>
+						{%- endcase -%}
+					{%- endfor -%}
+				{%- endif -%}
+				</div>
+			</div>
+		</div>
+	</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Header Topbar",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+		{
+			"type": "checkbox",
+			"id": "show_topbar",
+			"label": "Show Topbar",
+			"default": true
+		},
+		{
+			"type": "header",
+			"content": "Layout settings"
+		},
+		{
+			"type": "text",
+			"id": "max_width",
+			"label": "Width container",
+			"info": "Default: 1440px"
+		},
+		{
+			"type": "checkbox",
+			"id": "fullwidth",
+			"label": "Fullwidth",
+			"default": false
+		},
+		{
+			"type": "text",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "text",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "color",
+			"id": "bg_background",
+			"label": "Background",
+			"default": "#000000"
+		},
+		{
+			"type": "checkbox",
+			"id": "topbar_absolute",
+			"label": "Topbar absolute",
+			"info": "Only use for homepage",
+			"default": false
+		},
+		{
+			"type": "color",
+			"id": "bg_background2",
+			"label": "Only use for Topbar absolute",
+			"default": "#000000"
+		},
+		{
+			"type": "range",
+			"id": "font_size",
+			"min": 12,
+			"max": 24,
+			"step": 1,
+			"unit": "px",
+			"label": "Font size",
+			"default": 14
+		},
+		{
+			"type": "color",
+			"id": "color_text",
+			"label": "Color text",
+			"default": "#868686"
+		},
+		{
+			"type": "text",
+			"id": "font_weight",
+			"label": "Font Weight",
+			"default": "600"
+		},
+		{
+			"type": "checkbox",
+			"id": "border",
+			"label": "Show border",
+			"default": false
+		},
+		{
+			"type": "text",
+			"id": "border_width",
+			"label": "Border width",
+			"default": "1px 1px 1px 1px",
+			"info": "top right bottom left"
+		},
+		{
+			"type": "color",
+			"id": "border_color",
+			"label": "Border Color",
+			"default": "#868686"
+		},
+		{
+			"type": "range",
+			"id": "border_opacity",
+			"min": 0,
+			"max": 1,
+			"step": 0.1,
+			"label": "Border opacity",
+			"default": 1
+		},
+		{
+			"type": "checkbox",
+			"id": "show_mobile",
+			"label": "Show topbar on mobile",
+			"default": true
+		}
+	],
+	"blocks": [
+		{
+            "type": "@app"
+        },
+		{
+            "type": "language-currency",
+            "name": "Language and  Currency",
+            "limit": 1,
+            "settings": [
+				{
+					"type": "checkbox",
+					"id": "show_mobile_currency",
+					"label": "Show on mobile and tablet",
+					"default": true
+				}
+            ]
+        },
+		{
+            "type": "social",
+            "name": "Social",
+            "limit": 1,
+            "settings": [
+				{
+					"type": "checkbox",
+					"id": "show_mobile_social",
+					"label": "Show on mobile and tablet",
+					"default": true
+				},
+				{
+					"type": "color",
+					"id": "color_social",
+					"label": "Color",
+					"default": "#fff"
+				}
+            ]
+        },
+        {
+            "type": "login",
+            "name": "Login",
+            "limit": 1,
+            "settings": [
+				{
+                  "type": "text",
+                  "id": "header_user_title",
+                  "label": "Heading",
+                  "default": "Account"
+                },
+                {
+					"type": "color",
+					"id": "color_login",
+					"label": "Color login",
+					"default": "#fff"
+				},
+                {
+                  "type": "text",
+                  "id": "font_size_login",
+                  "label": "Font size",
+                  "default": "15px"
+                },
+                {
+                  "type": "color",
+                  "id": "color_login_hover",
+                  "label": "Color login hover",
+                  "default": "#ff6600"
+                }
+  
+            ]
+        },
+		{
+            "type": "custom-text",
+            "name": "Custom Text",
+            "limit": 1,
+            "settings": [
+				{
+					"type": "text",
+					"id": "custom_text_content",
+					"label": "Content",
+					"default": "Summer sale discount off 30%! <a href=\"#\">Shop Now</a>"
+				},
+				{
+					"type": "color",
+					"id": "color_custom_text",
+					"label": "Color content",
+					"default": "#fff"
+				},
+				{
+					"type": "color",
+					"id": "color_custom_text_link",
+					"label": "Color link",
+					"default": "#f11e1e"
+				},
+				{
+					"type": "color",
+					"id": "color_custom_text_link_hover",
+					"label": "Color link hover",
+					"default": "#f11e1e"
+				},
+				{
+					"type": "select",
+					"id": "text_align",
+					"label": "Text align",
+					"options": [
+						{
+							"value": "left",
+							"label": "Left"
+						},
+						{
+							"value": "center",
+							"label": "Center"
+						},
+						{
+							"value": "right",
+							"label": "Right"
+						}
+					],
+					"default": "center"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_mobile_custom_text",
+					"label": "Show on mobile and tablet",
+					"default": true
+				},
+                {
+					"type": "select",
+					"id": "text_align_mobi",
+					"label": "Text align",
+					"options": [
+						{
+							"value": "left",
+							"label": "Left"
+						},
+						{
+							"value": "center",
+							"label": "Center"
+						},
+						{
+							"value": "right",
+							"label": "Right"
+						}
+					],
+					"default": "center"
+				},
+            ]
+        },
+		{
+            "type": "text-with-icon",
+            "name": "Text with icon",
+            "limit": 1,
+            "settings": [
+				{
+					"type": "header",
+					"content": "Content 1"
+				},
+				{
+					"type": "textarea",
+					"id": "text_icon_content1",
+					"label": "Content",
+					"default": "<i class='icon-pin'></i> +Store Location"
+				},
+				{
+					"type": "color",
+					"id": "color_text_icon1",
+					"label": "Color content",
+					"default": "#fff"
+				},
+				{
+					"type": "header",
+					"content": "Content 2"
+				},
+				{
+					"type": "textarea",
+					"id": "text_icon_content2",
+					"label": "Content",
+					"default": "<i class='icon-email'><\/i> sayhello@demati.com"
+				},
+				{
+					"type": "color",
+					"id": "color_text_icon2",
+					"label": "Color content",
+					"default": "#fff"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_mobile_text_icon",
+					"label": "Show on mobile and tablet",
+					"default": true
+				}
+            ]
+        }
+	],
+	"presets": [
+    {
+      "name": "Header Topbar"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,450 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- elsif section.settings.max_width != blank -%}
+	{%- assign container = 'bwp-container' -%}
+{%- else -%}
+	{%- assign container = 'container' -%}
+{%- endif -%}
+
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- assign width_container = section.settings.max_width | plus: 0 -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+
+{%- assign margin = '' -%}
+{%- if section.settings.margin != blank -%}
+  {%- capture margin -%}margin: {{ section.settings.margin }};{%- endcapture -%}
+{%- endif -%}
+
+{% assign margin 			= section.settings.margin | split: "|" %}
+{% assign padding 			= section.settings.padding | split: "|" %}
+{% assign margin_content 	= section.settings.margin_content | split: "|" %}
+{% assign padding_item 		= section.settings.padding_item | split: "|" %}
+{% assign margin_item 		= section.settings.margin_item | split: "|" %}
+{%- assign columns 			= section.settings.columns -%}
+{%- assign column1440 		= section.settings.column1440 -%}
+{%- assign column1 			= section.settings.column1 -%}
+{%- assign column2 			= section.settings.column2 -%}
+{%- assign column3 			= section.settings.column3 -%}
+
+{%- style -%}
+	{%- if section.settings.fullwidth == blank and section.settings.max_width != blank and width_container > 1200 -%}
+		@media (max-width: {{ section.settings.max_width }}) and (min-width: 1200px){
+			#shopify-section-{{ section.id }} .bwp-container{
+				padding-left:30px;
+				padding-right:30px;
+			}
+		}
+	{%- endif -%}
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin_content[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--lookbook .lookbook-instagram_content{
+			margin: {{ margin_content[0] }};
+		}
+	{%- endif -%}
+	{%- if padding_item[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--lookbook .wpbingo-lookbook__item{
+			padding: {{ padding_item[0] }};
+		}
+	{%- endif -%}
+	{%- if margin_item[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--lookbook .wpbingo-lookbook__item{
+			margin: {{ margin_item[0] }};
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank or margin_content[1] != blank or margin_item[1] != blank or padding_item[1] != blank -%}
+		@media (max-width:1200px){
+			#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+			{%- if margin_content[1] != blank -%}
+				#shopify-section-{{ section.id }} .wpbingo-section--lookbook .lookbook-instagram_content{
+					margin: {{ margin_content[1] }};
+				}
+			{%- endif -%}
+			{%- if padding_item[1] != blank -%}
+				#shopify-section-{{ section.id }} .wpbingo-section--lookbook .wpbingo-lookbook__item{
+					padding: {{ padding_item[1] }};
+				}
+			{%- endif -%}
+			{%- if margin_item[1] != blank -%}
+				#shopify-section-{{ section.id }} .wpbingo-section--lookbook .wpbingo-lookbook__item{
+					margin: {{ margin_item[1] }};
+				}
+			{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank or margin_content[2] != blank or margin_item[2] != blank or padding_item[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+			{%- if margin_content[2] != blank -%}
+				#shopify-section-{{ section.id }} .wpbingo-section--lookbook .lookbook-instagram_content{
+					margin: {{ margin_content[2] }};
+				}
+			{%- endif -%}
+			{%- if padding_item[2] != blank -%}
+				#shopify-section-{{ section.id }} .wpbingo-section--lookbook .wpbingo-lookbook__item{
+					padding: {{ padding_item[2] }};
+				}
+			{%- endif -%}
+			{%- if margin_item[2] != blank -%}
+				#shopify-section-{{ section.id }} .wpbingo-section--lookbook .wpbingo-lookbook__item{
+					margin: {{ margin_item[2] }};
+				}
+			{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank or margin_content[3] != blank or margin_item[3] != blank or padding_item[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+			{%- if margin_content[3] != blank -%}
+				#shopify-section-{{ section.id }} .wpbingo-section--lookbook .lookbook-instagram_content{
+					margin: {{ margin_content[3] }};
+				}
+			{%- endif -%}
+			{%- if padding_item[3] != blank -%}
+				#shopify-section-{{ section.id }} .wpbingo-section--lookbook .wpbingo-lookbook__item{
+					padding: {{ padding_item[3] }};
+				}
+			{%- endif -%}
+			{%- if margin_item[3] != blank -%}
+				#shopify-section-{{ section.id }} .wpbingo-section--lookbook .wpbingo-lookbook__item{
+					margin: {{ margin_item[3] }};
+				}
+			{%- endif -%}
+		}
+	{%- endif -%}
+{%- endstyle -%}
+<section class="wpbingo-section wpbingo-section--lookbook lookbook-instagram-gird wpbingo-section--{{ section.id }}" data-id="{{ section.id }}">
+    <div class="{{ container }}" {{ max_width }}>
+        <div class="wpbingo-section__inner">
+			<div class="wpbingo-lookbook__contents">
+				<div class="lookbook-instagram_content" style="--col:{{columns}};--col-1440:{{column1440}};--col-lg:{{column1}};--col-md:{{column2}};--col-xs:{{column3}}">
+					{%- assign id = 0 -%}
+					{%- for block in section.blocks -%}
+						{% if block.type == 'image' %}
+							{%- assign j = 1 -%}
+							{%- assign i = 1 -%}
+							{%- assign image 	= block.settings.image -%}
+							{%- assign name 	= block.settings.title -%}
+							{% assign col_width = block.settings.col_width | split: "|" %}
+							<div class="wpbingo-lookbook__item" {% if block.settings.col_width != blank %}style="--width-col:{{col_width[0]}};{%- if col_width[1] != blank -%}--width-col-1440:{{col_width[1]}};{%- endif -%}{%- if col_width[2] != blank -%}--width-col-lg:{{col_width[2]}};{%- endif -%}{%- if col_width[3] != blank -%}--width-col-md:{{col_width[3]}};{%- endif -%}{%- if col_width[4] != blank -%}--width-col-xs:{{col_width[4]}};{%- endif -%}"{% endif %}>
+								<div class="lookbook-card">
+									<div class="lookbook-image">
+										<a href="{{ block.settings.url_lookbook }}">
+											{%- if image != blank -%}
+												{% render 'img-global' with image: image, class: "featured-lookbook__img", effect: "fade-in" %}
+											{%- else -%}
+												<img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo"  width="690" height="690" />
+											{%- endif -%}
+										</a>
+									</div>
+									{%- for block in section.blocks -%}
+										{% if block.type == 'item' %}
+											{%- assign name_pin = block.settings.name_pin -%}
+											{%- assign product_handle = block.settings.product -%}
+											{%- assign top = block.settings.top -%}
+											{%- assign left = block.settings.left -%}
+											{% if name_pin == name %}
+												<div class="lookbook-card__item" style="top: {{ top }}%; left: {{ left }}%;">
+													<div class="lookbook-card__point">
+														<div class="lookbook-card__button">
+															<button class="lookbook-card__btn" data-toggle="modal" data-target="lookbook-{{ section.id }}-{{ id }}">
+																<span>{{ j }}</span>
+															</button>
+														</div>
+													</div>
+												</div>
+												{%- assign j = j | plus: 1 -%}
+												{%- assign id = id | plus: 1 -%}
+											{%- endif -%}
+										{%- endif -%}
+									{%- endfor -%}
+								</div>
+							</div>
+							{%- assign i = i | plus: 1 -%}
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+			</div>
+        </div>
+    </div>
+	{%- assign id = 0 -%}
+	{%- for block in section.blocks -%}
+		{% if block.type == 'item' %}
+			{%- assign name_pin = block.settings.name_pin -%}
+			{%- assign product_handle = block.settings.product -%}
+			{%- assign alignment = block.settings.display -%}
+			{%- render 'lookbook-item', product: all_products[product_handle], alignment: alignment, id: id -%}
+			{%- assign id = id | plus: 1 -%}
+		{%- endif -%}
+	{%- endfor -%}
+</section>
+{% schema %}
+    {
+        "name": "Instagram Shop Gird",
+        "class": "wpbingo-framework",
+		"disabled_on": {
+		"groups": ["header"]
+	},
+        "settings": [
+            {
+                "type": "header",
+                "content": "Layout settings"
+            },
+            {
+                "type": "text",
+                "id": "max_width",
+                "label": "Width container",
+                "info": "Default: 1440px"
+            },
+            {
+                "type": "checkbox",
+                "id": "fullwidth",
+                "label": "Fullwidth"
+            },
+            {
+                "type": "textarea",
+                "id": "padding",
+                "label": "Padding",
+                "placeholder": "0px 0px 0px 0px",
+                "info":"Screen: desktop | 1200px | 991px | 767px"
+            },
+            {
+                "type": "textarea",
+                "id": "margin",
+                "label": "Margin",
+                "placeholder": "0px 0px 0px 0px",
+                "info":"Screen: desktop | 1200px | 991px | 767px"
+            },
+            {
+                "type": "header",
+                "content": "General Settings"
+            },
+			{
+                "type": "textarea",
+                "id": "margin_content",
+                "label": "Margin content list",
+				"default": "0 -4px 0 -4px",
+                "placeholder": "0px 0px 0px 0px",
+                "info":"Screen: desktop | 1200px | 991px | 767px"
+            },
+			{
+				"type": "textarea",
+				"id": "padding_item",
+				"label": "Padding item",
+				"default": "0 4px 0 4px",
+				"placeholder": "0px 0px 0px 0px",
+				"info":"Screen: desktop | 1200px | 991px | 767px"
+			},
+			{
+				"type": "textarea",
+				"id": "margin_item",
+				"label": "Margin item",
+				"default": "0 0 8px 0",
+				"placeholder": "0px 0px 0px 0px",
+				"info":"Screen: desktop | 1200px | 991px | 767px"
+			},
+			{
+				"type": "range",
+				"id": "columns",
+				"min": 1,
+				"max": 5,
+				"step": 1,
+				"label": "Number of Columns >1440px",
+				"default": 4,
+				"info": "Desktops"
+			},
+			{
+				"type": "range",
+				"id": "column1440",
+				"min": 1,
+				"max": 5,
+				"step": 1,
+				"label": "Number of Columns 1200px to 1440px",
+				"default": 4,
+				"info": "Desktops"
+			},
+			{
+				"type": "range",
+				"id": "column1",
+				"min": 1,
+				"max": 5,
+				"step": 1,
+				"label": "Number of Columns on 992px to 1199px",
+				"default": 4,
+				"info": "Desktops"
+			},
+			{
+				"type": "range",
+				"id": "column2",
+				"min": 1,
+				"max": 5,
+				"step": 1,
+				"label": "Number of Columns on 768px to 991px",
+				"default": 3,
+				"info": "Laptop"
+			},
+			{
+				"type": "range",
+				"id": "column3",
+				"min": 1,
+				"max": 5,
+				"step": 1,
+				"label": "Number of Columns on 480px to 767px",
+				"default": 1,
+				"info": "Tablets"
+			}
+        ],
+        "blocks": [
+			{
+                "type": "image",
+                "name": "Image Instagram",
+                "settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Lookbook Name"
+					},
+                    {
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image"
+					},
+					{
+						"type": "text",
+						"id": "url_lookbook",
+						"label": "Url Lookbook",
+						"default": "#"
+					},
+					{
+						"type": "text",
+						"id": "col_width",
+						"label": "Column width vs total number of columns",
+						"info":"Screen: desktop | 1440px | 1200px | 991px | 767px"
+					}
+                ]
+            },
+            {
+                "type": "item",
+                "name": "Pin Product",
+                "settings": [
+					{
+						"type": "text",
+						"id": "name_pin",
+						"label": "Pin for Image"
+					},
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Choose product"
+                    },
+                    {
+                        "type": "select",
+                        "id": "display",
+                        "label": "Display type",
+                        "default": "top-left",
+                        "options": [
+                            {
+                                "value": "top-left",
+                                "label": "Top left"
+                            },
+                            {
+                                "value": "top-right",
+                                "label": "Top right"
+                            },
+                            {
+                                "value": "center-left",
+                                "label": "Center left"
+                            },
+                            {
+                                "value": "center-top",
+                                "label": "Center top"
+                            },
+                            {
+                                "value": "center-right",
+                                "label": "Center right"
+                            },
+                            {
+                                "value": "center-bottom",
+                                "label": "Center bottom"
+                            },
+                            {
+                                "value": "bottom-left",
+                                "label": "Bottom left"
+                            },
+                            {
+                                "value": "bottom-right",
+                                "label": "Bottom right"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "range",
+                        "id": "top",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Offset top",
+                        "default": 50
+                    },
+                    {
+                        "type": "range",
+                        "id": "left",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Offset left",
+                        "default": 50
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Instagram Shop Gird",
+				"blocks": [
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					}
+				]
+            }
+        ]
+    }
+{% endschema %}

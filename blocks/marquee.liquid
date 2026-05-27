@@ -1,0 +1,105 @@
+
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+      {%- if block.settings.marquee_content -%}
+		.wpbingo-section--marquee li{
+			-webkit-animation-duration: {{ block.settings.marquee_time }}s;
+			animation-duration: {{ section.settings.marquee_time }}s;
+		}
+      {%- endif -%}
+      {%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .wpbingo-section--marquee{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .wpbingo-section--marquee{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .wpbingo-section--marquee{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .wpbingo-section--marquee{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="wpbingo-block wpbingo-section--marquee wpbingo-block--{{ block.id }}">
+    <div class="marquee_text_content">
+        {%- if block.settings.marquee_content -%}
+            <ul>
+                {% for i in (1..block.settings.marquee_loop) %}
+                    <li>
+                        {% content_for "blocks" %}
+                    </li>
+                {%- endfor -%}
+            </ul>
+        {%- endif -%}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Marquee",
+    "blocks": [{ "type": "@app" },{ "type": "@theme" }],
+    "settings": [
+         {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+			"type": "checkbox",
+			"id": "marquee_content",
+			"label": "Enable horizontal text animation",
+			"default": true
+		},
+		{
+			"type": "number",
+			"id": "marquee_loop",
+			"label": "number of repetitions of content",
+			"default": 10
+		},
+		{
+			"type": "number",
+			"id": "marquee_time",
+			"label": "Time animation",
+			"default": 4,
+			"info":"Units in seconds"
+		}        
+    ],
+    "presets": [
+        {
+            "name": "Marquee",
+            "blocks": [
+              {
+                  "type": "text-block",
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

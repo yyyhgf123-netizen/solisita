@@ -1,0 +1,64 @@
+{{ 'icomoon.css' | asset_url | stylesheet_tag }}
+{{ 'feather.css' | asset_url | stylesheet_tag }}
+{{ 'wpbingo.css' | asset_url | stylesheet_tag }}
+{{ 'css-font.css' | asset_url | stylesheet_tag }}
+{%- if settings.enable_christmas -%}
+  {{ 'css-christmas.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{{ 'css-variables.css' | asset_url | stylesheet_tag }}
+{{ 'css-effect.css' | asset_url | stylesheet_tag }}
+{{ 'css-section.css' | asset_url | stylesheet_tag }}
+{{ 'css-site.css' | asset_url | stylesheet_tag }}
+{{ 'swiper.css' | asset_url | stylesheet_tag }}
+{%- assign page_type = request.page_type | handle -%}
+{%- if page_type contains 'collection' or page_type contains 'search' -%}
+  {{ 'css-collection.css' | asset_url | stylesheet_tag }}
+{%- elsif page_type contains 'product' -%}
+	{{ 'photoswipe.css' | asset_url | stylesheet_tag }}
+	{{ 'css-product.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- if page_type contains 'password' -%}
+	{{ 'password.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- if page_type contains 'blog' or page_type contains 'article' or page_type contains 'search' -%}
+  {{ 'css-blog.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- if page_type contains 'cart' -%}
+  {{ 'css-cart-page.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- if settings.iso_rtl != blank and settings.enable_rtl -%}
+	{%- assign is_rtl = false -%}
+	{%- assign iso_code_arr_rtl = settings.iso_rtl  | split: ";" -%}
+	{%- for iso_arr_rtl in iso_code_arr_rtl -%}
+		{%- assign iso_rtl = iso_arr_rtl | remove: " " -%}
+		{%- if iso_rtl == shop.locale -%}
+			{%- assign is_rtl = true -%}
+		{%- endif -%}
+	{%- endfor -%}
+{%- endif -%}
+{%- if is_rtl -%}
+	{{ 'css-rtl.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- if request.design_mode -%}
+{{ 'css-design-mode.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- style -%}
+	{% assign shopify_color_metaobjects = shop.metaobjects['shopify--color-pattern'] %}
+  {% paginate shopify_color_metaobjects.values by 1000 %}
+	{% for color_metaobject in shopify_color_metaobjects.values %}
+		{% assign color_class = color_metaobject.label.value | replace: " ", "." %}
+		.wpb-variants-swatch .{{ color_class }}{
+			background-color:  {{ color_metaobject.color.value }} !important;
+		}
+		{%- if color_metaobject.image -%}
+             {% assign color_class = color_metaobject.label.value | replace: " ", "." %}
+			.wpb-variants-swatch .{{ color_class }}{
+				background:url('{{ color_metaobject.image.value | image_url }}') !important;
+				background-size:cover !important;
+				background-position: center center !important;
+			}
+		{%- endif -%}
+	{% endfor %}
+  {% endpaginate %}
+{%- endstyle -%}
+{{ 'solisita-custom.css' | asset_url | stylesheet_tag }}

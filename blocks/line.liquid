@@ -1,0 +1,108 @@
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+{%- style -%}
+    
+    #shopify-block-{{ block.id }} .bwp-widget-line .wpbingo-section__content{
+        width:{{ block.settings.width }};
+		height:{{ block.settings.height }}px;
+		background:{{ block.settings.background }};
+        opacity:{{ block.settings.bg_opacity }};
+        margin:{{ block.settings.margin_line }};
+	}
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .bwp-widget-line{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .bwp-widget-line{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .bwp-widget-line{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .bwp-widget-line{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+{%- endstyle -%}
+<div class="wpbingo-block bwp-widget-line wpbingo-block--{{ block.id }} overflow-hidden">
+    <div class="wpbingo-section__inner">
+        <div class="wpbingo-section__content"></div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Line",
+    "settings": [
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+			"type": "header",
+			"content": "General Settings"
+		},
+        {
+            "type": "text",
+            "id": "width",
+            "label": "Width",
+            "info": "100%"
+        },
+		{
+			"type": "number",
+			"id": "height",
+			"label": "Height",
+			"info": "px",
+			"default": 1
+		},
+		{
+			"type": "color",
+			"id": "background",
+			"label": "Background",
+			"default": "#e7e7e7"
+		},
+        {
+			"type": "range",
+			"id": "bg_opacity",
+			"min": 0,
+			"max": 1,
+			"step": 0.1,
+			"label": "Background opacity",
+			"default": 1
+		},
+        {
+			"type": "textarea",
+			"id": "margin_line",
+			"label": "Margin line",
+			"placeholder": "0px 0px 0px 0px",
+            "default": "0px auto"
+		}
+    ],
+    "presets": [{ "name": "Line" }]
+  }
+{% endschema %}

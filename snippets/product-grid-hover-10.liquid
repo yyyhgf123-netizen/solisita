@@ -1,0 +1,115 @@
+{%- assign group_product 			= product.metafields.bwp_fields.group_product -%}
+{%- assign external 				= product.metafields.bwp_fields.external -%}
+
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}
+	{%- assign on_sale = true -%}
+{%- endif -%}
+{%- assign sold_out = true -%}
+{%- if product.available -%}
+	{%- assign sold_out = false -%}
+{%- endif -%}
+{%- if settings.product_within_collection -%}
+	{%- assign product_url = product.url | within: collection -%}
+{%- else -%}
+	{%- assign product_url = product.url -%}
+{%- endif -%}
+{%- assign variant 				= product.selected_or_first_available_variant -%}
+{%- assign featured_image 		= product.featured_media.preview_image %}
+{%- assign img_url 				= featured_image | image_url:width:300 -%}
+{%- assign variant_count 		= product.variants | size -%}
+
+{%- capture group -%}
+{% for product_group in group_product.value %}
+		{{ product_group.handle }},
+{%- endfor -%}
+{%- endcapture -%}
+
+<div class="product-card" data-group_product="{{ group }}"
+							data-is_group_product="{%- if group_product != blank -%}true{%- else -%}false{%- endif -%}"
+							data-external="{{ external }}">					
+	<div class="product-card__image-wrapper">
+		<a class="product-card__image-link" href="{{ product_url }}">
+			{% if featured_image.src == blank %}
+				<img class="product-card__image lazyload fade-in variant" src="{{ featured_image.src | image_url:width:400 }}" alt="{{ featured_image.alt | escape }}" width="{{ featured_image.width }}" height="{{ featured_image.height }}" >
+			{% else %}
+				<div class="product-card__image">
+					<img class="product-card__image lazyload fade-in variant" src="{{ img_url }}" width="{{ featured_image.width }}" height="{{ featured_image.height }}" alt="{{ featured_image.alt | escape }}">
+				</div>
+			{% endif %}
+		</a>
+	</div>
+	<div class="product-card__content">
+		<div class="product-top">
+			<div class="product-card__name">
+				<a href="{{ product_url }}">{{ product.title }}</a>
+			</div>
+			<div class="product-card__price">
+				<div class="product-group-price" data-handle="{{ product.handle }}">
+					{% if group_product == blank %}
+						{%- if on_sale -%}
+							<div class="product-price product-price--regular">{{ product.compare_at_price | money }}</div>
+						{%- endif -%}
+						{%- if variant_count > 1 -%}
+							<div class="product-price variant-price">{{ variant.price | money }}</div>
+						{%- else -%}
+							<div class="product-price">{{ product.price | money }}</div>
+						{%- endif -%}
+						{%- if product.price_varies == false and variant.unit_price_measurement -%}
+							{%- capture unit_price_separator -%}
+								<span>/</span><span class="d-none">&nbsp;{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+							{%- endcapture -%}
+							{%- capture unit_price_base_unit -%}
+								<span>
+									{%- if variant.unit_price_measurement.reference_value != 1 -%}
+										{{- variant.unit_price_measurement.reference_value -}}
+									{%- endif -%}
+									{{ variant.unit_price_measurement.reference_unit }}
+								</span>
+							{%- endcapture -%}
+							<span class="product-unit-price">
+								<span class="d-none">{{ 'products.general.unit_price' | t }}</span>
+								<span>{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
+							</span>
+						{%- endif -%}
+					{%- else -%}
+						<div class="product-price">
+							{% for product_group in group_product.value %}
+								{%- for variant in product_group.variants -%}
+									{% assign prices =  prices | append: variant.price | append: ',' %}
+								{% endfor %}
+							{% endfor %}
+							{% assign operator_prices	= prices | split: "," %}
+							{% assign min_price = operator_prices[0] | plus: 0 %}
+							{% assign max_price = operator_prices[0] | plus: 0 %}
+							{% for operator_price in operator_prices %}
+								{% assign operator = operator_price | plus: 0 %}
+								{% assign min_price		 = min_price | plus: 0 %}
+								{% assign max_price		 = max_price | plus: 0 %}
+								{% if operator < min_price %}
+									{% assign min_price = operator %}
+								{% endif %}
+								{% if operator > max_price %}
+									{% assign max_price = operator %}
+								{% endif %}	
+							{% endfor %}
+							{%- if template contains 'collection' -%}
+								{{ product.price | money }}
+							{% else %}	
+								{{  min_price | money }} - {{  max_price | money }}
+							{% endif %}	
+						</div>
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+		{%- if settings.quickview_enable -%}
+			<div class="product-card__quickview" data-title="{{ 'products.product.quickview' | t }}">
+				<a class="js-btn-quickview btn btn--quickview" href="javascript:void(0);" data-handle="{{ product.handle }}"
+					title="{{ 'products.product.quickview' | t }}" >
+					<span>{{ 'products.product.quickview' | t }}</span>
+				</a>
+			</div>
+		{%- endif -%}
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<h1 class="product-single__title" style="margin:{{ block.settings.product_title_margin }};--title-color:{{ block.settings.title_color }};--title-text-transform:{{ block.settings.title_transform }};--title-font-size:{{ block.settings.title_size }}px;" itemprop="name">{{ product.title }}</h1>
+{% schema %}
+  {
+    "name": "Single product title",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_title_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px",
+            "default":"0 0 10px"
+        },
+        {
+            "type": "number",
+            "id": "title_size",
+            "label": "Font size",
+            "info": "px",
+            "default":25
+        },
+        {
+            "type": "color",
+            "id": "title_color",
+            "label": "Color",
+            "default":"#000"
+        },
+        {
+            "type": "select",
+            "id": "title_transform",
+            "label": "Text transform",
+            "options": [
+                {
+                    "value": "unset",
+                    "label": "Default"
+                },
+                {
+                    "value": "capitalize",
+                    "label": "Capitalize"
+                },
+                {
+                    "value": "lowercase",
+                    "label": "Lowercase"
+                },
+                {
+                    "value": "uppercase",
+                    "label": "Uppercase"
+                }
+            ],
+            "default":"uppercase"
+        }
+    ],
+    "presets": [{"name": "Single product title","category": "Single product"}]
+  }
+{% endschema %}

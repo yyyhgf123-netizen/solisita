@@ -1,0 +1,325 @@
+{%- liquid
+  assign sort_by = search.sort_by | default: search.default_sort_by
+  assign terms = search.terms | escape
+  assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+-%}
+
+{%- assign select_columns 	=  block.settings.select_columns -%}
+{%- assign sidebar_enable = block.settings.sidebar_enable -%}
+{%- assign shop_full = block.settings.shop_full -%}
+{%- assign layout_filter = block.settings.layout_filter -%}
+{%- assign views_enable 	= block.settings.views_enable -%}
+{%- assign sortby_enable 	= block.settings.sortby_enable -%}
+{%- assign sidebar_left_class = 'col-12' -%}
+{%- assign sidebar_right_class = 'col-12' -%}
+{%- if sidebar_enable and layout_filter contains 'sidebar' -%}
+	{%- assign sidebar_left_class = 'col-12 col-lg-12 col-xl-3' -%}
+	{%- assign sidebar_right_class = 'col-12 col-lg-12 col-xl-9' -%}
+{%- endif -%}
+<div class="js-page-collection page-collection template-search {{ block.settings.style_view_items }} {{ block.settings.layout_filter }} {% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} {% if shop_full %} shop_full{% endif %}"{% if block.settings.style_view_items == 'viewmore' %} data-list_number="{{ block.settings.count_items }}"{% endif %}>
+	<div class="container">
+		<div class="template-search__header page-width center">
+			{%- if search.results_count == 0 and search.filters == empty -%}        
+				<p role="status">{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+			{%- endif -%}
+		</div>
+		<div id="JsCollectionProduct" class="{{ select_columns }} {{ block.settings.select_columns_sm }} {{ block.settings.select_columns_xs }}">
+			{%- if search.results.size == 0 and search.filters != empty -%}
+				<div class="template-search__results collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+					<div class="loading-overlay gradient"></div>
+					<div class="title-wrapper center">
+						<h2 class="title title--primary">
+							{{ 'collection_template.empty' | t }}<br>
+							{{ 'collection_template.use_fewer_filters_html' | t: link: search_url, class: "underlined-link link" }}
+						</h2>
+					</div>
+				</div>
+			{%- else -%}
+				<div class="row">
+					{%- if sidebar_enable and layout_filter contains 'sidebar' -%}
+						<aside class="collection-sidebar {{ sidebar_left_class }}">
+							<div class="collection-sidebar__overlay"></div>
+							<div class="collection-sidebar__wapper">
+								<button class="js-sidebar-toggle collection-sidebar__close" type="button">
+									<span>{{ 'collections.sidebar.close' | t }}</span>
+								</button>
+								<div class="content-sidebar">
+									{% render 'filter-sidebar', results: search, layout_filter:layout_filter, sidebar_enable:sidebar_enable %}
+								</div>
+							</div>
+						</aside>
+					{%- elsif sidebar_enable and layout_filter == 'dropdown' -%}
+						<aside class="collection-sidebar">
+							<div class="collection-sidebar__overlay"></div>
+						</aside>
+					{%- elsif sidebar_enable and layout_filter == 'on_top' -%}
+						<aside class="collection-sidebar">
+							<div class="collection-sidebar__overlay"></div>
+						</aside>
+					{%- elsif sidebar_enable -%}
+						<aside class="collection-sidebar">
+							<div class="collection-sidebar__overlay"></div>
+							<div class="collection-sidebar__wapper">
+								<button class="js-sidebar-toggle collection-sidebar__close" type="button">
+									<span>{{ 'collections.sidebar.close' | t }}</span>
+								</button>
+								<div class="content-sidebar">
+									{% render 'filter-sidebar', results: search, layout_filter:layout_filter, sidebar_enable:sidebar_enable %}
+								</div>
+							</div>
+						</aside>
+					{%- endif -%}
+					<div class="collection-content {{ sidebar_right_class }}">
+						<div class="page-width" id="main-collection-filters" data-id="{{ section.id }}">
+							{% render 'filter-dropdown' with results: search, layout_filter:layout_filter, sidebar_enable:sidebar_enable, select_columns:select_columns, views_enable:views_enable, sortby_enable:sortby_enable  %}
+						</div>
+						{%- assign total_limit 			= block.settings.page_item -%}
+						{% paginate search.results by total_limit %}
+							<div class="template-search__results collection page-width" id="product-grid" data-id="{{ section.id }}">
+								<div class="loading-overlay gradient"></div>
+								<div class="products__row row negative-margin product-grid">
+									{%- for item in search.results -%}
+										{%- if item.object_type == 'product' -%}
+											<div class="grid__item{% if item.object_type == 'product' %} products__col{% endif %}">
+												{% render 'product-card', product: item %}
+											</div>
+										{%- endif -%}
+									{%- endfor -%}
+								</div>
+                                {%- assign min_page = 1 -%}
+    							{%- assign max_page = paginate.page_size | times:paginate.current_page -%}
+    							{%- if max_page > paginate.items -%}
+    								{%- assign max_page = paginate.items -%}
+    							{%- endif -%}
+    							<div id="product_result_count" class="hidden">{{ 'collections.general.product_count_html' | t: min_page:min_page, max_page:max_page, items_page:paginate.items }}</div>
+								{%- if paginate.pages > 1 -%}
+									<div class="js-collection-paginations page-collection-footer">
+										{% capture previous_label %}
+										  <span class="pagination__navigation">
+											<i class="feather-chevron-left"></i>
+											<span class="sr-only">{{ 'general.pagination.previous' | t }}</span>
+										  </span>
+										{% endcapture %}
+										{% capture next_label %}
+										  <span class="pagination__navigation">
+											<i class="feather-chevron-right"></i>
+											<span class="sr-only">{{ 'general.pagination.next' | t }}</span>
+										  </span>
+										{% endcapture %}
+										<div class="pagination">
+										  {{ paginate | default_pagination: previous: previous_label, next: next_label }}
+										</div>
+									</div>
+								{%- endif -%}
+							</div>
+						{% endpaginate %}  
+					</div>
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Search",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+		"type": "header",
+		"content": "Product"
+    },
+    {
+		"type": "range",
+		"id": "page_item",
+		"label": "Number of products in a page search",
+		"min": 1,
+		"max": 24,
+		"step": 1,
+		"default": 12
+	},
+	{
+        "type": "header",
+        "content": "Collection page"
+      },
+      {
+        "type": "checkbox",
+        "id": "shop_full",
+        "default": true,
+        "label": "Shop Full"
+      },
+      {
+        "type": "select",
+        "id": "layout_filter",
+        "label": "Layout Filter",
+        "info": "Types of sidebars",
+        "options": [
+          {
+            "value": "sidebar_1",
+            "label": "Sidebar 1"
+          },
+          {
+            "value": "sidebar_2",
+            "label": "Sidebar 2"
+          },
+          {
+            "value": "sidebar_3",
+            "label": "Sidebar 3"
+          },
+          {
+            "value": "sidebar_4",
+            "label": "Sidebar 4"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          },
+          {
+            "value": "filter_drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "side_out",
+            "label": "Side Out"
+          },
+          {
+            "value": "on_top",
+            "label": "On Top"
+          }
+        ],
+        "default": "sidebar_1"
+      },
+      {
+        "type": "checkbox",
+        "id": "sidebar_enable",
+        "label": "Enable Filter",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "style_view_items",
+        "label": "Style view items",
+        "info": "Select style view list items in sidebar shop",
+        "options": [
+          {
+            "value": "scroll",
+            "label": "Scroll"
+          },
+          {
+            "value": "viewmore",
+            "label": "View More"
+          }
+        ],
+        "default": "viewmore"
+      },
+      {
+        "type": "range",
+        "id": "count_items",
+        "min": 3,
+        "max": 20,
+        "step": 1,
+        "label": "number of items displayed",
+        "info": "Use only when you choose 'Style view items : View More'",
+        "default": 5
+      },
+      {
+        "type": "header",
+        "content": "Grid/List Views"
+      },
+      {
+        "type": "checkbox",
+        "id": "views_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "select_columns",
+        "label": "Select columns shop",
+        "default": "grid-3",
+        "options": [
+          {
+            "value": "list",
+            "label": "One columns"
+          },
+          {
+            "value": "grid-2",
+            "label": "Two columns"
+          },
+          {
+            "value": "grid-3",
+            "label": "Three columns"
+          },
+          {
+            "value": "grid-4",
+            "label": "Four columns"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "select_columns_sm",
+        "label": "Select columns shop on ipad",
+        "default": "grid-sm-3",
+        "options": [
+          {
+            "value": "list",
+            "label": "One columns"
+          },
+          {
+            "value": "grid-sm-2",
+            "label": "Two columns"
+          },
+          {
+            "value": "grid-sm-3",
+            "label": "Three columns"
+          },
+          {
+            "value": "grid-sm-4",
+            "label": "Four columns"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "select_columns_xs",
+        "label": "Select columns shop on mobile",
+        "default": "grid-xs-2",
+        "options": [
+          {
+            "value": "grid-xs-1",
+            "label": "One columns"
+          },
+          {
+            "value": "grid-xs-2",
+            "label": "Two columns"
+          },
+          {
+            "value": "grid-xs-3",
+            "label": "Three columns"
+          },
+          {
+            "value": "grid-xs-4",
+            "label": "Four columns"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Sortby"
+      },
+      {
+        "type": "checkbox",
+        "id": "sortby_enable",
+        "label": "Enable",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      }
+    ]
+}
+{% endschema %}

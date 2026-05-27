@@ -1,0 +1,1535 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Wpbingo",
+    "theme_author": "Wpbingo",
+    "theme_version": "1.0.2",
+    "theme_documentation_url": "https://info.bingomore.com/shopify/document/wpbingo/index.html",
+    "theme_support_url": "https://wpbingo.ticksy.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General"
+      },
+      {
+        "type": "color",
+        "id": "theme-color",
+        "label": "Theme Color",
+        "default": "#008dcf"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary",
+        "default": "#6b58cd"
+      },
+      {
+        "type": "color",
+        "id": "gray-dark",
+        "label": "Gray Dark",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "hover-color",
+        "label": "Color Hover",
+        "default": "#6b58cd"
+      },
+      {
+        "type": "header",
+        "content": "Body"
+      },
+      {
+        "type": "color",
+        "id": "text-color",
+        "label": "Body text",
+        "default": "#1f2021"
+      },
+      {
+        "type": "color",
+        "id": "color_body_bg",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border",
+        "default": "#1f2021"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "======= Headings =======",
+        "info": "Tutorial Typography [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#sectionTwo)"
+      },
+      {
+        "type": "text",
+        "id": "font-family-second-google-link",
+        "label": "==== Link font heading google",
+        "info": "If you use google font. Enter google font link [Google font](https://fonts.google.com/specimen/Cormorant+Garamond?query=Cormorant+Garamond/)"
+      },
+      {
+        "type": "text",
+        "id": "font-family-second",
+        "label": "==== Font family heading google",
+        "info": "If you use google font. Enter google font name"
+      },
+      {
+        "type": "range",
+        "id": "font-size-heading",
+        "label": "Heading size",
+        "min": 20,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "== Font weight headings"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-second-default",
+        "label": "==== Default",
+        "default": "400"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-second-light",
+        "label": "==== Light",
+        "default": "300"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-second-medium",
+        "label": "==== Medium",
+        "default": "500"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-second-bold",
+        "label": "==== Bold",
+        "default": "700"
+      },
+      {
+        "type": "header",
+        "content": "======= Body text ======="
+      },
+      {
+        "type": "text",
+        "id": "font-family-base-google-link",
+        "label": "==== Link font body google",
+        "info": "If you use google font. Enter google font link [Google font](https://fonts.google.com/specimen/Cormorant+Garamond?query=Cormorant+Garamond/)"
+      },
+      {
+        "type": "text",
+        "id": "font-family-base",
+        "label": "==== Font family body google",
+        "info": "If you use google font. Enter google font name"
+      },
+      {
+        "type": "range",
+        "id": "font-size-base",
+        "label": "Base size",
+        "min": 12,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "default": 14
+      },
+      {
+        "type": "header",
+        "content": "== Font weight body"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-base-default",
+        "label": "==== Regular",
+        "default": "400"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-base-light",
+        "label": "==== Light",
+        "default": "300"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-base-medium",
+        "label": "==== Medium",
+        "default": "500"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-base-bold",
+        "label": "==== Bold",
+        "default": "700"
+      },
+      {
+        "type": "header",
+        "content": "======= Preventive =======",
+        "info": "Tutorial Typography [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#sectionTwo)"
+      },
+      {
+        "type": "text",
+        "id": "font-family-pre-google-link",
+        "label": "==== Link font preventive google",
+        "info": "If you use google font. Enter google font link [Google font](https://fonts.google.com/specimen/Cormorant+Garamond?query=Cormorant+Garamond/)"
+      },
+      {
+        "type": "text",
+        "id": "font-family-pre",
+        "label": "==== Font family preventive google",
+        "info": "If you use google font. Enter google font name"
+      },
+      {
+        "type": "header",
+        "content": "== Font weight preventive"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-pre-default",
+        "label": "==== Default",
+        "default": "400"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-pre-light",
+        "label": "==== Light",
+        "default": "300"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-pre-medium",
+        "label": "==== Medium",
+        "default": "500"
+      },
+      {
+        "type": "text",
+        "id": "font-weight-pre-bold",
+        "label": "==== Bold",
+        "default": "700"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu_link_mobile",
+        "label": "Menu Mobile",
+        "default": "main-menu",
+        "info": "Only use for mobile"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_menu_bottom",
+        "label": "Show menu bottom in mobile",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "color",
+        "id": "color_header_bg",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Menu"
+      },
+      {
+        "type": "color",
+        "id": "color_menu_text",
+        "label": "Menu text",
+        "default": "#1f2021"
+      },
+      {
+        "type": "color",
+        "id": "color_menu_text_hover",
+        "label": "Menu text hover",
+        "default": "#1f2021"
+      },
+      {
+        "type": "color",
+        "id": "color_submenu_bg",
+        "label": "Submenu background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_submenu_text",
+        "label": "Submenu text",
+        "default": "#1f2021"
+      },
+      {
+        "type": "color",
+        "id": "color_submenu_text_hover",
+        "label": "Submenu text hover",
+        "default": "#1f2021"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_text",
+        "label": "Footer text",
+        "default": "#666666"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_text_hover",
+        "label": "Footer text hover",
+        "default": "#ed5d43"
+      }
+    ]
+  },
+  {
+    "name": "Features",
+    "settings": [
+      {
+        "type": "header",
+        "content": "RTL"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_rtl",
+        "label": "Enable RTL"
+      },
+      {
+        "type": "textarea",
+        "id": "iso_rtl",
+        "label": "List RTL language iso code:",
+        "info": "Separate your language codes with a ';'. eg: ar; ha; he ----- [Get iso code](http://www.lingoes.net/en/translator/langcode.htm)"
+      },
+      {
+        "type": "header",
+        "content": "Gift cards"
+      },
+      {
+        "type": "image_picker",
+        "id": "giftcard_logo",
+        "label": "Gift card logo"
+      },
+      {
+        "type": "header",
+        "content": "Product Reviews"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_reviews_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Scroll to top"
+      },
+      {
+        "type": "checkbox",
+        "id": "scroll_to_top",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Preview Bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "preview_bar",
+        "label": "Hide preview bar",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Christmas Effect",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_christmas",
+        "label": "Enable Christmas",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "svg_christmas",
+        "label": "SVG Christmas"
+      }
+    ]
+  },
+  {
+    "name": "Search Config",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Menu collection search"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_search_blog",
+        "label": "Show Search Blog",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "search_item_count",
+        "label": "Search Count",
+        "default": 6
+      }
+    ]
+  },
+  {
+    "name": "Product Card",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_wishlist",
+        "label": "Wishlist",
+        "info": "Show wishlist in product card",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_compare",
+        "label": "Compare",
+        "info": "Show compare in product card",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "sortby_variants",
+        "label": "Variants",
+        "info": "Show variants in product card",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "number_variants",
+        "label": "Number Variants",
+        "info": "Show Number variants in product card",
+        "default": 5
+      },
+      {
+        "type": "checkbox",
+        "id": "show_category",
+        "label": "Category",
+        "info": "Show category in product card",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_vendor_enable",
+        "label": "Show product vendor",
+        "default": true,
+        "info": "Show vendor in product card"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_within_collection",
+        "label": "URL within collection",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_card_review",
+        "label": "Show review",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_atc_mobile",
+        "label": "Show Add to cart mobile",
+        "default": false,
+        "info": "Show button add to cart in mobile"
+      },
+      {
+        "type": "checkbox",
+        "id": "quickview_enable_mobile",
+        "label": "Show quickview mobile",
+        "default": false,
+        "info": "Show button quickview in mobile"
+      },
+      {
+        "type": "header",
+        "content": "Hover Style"
+      },
+      {
+        "type": "select",
+        "id": "hover_style",
+        "info": "Hover Style in product card [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#hover-style)",
+        "label": "Select Style",
+        "options": [
+          {
+            "value": "hover_style_1",
+            "label": "Icons on hover"
+          },
+          {
+            "value": "hover_style_2",
+            "label": "Icons & add to cart"
+          },
+          {
+            "value": "hover_style_3",
+            "label": "Quick view button"
+          },
+          {
+            "value": "hover_style_4",
+            "label": "Add to cart button"
+          },
+          {
+            "value": "hover_style_5",
+            "label": "Wishlist icon"
+          },
+          {
+            "value": "hover_style_6",
+            "label": "Dual button"
+          },
+          {
+            "value": "hover_style_7",
+            "label": "Slider Up"
+          },
+          {
+            "value": "hover_style_8",
+            "label": "Info on hover"
+          },
+          {
+            "value": "hover_style_9",
+            "label": "Quick shop button"
+          }
+        ],
+        "default": "hover_style_1"
+      },
+      {
+        "type": "select",
+        "id": "image_hover",
+        "info": "Hover Image in product card [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#hover-image)",
+        "label": "Select Hover Image",
+        "options": [
+          {
+            "value": "transform",
+            "label": "Transform"
+          },
+          {
+            "value": "slider",
+            "label": "Slider"
+          },
+          {
+            "value": "fadein",
+            "label": "Fadein"
+          },
+          {
+            "value": "zoom",
+            "label": "Zoom"
+          }
+        ],
+        "default": "fadein"
+      },
+      {
+        "type": "header",
+        "content": "Countdown Style"
+      },
+      {
+        "type": "select",
+        "id": "countdown_style",
+        "label": "Countdown Style in product card",
+        "options": [
+          {
+            "value": "style_1",
+            "label": "Style 1"
+          },
+          {
+            "value": "style_2",
+            "label": "Style 2"
+          }
+        ],
+        "default": "style_1"
+      },
+      {
+        "type": "header",
+        "content": "Preload image product card"
+      },
+      {
+        "type": "checkbox",
+        "id": "preload_product_image",
+        "label": "Show preload product image",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "preload_product_image_logo",
+        "label": "Title preload product image",
+        "default": "demati"
+      }
+    ]
+  },
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product image Ratio"
+      },
+      {
+        "type": "text",
+        "id": "image_raito_product",
+        "label": "Image Ratio",
+        "info": "width/height (eg:1/2)"
+      },
+      {
+        "type": "select",
+        "id": "size_image",
+        "label": "Size Image",
+        "options": [
+          {
+            "value": "contain",
+            "label": "Contain"
+          },
+          {
+            "value": "cover",
+            "label": "Cover"
+          }
+        ],
+        "default": "contain"
+      },
+      {
+        "type": "color",
+        "id": "bg_raito",
+        "label": "Background Image",
+        "default": "#f5f5f5"
+      },
+      {
+        "type": "header",
+        "content": "Quickview"
+      },
+      {
+        "type": "checkbox",
+        "id": "quickview_enable",
+        "label": "Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "quickview_availability",
+        "label": "Show availability"
+      },
+      {
+        "type": "select",
+        "id": "quickview_quantity_selector",
+        "label": "Quantity type",
+        "options": [
+          {
+            "value": "text",
+            "label": "Text"
+          },
+          {
+            "value": "select",
+            "label": "Dropdown"
+          }
+        ],
+        "default": "text"
+      },
+      {
+        "type": "select",
+        "id": "quickview_variant_selector",
+        "label": "Product option picker type",
+        "options": [
+          {
+            "value": "radio",
+            "label": "Button"
+          },
+          {
+            "value": "select",
+            "label": "Dropdown"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Variant option"
+      },
+      {
+        "type": "header",
+        "content": "Filter 1"
+      },
+      {
+        "type": "text",
+        "id": "filter_name_1",
+        "label": "Filter Name",
+        "info": "eg: Size"
+      },
+      {
+        "type": "select",
+        "id": "select_filter_1",
+        "label": "Select Type",
+        "default": "label",
+        "options": [
+          {
+            "value": "label",
+            "label": "Label"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Filter 2"
+      },
+      {
+        "type": "text",
+        "id": "filter_name_2",
+        "label": "Filter Name",
+        "info": "eg: Color"
+      },
+      {
+        "type": "select",
+        "id": "select_filter_2",
+        "label": "Select Type",
+        "default": "label",
+        "options": [
+          {
+            "value": "label",
+            "label": "Label"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Filter 3"
+      },
+      {
+        "type": "text",
+        "id": "filter_name_3",
+        "label": "Filter Name",
+        "info": "eg: Image"
+      },
+      {
+        "type": "select",
+        "id": "select_filter_3",
+        "label": "Select Type",
+        "default": "label",
+        "options": [
+          {
+            "value": "label",
+            "label": "Label"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sale nofication",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection_nofication",
+        "label": "Select the product list to display the nofication",
+        "info": "Sales notification configuration guide [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#sale-nofication)"
+      },
+      {
+        "type": "header",
+        "content": "Select Page To Display"
+      },
+      {
+        "type": "checkbox",
+        "id": "homepage_nofication",
+        "label": "Home Page",
+        "info": "Sale Nofication will display on Home Page",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "collectionpage_nofication",
+        "label": "Collection Page",
+        "info": "Sale Nofication will display on Collection Page",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "productpage_nofication",
+        "label": "Product Page",
+        "info": "Sale Nofication will display on Product Page",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blogpage_nofication",
+        "label": "Blog Page",
+        "info": "Sale Nofication will display on Blog Page",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "articlepage_nofication",
+        "label": "Article Page",
+        "info": "Sale Nofication will display on Article Page",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cartpage_nofication",
+        "label": "Cart Page",
+        "info": "Sale Nofication will display on Cart Page",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ortherpage_nofication",
+        "label": "Other Page",
+        "info": "Sale Nofication will display on Other Page",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Time Nofication"
+      },
+      {
+        "type": "range",
+        "id": "start_time",
+        "min": 0,
+        "max": 59,
+        "step": 1,
+        "label": "Nofication start time",
+        "default": 5
+      },
+      {
+        "type": "select",
+        "id": "start_time_unit",
+        "options": [
+          {
+            "value": "second",
+            "label": "Second"
+          },
+          {
+            "value": "minute",
+            "label": "Minute"
+          }
+        ],
+        "label": "Nofication start time unit"
+      },
+      {
+        "type": "range",
+        "id": "stay_time",
+        "min": 0,
+        "max": 59,
+        "step": 1,
+        "label": "Nofication stay time",
+        "default": 5
+      },
+      {
+        "type": "select",
+        "id": "stay_time_unit",
+        "options": [
+          {
+            "value": "second",
+            "label": "Second"
+          },
+          {
+            "value": "minute",
+            "label": "Minute"
+          }
+        ],
+        "label": "Nofication stay time unit"
+      },
+      {
+        "type": "header",
+        "content": "Purchased and Suggest"
+      },
+      {
+        "type": "textarea",
+        "id": "user_purchased",
+        "label": "List user purchased",
+        "info": "Users are separated by ' | '. eg: jhon | david "
+      },
+      {
+        "type": "checkbox",
+        "id": "show_timeago",
+        "label": "Show time ago in suggest",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "time_suggest",
+        "label": "List user purchased",
+        "info": "Time are separated by ' | '. eg: 4 hours ago | 5 hours ago "
+      },
+      {
+        "type": "header",
+        "content": "General Settings"
+      },
+      {
+        "type": "range",
+        "id": "limit_nofication",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "label": "Limit Nofication",
+        "default": 5
+      },
+      {
+        "type": "checkbox",
+        "id": "show_close",
+        "label": "Show close button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_verified",
+        "label": "Show verified",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "animation_nofication",
+        "options": [
+          {
+            "value": "slide_inup",
+            "label": "Slide in up"
+          },
+          {
+            "value": "left_to_right",
+            "label": "Left to Right"
+          },
+          {
+            "value": "popup",
+            "label": "Popup"
+          }
+        ],
+        "label": "Animation Nofication"
+      },
+      {
+        "type": "text",
+        "id": "text_purchased",
+        "label": "Text purchased",
+        "default": "purchased"
+      },
+      {
+        "type": "text",
+        "id": "text_verified",
+        "label": "Text verified",
+        "default": "verified"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "options": [
+          {
+            "value": "modal",
+            "label": "Modal"
+          },
+          {
+            "value": "drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "page",
+            "label": "Page"
+          }
+        ],
+        "label": "Cart",
+        "info": "Information [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#sectionCart)"
+      },
+      {
+        "type": "text",
+        "id": "price_shipping_bar",
+        "label": "Minimum price to get free shipping",
+        "default": "500"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_fire_work",
+        "label": "Enable free shipping congratulations",
+        "default": true,
+        "info": "Information [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#free-ship)"
+      },
+      {
+        "type": "header",
+        "content": "===== GIFT WRAP"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_gift_card",
+        "label": "Show gift card",
+        "default": false
+      },
+      {
+        "type": "product",
+        "id": "product_gift_card",
+        "label": "Product gift card"
+      },
+      {
+        "type": "text",
+        "id": "content_gift_card",
+        "label": "Content gift card",
+        "default": "Add gift wrap?",
+        "info": "Information [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#gift-wrap)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_terms_conditions",
+        "label": "Show  terms and conditions checkbox",
+        "default": true,
+        "info": "Information [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#terms-conditions)"
+      },
+      {
+        "type": "text",
+        "id": "content_terms_conditions",
+        "label": "Terms and conditions content",
+        "default": "I agree with the <a href=\"#\">terms and conditions</a>",
+        "info": "The 'a' tag is used to enable the notification form. Please don't remove it so JS can work"
+      },
+      {
+        "type": "text",
+        "id": "label_alert_terms_conditions",
+        "label": "Label Terms and conditions alert",
+        "default": "Terms & Conditions"
+      },
+      {
+        "type": "textarea",
+        "id": "alert_terms_conditions",
+        "label": "Terms and conditions alert",
+        "default": "<p>Demati supplies products listed on the Demati, and Demati websites, and in our stores under the following Terms and Conditions. Please read these Terms and Conditions, and our Privacy and Cookie Policies carefully before using any of our websites, or ordering from us.</p><p>The Terms and Conditions apply to your use of any Demati website and to any products you purchase from them; regardless of how you access the website, including any technologies or devices where our website is available to you at home, on the move or in store</p><p>We reserve the right to update these Terms and Conditions at any time, and any updates affecting you or your purchases will be notified to you, by us in writing (via email), and on this page.</p><p>The headings in these Conditions are for convenience only and shall not affect their interpretation.</p><p>We recommend that you print and keep a copy of these Terms and Conditions for your future reference...</p>"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable order notes"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_coupon_enable",
+        "label": "Enable Coupon"
+      }
+    ]
+  },
+  {
+    "name": "Language, Currency",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Language Selector",
+        "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_locale_selector",
+        "label": "Show language selector",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Currency Selector"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_currency_selector",
+        "label": "Show currency selector",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "auto_currency",
+        "label": "Enable Customer Geolocation",
+        "info": "Boost up your sales by showing your prices in the Visitor's Currency! When a customer goes to your store, your store chooses the currency to use based on the geolocation of their IP address. The prices in your storefront and checkout convert immediately to that currency. If a customer's location uses a currency that isn't supported by your store, then the store's currency is used. For example, your store currency is USD and you accept USD, EUR, and YEN. When a customer from China Yuan Renminbi visits your store, they see prices in CNY (your store's currency) because you don't accept payments in CNY.",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "currency_type",
+        "label": "== Source Currencies:",
+        "options": [
+          {
+            "value": "1",
+            "label": "Multiple Currencies By Shopify"
+          },
+          {
+            "value": "2",
+            "label": "Multiple Currencies By Wpbingo"
+          }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "checkbox",
+        "id": "flag_currency",
+        "label": "Show Country Flag?",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "== Multiple Currencies By Shopify"
+      },
+      {
+        "type": "paragraph",
+        "content": "This feature is only available for stores using Shopify Payments. Multi currency checkout page. My See [Can I use Shopify Payments?](https://help.shopify.com/en/manual/payments/shopify-payments/shopify-payments-requirements#can-I-use-shopify-payments) for a list of supported countries. [Learn more about multi-currency here](https://help.shopify.com/en/manual/payments/shopify-payments/multi-currency)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Your customers can pay for their orders and receive refunds in their local currency. [Enabling your store to sell in multiple currencies](https://help.shopify.com/manual/payments/multi-currency/setup)."
+      },
+      {
+        "type": "paragraph",
+        "content": "To add a currency, go to your [payment settings.](/admin/settings/payments)"
+      },
+      {
+        "type": "header",
+        "content": "== Multiple Currencies By Wpbingo"
+      },
+      {
+        "type": "paragraph",
+        "content": "Even though prices are displayed in different currencies, orders will still be processed in your store's currency."
+      },
+      {
+        "type": "paragraph",
+        "content": "To offer multiple currencies on your online store, you must first [edit your store's currency formatting](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#sectioncurrency)."
+      },
+      {
+        "type": "textarea",
+        "id": "supported_currencies",
+        "label": "Supported currencies",
+        "default": "EUR - EUR | USD - USD | GBP - GBP",
+        "placeholder": "EUR - Euro | USD - US Dollar | GBP - British Pound",
+        "info": "Use the country's ISO [currency code](http://www.xe.com/iso4217.php). Separate your currency codes with a '|'."
+      },
+      {
+        "type": "paragraph",
+        "content": "=== Price Configuration"
+      },
+      {
+        "type": "select",
+        "id": "currency_format",
+        "label": "Format",
+        "options": [
+          {
+            "value": "money_format",
+            "label": "Without currency"
+          },
+          {
+            "value": "money_with_currency_format",
+            "label": "With currency"
+          }
+        ],
+        "default": "money_format"
+      },
+      {
+        "type": "checkbox",
+        "id": "round_currency",
+        "label": "Round converted amounts?",
+        "info": "eg: $99.9 ==> $100",
+        "default": false
+      },
+      {
+        "type": "paragraph",
+        "content": "=== Extra Features"
+      },
+      {
+        "type": "checkbox",
+        "id": "notify_currency",
+        "label": "Checkout Currency Notification?",
+        "default": true,
+        "info": "This notification will appear on the cart page,shopping cart widget. It is meant to inform your customers that Shopify only allows them to Checkout in your shop's main currency."
+      },
+      {
+        "type": "textarea",
+        "id": "mess_currency",
+        "label": "Currency Notification Text:",
+        "info": "[original_currency], [current_currency] is is the variable name will automatically be replaced you must not change.",
+        "default": "All charges are billed in [original_currency]. While the content of your cart is currently displayed in [current_currency], the checkout will use [original_currency] at the most current exchange rate."
+      },
+      {
+        "type": "checkbox",
+        "id": "hover_currency",
+        "label": "Show Original Price on Hover?",
+        "default": false,
+        "info": "If your customer hovers over the converted prices he will still be able to see the price in your shop's main currency."
+      }
+    ]
+  },
+  {
+    "name": "Before you leave",
+    "settings": [
+      {
+        "type": "header",
+        "content": "------Come back alert------"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_come_back",
+        "label": "Show Come back alert",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "text_come_back1",
+        "label": "Title 1",
+        "default": "📢 Come back!"
+      },
+      {
+        "type": "text",
+        "id": "text_come_back2",
+        "label": "Title 2",
+        "default": "⚡ Don't forget this..."
+      },
+      {
+        "type": "header",
+        "content": "--------Before you leave popup---------"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_you_leave",
+        "label": "Show before you leave"
+      },
+      {
+        "type": "image_picker",
+        "id": "img_you_leave",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title_you_leave",
+        "label": "Title",
+        "default": "BEFORE YOU LEAVE..."
+      },
+      {
+        "type": "textarea",
+        "id": "desc_you_leave",
+        "label": "Description",
+        "default": "Take <span>15% off</span> your first order"
+      },
+      {
+        "type": "textarea",
+        "id": "code_you_leave",
+        "label": "Code",
+        "default": "Enter the code: <span>CODE15OFF</span>"
+      },
+      {
+        "type": "text",
+        "id": "label_you_leave",
+        "label": "Label button",
+        "default": "CONTINUE SHOPPING"
+      },
+      {
+        "type": "url",
+        "id": "url_you_leave",
+        "label": "Url button"
+      },
+      {
+        "type": "text",
+        "id": "title_product_you_leave",
+        "label": "Title product",
+        "default": "Recommended"
+      },
+      {
+        "type": "collection",
+        "id": "collection_you_leave",
+        "label": "Collection"
+      },
+      {
+        "type": "number",
+        "id": "limit_you_leave",
+        "default": 3,
+        "label": "Limit"
+      },
+      {
+        "type": "number",
+        "id": "time_you_leave",
+        "default": 5,
+        "label": "Time",
+        "info": "How many minutes after you leave the site will the popup appear?"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing image"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Image",
+        "info": "Shown when sharing a link on social media. [Learn more](https://help.shopify.com/manual/using-themes/troubleshooting/showing-social-media-thumbnail-images/) about image thumbnails."
+      },
+      {
+        "type": "header",
+        "content": "Accounts"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "https://www.facebook.com/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter",
+        "info": "https://twitter.com/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest",
+        "info": "https://www.pinterest.com/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_whatsapp_link",
+        "label": "WhatsApp",
+        "info": "https://www.whatsapp.com/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https://instagram.com/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat",
+        "info": "https://www.snapchat.com/add/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_google_plus_link",
+        "label": "Google Plus",
+        "info": "https://plus.google.com/+shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr",
+        "info": "http://shopify.tumblr.com"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube",
+        "info": "https://www.youtube.com/user/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo",
+        "info": "https://vimeo.com/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_fancy_link",
+        "label": "Fancy",
+        "info": "http://fancy.com/Shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "Tiktok",
+        "info": "http://fancy.com/tiktok"
+      },
+      {
+        "type": "header",
+        "content": "Sharing options"
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Cookie Consent",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cookie_consent_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "html",
+        "id": "cookie_consent_message",
+        "label": "Message",
+        "default": "This website uses cookies to ensure you get the best experience on our website.<a href=\"/policies/privacy-policy\">Privacy Policy</a>"
+      },
+      {
+        "type": "text",
+        "id": "cookie_agree_button",
+        "label": "Button agree",
+        "default": "Agree"
+      },
+      {
+        "type": "text",
+        "id": "cookie_consent_button",
+        "label": "Button dismiss",
+        "default": "Not agree"
+      }
+    ]
+  },
+  {
+    "name": "Newsletter Popup",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "newsletter_popup_enable",
+        "label": "Enable",
+        "default": true,
+        "info": "Tutorial Newsletter Popup [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#sectionNewsletter)"
+      },
+      {
+        "type": "image_picker",
+        "id": "newsletter_popup_image",
+        "label": "Image",
+        "info": "Default size: 360x450 pixels"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_title",
+        "default": "Get free shipping",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_subtitle",
+        "default": "on your first order. Offer ends soon.",
+        "label": "Sub Title"
+      },
+      {
+        "type": "header",
+        "content": "Newsletter Form"
+      },
+      {
+        "type": "checkbox",
+        "id": "newsletter_popup_form",
+        "label": "Show newsletter form",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "newsletter_popup_mailchimp",
+        "label": "Use mailchimp",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "newsletter_popup_form_action",
+        "label": "MailChimp form action URL"
+      }
+    ]
+  },
+  {
+    "name": "Verify Popup",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "verify_popup_enable",
+        "label": "Enable",
+        "default": false,
+        "info": "Tutorial Verify Popup [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#sectionNewsletter)"
+      },
+      {
+        "type": "text",
+        "id": "verify_popup_title",
+        "default": "Are you over 18 years of age?",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "verify_popup_info",
+        "default": "The content of this website cannot be shown unless you verify your age.Please verify that you are over 18 to see this page",
+        "label": "Info"
+      },
+      {
+        "type": "text",
+        "id": "verify_popup_allow",
+        "label": "Label button allow",
+        "default": "I'm over 18"
+      },
+      {
+        "type": "text",
+        "id": "verify_popup_disallowance",
+        "label": "Label button disallowance",
+        "default": "Exit"
+      },
+      {
+        "type": "textarea",
+        "id": "verify_popup_disallowance_content",
+        "label": "Notify when customer is not eligible for verification",
+        "default": "Please come back when you're over 18"
+      }
+    ]
+  }
+]

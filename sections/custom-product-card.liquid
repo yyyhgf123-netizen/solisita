@@ -1,0 +1,867 @@
+{%- assign hover_style 				= settings.hover_style -%}
+{%- assign countdowns 				= product.metafields.bwp_fields.countdowns -%}
+
+{%- if section.blocks.size > 0 -%}
+{%- style -%}
+	{% for block in section.blocks %}
+		{%- case block.type -%}
+			{%- when 'title' -%}
+				.product-card .product-card__name {
+					font-size: {{ block.settings.font_size }}px;
+					margin: {{ block.settings.margin }};
+					font-weight: {{ block.settings.font_weight }};
+					letter-spacing:{{ block.settings.letter_spacing }}px;
+					text-transform: {{ block.settings.text_transform }};
+					line-height:{{ block.settings.line_height }}px;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: {{ block.settings.line_name }};
+					overflow: hidden;
+				}
+				.product-card .product-card__name a{
+					color:{{ block.settings.color }};
+				}
+				.product-card .product-card__name a:hover{
+					color:{{ block.settings.color_hover }};
+				}
+				.product-card .product-card__name a:hover{
+					color:{{ block.settings.color_hover }};
+				}
+			{%- when 'price' -%}
+				.product-card__price .product-price.product-price--regular{
+					color:{{ block.settings.color_price_sale }};
+					font-size:{{ block.settings.font_size_price | minus: 2 }}px;
+				}
+				.product-card__price .product-price,.product-card__price .product-price.variant-price,.product-card__price .product-price.price-sale{
+					color:{{ block.settings.color_price }};
+				}
+				.product-group-price{
+					font-size:{{ block.settings.font_size_price }}px;
+				}
+				.product-card__price{
+					margin:{{ block.settings.margin_price }};
+				}
+			{%- when 'button' -%}
+				.product-card__buttons .btn,.product-card__buttons .button-wishlist button,.product-card__buttons .button-compare button{
+					color: {{ block.settings.color_button }};
+					background: {{ block.settings.bg_button }};
+					border-radius: {{ block.settings.border_radius_button }};
+				}
+				.product-card__buttons .btn:hover,.product-card__buttons .button-wishlist button.active,.product-card__buttons .button-wishlist button:hover,.product-card__buttons .button-compare button.active,.product-card__buttons .button-compare button:hover{
+					color: {{ block.settings.color_button_hover }};
+					background: {{ block.settings.bg_button_hover }};
+				}
+				{%- if hover_style == 'hover_style_3' -%}
+					.product-card.hover_style_3 .product-card__quickview:not(.mobile)>a{
+						color: {{ block.settings.color_button }};
+						background: {{ block.settings.bg_button }};
+					}
+					.product-card.hover_style_3 .product-card__quickview:not(.mobile)>a:hover{
+						color: {{ block.settings.color_button_hover }};
+						background: {{ block.settings.bg_button_hover }};
+					}
+				{%- endif -%}
+				{%- if hover_style == 'hover_style_6' -%}
+					.product-card.hover_style_6 .button-wishlist:not(.mobile) button{
+						color: {{ block.settings.color_button }};
+						background: {{ block.settings.bg_button }};
+						border-radius: {{ block.settings.border_radius_button }};
+					}
+					.product-card.hover_style_6 .button-compare button{
+						color: {{ block.settings.color_button }};
+						background: {{ block.settings.bg_button }};
+						border-radius: {{ block.settings.border_radius_button }};
+					}
+					.product-card.hover_style_6 .product-card__buttons>div .btn{
+						color: {{ block.settings.color_button }};
+						background: {{ block.settings.bg_button }};
+					}
+					.product-card.hover_style_6 .button-wishlist:not(.mobile) button:hover,.product-card.hover_style_6 .button-compare button:hover{
+						color: {{ block.settings.color_button_hover }};
+						background: {{ block.settings.bg_button_hover }};
+					}
+					.product-card.hover_style_6 .product-card__buttons>div .btn:hover{
+						color: {{ block.settings.color_button_hover }};
+						background: {{ block.settings.bg_button_hover }};
+					}
+				{%- endif -%}
+				{%- if hover_style == 'hover_style_4' -%}
+					.product-card.hover_style_4 .product-card__form:not(.mobile) .btn--add-to-cart,.product-card.hover_style_4 .product-card__form:not(.mobile) .btn-link{
+						color: {{ block.settings.color_button }};
+						background: {{ block.settings.bg_button }};
+					}
+					.product-card.hover_style_4 .product-card__form:not(.mobile) .btn--add-to-cart:hover,.product-card.hover_style_4 .product-card__form:not(.mobile) .btn-link:hover{
+						color: {{ block.settings.color_button_hover }};
+						background: {{ block.settings.bg_button_hover }};
+					}
+				{%- endif -%}
+			{%- when 'variant' -%}
+				.product-card.hover_style_9 .product-variants__content{
+					background:{{ block.settings.background }}99;
+				}
+				.product-card.hover_style_9 .product-variants__content .title{
+					color:{{ block.settings.color }};
+				}
+				.product-card.hover_style_9 .product-variants__content .swatch-content.label .swatch-items label:hover, .product-card.hover_style_9 .product-variants__content .swatch-content.label .swatch-items.active label{
+					background:{{ block.settings.background }};
+				}
+				.product-card.hover_style_9 .product-variants__content .swatch-content.label .swatch-items label{
+					color:{{ block.settings.color }};
+				}
+			{%- when 'vendor' -%}
+				.product-card__vendor a{
+					font-size: {{ block.settings.font_size }}px;
+					margin: {{ block.settings.margin }};
+					font-weight: {{ block.settings.font_weight }};
+					letter-spacing:{{ block.settings.letter_spacing }}px;
+					text-transform: {{ block.settings.text_transform }};
+					line-height:{{ block.settings.line_height }}px;
+					color:{{ block.settings.color }};
+				}
+				.product-card__vendor a:hover{
+					color:{{ block.settings.color_hover }};
+				}
+			{%- when 'button_atc' -%}
+				{%- if hover_style == 'hover_style_2' -%}
+					.product-card.hover_style_2 .product-card__form:not(.mobile) .btn{
+						font-size: {{ block.settings.font_size }}px;
+						font-weight: {{ block.settings.font_weight }};
+						letter-spacing:{{ block.settings.letter_spacing }}px;
+						text-transform: {{ block.settings.text_transform }};
+						line-height:{{ block.settings.line_height }}px;
+						color:{{ block.settings.color }};
+					}
+					.product-card.hover_style_2 .product-card__form:not(.mobile) .btn:before{
+						background:{{ block.settings.color_hover }};
+					}
+					.product-card.hover_style_2 .product-card__form:not(.mobile) .btn:hover{
+						color:{{ block.settings.color_hover }};
+					}
+				{%- endif -%}
+			{%- when 'wishlist' -%}
+				{%- if hover_style == 'hover_style_5' -%}
+					.product-card.hover_style_5 .content-title-wishlist .button-wishlist button{
+						color:{{ block.settings.color }};
+					}
+					.product-card.hover_style_5 .content-title-wishlist .button-wishlist button:before{
+						font-size:{{ block.settings.font_size }}px;
+					}
+					.product-card.hover_style_5 .content-title-wishlist .button-wishlist button:hover{
+						color:{{ block.settings.color_hover }};
+					}
+				{%- endif -%}
+			{%- when 'form_mobi' -%}
+				.product-card .product-card__form.mobile .btn,.product-card .product-card__form.mobile .btn.btn-link{
+					border-color:{{ block.settings.border_color }};
+					background:{{ block.settings.bg_color }};
+					color:{{ block.settings.color }};
+				}
+				.product-card .product-card__form.mobile .wpbingo-qty{
+					border-color:{{ block.settings.border_color }};
+					background:{{ block.settings.bg_color }};
+				}
+				.product-card .product-card__form.mobile .wpbingo-qty button,.product-card .product-card__form.mobile .wpbingo-qty input{
+					background:{{ block.settings.bg_color }};
+					color:{{ block.settings.color }};
+				}
+				.product-card .product-card__form.mobile .btn:hover,.product-card .product-card__form.mobile .btn.btn-link:hover{
+					background:{{ block.settings.bg_color_hover }};
+					border-color:{{ block.settings.bg_color_hover }} !important;
+					color:{{ block.settings.color_hover }};
+				}
+			{%- when 'button_mobi' -%}
+				.product-card .content-button-mobile .button-wishlist.mobile button,.product-card .content-button-mobile .product-card__quickview.mobile .js-btn-quickview{
+					background:{{ block.settings.bg_button }};
+					color:{{ block.settings.color }};
+					border-radius:{{ block.settings.border_radius_button }};
+				}
+				.product-card .content-button-mobile .button-wishlist.mobile button:hover,.product-card .content-button-mobile .product-card__quickview.mobile .js-btn-quickview:hover{
+					background:{{ block.settings.bg_button_hover }};
+					color:{{ block.settings.color_hover }};
+				}
+				.product-card .content-button-mobile .button-wishlist.mobile button.active{
+					background:{{ block.settings.bg_button_hover }};
+					color:{{ block.settings.color_hover }};
+				}
+		{%- endcase -%}
+	{% endfor %}
+{%- endstyle -%}
+{%- endif -%}
+{%- if request.design_mode -%}
+<section class="wpbingo-section--{{ section.id }}">
+	{% for block in section.blocks %}<div {{ block.shopify_attributes }}></div>{% endfor %}
+	<div class="custom-product-card">
+		<div class="content-custom-product">
+			<div class="product-card {{ hover_style }}">
+				<div class="product-card__image-wrapper">
+					{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+					{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+					{% for block in section.blocks %}
+						{%- case block.type -%}
+							{%- when 'button_mobi' -%}
+								<div class="block-card-mobi" id="{{ block.id }}">
+									<div class="content-button-mobile">
+										{%- if settings.show_wishlist -%}
+											<div class="button-wishlist mobile" data-title="{{ 'products.product.wishlist' | t }}">
+												<button type="button" aria-label="{{ 'products.product.wishlist' | t }}" class="" button-wishlist>
+												</button>
+											</div>
+										{%- endif -%}
+										{%- if settings.quickview_enable_mobile -%}
+										<div class="product-card__quickview mobile" data-title="{{ 'products.product.quickview' | t }}">
+											<a class="js-btn-quickview btn btn--quickview" href="javascript:void(0);"
+												title="{{ 'products.product.quickview' | t }}" >
+												<span>{{ 'products.product.quickview' | t }}</span>
+											</a>
+										</div>
+										{%- endif -%}
+									</div>
+								</div>
+						{%- endcase -%}
+					{% endfor %}
+					{%- if hover_style == 'hover_style_6' -%}
+						<div class="btn-gruop">
+							{%- if settings.show_wishlist -%}
+								<div class="button-wishlist" data-title="{{ 'products.product.wishlist' | t }}">
+									<button type="button" class="" button-wishlist></button>
+								</div>
+							{%- endif -%}
+							{%- if settings.show_compare -%}
+								<div class="button-compare" data-title="{{ 'products.product.compare' | t }}">
+									<button type="button" class="" button-compare></button>
+								</div>
+							{%- endif -%}
+						</div>
+					{%- endif -%}
+					<div class="product-card__buttons">
+						{%- if hover_style != 'hover_style_2' and hover_style != 'hover_style_4' -%}
+							<div class="product-card__form" data-title="{{ 'products.product.add_to_cart' | t }}">
+								<form action="/cart/add" method="post" enctype="multipart/form-data" class="form-addtocart" data-product-form>
+									<input type="hidden" name="id" value="" />
+									<button class="js-btn-addtocart btn btn--add-to-cart"
+										type="submit"
+										value="Submit"
+										title="{{ 'products.product.add_to_cart' | t }}">
+										<span>{{ 'products.product.add_to_cart' | t }}</span>
+									</button>
+								</form>
+							</div>
+						{%- endif -%}
+						{%- if hover_style != 'hover_style_5' and hover_style != 'hover_style_6' -%}
+							{%- if settings.show_wishlist -%}
+								<div class="button-wishlist" data-title="{{ 'products.product.wishlist' | t }}">
+									<button type="button" class="" button-wishlist></button>
+								</div>
+							{%- endif -%}
+						{%- endif -%}
+						{%- if hover_style != 'hover_style_6' -%}
+							{%- if settings.show_compare -%}
+								<div class="button-compare" data-title="{{ 'products.product.compare' | t }}">
+									<button type="button" class="" button-compare></button>
+								</div>
+							{%- endif -%}
+						{%- endif -%}
+						{%- if hover_style != 'hover_style_3' -%}
+							{%- if settings.quickview_enable -%}
+							<div class="product-card__quickview" data-title="{{ 'products.product.quickview' | t }}">
+								<a class="js-btn-quickview btn btn--quickview" href="javascript:void(0);" title="{{ 'products.product.quickview' | t }}">
+									<span>{{ 'products.product.quickview' | t }}</span>
+								</a>
+							</div>
+							{%- endif -%}
+						{%- endif -%}
+					</div>
+					{%- if hover_style == 'hover_style_4' -%}
+						<div class="product-card__form" data-title="{{ 'products.product.add_to_cart' | t }}">
+							<form action="/cart/add" method="post" enctype="multipart/form-data" class="form-addtocart" data-product-form>
+								<input type="hidden" name="id" value="" />
+								<button class="js-btn-addtocart btn btn--add-to-cart"
+									type="submit"
+									value="Submit"
+									title="{{ 'products.product.add_to_cart' | t }}">
+									<span>{{ 'products.product.add_to_cart' | t }}</span>
+								</button>
+							</form>
+						</div>
+					{%- endif -%}
+					{%- if hover_style == 'hover_style_3' -%}
+						{%- if settings.quickview_enable -%}
+						<div class="product-card__quickview" data-title="{{ 'products.product.quickview' | t }}">
+							<a class="js-btn-quickview btn btn--quickview" href="javascript:void(0);" title="{{ 'products.product.quickview' | t }}">
+								<span>{{ 'products.product.quickview' | t }}</span>
+							</a>
+						</div>
+						{%- endif -%}
+					{%- endif -%}
+					{%- if hover_style == 'hover_style_9' -%}
+					<div class="product-card_popup">
+						<div class="product-variants__content">
+							<div class="title">Add to bag</div>
+							<div class="variants__content">
+								<div class="variants-swatch">
+									<div class="swatch-content swatch-content-1 label">
+										<div class="swatch-items active ">
+											<label class="S" data-index="option1" title="S" data-variant="S">
+												S
+											</label>
+										</div>
+										<div class="swatch-items  ">
+											<label class="M" data-index="option1" title="M" data-variant="M">
+												M
+											</label>
+										</div>
+										<div class="swatch-items  ">
+											<label class="XL" data-index="option1" title="XL" data-variant="XL">
+												XL
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{%- endif -%}
+				</div>
+				<div class="product-card__content">
+					{%- if settings.product_card_review -%}
+						<div class="product-card__review product-review">
+							<span class="spr-badge">
+								<span class="spr-starrating spr-badge-starrating">
+									<i class="spr-icon spr-icon-star" aria-hidden="true"></i>
+									<i class="spr-icon spr-icon-star" aria-hidden="true"></i>
+									<i class="spr-icon spr-icon-star" aria-hidden="true"></i>
+									<i class="spr-icon spr-icon-star-empty" aria-hidden="true"></i>
+									<i class="spr-icon spr-icon-star-empty" aria-hidden="true"></i>
+								</span>
+								<span class="spr-badge-caption">1 </span>
+							</span>
+						</div>
+					{%- endif -%}
+					{%- if settings.product_vendor_enable -%}
+						<div class="product-card__vendor"><a href="#">Product vendor</a></div>
+					{%- endif -%}
+					{%- if hover_style == 'hover_style_5' -%}
+						<div class="content-title-wishlist">
+							<div class="product-card__name">
+								<a href="#">Product title</a>
+							</div>
+							{%- if settings.show_wishlist -%}
+								<div class="button-wishlist" data-title="{{ 'products.product.wishlist' | t }}">
+									<button type="button" class="" button-wishlist></button>
+								</div>
+							{%- endif -%}
+						</div>
+					{%- endif -%}
+					{%- if hover_style != 'hover_style_5' -%}
+						<div class="product-card__name">
+							<a href="#">Product title</a>
+						</div>
+					{%- endif -%}
+					{%- if hover_style != 'hover_style_2' -%}
+						<div class="product-card__price">
+							<div class="product-group-price">
+								<div class="product-price product-price--regular">$40.00</div>
+								<div class="product-price price-sale">$50.00</div>
+							</div>
+						</div>
+					{%- endif -%}
+					{%- if hover_style == 'hover_style_2' -%}
+						<div class="content-bottom">
+							<div class="product-card__price">
+								<div class="product-group-price">
+									<div class="product-price product-price--regular">$40.00</div>
+									<div class="product-price price-sale">$50.00</div>
+								</div>
+							</div>
+							<div class="product-card__form" data-title="{{ 'products.product.add_to_cart' | t }}">
+								<form action="/cart/add" method="post" enctype="multipart/form-data" class="form-addtocart" data-product-form>
+									<input type="hidden" name="id" value="" />
+									<button class="js-btn-addtocart btn btn--add-to-cart"
+										type="submit"
+										value="Submit"
+										title="{{ 'products.product.add_to_cart' | t }}">
+										<span>{{ 'products.product.add_to_cart' | t }}</span>
+									</button>
+								</form>
+							</div>
+						</div>
+					{%- endif -%}
+					{% for block in section.blocks %}
+						{%- case block.type -%}
+							{%- when 'form_mobi' -%}
+								<div class="block-card-mobi" id="{{ block.id }}">
+									{%- if settings.product_atc_mobile != blank -%}
+									<div class="product-card__form mobile">
+										<form action="/cart/add" method="post" enctype="multipart/form-data" class="form-addtocart" data-product-form>
+											<input type="hidden" name="id"/>
+											<div class="wpbingo-qty">
+												<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+													<i class="feather-minus"></i>
+												</button>
+												<input type="text" name="quantity" class="js-qty-number wpbingo-qty__number" value="1" min="0" aria-label="quantity" pattern="[0-9]*">
+												<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}">
+													<i class="feather-plus"></i>
+												</button>
+											</div>
+											<button class="js-btn-addtocart btn btn--add-to-cart"
+												type="submit"
+												value="Submit"
+												title="{{ 'products.product.add_to_cart' | t }}">
+											</button>
+										</form>
+									</div>
+								{%- endif -%}
+								</div>
+						{%- endcase -%}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+	"name": "CUSTOM PRODUCT CARD",
+	"settings": [
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "title",
+			"name": "Custom Title",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "color",
+					"id": "color",
+					"label": "Color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "color_hover",
+					"label": "Color hover",
+					"default": "#000"
+				},
+				{
+					"type": "number",
+					"id": "font_size",
+					"label": "Font size",
+					"default": 12,
+					"info": "px"
+				},
+				{
+					"type": "number",
+					"id": "line_height",
+					"label": "Line height",
+					"default": 20,
+					"info": "px"
+				},
+				{
+					"type": "number",
+					"id": "letter_spacing",
+					"label": "Letter spacing",
+					"default": 0,
+					"info": "px"
+				},
+				{
+					"type": "text",
+					"id": "font_weight",
+					"label": "Font Weight",
+					"default": "500"
+				},
+				{
+					"type": "number",
+					"id": "line_name",
+					"label": "Line name",
+					"default": 2,
+					"info": "Display product name in how many lines"
+				},
+				{
+					"type": "text",
+					"id": "margin",
+					"label": "Margin",
+					"default": "0px 0px 0px 0px",
+					"info": "top right bottom left"
+				},
+				{
+					"type": "select",
+					"id": "text_transform",
+					"label": "Text Transform",
+					"options": [
+						{
+							"value": "none",
+							"label": "Default"
+						},
+						{
+							"value": "capitalize",
+							"label": "Capitalize"
+						},
+						{
+							"value": "uppercase",
+							"label": "Uppercase"
+						},
+						{
+							"value": "lowercase",
+							"label": "Lowercase"
+						}
+					],
+					"default": "uppercase"
+				}
+			]
+		},
+		{
+			"type": "button",
+			"name": "Custom Button",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "color",
+					"id": "bg_button",
+					"label": "Background",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "color_button",
+					"label": "Color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "bg_button_hover",
+					"label": "Background hover",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "color_button_hover",
+					"label": "Color hover",
+					"default": "#000"
+				},
+				{
+					"type": "text",
+					"id": "border_radius_button",
+					"label": "Border radius",
+					"default": "50%"
+				}
+			]
+		},
+		{
+			"type": "price",
+			"name": "Custom Price",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "color",
+					"id": "color_price",
+					"label": "Color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "color_price_sale",
+					"label": "Color sale",
+					"default": "#9b9b9b"
+				},
+				{
+					"type": "number",
+					"id": "font_size_price",
+					"label": "Font size",
+					"default": 16,
+					"info": "px"
+				},
+				{
+					"type": "text",
+					"id": "margin_price",
+					"label": "Margin",
+					"default": "0px 0px 0px 0px",
+					"info": "top right bottom left"
+				}
+			]
+		},
+		{
+			"type": "vendor",
+			"name": "Custom Vendor",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "color",
+					"id": "color",
+					"label": "Color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "color_hover",
+					"label": "Color hover",
+					"default": "#000"
+				},
+				{
+					"type": "number",
+					"id": "font_size",
+					"label": "Font size",
+					"default": 12,
+					"info": "px"
+				},
+				{
+					"type": "number",
+					"id": "line_height",
+					"label": "Line height",
+					"default": 20,
+					"info": "px"
+				},
+				{
+					"type": "number",
+					"id": "letter_spacing",
+					"label": "Letter spacing",
+					"default": 0,
+					"info": "px"
+				},
+				{
+					"type": "text",
+					"id": "font_weight",
+					"label": "Font Weight",
+					"default": "500"
+				},
+				{
+					"type": "text",
+					"id": "margin",
+					"label": "Margin",
+					"default": "0px 0px 0px 0px",
+					"info": "top right bottom left"
+				},
+				{
+					"type": "select",
+					"id": "text_transform",
+					"label": "Text Transform",
+					"options": [
+						{
+							"value": "none",
+							"label": "Default"
+						},
+						{
+							"value": "capitalize",
+							"label": "Capitalize"
+						},
+						{
+							"value": "uppercase",
+							"label": "Uppercase"
+						},
+						{
+							"value": "lowercase",
+							"label": "Lowercase"
+						}
+					],
+					"default": "uppercase"
+				}
+			]
+		},
+		{
+			"type": "variant",
+			"name": "Variant Form(Quick Shop)",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "paragraph",
+					"content": "Only works with layout [Quick Shop](https:\/\/cdn.shopify.com\/s\/files\/1\/0776\/5734\/2231\/files\/quick-shop.jpg?v=1689843863)"
+				},
+				{
+					"type": "color",
+					"id": "color",
+					"label": "Color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "background",
+					"label": "Background",
+					"default": "#9b9b9b"
+				}
+			]
+		},
+		{
+			"type": "button_atc",
+			"name": "Button ATC(Icon & atc)",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "paragraph",
+					"content": "Only works with layout [Icon & add to cart](https:\/\/cdn.shopify.com\/s\/files\/1\/0776\/5734\/2231\/files\/icon-atc.jpg?v=1689843776)"
+				},
+				{
+					"type": "color",
+					"id": "color",
+					"label": "Color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "color_hover",
+					"label": "Color hover",
+					"default": "#000"
+				},
+				{
+					"type": "number",
+					"id": "font_size",
+					"label": "Font size",
+					"default": 12,
+					"info": "px"
+				},
+				{
+					"type": "number",
+					"id": "line_height",
+					"label": "Line height",
+					"default": 20,
+					"info": "px"
+				},
+				{
+					"type": "number",
+					"id": "letter_spacing",
+					"label": "Letter spacing",
+					"default": 0,
+					"info": "px"
+				},
+				{
+					"type": "text",
+					"id": "font_weight",
+					"label": "Font Weight",
+					"default": "500"
+				},
+				{
+					"type": "select",
+					"id": "text_transform",
+					"label": "Text Transform",
+					"options": [
+						{
+							"value": "none",
+							"label": "Default"
+						},
+						{
+							"value": "capitalize",
+							"label": "Capitalize"
+						},
+						{
+							"value": "uppercase",
+							"label": "Uppercase"
+						},
+						{
+							"value": "lowercase",
+							"label": "Lowercase"
+						}
+					],
+					"default": "uppercase"
+				}
+			]
+		},
+		{
+			"type": "wishlist",
+			"name": "Wishlist(Wishlist Icon)",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "paragraph",
+					"content": "Only works with layout [Wishlist Icon](https:\/\/cdn.shopify.com\/s\/files\/1\/0776\/5734\/2231\/files\/wishlist-icon.jpg?v=1689845835)"
+				},
+				{
+					"type": "color",
+					"id": "color",
+					"label": "Color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "color_hover",
+					"label": "Color hover",
+					"default": "#000"
+				},
+				{
+					"type": "number",
+					"id": "font_size",
+					"label": "Font size",
+					"default": 12,
+					"info": "px"
+				}
+			]
+		},
+		{
+			"type": "button_mobi",
+			"name": "Button mobile",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "color",
+					"id": "color",
+					"label": "Color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "bg_button",
+					"label": "Background color",
+					"default": "#000"
+				},
+				{
+					"type": "text",
+					"id": "border_radius_button",
+					"label": "Border radius",
+					"default": "50%"
+				},
+				{
+					"type": "color",
+					"id": "color_hover",
+					"label": "Color hover",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "bg_button_hover",
+					"label": "Background color",
+					"default": "#000"
+				}
+			]
+		},
+		{
+			"type": "form_mobi",
+			"name": "Form atc mobile",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "color",
+					"id": "color",
+					"label": "Color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "bg_color",
+					"label": "Background color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "border_color",
+					"label": "Border color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "color_hover",
+					"label": "Color hover",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "bg_color_hover",
+					"label": "Background Color hover",
+					"default": "#000"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

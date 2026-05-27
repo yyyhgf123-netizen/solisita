@@ -1,0 +1,179 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- else -%}
+	{%- assign container = 'section-container' -%}
+{%- endif -%}
+
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+{% assign margin 			= section.settings.margin | split: "|" %}
+{% assign padding 			= section.settings.padding | split: "|" %}
+{%- style -%}
+    {%- if section.settings.background_color -%}
+		#shopify-section-{{ section.id }} .wpbingo-footer-section{
+			background: {{section.settings.background_color}};
+		}
+	{%- endif -%}
+    {%- if section.settings.background -%}
+		{%- assign background = section.settings.background | image_url -%}
+		#shopify-section-{{ section.id }} .wpbingo-footer-section{
+			background-image: url('{{ background }}');
+			background-position:{{ section.settings.background_pos }};
+			background-size:{{ section.settings.background_size }};
+			{%- if section.settings.background_fixed -%}background-attachment: fixed;{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-footer-section{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-section-{{ section.id }} .wpbingo-footer-section{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-section-{{ section.id }} .wpbingo-footer-section{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-footer-section{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+{%- endstyle -%}
+
+<section class="wpbingo-section wpbingo-footer-section overflow-hidden wpbingo-section--{{ section.id }}">
+	<div class="{{ container }}" {{ max_width }}>
+        <div class="section-content">
+         {% content_for "blocks" %}
+        </div>
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "Footer",
+    "blocks": [{ "type": "_column" },{"type": "@app" }],
+    "settings": [
+        {
+			"type": "text",
+			"id": "max_width",
+			"label": "Width container",
+			"info": "Default: 1440px"
+		},
+		{
+			"type": "checkbox",
+			"id": "fullwidth",
+			"label": "Fullwidth"
+		},
+        {
+            "type": "color_background",
+            "id": "background_color",
+            "label": "Background color"
+        },
+        {
+			"type": "image_picker",
+			"id": "background",
+			"label": "Background image"
+		},
+        {
+			"type": "checkbox",
+			"id": "background_fixed",
+			"label": "Background fixed",
+			"default":false
+		},
+		{
+			"type": "select",
+			"id": "background_size",
+			"label": "Background Size",
+			"options": [
+				{
+					"value": "contain",
+					"label": "Contain"
+				},
+				{
+					"value": "auto",
+					"label": "Auto"
+				},
+				{
+					"value": "cover",
+					"label": "Cover"
+				}
+			],
+			"default": "cover"
+		},
+		{
+			"type": "select",
+			"id": "background_pos",
+			"label": "Background position",
+			"options": [
+				{
+					"value": "left top",
+					"label": "Left Top"
+				},
+				{
+					"value": "left  center",
+					"label": "Left Center"
+				},
+				{
+					"value": "left bottom",
+					"label": "Left Bottom"
+				},
+				{
+					"value": "center top",
+					"label": "Center Top"
+				},
+				{
+					"value": "center center",
+					"label": "Center Center"
+				},
+				{
+					"value": "center bottom",
+					"label": "Center Bottom"
+				},
+				{
+					"value": "right top",
+					"label": "Right Top"
+				},
+				{
+					"value": "right center",
+					"label": "Right Center"
+				},
+				{
+					"value": "right bottom",
+					"label": "Right Bottom"
+				}
+			],
+			"default": "center center"
+		},
+		{
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		}
+    ]
+  }
+{% endschema %}

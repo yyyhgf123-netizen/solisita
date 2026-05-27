@@ -1,0 +1,100 @@
+
+{% assign margin = block.settings.margin | split: "|" %}
+{% assign padding = block.settings.padding | split: "|" %}
+
+{%- style -%}
+  .bwp-background-video .bwp-video {
+    border-radius: {{ block.settings.border_radius_video }};
+  }
+  {%- if margin[0] != blank or padding[0] != blank -%}
+    #shopify-block-{{ block.id }} .bwp-background-video {
+      {%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+      {%- if padding[0] != blank -%}padding: {{ padding[0] }};{%- endif -%}
+    }
+  {%- endif -%}
+
+  @media (max-width: 1199px) {
+    #shopify-block-{{ block.id }} .bwp-background-video {
+      {%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+      {%- if padding[1] != blank -%}padding: {{ padding[1] }};{%- endif -%}
+    }
+  }
+
+  @media (max-width: 991px) {
+    #shopify-block-{{ block.id }} .bwp-background-video {
+      {%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+      {%- if padding[2] != blank -%}padding: {{ padding[2] }};{%- endif -%}
+    }
+  }
+
+  @media (max-width: 767px) {
+    #shopify-block-{{ block.id }} .bwp-background-video {
+      {%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+      {%- if padding[3] != blank -%}padding: {{ padding[3] }};{%- endif -%}
+    }
+  }
+{%- endstyle -%}
+
+<div class="wpbingo-block bwp-background-video wpbingo-block--{{ block.id }} overflow-hidden">
+  <div class="featured-video">
+    <div class="bwp-video">
+      {%- if block.settings.video != blank -%}
+          <video playsinline="" loop="loop" autoplay="autoplay" muted="muted" src="{{ block.settings.video.sources.last.url }}"></video>
+      {%- else -%}
+          <video playsinline="" loop="loop" autoplay="autoplay" muted="muted" src="https://cdn.shopify.com/videos/c/o/v/2eaa6e41c1254afca0f1fd792fbc875b.mp4"></video>
+      {%- endif -%}
+    </div>
+    <div class="content">
+         {% content_for "blocks" %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Background Video",
+  "blocks": [{ "type": "@app" },{ "type": "@theme" }],
+  "settings": [
+    {
+        "type": "video",
+        "id": "video",
+        "label": "Shopify video"
+    },
+    {
+      "type": "text",
+      "id": "border_radius_video",
+      "label": "Border radius video",
+      "default": "0px 0px 0px 0px",
+      "info": "top right bottom left"
+    },
+    {
+      "type": "textarea",
+      "id": "padding",
+      "label": "Padding",
+      "placeholder": "0px 0px 0px 0px",
+      "info": "Screen: desktop | 1200px | 991px | 767px"
+    },
+    {
+      "type": "textarea",
+      "id": "margin",
+      "label": "Margin",
+      "placeholder": "0px 0px 0px 0px",
+      "info": "Screen: desktop | 1200px | 991px | 767px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Background Video",
+      "blocks": [
+         {
+              "type": "title"
+          },
+          {
+              "type": "text-block"
+          }
+       ]
+    }
+  ]
+}
+{% endschema %}
+

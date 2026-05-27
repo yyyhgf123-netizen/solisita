@@ -1,0 +1,268 @@
+
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- elsif section.settings.max_width != blank -%}
+	{%- assign container = 'bwp-container' -%}
+{%- else -%}
+	{%- assign container = 'container' -%}
+{%- endif -%}
+
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- assign width_container = section.settings.max_width | plus: 0 -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+
+{%- if section.blocks.size > 0 -%}
+{%- style -%}
+	{%- if section.settings.navigation != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-slideshow .slick-arrow{
+			border-width:{{ section.settings.border_arrow }};
+			border-radius:{{ section.settings.border_radius_arrow }};
+			border-color:{{ section.settings.border_color_arrow }};
+			border-style:solid;
+			background:{{ section.settings.bg_arrow }};
+			color:{{ section.settings.color_arrow }};
+		}
+		#shopify-section-{{ section.id }} .wpbingo-slideshow .slick-arrow:hover{
+			border-color:{{ section.settings.border_color_arrow_hover }};
+			background:{{ section.settings.bg_arrow_hover }};
+			color:{{ section.settings.color_arrow_hover }};
+		}
+	{%- endif -%}
+	{% assign min_height_slider 	= section.settings.min_height_slider | split: "|" %}
+	{%- if min_height_slider[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-slideshow__item-image{
+			min-height:{{ min_height_slider[0] }};
+		}
+	{%- endif -%}
+	{%- if min_height_slider[1] != blank -%}
+		@media (max-width:1200px){
+			#shopify-section-{{ section.id }} .wpbingo-slideshow__item-image{
+				min-height:{{ min_height_slider[1] }};
+			}
+		}
+	{%- endif -%}
+	{%- if min_height_slider[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-section-{{ section.id }} .wpbingo-slideshow__item-image{
+				min-height:{{ min_height_slider[2] }};
+			}
+		}
+	{%- endif -%}
+	{%- if min_height_slider[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-slideshow__item-image{
+				min-height:{{ min_height_slider[3] }};
+			}
+		}
+	{%- endif -%}
+{%- endstyle -%}
+  {%- assign modules = '' -%}
+{%- if section.settings.effect == "carousel" -%}
+    {%- assign modules = 'EffectCarousel' -%}
+{%- elsif section.settings.effect == "panorama" -%}
+    {%- assign modules = 'EffectPanorama' -%}
+{%- elsif section.settings.effect == "slicer" -%}
+    {%- assign modules = 'EffectSlicer' -%}
+{%- endif -%}
+<section class="wpbingo-section wpbingo-section--slideshow overflow-hidden">
+	<div class="{{ container }}" {{ max_width }}>
+		<div class="wpbingo-slideshow__inner">
+			<div class="js-wpbingo-slideshow wpbingo-slideshow" data-class-swiper="shopify-block"
+                data-modules="{{ modules }}"
+				data-autoplay="{{ section.settings.autoplay }}"
+				data-autoplayspeed="{{ section.settings.autoplay_speed }}"
+				data-effect="{{ section.settings.effect }}" >
+                <div class="swiper-wrapper">
+                {% content_for "blocks" %}
+                </div>
+                {%- if section.settings.navigation -%}
+                <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style=""></button>
+                <button class="slick-next slick-arrow" aria-label="Next" type="button" style=""></button>
+                {%- endif -%}
+                 {%- if section.settings.pagination -%} <div class="swiper-pagination" aria-label="Pagination"></div>{%- endif -%}
+			</div>
+		</div>
+	</div>
+</section>
+{%- if section.settings.effect == "carousel" -%}
+<script src="{{ 'effect-carousel.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+{%- if section.settings.effect == "panorama" -%}
+<script src="{{ 'effect-panorama.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+{%- if section.settings.effect == "slicer" -%}
+<script src="{{ 'effect-slicer.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Slideshow",
+    "class": "wpbingo-framework",
+    "blocks": [{ "type": "_slide" }],
+	"disabled_on": {
+		"groups": ["header"]
+	},
+    "settings": [
+		{
+			"type": "header",
+			"content": "Layout settings"
+		},
+		{
+			"type": "text",
+			"id": "max_width",
+			"label": "Width container",
+			"info": "Default: 1440px"
+		},
+		{
+			"type": "checkbox",
+			"id": "fullwidth",
+			"label": "Fullwidth"
+		},
+		{
+			"type": "checkbox",
+			"id": "navigation",
+			"label": "Show Prev/Next arrows",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "pagination",
+			"label": "Show dot indicators",
+			"default": true
+		},
+		{
+			"type": "select",
+			"id": "effect",
+			"label": "Effect",
+            "options": [
+              {
+                "value": "slide",
+                "label": "Slide"
+              },
+              {
+                "value": "cube",
+                "label": "Cube"
+              },
+              {
+                "value": "flip",
+                "label": "Flip"
+              },
+              {
+                "value": "coverflow",
+                "label": "Coverflow"
+              },
+              {
+                "value": "panorama",
+                "label": "Panorama"
+              },
+              {
+                "value": "carousel",
+                "label": "Carousel"
+              },
+              {
+                "value": "creative",
+                "label": "Creative"
+              },
+              {
+                "value": "slicer",
+                "label": "Slicer"
+              }
+            ],
+			"default": "slide"
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"label": "Autoplay",
+			"default": true
+		},
+		{
+			"type": "text",
+			"id": "autoplay_speed",
+			"label": "Change slides every",
+			"info": "Required field number. Ex: 8000",
+			"default": "8000"
+		},
+		{
+			"type": "text",
+			"id": "min_height_slider",
+			"label": "Min height slider",
+			"placeholder": "600px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "header",
+			"content": "Slick arrow"
+		},
+		{
+			"type": "text",
+			"id": "border_arrow",
+			"label": "Border arrow",
+			"default": "0px 0px 0px 0px",
+			"info": "Ex: 0px 0px 0px 0px"
+		},
+		{
+			"type": "text",
+			"id": "border_radius_arrow",
+			"label": "Border radius arrow",
+			"default": "0px 0px 0px 0px",
+			"info": "Ex: 0px 0px 0px 0px"
+		},
+		{
+			"type": "color",
+			"id": "bg_arrow",
+			"label": "Background arrow",
+			"default": "#000000"
+		},
+		{
+			"type": "color",
+			"id": "border_color_arrow",
+			"label": "border arrow",
+			"default": "#000000"
+		},
+		{
+			"type": "color",
+			"id": "color_arrow",
+			"label": "Color arrow",
+			"default": "#000000"
+		},
+		{
+			"type": "color",
+			"id": "bg_arrow_hover",
+			"label": "Background arrow hover",
+			"default": "#000000"
+		},
+		{
+			"type": "color",
+			"id": "border_color_arrow_hover",
+			"label": "border arrow hover",
+			"default": "#000000"
+		},
+		{
+			"type": "color",
+			"id": "color_arrow_hover",
+			"label": "Color arrow hover",
+			"default": "#000000"
+		}
+    ],
+    "presets": [
+		{
+			"name": "Slideshow",
+			"settings": {
+				"autoplay": true
+			},
+            "blocks": [
+              {
+                "type": "_slide"
+              },
+              {
+                "type": "_slide"
+              }
+            ]
+		}
+    ]
+}
+{% endschema %}

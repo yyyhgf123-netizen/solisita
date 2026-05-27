@@ -1,0 +1,11 @@
+<div class="comment-card">
+	<div class="comment-card__header">
+		<span class="comment-card__author">{{ comment.author }}</span>
+		<time class="comment-card__date" datetime="{{ comment.created_at | date: '%Y-%m-%dT%H:%M:%SZ' }}">{{ comment.created_at | date: format: 'date' }}</time>
+	</div>
+	<div class="comment-card__content">
+		<div class="rte">
+			{{ comment.content }}
+		</div>
+	</div>
+</div>

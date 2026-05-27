@@ -1,0 +1,121 @@
+<div class="blog-sidebar">
+    {%- if block.settings.search_enable -%}
+		<div class="blog-search">
+			<form action="{{ routes.search_url }}" method="get" class="blog-search__form" role="search">
+				<input type="hidden" name="type" value="article" />
+				<input class="form-control blog-search__input" type="search" name="q" value="{{ search.terms | escape }}"
+					placeholder="{{ 'general.search.placeholder_blog' | t }}"
+					aria-label="{{ 'general.search.placeholder_blog' | t }}">
+				<button type="submit" class="btn blog-search__btn">
+					<i class="icon-search"></i>
+					<span class="d-none">{{ 'general.search.submit' | t }}</span>
+				</button>
+			</form>
+		</div>
+    {%- endif -%}
+	{%- if block.settings.relatedarticles_enable -%}
+		<div class="category-blog">
+			<h4 class="blog-sidebar__title">{{ block.settings.categories_title | escape }}</h4>
+			<ul class="list-category">
+			{%- for link in linklists[block.settings.menu_categories].links -%}
+				<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+			{%- endfor -%}
+			</ul>
+		</div>
+	{%- endif -%}
+    {%- if block.settings.relatedarticles_enable -%}
+		{%- assign heading = block.settings.relatedarticles_title | escape -%}
+		{%- assign limit = block.settings.relatedarticles_limit -%}
+		<div class="related-artibles">
+			<h4 class="blog-sidebar__title">{{ heading }}</h4>
+			<div class="related-artibles__content">
+				<ul class="related-artibles__list">
+					{% for article in search.results limit:limit %}
+						<li class="related-artibles__item">
+							<div class="related-artibles__card">
+								{%- if article.image -%}
+									<div class="related-artibles__card-image">
+										<a href="{{ article.url }}">
+											{% render 'img-global' with image: article.image, class: "img-fluid", effect: "fade-in" %}
+										</a>
+									</div>
+								{%- endif -%}
+								<div class="related-artibles__card-content">
+									<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+										{{ article.published_at | date: format: 'date' }}
+									</time>
+									<a href="{{ article.url }}">{{ article.title }}</a>
+								</div>
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+    {%- endif -%}
+	{% content_for "blocks" %}
+ </div>
+{% schema %}
+{
+  "name": "Blog sidebar search",
+   "blocks": [{ "type": "@theme" },{ "type": "@app" }],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Blog search"
+    },
+    {
+      "type": "checkbox",
+      "id": "search_enable",
+      "label": "Enable",
+      "default": true
+    },
+	{
+      "type": "header",
+      "content": "Blog Categories"
+    },
+    {
+      "type": "checkbox",
+      "id": "categories_enable",
+      "label": "Enable",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "categories_title",
+      "label": "Heading",
+      "default": "Categories"
+    },
+	{
+	  "type": "link_list",
+	  "id": "menu_categories",
+	  "label": "Menu Categories"
+	},
+    {
+      "type": "header",
+      "content": "Related Articles"
+    },
+    {
+      "type": "checkbox",
+      "id": "relatedarticles_enable",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "relatedarticles_title",
+      "label": "Heading",
+      "default": "Related Articles"
+    },
+    {
+      "type": "range",
+      "id": "relatedarticles_limit",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "Number of article",
+      "default": 6
+    }
+  ]
+}
+{% endschema %}

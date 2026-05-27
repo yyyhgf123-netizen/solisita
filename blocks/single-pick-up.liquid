@@ -1,0 +1,21 @@
+{% assign url_image = product.featured_media.preview_image | image_url:width:100 %}
+<div class="product-single__pick_up" data-src="{{ url_image }}" data-store-availability-container data-product_title="{{ product.title }}" data-id="{{ product.selected_or_first_available_variant.id }}" data-only_variant="{{ product.has_only_default_variant }}" data-base-url="{{ routes.root_url }}" {% if block.settings.product_pick_up_margin != blank %} style="margin:{{ block.settings.product_pick_up_margin }}"{% endif %}>
+</div>
+{% schema %}
+  {
+    "name": "Single Pick Up",
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "See instructions for Product pick up [Document](https:\/\/info.bingomore.com/shopify\/document\/wpbingo\/product_pages.html#section4)"
+        },
+        {
+            "type": "text",
+            "id": "product_pick_up_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px"
+        }
+    ],
+    "presets": [{"name": "Single Pick Up","category": "Single product"}]
+  }
+{% endschema %}

@@ -1,0 +1,378 @@
+
+{%- assign nav = block.settings.navigation -%}
+{%- assign dot = block.settings.pagination -%}
+{%- assign infinite = block.settings.infinite -%}
+{%- assign autoplay = block.settings.autoplay -%}
+{%- assign autoplay_speed = block.settings.autoplay_speed | escape -%}
+{%- assign rows 			        = block.settings.rows -%}
+{%- assign columns 			        = block.settings.columns -%}
+{%- assign space_columns 			= block.settings.space_columns -%}
+{%- assign pergroup_columns 		= block.settings.pergroup_columns -%}
+{%- assign column1440 		        = block.settings.column1440 -%}
+{%- assign space_column1440 		= block.settings.space_column1440 -%}
+{%- assign pergroup_column1440 		= block.settings.pergroup_column1440 -%}
+{%- assign column1 			        = block.settings.column1 -%}
+{%- assign space_column1 			= block.settings.space_column1 -%}
+{%- assign pergroup_column1 		= block.settings.pergroup_column1 -%}
+{%- assign column2 			        = block.settings.column2 -%}
+{%- assign space_column2 			= block.settings.space_column2 -%}
+{%- assign pergroup_column2 		= block.settings.pergroup_column2 -%}
+{%- assign column3 			        = block.settings.column3 -%}
+{%- assign space_column3 			= block.settings.space_column3 -%}
+{%- assign pergroup_column3 		= block.settings.pergroup_column3 -%}
+{%- assign column4 			        = block.settings.column4 -%}
+{%- assign space_column4 			= block.settings.space_column4 -%}
+{%- assign pergroup_column4 		= block.settings.pergroup_column4 -%}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+      {%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .wpbingo-widget--testimonials-2{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--testimonials-2{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--testimonials-2{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--testimonials-2{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+{% content_for "block", type: "custom-testimonial-2", id: "custom-testimonial-2" %}
+<div class="wpbingo-block wpbingo-widget--testimonials-2 wpbingo-block--{{ block.id }}">
+	{{block.settings.heading}}
+      <div class="content-testimonial">
+            <div class="wpbingo-section__content bwp_slider-carousel">
+                {%- if section.blocks.size > 0 -%}
+                     <div class="content-swiper-nav">
+                      <div class="bwp-swiper-slider" data-class-swiper="shopify-block" data-infinite="{{ infinite }}" data-rows={{ rows }}
+            					data-autoplay="{{ autoplay }}"
+  					data-autoplayspeed="{{ autoplay_speed }}"
+  					data-columns="{{ columns }}"
+                    data-space-columns="{{ space_columns }}"
+                    data-pergroup-columns="{{ pergroup_columns }}"
+  					data-column1440="{{ column1440 }}"
+                    data-space-column1440="{{ space_column1440 }}"
+                    data-pergroup-column1440="{{ pergroup_column1440 }}"
+  					data-column1="{{ column1 }}"
+                    data-space-column1="{{ space_column1 }}"
+                    data-pergroup-column1="{{ pergroup_column1 }}"
+  					data-column2="{{ column2 }}"
+                    data-space-column2="{{ space_column2 }}"
+                    data-pergroup-column2="{{ pergroup_column2 }}"
+  					data-column3="{{ column3 }}"
+                    data-space-column3="{{ space_column3 }}"
+                    data-pergroup-column3="{{ pergroup_column3 }}"
+  					data-column4="{{ column4 }}"
+                    data-space-column4="{{ space_column4 }}"
+                    data-pergroup-column4="{{ pergroup_column4 }}">
+                          <div class="swiper-wrapper">
+                            {% content_for "blocks" %}
+                          </div>
+                          {%- if nav -%}
+                          <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style=""></button>
+                          <button class="slick-next slick-arrow" aria-label="Next" type="button" style=""></button>
+                          {%- endif -%}
+                         {%- if dot -%} <div class="swiper-pagination" aria-label="Pagination"></div>{%- endif -%}
+                      </div>
+                    </div>
+                {%- endif -%}
+            </div>
+        </div>
+</div>
+{% schema %}
+  {
+    "name": "Testimonials 2",
+    "blocks": [{ "type": "_testimonial-item-2" }],
+    "settings": [
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+			"type": "header",
+			"content": "Carousel Settings"
+		},
+		{
+			"type": "checkbox",
+			"id": "navigation",
+			"label": "Show navigation",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "pagination",
+			"label": "Show pagination",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "infinite",
+			"label": "Infinite loop sliding",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"label": "Enable autoplay",
+			"default": false
+		},
+		{
+			"type": "text",
+			"id": "autoplay_speed",
+			"label": "Autoplay speed",
+			"info": "Autoplay speed in milliseconds. Type: int(ms)",
+			"default": "10000"
+		},
+        {
+          "type": "range",
+          "id": "rows",
+          "min": 1,
+          "max": 7,
+          "step": 1,
+          "label": "Rows",
+          "default": 1
+        },
+		{
+            "type": "header",
+            "content": "-----Screen >1440px"
+          },
+      	{
+            "type": "range",
+            "id": "columns",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "pergroup_columns",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "space_columns",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 30,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 1200px to 1440px"
+          },
+      	{
+            "type": "range",
+            "id": "column1440",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "pergroup_column1440",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "space_column1440",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 30,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 992px to 1199px"
+          },
+          {
+            "type": "range",
+            "id": "column1",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "pergroup_column1",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "space_column1",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 768px to 991px"
+          },
+          {
+            "type": "range",
+            "id": "column2",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 3
+          },
+        {
+            "type": "range",
+            "id": "pergroup_column2",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 3
+          },
+          {
+            "type": "range",
+            "id": "space_column2",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 480px to 767px"
+          },
+          {
+            "type": "range",
+            "id": "column3",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "pergroup_column3",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "space_column3",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          },
+           {
+            "type": "header",
+            "content": "-----Screen < 480px"
+          },
+      	{
+            "type": "range",
+            "id": "column4",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 1
+          },
+           {
+            "type": "range",
+            "id": "pergroup_column4",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "space_column4",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          }
+    ],
+    "presets": [
+        {
+            "name": "Testimonials 2",
+            "blocks": [
+              {
+                  "type": "_testimonial-item-2"
+              },
+              {
+                  "type": "_testimonial-item-2"
+              },
+              {
+                  "type": "_testimonial-item-2"
+              },
+              {
+                  "type": "_testimonial-item-2"
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,25 @@
+<script src="/services/javascripts/countries.js" defer="defer"></script>
+<script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+<script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script>
+<script src="{{ 'handlebars.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'jquery-3.7.1.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'debounce.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'enquire.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'lodash.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'velocity.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'image.zoom.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'recent-product.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'wpbingo.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+{%- if template contains 'product' -%}
+  <script src="{{ '360imagerotate.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'photoswipe.js' | asset_url }}" defer="defer"></script>
+	<script src="{{ 'photoswipe-ui-default.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+<script src="{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' }}" defer="defer"></script>
+{% if settings.show_currency_selector and settings.currency_type == '2' %}
+	<script src="{{ '/services/javascripts/currencies.js' }}" defer="defer"></script>
+	<script src="{{ 'currencies.js' | asset_url }}" defer="defer"></script>
+{% endif %}

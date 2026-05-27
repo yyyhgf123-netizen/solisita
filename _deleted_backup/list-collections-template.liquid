@@ -1,0 +1,404 @@
+{%- assign isEmpty = true -%}
+{%- if section.settings.display_type == 'all' -%}
+	{%- case section.settings.sort -%}
+		{%- when 'products_high' -%}
+			{%- assign list_collections = collections | sort: 'all_products_count' -%}
+		{%- when 'products_low' -%}
+			{%- assign list_collections = collections | sort: 'all_products_count' -%}
+		{%- when 'date' -%}
+			{%- assign list_collections = collections | sort: 'published_at' -%}
+		{%- when 'date_reversed' -%}
+			{%- assign list_collections = collections | sort: 'published_at' | reverse -%}
+		{%- when 'alphabetical' -%}
+			{%- assign list_collections = collections | sort: 'title' -%}
+		{%- when 'alphabetical_reversed' -%}
+			{%- assign list_collections = collections | sort: 'title' | reverse -%}
+		{%- else -%}
+			{%- assign list_collections = collections -%}
+	{%- endcase -%}
+
+	{%- for collection in list_collections -%}
+		{%- unless collection.handle == 'frontpage' -%}
+			{%- assign isEmpty = false -%}
+			{%- break -%}
+		{%- endunless -%}
+	{%- endfor -%}
+{%- else -%}
+	{%- if section.blocks.size > 0 -%}
+		{%- assign isEmpty = false -%}
+	{%- endif -%}
+{%- endif -%}
+
+{%- assign columns = section.settings.columns -%}
+{%- assign space_columns = section.settings.space_columns -%}
+{%- assign pergroup_columns = section.settings.pergroup_columns -%}
+{%- assign column1440 = section.settings.column1440 -%}
+{%- assign space_column1440 = section.settings.space_column1440 -%}
+{%- assign pergroup_column1440 = section.settings.pergroup_column1440 -%}
+{%- assign column1 = section.settings.column1 -%}
+{%- assign space_column1 = section.settings.space_column1 -%}
+{%- assign pergroup_column1 = section.settings.pergroup_column1 -%}
+{%- assign column2 = section.settings.column2 -%}
+{%- assign space_column2 = section.settings.space_column2 -%}
+{%- assign pergroup_column2 = section.settings.pergroup_column2 -%}
+{%- assign column3 = section.settings.column3 -%}
+{%- assign space_column3 = section.settings.space_column3 -%}
+{%- assign pergroup_column3 = section.settings.pergroup_column3 -%}
+{%- assign column4 = section.settings.column4 -%}
+{%- assign space_column4 = section.settings.space_column4 -%}
+{%- assign pergroup_column4 = section.settings.pergroup_column4 -%}
+
+{%- assign col = '' -%}
+{%- if section.settings.style_collection_list != 'style_3' -%}
+	{%- capture col -%}
+		col-xl-{{ 12 | divided_by: column1 }} col-lg-{{ 12 | divided_by: column2 }} col-md-{{ 12 | divided_by: column3 }} col-{{ 12 | divided_by: column4 }}
+	{%- endcapture -%}
+{%- endif -%}
+
+<div class="container {{ section.settings.style_collection_list }}">
+	<div class="collection-grid{% if section.settings.style_collection_list != 'style_3' %} row{% endif %}">
+		{%- if section.settings.style_collection_list == 'style_3' -%}
+		<div class="bwp_slider-carousel">
+			<div class="bwp-swiper-slider" data-infinite="false"
+                  data-columns="{{ columns }}"
+                  data-space-columns="{{ space_columns }}"
+                  data-pergroup-columns="{{ pergroup_columns }}"
+                  data-column1440="{{ column1440 }}"
+                  data-space-column1440="{{ space_column1440 }}"
+                  data-pergroup-column1440="{{ pergroup_column1440 }}"
+                  data-column1="{{ column1 }}"
+                  data-space-column1="{{ space_column1 }}"
+                  data-pergroup-column1="{{ pergroup_column1 }}"
+                  data-column2="{{ column2 }}"
+                  data-space-column2="{{ space_column2 }}"
+                  data-pergroup-column2="{{ pergroup_column2 }}"
+                  data-column3="{{ column3 }}"
+                  data-space-column3="{{ space_column3 }}"
+                  data-pergroup-column3="{{ pergroup_column3 }}"
+                  data-column4="{{ column4 }}"
+                  data-space-column4="{{ space_column4 }}"
+                  data-pergroup-column4="{{ pergroup_column4 }}">
+               <div class="swiper-wrapper">
+		{% endif %}
+
+		{%- if isEmpty -%}
+			{% render 'onboarding-featured-collections' %}
+		{%- else -%}
+			{%- if section.settings.display_type == 'all' -%}
+				{%- for collection in list_collections -%}
+					{%- if collection.handle == 'frontpage' -%}
+						{%- continue -%}
+					{%- endif -%}
+					{%- assign collection_handle = collection.handle -%}
+					<div class="collection-grid__item swiper-slide {{ col }}">
+						{% render 'collection-grid-collage', collection: collection %}
+					</div>
+				{%- endfor -%}
+			{%- else -%}
+				{%- for block in section.blocks -%}
+					{%- assign collection = collections[block.settings.collection] -%}
+					{%- if collection != blank -%}
+						{%- assign collection_handle = collection.handle -%}
+						<div class="collection-grid__item swiper-slide {{ col }}">
+							{% render 'collection-grid-collage', collection: collection %}
+						</div>
+					{%- endif -%}
+				{%- endfor -%}
+			{%- endif -%}
+		{%- endif -%}
+
+		{%- if section.settings.style_collection_list == 'style_3' -%}
+               </div>
+                <button class="slick-prev slick-arrow" aria-label="Previous" type="button"></button>
+                <button class="slick-next slick-arrow" aria-label="Next" type="button"></button>
+			</div>
+		</div>
+		{%- endif -%}
+	</div>
+</div>
+
+{% schema %}
+{
+  "name": "Collections list page",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "All collections are shown by default. Choose 'Selected' to display specific collections."
+    },
+    {
+      "type": "radio",
+      "id": "display_type",
+      "label": "Collections to show",
+      "default": "all",
+      "options": [
+        {
+          "value": "all",
+          "label": "All"
+        },
+        {
+          "value": "selected",
+          "label": "Selected"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "style_collection_list",
+      "label": "Display style",
+      "default": "style_1",
+      "options": [
+        {
+          "value": "style_1",
+          "label": "Style 1"
+        },
+        {
+          "value": "style_2",
+          "label": "Style 2"
+        },
+        {
+          "value": "style_3",
+          "label": "Style 3 (Slider)"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "sort",
+      "label": "Sort collections by",
+      "info": "Only applies when display type is 'All'",
+      "default": "alphabetical",
+      "options": [
+        {
+          "value": "products_high",
+          "label": "Product count, high to low"
+        },
+        {
+          "value": "products_low",
+          "label": "Product count, low to high"
+        },
+        {
+          "value": "alphabetical",
+          "label": "Alphabetically A-Z"
+        },
+        {
+          "value": "alphabetical_reversed",
+          "label": "Alphabetically Z-A"
+        },
+        {
+          "value": "date",
+          "label": "Date created, old to new"
+        },
+        {
+          "value": "date_reversed",
+          "label": "Date created, new to old"
+        }
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "Screen > 1440px"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "pergroup_columns",
+      "label": "Items per group",
+      "min": 1,
+      "max": 7,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "space_columns",
+      "label": "Space between items (px)",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 30
+    },
+
+    {
+      "type": "header",
+      "content": "Screen 1200px – 1440px"
+    },
+    {
+      "type": "range",
+      "id": "column1440",
+      "label": "Columns",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "pergroup_column1440",
+      "label": "Items per group",
+      "min": 1,
+      "max": 7,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "space_column1440",
+      "label": "Space between items (px)",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 30
+    },
+
+    {
+      "type": "header",
+      "content": "Screen 992px – 1199px"
+    },
+    {
+      "type": "range",
+      "id": "column1",
+      "label": "Columns",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "pergroup_column1",
+      "label": "Items per group",
+      "min": 1,
+      "max": 7,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "space_column1",
+      "label": "Space between items (px)",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 15
+    },
+
+    {
+      "type": "header",
+      "content": "Screen 768px – 991px"
+    },
+    {
+      "type": "range",
+      "id": "column2",
+      "label": "Columns",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "pergroup_column2",
+      "label": "Items per group",
+      "min": 1,
+      "max": 7,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "space_column2",
+      "label": "Space between items (px)",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 15
+    },
+
+    {
+      "type": "header",
+      "content": "Screen 480px – 767px"
+    },
+    {
+      "type": "range",
+      "id": "column3",
+      "label": "Columns",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "pergroup_column3",
+      "label": "Items per group",
+      "min": 1,
+      "max": 7,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "space_column3",
+      "label": "Space between items (px)",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 15
+    },
+
+    {
+      "type": "header",
+      "content": "Screen < 480px"
+    },
+    {
+      "type": "range",
+      "id": "column4",
+      "label": "Columns",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "pergroup_column4",
+      "label": "Items per group",
+      "min": 1,
+      "max": 7,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "space_column4",
+      "label": "Space between items (px)",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 15
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

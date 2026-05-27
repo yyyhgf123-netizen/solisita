@@ -1,0 +1,314 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- elsif section.settings.max_width != blank -%}
+	{%- assign container = 'bwp-container' -%}
+{%- else -%}
+	{%- assign container = 'container' -%}
+{%- endif -%}
+
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- assign width_container = section.settings.max_width | plus: 0 -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+
+{%- assign margin = '' -%}
+{%- if section.settings.margin != blank -%}
+  {%- capture margin -%}margin: {{ section.settings.margin }};{%- endcapture -%}
+{%- endif -%}
+
+{% assign margin 			= section.settings.margin | split: "|" %}
+{% assign padding 			= section.settings.padding | split: "|" %}
+
+{%- style -%}
+	{%- if section.settings.fullwidth == blank and section.settings.max_width != blank and width_container > 1200 -%}
+		@media (max-width: {{ section.settings.max_width }}) and (min-width: 1200px){
+			#shopify-section-{{ section.id }} .bwp-container{
+				padding-left:30px;
+				padding-right:30px;
+			}
+		}
+	{%- endif -%}
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1200px){
+			#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+{%- endstyle -%}
+<section class="wpbingo-section wpbingo-section--lookbook lookbook-split wpbingo-section--{{ section.id }}" data-id="{{ section.id }}">
+	<div class="{{ container }}" {{ max_width }}>
+		<div class="wpbingo-section__inner">
+			<div class="wpbingo-lookbook__contents">
+				{%- for block in section.blocks -%}
+					{% if block.type == 'image' %}
+						{%- assign length 	= length | plus: 1 -%}
+					{%- endif -%}
+				{%- endfor -%}
+				<div class="lookbook-split-content" style="--flex-item:{{ length }};--height-item:{{  section.settings.height_lookbook }}px">
+					{%- assign id = 0 -%}
+					{%- for block in section.blocks -%}
+						{% if block.type == 'image' %}
+							{%- assign j = 1 -%}
+							{%- assign i = 1 -%}
+							{%- assign image 	= block.settings.image -%}
+							{%- assign name 	= block.settings.title -%}
+							<div class="wpbingo-lookbook__item{% if forloop.first %} active{% endif %}">
+								<div class="lookbook-card">
+									<div class="lookbook-image">
+										{%- if image != blank -%}
+											<img class="featured-lookbook__img lazyload fade-in" alt="{{ image.alt }}" src="{{ image | image_url }}" width="{{ image.width }}" height="{{ image.height }}" />
+										{%- else -%}
+											<img class="lazyload fade-in" src="https://placehold.jp/786x544.png" width="786" height="544" />
+										{%- endif -%}
+									</div>
+									{% if block.settings.title_lookbook != blank %}
+										<h2 class="title">{{ block.settings.title_lookbook }}</h2>
+									{%- endif -%}
+									{%- for block in section.blocks -%}
+										{% if block.type == 'item' %}
+											{%- assign name_pin = block.settings.name_pin -%}
+											{%- assign product_handle = block.settings.product -%}
+											{%- assign top = block.settings.top -%}
+											{%- assign left = block.settings.left -%}
+											{% if name_pin == name %}
+												<div class="lookbook-card__item" style="top: {{ top }}%; left: {{ left }}%;">
+													<div class="lookbook-card__point">
+														<div class="lookbook-card__button">
+															<button class="lookbook-card__btn" data-toggle="modal" data-target="lookbook-{{ section.id }}-{{ id }}">
+																<span>{{ j }}</span>
+															</button>
+														</div>
+													</div>
+												</div>
+												{%- assign j = j | plus: 1 -%}
+												{%- assign id = id | plus: 1 -%}
+											{%- endif -%}
+										{%- endif -%}
+									{%- endfor -%}
+								</div>
+							</div>
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+	{%- assign id = 0 -%}
+	{%- for block in section.blocks -%}
+		{% if block.type == 'item' %}
+			{%- assign name_pin = block.settings.name_pin -%}
+			{%- assign product_handle = block.settings.product -%}
+			{%- assign alignment = block.settings.display -%}
+            {%- assign id_lookbook = section.id | append: '-' | append: id -%}
+			{%- render 'lookbook-item', product: all_products[product_handle], alignment: alignment, id: id_lookbook -%}
+			{%- assign id = id | plus: 1 -%}
+		{%- endif -%}
+	{%- endfor -%}
+</section>
+{% schema %}
+    {
+        "name": "Lookbook Split",
+        "class": "wpbingo-framework",
+		"disabled_on": {
+		"groups": ["header"]
+	},
+        "settings": [
+            {
+                "type": "header",
+                "content": "Layout settings"
+            },
+            {
+                "type": "text",
+                "id": "max_width",
+                "label": "Width container",
+                "info": "Default: 1440px"
+            },
+            {
+                "type": "checkbox",
+                "id": "fullwidth",
+                "label": "Fullwidth"
+            },
+            {
+                "type": "text",
+                "id": "padding",
+                "label": "Padding",
+                "placeholder": "0px 0px 0px 0px",
+                "info":"Screen: desktop | 1200px | 991px | 767px"
+            },
+            {
+                "type": "text",
+                "id": "margin",
+                "label": "Margin",
+                "placeholder": "0px 0px 0px 0px",
+                "info":"Screen: desktop | 1200px | 991px | 767px"
+            },
+            {
+                "type": "header",
+                "content": "General Settings"
+            },
+			{
+				"type": "number",
+				"id": "height_lookbook",
+				"label": "Height Lookbook",
+				"info": "only user for Lookbook Split",
+				"default": 544
+			}
+        ],
+        "blocks": [
+			{
+                "type": "image",
+                "name": "Image Lookbook",
+                "settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Lookbook Name"
+					},
+                    {
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image"
+					},
+					{
+						"type": "text",
+						"id": "title_lookbook",
+						"label": "Title",
+						"default": "Heading"
+					}
+                ]
+            },
+            {
+                "type": "item",
+                "name": "Pin Product",
+                "settings": [
+					{
+						"type": "text",
+						"id": "name_pin",
+						"label": "Pin for Image"
+					},
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Choose product"
+                    },
+                    {
+                        "type": "select",
+                        "id": "display",
+                        "label": "Display type",
+                        "default": "top-left",
+                        "options": [
+                            {
+                                "value": "top-left",
+                                "label": "Top left"
+                            },
+                            {
+                                "value": "top-right",
+                                "label": "Top right"
+                            },
+                            {
+                                "value": "center-left",
+                                "label": "Center left"
+                            },
+                            {
+                                "value": "center-top",
+                                "label": "Center top"
+                            },
+                            {
+                                "value": "center-right",
+                                "label": "Center right"
+                            },
+                            {
+                                "value": "center-bottom",
+                                "label": "Center bottom"
+                            },
+                            {
+                                "value": "bottom-left",
+                                "label": "Bottom left"
+                            },
+                            {
+                                "value": "bottom-right",
+                                "label": "Bottom right"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "range",
+                        "id": "top",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Offset top",
+                        "default": 50
+                    },
+                    {
+                        "type": "range",
+                        "id": "left",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Offset left",
+                        "default": 50
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Lookbook Split",
+				"blocks": [
+					{
+						"type": "image",
+						"settings": {
+							"title": "look-1"
+						}
+					},
+					{
+						"type": "item",
+						"settings": {
+							"name_pin": "look-1"
+						}
+					},
+					{
+						"type": "image",
+						"settings": {
+							"title": "look-2"
+						}
+					},
+					{
+						"type": "item",
+						"settings": {
+							"name_pin": "look-2"
+						}
+					}
+				]
+            }
+        ]
+    }
+{% endschema %}

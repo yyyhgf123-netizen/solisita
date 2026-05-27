@@ -1,0 +1,34 @@
+{% assign img_url = article.image | image_url %}
+<div class="page-article__inner prallax_image">
+    <div class="content-image-single">
+        <div class="article__image" style="background-image:url('{{ img_url }}')">
+        </div>
+        <div class="content-info">
+            {%- if section.settings.show_category -%}
+                <div class="blog-category">
+                    <a href="{{ blog.url }}">{{ blog.title }}</a>
+                </div>
+            {%- endif -%}
+            <h1 class="page-title">{{ article.title }}</h1>
+            <div class="article__meta article__meta--post">
+                {% if section.settings.show_author %} {{ 'blogs.article.by' | t }} <span> {{ article.author }} </span> {% endif %} {% if section.settings.show_date %} {{ 'blogs.article.on' | t }} {{ article.updated_at | date: "%b %d, %Y" }} {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-12 post-single">
+                {% content_for "block", type: "article-template", id: "article-template" %}
+            </div>
+        </div>
+    </div>
+    {% content_for "blocks" %}
+</div>
+{% schema %}
+  {
+    "name": "Post prallax",
+    "blocks": [{ "type": "@theme" },{ "type": "@app" }],
+    "settings": [],
+    "presets": [{"name": "Post prallax"}]
+  }
+{% endschema %}

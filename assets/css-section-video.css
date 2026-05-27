@@ -1,0 +1,89 @@
+/*============ Block Button Video ===============*/
+.wpbingo-button-video .button-video{
+  display:inline-block;
+  cursor: pointer;
+}
+.wpbingo-button-video .video-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  padding: 20px;
+}
+.wpbingo-button-video .video-wrapper.active {
+  display: flex;
+}
+.wpbingo-button-video .video-wrapper.show .video-iframe {
+  opacity: 1;
+}
+.wpbingo-button-video .video-wrapper .video-iframe {
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  max-height: 600px;
+  position: relative;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.wpbingo-button-video .video-wrapper .video-iframe .close-button {
+  cursor: pointer;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  text-align: center;
+  z-index: 1;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  padding: 6px;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  box-shadow: 0 2px 59px rgba(0, 0, 0, 0.4);
+  background: var(--white);
+}
+.wpbingo-button-video .video-wrapper .video-iframe .close-button:before, .wpbingo-button-video .video-wrapper .video-iframe .close-button:after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 14px;
+  top: 50%;
+  left: calc(50% - 7px);
+  margin-top: -1px;
+  background-color: var(--gray-dark);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.wpbingo-button-video .video-wrapper .video-iframe .close-button:before {
+  transform-origin: 50% 50%;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.wpbingo-button-video .video-wrapper .video-iframe .close-button:after {
+  transform-origin: 50% 50%;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.wpbingo-button-video .video-wrapper .video-iframe .close-button:hover:before, .wpbingo-button-video .video-wrapper .video-iframe .close-button:hover:after {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.wpbingo-button-video .video-wrapper iframe {
+  height: 100%;
+  width: 100%;
+}
+.wpbingo-button-video .close-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0, 0.5);
+  height: 100%;
+  width: 100%;
+}

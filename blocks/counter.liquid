@@ -1,0 +1,233 @@
+
+<style>
+  #shopify-block-{{ block.id }} .wpbingo-counter {
+    text-align: {{ block.settings.align }};
+  }
+  #shopify-block-{{ block.id }} .wpbingo-counter .counter-number{
+    font-size: {{ block.settings.font_size }}px;
+    line-height:{{ block.settings.line_height }}px;
+    font-weight: {{ block.settings.font_weight }};
+    color: {{ block.settings.color }};
+    font-family: var({{ block.settings.font }});
+  }
+  #shopify-block-{{ block.id }} .wpbingo-counter .counter-label{
+    font-size: {{ block.settings.font_size_title }}px;
+    line-height:{{ block.settings.line_height_title }}px;
+    font-weight: {{ block.settings.font_weight_title }};
+    color: {{ block.settings.color_title }};
+    font-family: var({{ block.settings.font_title }});
+    margin:{{ block.settings.margin_title }};
+  }
+  @media (max-width: 767px) {
+    #shopify-block-{{ block.id }} .wpbingo-counter {
+      text-align: {{ block.settings.align_mobi }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-counter .counter-number{
+      font-size: {{ block.settings.font_size_mobi }}px;
+      line-height:{{ block.settings.line_height_mobi }}px;
+      color: {{ block.settings.color_mobi }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-counter .counter-label{
+      font-size: {{ block.settings.font_size_title_mobi }}px;
+      line-height:{{ block.settings.line_height_title_mobi }}px;
+      color: {{ block.settings.color_title_mobi }};
+    }
+  }
+</style>
+
+<div class="wpbingo-counter wpbingo-block--{{ block.id }}">
+  <div class="counter-number" data-target="{{ block.settings.counter_value }}">{{ block.settings.counter_value }}</div>
+  <div class="counter-label">{{ block.settings.counter_label }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Counter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "counter_label",
+      "label": "Counter Label",
+      "default": "Customers"
+    },
+    {
+      "type": "number",
+      "id": "counter_value",
+      "label": "Counter Value",
+      "default": 1000
+    },
+    {
+      "type": "text_alignment",
+      "id": "align",
+      "label": "Text Align",
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Number"
+    },
+    {
+        "type": "select",
+        "id": "font",
+        "label": "Font family",
+        "options": [
+            {
+                "value": "--font-family-second",
+                "label": "Font Heading"
+            },
+            {
+                "value": "--font-family-base",
+                "label": "Font Body"
+            },
+            {
+                "value": "--font-family-pre",
+                "label": "Font preventive"
+            }
+        ],
+        "default": "--font-family-base"
+    },
+    {
+      "type": "number",
+      "id": "font_size",
+      "label": "Font Size",
+      "default": 40
+    },
+    {
+        "type": "number",
+        "id": "line_height",
+        "label": "Line height",
+        "default": 45,
+        "info": "px"
+    },
+    {
+      "type": "text",
+      "id": "font_weight",
+      "label": "Font Weight",
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Label"
+    },
+    {
+        "type": "select",
+        "id": "font_title",
+        "label": "Font family",
+        "options": [
+            {
+                "value": "--font-family-second",
+                "label": "Font Heading"
+            },
+            {
+                "value": "--font-family-base",
+                "label": "Font Body"
+            },
+            {
+                "value": "--font-family-pre",
+                "label": "Font preventive"
+            }
+        ],
+        "default": "--font-family-base"
+    },
+    {
+      "type": "number",
+      "id": "font_size_title",
+      "label": "Font Size",
+      "default": 40
+    },
+    {
+        "type": "number",
+        "id": "line_height_title",
+        "label": "Line height",
+        "default": 45,
+        "info": "px"
+    },
+    {
+      "type": "text",
+      "id": "font_weight_title",
+      "label": "Font Weight",
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "color_title",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+        "type": "textarea",
+        "id": "margin_title",
+        "label": "Margin",
+        "placeholder": "0px 0px 0px 0px"
+    },
+    {
+        "type": "header",
+        "content": "Mobile ====================",
+        "info": "screen < 767px"
+    },
+    {
+      "type": "header",
+      "content": "Number"
+    },
+    {
+      "type": "number",
+      "id": "font_size_mobi",
+      "label": "Font Size",
+      "default": 24
+    },
+    {
+        "type": "number",
+        "id": "line_height_mobi",
+        "label": "Line height",
+        "default": 24,
+        "info": "px"
+    },
+    {
+      "type": "color",
+      "id": "color_mobi",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Label"
+    },
+    {
+      "type": "number",
+      "id": "font_size_title_mobi",
+      "label": "Font Size",
+      "default": 24
+    },
+    {
+        "type": "number",
+        "id": "line_height_title_mobi",
+        "label": "Line height",
+        "default": 24,
+        "info": "px"
+    },
+    {
+      "type": "color",
+      "id": "color_title_mobi",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "text_alignment",
+      "id": "align_mobi",
+      "label": "Text Align",
+      "default": "center"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Counter"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,72 @@
+{%- assign sidebar_position = section.settings.sidebar_position -%}
+{%- assign layout_blog = section.settings.layout_blog -%}
+<section class="page-blog {{ sidebar_position }} {{ layout_blog }}">
+	<div class="container">
+		<div class="page-blog__inner">
+			<div class="row">
+				{%- if sidebar_position !='without' -%}
+					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
+						{% content_for "block", type: "blog-sidebar", id: "blog-sidebar" %}
+					</div>
+        {%- endif -%}
+					<div class="{% if sidebar_position !='without' %}col-xl-9 col-lg-9 col-md-12 col-12{% else %}col-xl-12 col-lg-12 col-md-12 col-12 {% endif %}  cate-post-content {{ sidebar_position }} {{ layout_blog }}">
+						{% content_for "block", type: "blog-template", id: "blog-template" %}
+					</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+  "name": "Blog",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+	{
+        "type": "select",
+        "id": "sidebar_position",
+        "label": "Sidebar Position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "without",
+            "label": "Without"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "layout_blog",
+        "label": "Layout Blog",
+        "options": [
+          {
+            "value": "list",
+            "label": "List"
+          },
+          {
+            "value": "grid",
+            "label": "Grid"
+          },
+          {
+            "value": "modern",
+            "label": "Modern"
+          }, 
+          {
+            "value": "standar",
+            "label": "Standar"
+          }
+        ],
+        "default": "standar"
+      }
+  ]
+}
+{% endschema %}
+

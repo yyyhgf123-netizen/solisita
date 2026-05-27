@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "article-breadcrumb",
+      "settings": {
+        "color_breadcrumb": "#444444",
+        "text_align": "left"
+      }
+    },
+    "main": {
+      "type": "main-post",
+      "blocks": {
+        "post_normal_AmVUtC": {
+          "type": "_post-normal",
+          "name": "Post normal",
+          "settings": {
+            "layout_article": "sidebar_left"
+          },
+          "blocks": {
+            "blog-sidebar": {
+              "type": "blog-sidebar",
+              "static": true,
+              "settings": {
+                "search_title": "Search",
+                "search_enable": true,
+                "categories_enable": true,
+                "categories_title": "Categories",
+                "menu_categories": "sidebar-blog",
+                "relatedarticles_enable": true,
+                "relatedarticles_title": "Related Articles",
+                "relatedarticles_limit": 6,
+                "tags_enable": true,
+                "tags_title": "Articles Tags",
+                "tags_limit": 10
+              },
+              "blocks": {}
+            },
+            "article-template": {
+              "type": "article-template",
+              "static": true,
+              "settings": {
+                "show_article_tags": true,
+                "show_prev_next": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "post_normal_AmVUtC"
+      ],
+      "settings": {
+        "show_category": true,
+        "show_author": true,
+        "show_date": true
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

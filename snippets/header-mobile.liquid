@@ -1,0 +1,60 @@
+<div class="header-mobile">
+	<div class="header-top-mobile">
+		<div class="container">
+			<div class="header-center__inner">
+				<div class="button-menu">
+					<button class="js-menu-mobile btn menu-mobile__btn" type="button">
+						<i class="feather-menu"></i>
+					</button>
+					{%- if section.settings.show_header_search -%}
+						<div class="search-mobile">
+							<div class="search-toggle"><i class="icon-search"></i></div>
+							{% render 'header-search-toggle' %}
+						</div>
+					{%- endif -%}
+				</div>
+				<div class="header-logo" itemscope itemtype="http://schema.org/Organization">
+					{%- if section.settings.logo -%}
+						<a href="/" itemprop="url" class="header-logo__link">
+							<img class="header-logo__img"
+								src="{{ section.settings.logo | image_url:width:section.settings.logo.width,height:section.settings.logo.height }}" 
+								srcset="{{ section.settings.logo | image_url:width:section.settings.logo.width,height:section.settings.logo.height }}"
+								alt="{{ section.settings.logo.alt | default: shop.name }}"
+								width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}"
+								itemprop="logo">
+						</a>
+					{%- else -%}
+						<a href="/" itemprop="url" class="header-logo__link header-logo__link--text">{{ shop.name }}</a>
+					{%- endif -%}
+				</div>
+				<div class="header-right">
+					{%- if section.settings.show_header_wishlist -%}
+					<div class="wishlist-mobile">
+						<a href="{{  section.settings.page_wishlist.url }}" title="wishlist" data-count-wishlist><i class="icon-wishlist"><span class="count"></span></i></a>
+					</div>
+					{%- endif -%}
+					{%- if section.settings.show_header_cart -%}
+						{% render 'header-cart' %}
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	</div>
+	{%- if settings.show_menu_bottom -%}
+	<div class="header-bottom-fixed">
+		<div class="home-mobile">
+			<a href="\" title="home"><i class="feather-home"></i><span>{{ 'layout.header.home' | t }}</span></a>
+		</div>
+		<div class="shop-mobile">
+			<a href="{{ routes.all_products_collection_url }}" title="shop"><i class="feather-grid"></i><span>{{ 'layout.header.shop' | t }}</span></a>
+		</div>
+		<div class="account-mobile">
+			<a href="{{ routes.account_url }}" title="my account"><i class="icon-account"></i><span>{{ 'layout.header.account' | t }}</span></a>
+		</div>
+		<div class="wishlist-mobile">
+			<a href="{{  section.settings.page_wishlist.url }}" title="wishlist" data-count-wishlist><i class="feather-heart"><span class="count"></span></i><span>{{ 'layout.header.wishlist' | t }}</span></a>
+		</div>
+	</div>
+	{%- endif -%}
+	{% render 'menu-mobile' %}
+</div>

@@ -1,0 +1,49 @@
+{%- assign menu_link_list = block.settings.menu_link_list -%}
+<ul class="menu-dropdown__content">
+  {%- for menu_link_child in linklists[menu_link_list].links -%}
+        {% comment %}====== MENU DROPDOWN LEVEL II ======{% endcomment %}
+       {%- if menu_link_child.links != blank -%}
+          <li class="menu-dropdown menu-dropdown--basic{% if menu_link_child.active %} active{% endif %}">
+            <a href="{{ menu_link_child.url }}">{{ menu_link_child.title }}</a>
+            <ul class="menu-dropdown__content">
+              {%- for menu_link_child1 in menu_link_child.links -%}
+                {%- if menu_link_child1.links != blank -%}
+                  {% comment %}====== MENU DROPDOWN LEVEL III ======{% endcomment %}
+                  <li class="menu-dropdown menu-dropdown--basic{% if menu_link_child1.active %} active{% endif %}">
+                    <a href="{{ menu_link_child1.url }}" title="">{{ menu_link_child1.title }}</a>
+                    <ul class="menu-dropdown__content">
+                      {%- for menu_link_child2 in menu_link_child1.links -%}
+                        <li class="{% if menu_link_child2.active %}active{% endif %}">
+                          <a href="{{ menu_link_child2.url }}">{{ menu_link_child2.title }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </li>
+                {%- else -%}
+                  <li class="{% if menu_link_child1.active %}active{% endif %}">
+                    <a href="{{ menu_link_child1.url }}">{{ menu_link_child1.title }}</a>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </li>
+      {%- else -%}
+            <li class="{% if menu_link_child.active %}active{% endif %}">
+               <a href="{{ menu_link_child.url }}">{{ menu_link_child.title }}</a>
+            </li>
+      {%- endif -%}
+  {%- endfor -%}
+</ul>
+{% schema %}
+  {
+    "name": "Menu list",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "menu_link_list",
+            "label": "Menu"
+        }
+    ],
+    "presets": [{"name": "Menu list"}]
+  }
+{% endschema %}

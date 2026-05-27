@@ -1,0 +1,43 @@
+
+<div class="wpbingo-section__inner">
+    <div class="wpbingo-lookbook__contents">
+        <div class="lookbook-product-content">
+            <div class="wpbingo-lookbook__item">
+                <div class="lookbook-card">
+                    <div class="lookbook-image">
+                        {%- if block.settings.image != blank -%}
+                            {% render 'img-global' with image: block.settings.image, class: "featured-lookbook__img", effect: "fade-in" %}
+                        {%- else -%}
+                            <img class="lazyload fade-in" src="https://placehold.jp/583x680.png" width="583" height="680" />
+                        {%- endif -%}
+                    </div>
+                    {% content_for "blocks" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "Lookbook Item",
+        "class": "wpbingoFramework",
+        "blocks": [{ "type": "_product-pin" }], 
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ],
+        "presets": [
+          {
+            "name": "Lookbook Item",
+            "blocks": [
+              {
+                  "type": "_product-pin"
+              }
+           ]
+          }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,116 @@
+	{% capture "form_classes" %}
+		js-addtocart-form product-single__form{% if product.has_only_default_variant %} product-single__form--no-variants{% endif %}
+	{%- endcapture %}
+	{% form 'product', product, class:form_classes, data-product-form: '' %}
+	{% unless product.has_only_default_variant %}
+		{%- for option in product.options_with_values -%}
+			{%- if filter_name_1 != blank and filter_name_1 == option.name -%}
+				{%- assign type = select_filter_1 -%}
+			{% elsif filter_name_2 != blank and filter_name_2 == option.name %}
+				{%- assign type = select_filter_2 -%}
+			{% elsif filter_name_3 != blank and filter_name_3 == option.name %}
+				{%- assign type = select_filter_3 -%}
+			{% endif %}
+			<div class="variants-wrapper product-form__item wpb-variants-swatch">
+				{% assign current = product.selected_or_first_available_variant %}
+				{%- if forloop.index == 1 -%}
+					{% assign current_option = current.option1 %}
+				{% elsif forloop.index == 2 %}
+					{% assign current_option = current.option2 %}
+				{% else %}
+					{% assign current_option = current.option3 %}
+				{% endif %}
+				<label class="variants__label">{{ option.name | escape }}: <span>{{ current_option }}</span></label>
+				<div class="js-product-select-option--{{ forloop.index }} variants__options">
+					{%- assign option_index = forloop.index -%}
+					{%- for value in option.values -%}
+						{%- assign option_disabled = true -%}
+						{%- for variant in product.variants -%}
+							{%- if variant.available -%}
+								{%- if option_index == 1 and variant.option1 == value -%}
+									{%- assign option_disabled = false -%}
+									{%- break -%}
+								{%- elsif option_index == 2 and variant.option2 == value and variant.option1 == current_variant.option1 -%}
+									{%- assign option_disabled = false -%}
+									{%- break -%}
+								{%- elsif option_index == 3 and variant.option3 == value and variant.option2 == current_variant.option2 and variant.option1 == current_variant.option1 -%}
+									{%- assign option_disabled = false -%}
+									{%- break -%}
+								{%- endif -%}
+							{%- endif -%}
+						{%- endfor -%}
+						<div class="single-option-selector" data-single-option-button>
+							<input type="radio" {% if option.selected_value == value %} checked="checked"{% endif %}
+								{% if option_disabled %} disabled="disabled"{% endif %}
+								value="{{ value | escape }}"
+								data-index="option{{ option_index }}"
+								name="option{{ option.position }}"
+								class="js-single-option-selector{% if option_disabled %} disabled{% endif %}"
+								id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
+							<label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}"
+								data-{{ type }}="{{ value }}"
+								title="{{ value | strip | escape }}"
+								class="{{ value | escape }} {% if option_disabled %}disabled{% endif %}">
+								{{ value | escape }}
+								{%- if type != 'label' -%}
+									<span class="tool-tip">{{ value | escape }}</span>
+								{%- endif -%}
+							</label>
+						</div>
+					{%- endfor -%}
+				</div>
+			</div>
+		{%- endfor -%}
+	{% endunless %}
+	<select name="id" class="js-product-select--{{ section.id }} product-single__variants d-none">
+		{%- for variant in product.variants -%}
+			{%- if variant.available -%}
+				<option {% if variant == product.selected_or_first_available_variant %}
+					selected="selected" {% endif %}
+					data-sku="{{ variant.sku }}"
+					value="{{ variant.id }}">
+					{{ variant.title }} - {{ variant.price | money_with_currency }}
+				</option>
+			{%- else -%}
+				<option disabled="disabled">
+					{{ variant.title }} - {{ 'products.product.sold_out' | t }}
+				</option>
+			{%- endif -%}
+		{%- endfor -%}
+	</select>
+	<div class="product-single__buttons">
+		{% comment %}Product quantity{% endcomment %}
+		<div class="js-quantity-selector product-quantity">
+			<label for="Quantity" class="product-quantity__label">{{ 'products.product.quantity' | t }}</label>
+			<div class="product-quantity__selector">
+				<div class="wpbingo-qty">
+					<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+						<i class="feather-minus"></i>
+					</button>
+					<input type="text" name="quantity" class="js-qty-number wpbingo-qty__number" value="1" min="1" aria-label="quantity" pattern="[0-9]*">
+					<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}">
+						<i class="feather-plus"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		{% comment %}Add to cart button{% endcomment %}
+		<div class="product-single__add-to-cart">
+			<button  class="btn btn--add-to-cart{% if block.settings.enable_payment_button %} btn--secondary-accent{% endif %}"{% unless current_variant.available %} disabled="disabled"{% endunless %}
+				type="submit"
+				name="add">
+				<span class="btn__text">
+					{% if current_variant.available %}
+						{% if current_variant.inventory_quantity == 0 and current_variant.inventory_policy == "continue" %}
+							{{ 'products.product.pre_order' | t }}
+						{% else %}
+							{{ 'products.product.add_to_cart' | t }}
+						{% endif %}
+					{% else %}
+						{{ 'products.product.sold_out' | t }}
+					{% endif %}
+				</span>
+			</button>
+		</div>
+	</div>
+	{% endform %}

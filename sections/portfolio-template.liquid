@@ -1,0 +1,164 @@
+{% paginate blog.articles by section.settings.limit %}
+{%- assign coloumn = section.settings.limit-coloumn -%}
+{%- assign coloumn2 = section.settings.limit-coloumn2 -%}
+{%- capture "class" -%}
+	{%- if section.settings.layout == 'normal' -%}
+		{%- assign number = 12 | divided_by: coloumn -%}
+		{%- assign number2 = 12 | divided_by: coloumn2 -%}
+		col-xl-{{ number }} col-lg-{{ number2 }} col-md-6 col-12
+	{%- endif -%}
+{%- endcapture -%}
+<section class="page-portfolio">
+	<div class="container">
+		<div class="page-portfolio__inner">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-12 cate-post-content">
+					<div class="article__list {{ section.settings.layout }}"{%- if section.settings.layout == 'masory' -%} style="--col-xl:{{coloumn}};--col-lg:{{coloumn2}};"{%- endif -%}>
+						{% for article in blog.articles %}
+							<article class="article {{ class }}">
+								<div class="content-article">
+									{% unless article.image == blank %}
+										<div class="article__image"> 
+											<a class="article__featured-image-link" href="{{ article.url }}">
+												<div class="portfolio__featured-image-wrapper">
+													<img class="portfolio__featured-image fade-in lazyload" src="{{ article.image | image_url:width:article.image.width,height:article.image.height }}" alt="{{ article.image.alt | escape }}" width="{{ article.image.width }}" height="{{ article.image.height }}">
+												</div>
+											</a>
+										</div>
+									{% endunless %}
+									<div class="article__content">
+										<div class="article__content-info">
+											{%- if section.settings.layout == 'masory' -%}
+												<ul class="list-tag">
+													{% for tag in article.tags %}
+														<li class="item-tag">
+															{{ tag | link_to_tag: tag }}
+														</li>
+													{% endfor %}
+												</ul>
+											{%- endif -%}
+											<h2 class="article__heading">
+												<a class="article__heading-link" href="{{ article.url }}">{{ article.title }}</a>
+											</h2>
+											{%- if section.settings.layout == 'normal' -%}
+												<ul class="list-tag">
+													{% for tag in article.tags %}
+														<li class="item-tag">
+															{{ tag | link_to_tag: tag }}
+														</li>
+													{% endfor %}
+												</ul>
+											{%- endif -%}
+										</div>
+									</div>
+								</div>
+							</article>
+						{% endfor %}
+					</div>
+					{% if paginate.pages > 1 %}
+						{% capture previous_label %}
+							<span class="pagination__navigation">
+								<i class="feather-chevron-left"></i>
+								<span class="sr-only">{{ 'general.pagination.previous' | t }}</span>
+							</span>
+						{% endcapture %}
+						{% capture next_label %}
+							<span class="pagination__navigation">
+								<i class="feather-chevron-right"></i>
+								<span class="sr-only">{{ 'general.pagination.next' | t }}</span>
+							</span>
+						{% endcapture %}
+						{%- if section.settings.select_pagination == 'pagination' -%}	
+							<div class="pagination pagination-ajax-blog" title="{{ blog.title }} - {{ 'blogs.portfolio.tagged' | t }} '{{ current_tags }}'">
+								{{ paginate | default_pagination: previous: previous_label, next: next_label }}
+							</div>
+						{%- elsif settings.select_pagination == 'loadmore' -%}
+							<div class="pagination pagination-ajax-blog-loadmore">
+								{%- assign max_page = paginate.page_size | times:paginate.current_page -%}
+								{%- if max_page > paginate.items -%}
+									{%- assign max_page = paginate.items -%}
+								{%- endif -%}
+								{% assign percent =  max_page | times: 100 | divided_by: paginate.items %}
+								{%- if percent < 100 -%}
+									<div class="collection-blog-count">{{ 'blogs.article.blog_count_html' | t: max_page:max_page, items_page:paginate.items }}</div>
+									<div class="content-percent"><div class="percent" style="width:{{percent}}%"></div></div>
+									<a href="{{ paginate.next.url }}" title="{{ blog.title }} - {{ 'blogs.portfolio.tagged' | t }} '{{ current_tags }}'">{{ 'collections.general.load_more' | t }}
+										<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+									</a>
+								{%- endif -%}
+							</div>
+						{%- endif -%}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Blog pages",
+  "settings": [
+    {
+		"type": "range",
+		"id": "limit",
+		"min": 1,
+		"max": 20,
+		"step": 1,
+		"label": "Number of posts in a page",
+		"default": 5
+    },
+	{
+		"type": "range",
+		"id": "limit-coloumn",
+		"min": 1,
+		"max": 4,
+		"step": 1,
+		"label": "Coloumn",
+		"default": 3
+    },
+	{
+		"type": "range",
+		"id": "limit-coloumn2",
+		"min": 1,
+		"max": 4,
+		"step": 1,
+		"label": "Coloumn Laptop",
+		"default": 3
+    },
+	{
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "masory",
+            "label": "Masory"
+          }
+        ],
+        "default": "normal"
+    },
+	{
+        "type": "select",
+        "id": "select_pagination",
+        "label": "Select Pagination",
+        "options": [
+          {
+            "value": "pagination",
+            "label": "Pagination"
+          },
+          {
+            "value": "loadmore",
+            "label": "Load More"
+          }
+        ],
+        "default": "pagination"
+    }
+  ]
+}
+{% endschema %}

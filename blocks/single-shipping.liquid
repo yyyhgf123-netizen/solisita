@@ -1,0 +1,22 @@
+<div class="product-single__policies rte"{% if block.settings.product_shipping_policy_margin != blank %} style="margin:{{ block.settings.product_shipping_policy_margin }}"{% endif %}>
+{%- if shop.taxes_included -%}
+    {{ 'products.general.include_taxes' | t }}
+{%- endif -%}
+{%- if shop.shipping_policy.body != blank -%}
+    {{ 'products.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+{%- endif -%}
+</div>
+{% schema %}
+  {
+    "name": "Single product shipping",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_shipping_policy_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px"
+        }
+    ],
+    "presets": [{"name": "Single product shipping","category": "Single product"}]
+  }
+{% endschema %}

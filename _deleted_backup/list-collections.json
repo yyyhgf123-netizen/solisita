@@ -1,0 +1,123 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured_custom_section_DzHLHc": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_ktgGkd": {
+          "type": "_column",
+          "settings": {
+            "width": 100,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "column_ktgGkd"
+      ],
+      "name": "Custom Section",
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "",
+        "margin": "60px 0 0",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    },
+    "main": {
+      "type": "list-collections-template",
+      "blocks": {
+        "collection_4kQpk7": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "collection_cPeqhd": {
+          "type": "collection",
+          "settings": {
+            "collection": "charms"
+          }
+        },
+        "collection_zAhaUX": {
+          "type": "collection",
+          "settings": {
+            "collection": "necklaces"
+          }
+        },
+        "collection_QUdRMr": {
+          "type": "collection",
+          "settings": {
+            "collection": "rings"
+          }
+        },
+        "collection_9QjLHM": {
+          "type": "collection",
+          "settings": {
+            "collection": "earings"
+          }
+        }
+      },
+      "block_order": [
+        "collection_4kQpk7",
+        "collection_cPeqhd",
+        "collection_zAhaUX",
+        "collection_QUdRMr",
+        "collection_9QjLHM"
+      ],
+      "settings": {
+        "display_type": "selected",
+        "style_collection_list": "style_1",
+        "sort": "alphabetical",
+        "columns": 4,
+        "pergroup_columns": 1,
+        "space_columns": 30,
+        "column1440": 4,
+        "pergroup_column1440": 1,
+        "space_column1440": 30,
+        "column1": 4,
+        "pergroup_column1": 1,
+        "space_column1": 15,
+        "column2": 3,
+        "pergroup_column2": 1,
+        "space_column2": 15,
+        "column3": 1.5,
+        "pergroup_column3": 1,
+        "space_column3": 15,
+        "column4": 1.5,
+        "pergroup_column4": 1,
+        "space_column4": 15
+      }
+    }
+  },
+  "order": [
+    "featured_custom_section_DzHLHc",
+    "main"
+  ]
+}

@@ -1,0 +1,61 @@
+<div class="collection-card {{ section.settings.style_collection_list }}">
+  <div class="collection-card__link">
+    {%- if collection == blank -%}
+      {%- assign collection_title = 'home_page.onboarding.collection_title' | t -%}
+    {%- else -%}
+      {%- assign collection_title = collection.title | escape -%}
+    {%- endif -%}
+
+    {%- if collection and collection.image -%}
+      {%- assign collection_image = collection.image -%}
+    {%- else -%}
+      {%- assign collection_image = blank -%}
+    {%- endif -%}
+
+    {%- if collection == blank -%}
+      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+      <div class="collection-card__placeholder">
+        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- else -%}
+      <div class="collection-card__image">
+        {% if collection_image == blank %}
+          <img class="lazyload fade-in"
+               src="https://placehold.jp/450x540.png"
+               width="450" height="450"
+               alt="{{ collection.title | escape }}">
+        {% else %}
+          {% render 'img-global',
+            image: collection_image,
+            class: "collection-banner__img",
+            effect: "fade-in"
+          %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {%- if section.settings.style_collection_list != 'style_3' -%}
+      <div class="view-all">
+        <a href="{{ collection.url }}">
+          {{ 'collections.general.btn_collections' | t }}
+          <i class="bwp-icon-right-arrow"></i>
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="collection-card__title">
+    <h2><a href="{{ collection.url }}">{{ collection_title }}</a></h2>
+    <div class="count-product">
+      {{ collection.products_count }} {{ 'templates.search.products' | t }}
+    </div>
+    {%- if section.settings.style_collection_list == 'style_3' -%}
+      <div class="view-all">
+        <a href="{{ collection.url }}">
+          {{ 'collections.general.btn_collections' | t }}
+          <i class="bwp-icon-right-arrow"></i>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

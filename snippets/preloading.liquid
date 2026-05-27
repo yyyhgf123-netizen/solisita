@@ -1,0 +1,4 @@
+<div {% unless preload_class %}id="pre-loading"{% endunless %} class="pre-loading-image">
+    <div class="preload-img-product" data-title="{{ settings.preload_product_image_logo }}">{{ settings.preload_product_image_logo }}</div>
+</div>
+{%- assign preload_class = nil -%}

@@ -1,0 +1,41 @@
+<div class="product_trust_barget" style="{% if block.settings.product_trust_barget_margin != blank %}margin:{{ block.settings.product_trust_barget_margin }}{% endif %};--bg-trust-barget:{{ block.settings.trust_barget_bg }};">
+    {%- if block.settings.trust_barget_title -%}
+        <div class="title">{{ block.settings.trust_barget_title }}</div>
+    {%- endif -%}
+    {%- if block.settings.image -%}
+    <div class="content_trust_barget">
+        <img class="trust_barget_img lazyload" data-src="{{ block.settings.image | image_url:width:block.settings.image.width,height:block.settings.image.height }}" alt="{{ block.settings.image.alt | escape }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" />
+    </div>	
+    {%- endif -%}
+</div>
+{% schema %}
+  {
+    "name": "Single trust barget",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_trust_barget_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px"
+        },
+        {
+            "type": "color",
+            "id": "trust_barget_bg",
+            "label": "Background",
+            "default": "#f8f5f4"
+        },
+        {
+            "type": "text",
+            "id": "trust_barget_title",
+            "label": "Heading",
+            "default": "Guarantee safe & secure checkout"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+    ],
+    "presets": [{"name": "Single trust barget","category": "Single product"}]
+  }
+{% endschema %}

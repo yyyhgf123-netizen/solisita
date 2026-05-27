@@ -1,0 +1,94 @@
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+  #shopify-block-{{ block.id }} .card{
+      border-radius:{{block.settings.border-radius}};
+      border-width:{{block.settings.border-width}};
+      border-style:solid;
+      border-color:{{block.settings.border-color}};
+      background:{{block.settings.background}};
+      overflow: hidden;
+  }
+  {%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .card{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .card{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .card{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .card{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="card">
+    {% content_for "block", type: "collapsible-header", id: "collapsible-header" %}
+    {% content_for "block", type: "collapsible-body", id: "collapsible-body" %}
+</div>
+{% schema %}
+  {
+    "name": "Collapsible item",
+    "settings": [
+       {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+            "type": "text",
+            "id": "border-radius",
+            "label": "Border radius",
+            "default":"0px 0px 0px 0px",
+            "info": "top right bottom left",
+            "placeholder": "0px 0px 0px 0px"
+        },
+        {
+            "type": "text",
+            "id": "border-width",
+            "label": "Border width",
+            "default":"0px 0px 0px 0px",
+            "info": "top right bottom left",
+            "placeholder": "0px 0px 0px 0px"
+        },
+        {
+            "type": "color",
+            "id": "border-color",
+            "label": "Border color"
+        },
+        {
+            "type": "color",
+            "id": "background",
+            "label": "Background"
+        }
+    ],
+    "presets": [{"name": "Collapsible item"}]
+  }
+{% endschema %}

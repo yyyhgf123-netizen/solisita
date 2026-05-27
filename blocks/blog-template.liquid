@@ -1,0 +1,126 @@
+{% paginate blog.articles by block.settings.limit %}
+{%- assign layout_blog = section.settings.layout_blog -%}
+<div class="article__list">
+	{% for article in blog.articles %}
+		{%- assign index = forloop.index | modulo: 3 -%}
+		{%- if layout_blog =='standar' -%}
+			{% render 'blog-template-standar', article: article, blog: blog, block: block %}
+		{%- endif -%}
+		{%- if layout_blog =='list' -%}
+			{% render 'blog-template-list', article: article, blog: blog, block: block %}
+		{%- endif -%}
+		{%- if layout_blog =='modern' -%}
+			{%- if index == 1 or index == 2 -%}
+				<div class="content-{%- if index == 1 -%}modern{%- else -%}moderns{%- endif -%}">
+			{%- endif -%}
+				{% render 'blog-template-modern', article: article, blog: blog, block: block %}
+			{%- if index == 1 or index == 0 -%}
+				</div>
+			{%- endif -%}
+		{%- endif -%}
+		{%- if layout_blog =='grid' -%}
+			{% render 'blog-template-grid', article: article, blog: blog, block: block %}
+		{%- endif -%}
+	{% endfor %}
+</div>
+{% if paginate.pages > 1 %}
+	{% capture previous_label %}
+		<span class="pagination__navigation">
+			<i class="feather-chevron-left"></i>
+			<span class="sr-only">{{ 'general.pagination.previous' | t }}</span>
+		</span>
+	{% endcapture %}
+	{% capture next_label %}
+		<span class="pagination__navigation">
+			<i class="feather-chevron-right"></i>
+			<span class="sr-only">{{ 'general.pagination.next' | t }}</span>
+		</span>
+	{% endcapture %}
+	{%- if block.settings.select_pagination == 'pagination' -%}	
+		<div class="pagination pagination-ajax-blog" title="{{ blog.title }}">
+			{{ paginate | default_pagination: previous: previous_label, next: next_label }}
+		</div>
+	{%- elsif block.settings.select_pagination == 'loadmore' -%}
+		<div class="pagination pagination-ajax-blog-loadmore">
+			{%- assign max_page = paginate.page_size | times:paginate.current_page -%}
+			{%- if max_page > paginate.items -%}
+				{%- assign max_page = paginate.items -%}
+			{%- endif -%}
+			{% assign percent =  max_page | times: 100 | divided_by: paginate.items %}
+			{%- if percent < 100 -%}
+				<div class="collection-blog-count">{{ 'blogs.article.blog_count_html' | t: max_page:max_page, items_page:paginate.items }}</div>
+				<div class="content-percent"><div class="percent" style="width:{{percent}}%"></div></div>
+				<a href="{{ paginate.next.url }}" title="{{ blog.title }}">{{ 'collections.general.load_more' | t }}
+					<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+				</a>
+			{%- endif -%}
+		</div>
+	{%- endif -%}
+{% endif %}
+{% content_for "blocks" %}
+{% endpaginate %}
+{% schema %}
+{
+  "name": "Blog pages",
+  "blocks": [{ "type": "@theme" },{ "type": "@app" }],
+  "settings": [
+    {
+		"type": "range",
+		"id": "limit",
+		"min": 1,
+		"max": 20,
+		"step": 1,
+		"label": "Number of posts in a page",
+		"default": 5
+    },
+	{
+		"type": "range",
+		"id": "limit-coloumn",
+		"min": 1,
+		"max": 4,
+		"step": 1,
+		"label": "Coloumn Desktop",
+		"info": "Use when you use blog grid",
+		"default": 3
+    },
+	{
+		"type": "range",
+		"id": "limit-coloumn2",
+		"min": 1,
+		"max": 4,
+		"step": 1,
+		"label": "Coloumn Laptop",
+		"info": "Use when you use blog grid",
+		"default": 3
+    },
+	{
+		"type": "checkbox",
+		"id": "show_date",
+		"label": "Show date",
+		"default": true
+    },
+	{
+		"type": "checkbox",
+		"id": "show_category",
+		"label": "Show category",
+		"default": true
+    },
+	{
+        "type": "select",
+        "id": "select_pagination",
+        "label": "Select Pagination",
+        "options": [
+          {
+            "value": "pagination",
+            "label": "Pagination"
+          },
+          {
+            "value": "loadmore",
+            "label": "Load More"
+          }
+        ],
+        "default": "pagination"
+     }
+  ]
+}
+{% endschema %}

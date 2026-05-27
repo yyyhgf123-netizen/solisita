@@ -1,0 +1,108 @@
+{%- if section.settings.enable -%}
+	{%- assign is_bg_image = section.settings.bgimage -%}
+	{%- if is_bg_image -%}
+		{%- assign class_name = 'wpbingo-breadcrumbs--image' -%}
+	{%- else -%}
+		{%- assign class_name = 'wpbingo-breadcrumbs--no-image' -%}
+	{%- endif -%}
+	<section class="wpbingo-breadcrumbs {{ class_name }} {{ section.settings.align_breadcrumb }} {% if blog.all_tags %} have-blog-list{% endif %}" style="--color-breadcrumb:{{ section.settings.color_breadcrumb }}">
+		{%- assign bg_image = section.settings.image -%}
+		<div class="wpbingo-breadcrumbs__image"
+			{%- if is_bg_image -%}
+			style="background-image: url('{{ bg_image | image_url }}');background-size:cover; background-position:center center"{%- endif -%}>
+			<div class="container">
+				<div class="wpbingo-breadcrumbs__inner">
+					{%- if section.settings.show_pagetitle -%}<h2 class="wpbingo-breadcrumbs__title">{{ blog.title }}</h2>{%- endif -%}
+					<div class="wpbingo-blog-list">
+						<div class="item-blog{% unless current_tags %} active{% endunless %}">
+							<a href="{{ blog.url }}" title="{{ blog.title }} - {{ 'blogs.portfolio.tagged' | t }} '{{ 'blogs.portfolio.all' | t }}'">
+								{{ 'blogs.portfolio.all' | t }}
+							</a>
+						</div>
+						{% if current_tags %}
+							{% for tag in blog.all_tags %}
+								{% for current in current_tags %}  
+									<div class="item-blog{% if tag == current %} active{% endif %}">
+										<a title="{{ blog.title }} - {{ 'blogs.portfolio.tagged' | t }} '{{ tag }}'" href="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+									</div>
+								{% endfor %}
+							{% endfor %}
+						{% else %}
+							{% for tag in blog.all_tags %}
+								<div class="item-blog">
+									<a title="{{ blog.title }} - {{ 'blogs.portfolio.tagged' | t }} '{{ tag }}'" href="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+								</div>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{%- endif -%}
+{% schema %}
+	{
+		"name": "Breadcrumb",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Settings"
+			},
+			{
+				"type": "checkbox",
+				"id": "enable",
+				"label": "Enable",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "bgimage",
+				"label": "Use background image"
+			},
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Background image default",
+				"info": "Default size: 1920x480 pixels"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_pagetitle",
+				"label": "Show page title",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "show_breadcrumb",
+				"label": "Show breadcrumb",
+				"default": true
+			},
+			{
+				"type": "color",
+				"id": "color_breadcrumb",
+				"label": "Color breadcrumb",
+				"default": "#000000"
+			},
+			{
+				"type": "select",
+				"id": "align_breadcrumb",
+				"label": "Text align",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					}
+				],
+				"default": "left"
+			}
+		]
+	}
+{% endschema %}

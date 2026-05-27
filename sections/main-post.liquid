@@ -1,0 +1,31 @@
+{%- assign number_of_comments = article.comments_count -%}
+<section class="page-article">
+	{% content_for "blocks" %}
+</section>
+{% schema %}
+{
+	"name": "Main Post",
+	"blocks": [{ "type": "_post-normal" },{ "type": "_post-prallax" },{ "type": "_post-sticky-title" },{ "type": "_post-simple-title" },{ "type": "@app" }],
+	"max_blocks": 1,
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "show_category",
+			"label": "Show category",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_author",
+			"label": "Show author",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_date",
+			"label": "Show date",
+			"default": true
+		}
+	]
+}
+{% endschema %}

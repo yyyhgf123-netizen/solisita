@@ -1,0 +1,45 @@
+<section class="page-article portfolio social"{% if section.settings.portfolio_tag_margin != blank %} style="margin:{{ section.settings.portfolio_tag_margin }}"{% endif %}>
+	<div class="container">
+		<div class="page-article__inner">
+			<div class="content-single-portfolio">
+				<div class="content-social">
+					{%- if section.settings.show_article_tags -%}
+						<div class="post-content-entry">
+							{% render 'tags-article' %}
+						</div>
+					{%- endif -%}
+					{%- if section.settings.social_sharing_blog -%}
+						<div class="article__social-sharing">
+							{% render 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+						</div>
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+	"name": "Main Portfolio social",
+	"settings": [
+		{
+			"type": "text",
+			"id": "portfolio_tag_margin",
+			"label": "Margin",
+			"info": "Example(top left bottom right): 15px 15px 15px 15px"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_article_tags",
+			"label": "Show article tags",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "social_sharing_blog",
+			"label": "Show sharing",
+			"default": true
+		}
+	]
+}
+{% endschema %}

@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "article-breadcrumb",
+      "settings": {
+        "text_align": "left"
+      }
+    },
+    "main": {
+      "type": "main-portfolio-post",
+      "blocks": {
+        "bb85aed8-2d89-47a3-b85b-50da9f8009fe": {
+          "type": "image",
+          "settings": {
+            "show_portfolio_image": true,
+            "portfolio_image_margin": ""
+          }
+        },
+        "dd942bef-c9d4-4627-a011-c622a3d72397": {
+          "type": "title",
+          "settings": {
+            "portfolio_title_margin": "",
+            "show_article_tags_title": true,
+            "show_article_title": true,
+            "client": true,
+            "year": true
+          }
+        },
+        "4599e097-1464-4cdf-b75d-6e2b9d4ed703": {
+          "type": "content",
+          "settings": {
+            "portfolio_content_margin": "",
+            "show_article_content": true
+          }
+        }
+      },
+      "block_order": [
+        "bb85aed8-2d89-47a3-b85b-50da9f8009fe",
+        "dd942bef-c9d4-4627-a011-c622a3d72397",
+        "4599e097-1464-4cdf-b75d-6e2b9d4ed703"
+      ],
+      "settings": {}
+    },
+    "social": {
+      "type": "main-portfolio-social",
+      "settings": {
+        "portfolio_tag_margin": "",
+        "show_article_tags": true,
+        "social_sharing_blog": true
+      }
+    },
+    "prev_next": {
+      "type": "main-portfolio-prev-next",
+      "settings": {
+        "portfolio_prev_next_margin": ""
+      }
+    },
+    "coment": {
+      "type": "main-portfolio-coment",
+      "settings": {
+        "portfolio_comments_margin": ""
+      }
+    },
+    "related": {
+      "type": "main-portfolio-related",
+      "settings": {
+        "portfolio_related_margin": "",
+        "title_related": "Related Portfolio",
+        "number_related": 4,
+        "related_image_ratio": "1",
+        "navigation": true,
+        "infinite": true,
+        "autoplay": false,
+        "autoplay_speed": "10000",
+        "columns": 4,
+        "column1440": 4,
+        "column1": 4,
+        "column2": 3,
+        "column3": 1,
+        "column4": 1
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "social",
+    "prev_next",
+    "coment",
+    "related"
+  ]
+}

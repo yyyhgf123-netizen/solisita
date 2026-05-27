@@ -1,0 +1,54 @@
+{% assign product_buy_it_with = block.settings.product_buy_with_metafield  %}
+{%- if product_buy_it_with -%}
+    <div class="buy_it_with"{% if block.settings.product_buy_with_margin != blank %} style="margin:{{ block.settings.product_buy_with_margin }}"{% endif %}>
+        <div class="content-left">
+            <h2>{{block.settings.buy_it_with_title}}</h2>
+            <div class="name-products"><a href="{{ product_buy_it_with.url }}">{{ product_buy_it_with.title }}</a></div>
+            <div class="product-price">{{ product_buy_it_with.price | money }}</div>
+            <a class="view-product" href="{{ product_buy_it_with.url }}" >{{block.settings.buy_it_with_button}}</a>
+        </div>
+        <div class="content-right">
+            <div class="product-thumb">
+                <a href="{{ product_buy_it_with.url }}">
+                    {% render 'img-global' with image: product_buy_it_with.featured_image, class: "featured-banner__img", effect: "fade-in" %}
+                </a>
+            </div>
+        </div>
+    </div>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Single buy it with",
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "See instructions for buy with it [Document](https:\/\/info.bingomore.com/shopify\/document\/wpbingo\/product_pages.html#section1)"
+        },
+        {
+            "type": "text",
+            "id": "product_buy_with_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px"
+        },
+        {
+            "type": "product",
+            "id": "product_buy_with_metafield",
+            "label": "buy with metafield",
+            "info": "Select only metafields. No products selected"
+        },
+        {
+            "type": "text",
+            "id": "buy_it_with_title",
+            "label": "Title",
+            "default": "BUY IT WITH"
+        },
+        {
+            "type": "text",
+            "id": "buy_it_with_button",
+            "label": "Button",
+            "default": "VIEW PRODUCT"
+        }
+    ],
+    "presets": [{"name": "Single buy it with","category": "Single product"}]
+  }
+{% endschema %}

@@ -1,0 +1,73 @@
+<div class="product__collection" style="margin:{{ block.settings.collection_margin }};--collection-color:{{ block.settings.collection_color }};--collection-color-hover:{{ block.settings.collection_color_hover }};--collection-text-transform:{{ block.settings.collection_transform }};--collection-font-size:{{ block.settings.collection_size }}px;">
+    {%- if collection -%}
+        {%- if collection.handle -%}
+            {%- capture url -%}/collections/{{ collection.handle }}{%- endcapture -%}
+            <a href="{{ url }}" title="{{ collection.title }}">
+                {{ collection.title }}
+            </a>
+        {%- endif -%}
+    {%- else -%}
+        {%- assign collection = product.collections | first -%}
+        <a href="{{ collection.url }}" title="{{ collection.title }}">
+            {{ collection.title }}
+        </a>
+    {%- endif -%}
+</div>
+{% schema %}
+  {
+    "name": "Single product collection",
+    "settings": [
+        {
+            "type": "text",
+            "id": "collection_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px",
+            "default":"0 0 6px"
+        },
+        {
+            "type": "number",
+            "id": "collection_size",
+            "label": "Font size",
+            "info": "px",
+            "default":14
+        },
+        {
+            "type": "color",
+            "id": "collection_color",
+            "label": "Color",
+            "default":"#999999"
+        },
+        {
+            "type": "color",
+            "id": "collection_color_hover",
+            "label": "Color hover",
+            "default":"#ed5d43"
+        },
+        {
+            "type": "select",
+            "id": "collection_transform",
+            "label": "Text transform",
+            "options": [
+                {
+                    "value": "unset",
+                    "label": "Default"
+                },
+                {
+                    "value": "capitalize",
+                    "label": "Capitalize"
+                },
+                {
+                    "value": "lowercase",
+                    "label": "Lowercase"
+                },
+                {
+                    "value": "uppercase",
+                    "label": "Uppercase"
+                }
+            ],
+            "default":"uppercase"
+        }
+    ],
+    "presets": [{"name": "Single product collection","category": "Single product"}]
+  }
+{% endschema %}

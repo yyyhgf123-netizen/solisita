@@ -1,0 +1,302 @@
+{%- style -%}
+	{%- assign padding = section.settings.padding -%}
+	{%- assign logo_max_width = section.settings.logo_max_width -%}
+    {%- assign logo_max_width_mobi = section.settings.logo_max_width_mobi -%}
+	{% if section.settings.width_header != blank or padding != blank %}
+		.bwp-header .header-desktop .container{
+			{% if section.settings.width_header != blank %}max-width: {{ section.settings.width_header }};{% endif %}
+		}
+        .bwp-header .header-desktop .header-center__inner{
+			{% if padding != blank %}padding: {{ padding }};{% endif %}
+		}
+        .bwp-header .header-bottom{
+            padding:{{ section.settings.padding_bottom }};
+            background-color:{{ section.settings.bg_color_header_bottom }};
+            position: relative;
+        }
+	{% endif %}
+	.header-logo img {max-width: {{ logo_max_width | append: 'px' }};}
+	{% if section.settings.header_absolute %}
+		@media (min-width:1199px){
+			body.template-index .bwp-header{position:absolute;width:100%;z-index: 99;}
+			body.template-index .bwp-header:not(.sticky) .header-desktop{background-color: transparent;}
+			{% if section.settings.color_homepage_text %}
+				body.template-index .bwp-header:not(.sticky) .header-desktop .main-menu__nav-item>a{
+					color:{{ section.settings.color_homepage_text }}
+				}
+				body.template-index .bwp-header:not(.sticky) .header-desktop .main-menu__nav-item>a:before{
+					background-color:{{ section.settings.color_homepage_text }}
+				}
+				body.template-index .bwp-header:not(.sticky) .header-desktop .search-toggle{
+					color:{{ section.settings.color_homepage_text }}
+				}
+				body.template-index .bwp-header:not(.sticky) .header-desktop .login-account{
+					color:{{ section.settings.color_homepage_text }}
+				}
+				body.template-index .bwp-header:not(.sticky) .header-desktop .header-account__title{
+					color:{{ section.settings.color_homepage_text }}
+				}
+				body.template-index .bwp-header:not(.sticky) .header-desktop  .header-cart__link{
+					color:{{ section.settings.color_homepage_text }}
+				}
+				body.template-index .bwp-header:not(.sticky) .header-desktop  .wishlist{
+					color:{{ section.settings.color_homepage_text }}
+				}
+				body.template-index .bwp-header:not(.sticky) .header-top{
+					color:{{ section.settings.color_homepage_text }}
+				}
+				body.template-index .bwp-header:not(.sticky) .header-top a{
+					color:{{ section.settings.color_homepage_text }}
+				}
+			{% endif %}
+		}
+	{% endif %}
+    @media (max-width: 767px){
+      .header-logo img {max-width: {{ logo_max_width_mobi | append: 'px' }};}
+    }
+{%- endstyle -%}
+
+<div data-section-id="{{ section.id }}" data-section-type="header-section" class="bwp-header header_3{% if section.settings.header_absolute %} header-absolute{% endif %}" data-sticky_header="{{ section.settings.header_sticky }}">
+	<div class="header-desktop">
+		<h1 class="d-none" itemprop="legalName">{{ shop.name }}</h1>
+		<div class="container">
+			<div class="header-center__inner">
+				<div class="header-left">
+					{%- if section.settings.show_header_search -%}
+						<div class="search-toggle"><i class="icon-search"></i></div>
+						{% render 'header-search-toggle' %}
+					{%- endif -%}
+				</div>
+                <div class="header-logo" itemscope itemtype="http://schema.org/Organization">
+					{%- assign current_iso_code = request.locale.iso_code  | split: "-" -%}
+					{%- if request.locale.primary == true -%}
+						{%- assign url = "" -%}
+					{%- else -%}
+						{%- assign url = current_iso_code[0] -%}
+					{%- endif -%}
+					{%- if section.settings.logo -%}
+						<a href="/{{ url }}" itemprop="url" class="header-logo__link">
+							{%- if section.settings.logo_homepage and template.name == "index" -%}
+								<img class="header-logo__img logo-home"
+									src="{{ section.settings.logo_homepage | image_url:width:section.settings.logo_homepage.width,height:section.settings.logo_homepage.height }}" 
+									srcset="{{ section.settings.logo_homepage | image_url:width:section.settings.logo_homepage.width,height:section.settings.logo_homepage.height }}"
+									alt="{{ section.settings.logo_homepage.alt | default: shop.name }}"
+									width="{{ section.settings.logo_homepage.width }}"
+									height="{{ section.settings.logo_homepage.height }}"
+									itemprop="logo">
+								<img class="header-logo__img logo-main"
+									src="{{ section.settings.logo | image_url:width:section.settings.logo.width,height:section.settings.logo.height }}" 
+									srcset="{{ section.settings.logo | image_url:width:section.settings.logo.width,height:section.settings.logo.height }}"
+									alt="{{ section.settings.logo.alt | default: shop.name }}"
+									width="{{ section.settings.logo.width }}"
+									height="{{ section.settings.logo.height }}"
+									itemprop="logo">
+							{%- else -%}
+								<img class="header-logo__img"
+									src="{{ section.settings.logo | image_url:width:section.settings.logo.width,height:section.settings.logo.height }}" 
+									srcset="{{ section.settings.logo | image_url:width:section.settings.logo.width,height:section.settings.logo.height }}"
+									alt="{{ section.settings.logo.alt | default: shop.name }}"
+									width="{{ section.settings.logo.width }}"
+									height="{{ section.settings.logo.height }}"
+									itemprop="logo">
+							{%- endif -%}
+						</a>
+					{%- else -%}
+						<a href="/{{ url }}" itemprop="url" class="header-logo__link header-logo__link--text">{{ shop.name }}</a>
+					{%- endif -%}
+				</div>
+				<div class="header-right">
+					<div class="header-page-link">
+						{%- if section.settings.show_header_user -%}
+							{% render 'header-account' %}
+						{%- endif -%}
+						{%- if section.settings.show_header_wishlist -%}
+							<a class="wishlist" href="{{  section.settings.page_wishlist.url }}" data-count-wishlist><i class="icon-wishlist"></i><span class="count"></span></a>
+						{%- endif -%}
+						{%- if section.settings.show_header_cart -%}
+							{% render 'header-cart' %}
+						{%- endif -%}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-bottom">
+			<div class="container">
+				<div class="main-menu">
+					<nav class="main-menu__wrap">
+					<ul class="main-menu__nav">
+							{% content_for "blocks" %}
+					</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% render 'header-mobile' %}
+</div>
+
+{% schema %}
+{
+  "name": "Header 3",
+  "blocks": [{ "type": "_mainmenu-item" }],
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "limit":1,
+  "settings": [
+    {
+		"type": "header",
+		"content": "Layout Settings"
+    },
+	{
+		"type": "text",
+		"id": "width_header",
+		"label": "Container Header",
+		"default": "1440px"
+    },
+    {
+		"type": "text",
+		"id": "padding",
+		"label": "Padding",
+		"placeholder": "60px 0px 60px 0px",
+		"default": "60px 0"
+    },
+	{
+      "type": "checkbox",
+      "id": "header_sticky",
+      "label": "Header Sticky"
+    },
+	{
+      "type": "checkbox",
+      "id": "header_absolute",
+      "label": "Header absolute",
+	  "info": "Only use for homepage"
+    },
+	{
+      "type": "color",
+      "id": "color_homepage_text",
+      "label": "Header color",
+      "default": "#fff",
+	  "info": "Only use for Header absolute"
+    },
+	{
+        "type": "header",
+        "content": "Header Bottom"
+    },
+	{
+		"type": "text",
+		"id": "padding_bottom",
+		"label": "Padding bottom",
+		"placeholder": "30px 0px 30px 0px",
+		"default": "30px 0",
+		"info": "Only use for Header bottom"
+    },
+    {
+        "type": "color",
+        "id": "bg_color_header_bottom",
+        "label": "Background color",
+        "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_homepage",
+      "label": "Logo Homepage",
+	  "info":"use if you want to enter a different logo for homepage"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "label": "Custom logo width",
+      "min": 50,
+      "max": 260,
+      "step": 5,
+      "unit": "px",
+      "default": 135
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width_mobi",
+      "label": "Custom logo width Mobile",
+      "min": 50,
+      "max": 260,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+	{
+      "type": "checkbox",
+      "id": "show_header_search",
+      "label": "Show search box",
+      "default": true
+    },
+	{
+      "type": "header",
+      "content": "wishlist"
+    },
+	{
+      "type": "checkbox",
+      "id": "show_header_wishlist",
+      "label": "Show wishlist",
+      "default": true
+    },
+	{
+	  "type": "page",
+	  "id": "page_wishlist",
+	  "label": "Select page wishlist"
+	},
+    {
+      "type": "header",
+      "content": "Header User"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header_user",
+      "label": "Show header user",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_user",
+      "label": "Show Text user",
+      "default": false
+    },
+    { 
+      "type": "textarea",
+      "id": "header_user_title",
+      "label": "Text Logout",
+      "default": "Sign in"
+    },
+	{ 
+      "type": "textarea",
+      "id": "header_user_title_2",
+      "label": "Text Login",
+      "default": "Sign Out"
+    },
+    {
+      "type": "link_list",
+      "id": "header_user_link_list",
+      "label": "Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header_cart",
+      "label": "Show header cart",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header 3"
+    }
+  ]
+}
+{% endschema %}

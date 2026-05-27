@@ -1,0 +1,15 @@
+<div class="header-cart">
+	<a class="js-header-cart header-cart__link" href="{{ routes.cart_url }}">
+		<span class="header-cart__span d-none">{{ 'layout.header.cart_title' | t }}</span>
+		<span class="header-cart__count" data-cart-count>{{ cart.item_count }}</span>
+		<span class="header-cart__span d-none">{{ 'layout.header.cart_items_count' | t:count:cart.item_count }}</span>
+		<span class="header-cart__span d-none" data-cart-cost>{{ cart.total_price | money }}</span>
+	</a>
+	{%- if settings.cart_type == "modal" -%}
+		{%- unless template contains 'cart' -%}
+			<div class="header-cart__content">
+				<div class="ajaxcart-container fire-done" data-cart-container></div>
+			</div>
+		{%- endunless -%}
+	{%- endif -%}
+</div>

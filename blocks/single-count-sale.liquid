@@ -1,0 +1,59 @@
+{%- assign current_variant 			= product.selected_or_first_available_variant -%}
+{% if current_variant.available %}
+    {%- assign count = block.settings.product_sale_count | split: "-" -%}
+    {%- assign time = block.settings.product_sale_time | split: "-" -%}
+    <div class="product-count-sale" data-min="{{ count[0] }}" data-max="{{ count[1] }}" data-time_min="{{ time[0] }}" data-time_max="{{ time[1] }}" data-id_product="{{ product.id }}" style="margin:{{ block.settings.product_count_sale_margin }};--count-sale-color:{{ block.settings.count_sale_color }};">
+        {% render 'fire' %}<span class="count"></span> {{ block.settings.product_count_sale_text }} <span class="time"></span> {{ block.settings.product_count_sale_unit }}
+    </div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Single product count sale",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_count_sale_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px",
+            "default": "0 0 10px"
+        },
+        {
+            "type": "header",
+            "content": "Product count sale"
+        },
+        {
+            "type": "text",
+            "id": "product_sale_count",
+            "label": "Sale count",
+            "default": "30-40",
+            "info": "The number of sale will vary during this interval. Example: 30-40"
+        },
+        {
+            "type": "text",
+            "id": "product_sale_time",
+            "label": "Sale Time",
+            "default": "5-20",
+            "info": "The time of sale will vary during this interval. Example: 30-40"
+        },
+        {
+            "type": "text",
+            "id": "product_count_sale_text",
+            "label": "Product Sale text",
+            "default": "sold in last"
+        },
+        {
+            "type": "text",
+            "id": "product_count_sale_unit",
+            "label": "Product Sale Unit",
+            "default": "hours"
+        },
+        {
+            "type": "color",
+            "id": "count_sale_color",
+            "label": "Color",
+            "default":"#f11e1e"
+        }
+    ],
+    "presets": [{"name": "Single product count sale","category": "Single product"}]
+  }
+{% endschema %}

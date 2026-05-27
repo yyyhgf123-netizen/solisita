@@ -1,0 +1,37 @@
+{% assign full_url = request.host | append: request.path %}
+<div class="product_share">
+    <div class="product_share_label"><i class="feather-share-2"></i>{{ block.settings.product_share_title }}</div> 
+    <div class="product_share-content">
+        <div class="product_share-close full"></div>
+        <div class="content-product_share">
+            <div class="product_share-close"></div>
+            <div class="product_share-social">
+                <div class="product_share-copy" data-text="{{ 'products.product.share_copy' | t }}">
+                    <label>{{ 'products.product.share_copy' | t }}</label>
+                    <div class="content">
+                        <input class="url_share" type="text" value="{{ full_url }}">
+                        <button>copy</button>
+                    </div>
+                </div>
+                <div class="product_share-icon">
+                    <label>{{ block.settings.product_share_title }}</label>
+                    {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product.featured_media %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Single social share",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_share_title",
+            "label": "Heading",
+            "default": "Share"
+        }
+    ],
+    "presets": [{"name": "Single social share","category": "Single product"}]
+  }
+{% endschema %}

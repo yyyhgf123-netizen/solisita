@@ -1,0 +1,37 @@
+{%- assign limit = block.settings.product_tags_limit -%}
+<div class="product__organization">
+    {%- if block.settings.product_tags_title != blank -%}
+        <div class="product__organization__label">{{ block.settings.product_tags_title }}</div>
+    {%- endif -%}
+    {% for tag in product.tags limit:limit %}
+        {%- if forloop.last -%}
+            <span>{{ tag }}</span>
+        {%- else -%}
+            <span>{{ tag }}, </span>
+        {%- endif -%}
+    {% endfor %}
+</div>
+{% schema %}
+  {
+    "name": "Single product tags",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_tags_title",
+            "label": "Heading",
+            "default": "Tags:"
+        },
+        {
+            "type": "range",
+            "id": "product_tags_limit",
+            "min": 2,
+            "max": 10,
+            "step": 1,
+            "unit": "pcs",
+            "label": "Limit",
+            "default": 6
+        }
+    ],
+    "presets": [{"name": "Single product tags","category": "Single product"}]
+  }
+{% endschema %}

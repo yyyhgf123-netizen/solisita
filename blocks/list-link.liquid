@@ -1,0 +1,261 @@
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+     #shopify-block-{{ block.id }} .bwp-list_link li{
+         text-align:{{ block.settings.text_align }};
+     }
+     #shopify-block-{{ block.id }} .bwp-list_link span{
+          color:{{ block.settings.color }};
+          font-family:var({{ block.settings.font }});
+          font-weight:{{ block.settings.font_weight }};
+          font-size:{{ block.settings.font_size }}px;
+          text-decoration:{{ block.settings.text_decoration }};
+     }
+    #shopify-block-{{ block.id }} .bwp-list_link span:hover{
+          color:{{ block.settings.color_hover }};
+     }
+      {%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .bwp-list_link{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+    @media (max-width: 767px){
+      #shopify-block-{{ block.id }} .bwp-list_link li{
+         text-align:{{ block.settings.text_align_mobi }};
+      }
+    }
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .bwp-list_link{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .bwp-list_link{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .bwp-list_link{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="wpbingo-block bwp-widget-list_link wpbingo-block--{{ block.id }} overflow-hidden">
+    <div class="list-content" >
+         <ul class="bwp-list_link list-style-{{ block.settings.list_style }}">
+             {% content_for "blocks" %}
+         </ul>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "List link",
+    "blocks": [{"type": "_list-item"},{ "type": "@app" }],
+    "settings": [
+         {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text Align",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                }
+            ],
+            "default": "left"
+        },
+        {
+  			"type": "select",
+			"id": "list_style",
+			"label": "List style",
+			"options": [
+                {
+					"value": "none",
+					"label": "None"
+				},
+                {
+					"value": "custom",
+					"label": "Custom(You can enter icons in the list item)"
+				},
+                {
+					"value": "disc",
+					"label": "Disc"
+				},
+                {
+					"value": "circle",
+					"label": "Circle"
+				},
+                {
+					"value": "square",
+					"label": "Square"
+				},
+                {
+					"value": "decimal",
+					"label": "Decimal"
+				},
+                {
+					"value": "decimal-leading-zero",
+					"label": "Decimal leading zero"
+				},
+                {
+					"value": "lower-alpha",
+					"label": "Lower alpha"
+				},
+                {
+					"value": "upper-alpha",
+					"label": "Upper alpha"
+				},
+                {
+					"value": "lower-roman",
+					"label": "Lower roman"
+				},
+                {
+					"value": "upper-roman",
+					"label": "Upper roman"
+				}
+            ]
+        },
+        {
+            "type": "select",
+            "id": "font",
+            "label": "Font family",
+            "options": [
+                {
+                    "value": "--font-family-second",
+                    "label": "Font Heading"
+                },
+                {
+                    "value": "--font-family-base",
+                    "label": "Font Body"
+                }
+            ],
+            "default": "--font-family-second"
+        },
+        {
+            "type": "select",
+            "id": "text_decoration",
+            "label": "Text Decoration",
+            "options": [
+                {
+                    "value": "none",
+                    "label": "None"
+                },
+                {
+                    "value": "line-through",
+                    "label": "Line Through"
+                },
+                {
+                    "value": "underline",
+                    "label": "Underline"
+                },
+                {
+                    "value": "overline",
+                    "label": "Overline"
+                }
+            ],
+            "default": "none"
+        },
+        {
+            "type": "number",
+            "id": "font_size",
+            "label": "Font size",
+            "default": 14,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "font_weight",
+            "label": "Font Weight",
+            "default": "500"
+        },
+        {
+           "type": "color",
+            "id": "color",
+            "label": "Color",
+            "default": "#000"
+        },
+        {
+           "type": "color",
+            "id": "color_hover",
+            "label": "Color hover",
+            "default": "#000"
+        },
+        {
+            "type": "header",
+            "content": "====== Mobile ======",
+            "info": "screen < 767px"
+        },
+        {
+            "type": "select",
+            "id": "text_align_mobi",
+            "label": "Text Align",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                }
+            ],
+            "default": "left"
+        }
+    ],
+    "presets": [
+        {
+            "name": "List link",
+            "blocks": [
+              {
+                  "type": "_list-item"
+              },
+              {
+                  "type": "_list-item"
+              },
+              {
+                  "type": "_list-item"
+              },
+              {
+                  "type": "_list-item"
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

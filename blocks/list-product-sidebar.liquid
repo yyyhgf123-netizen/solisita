@@ -1,0 +1,64 @@
+{%- assign collection = collections[block.settings.collection_sidebar] -%}
+{%- assign limit = block.settings.collection_limit | plus:0 -%}
+<div class="collection-sidebar">
+    {% if block.settings.heading_sidebar != blank %}
+        <div class="title">{{ block.settings.heading_sidebar }}</div>
+    {%- endif -%}
+    <div class="content">
+        {%- for product in collection.products limit:limit -%}
+            <div class="product">
+                <div class="image">
+                    <a href="{{ product.url }}">
+                        {% render 'img-global' with image: product.featured_image, class: "img-fluid", effect: "fade-in" %}
+                    </a>
+                </div>
+                <div class="info">
+                    {%- if settings.product_card_review -%}
+                        <div class="product-card__review product-review">
+                            <!-- Start of Judge.me code --> 
+                                <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge'  data-id='{{ product.id }}'>
+                                    {{ product.metafields.judgeme.badge }}
+                                </div>  
+                            <!-- End of Judge.me code -->
+                        </div>
+                    {%- endif -%}
+                    <h3 class="product-sidebar__name">
+                        <a class="product-sidebar__name-link" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
+                    </h3>
+                    <div class="price">
+                        {%- if product.compare_at_price -%}
+                            <span class="price-regular">{{ product.compare_at_price | money }}</span> <span class="price-sale">{{ product.price | money }}</span>
+                        {%- else -%}
+                            <span class="product-price">{{ product.price | money }}</span>
+                        {%- endif -%}
+                    </div>
+                </div>
+            </div>
+        {%- endfor -%}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "List product sidebar",
+    "settings": [
+       {
+        "type": "text",
+        "id": "heading_sidebar",
+        "label": "Heading collection sidebar",
+        "default": "Top rate products"
+        },
+        {
+        "type": "collection",
+        "id": "collection_sidebar",
+        "label": "Collection sidebar"
+        },
+        {
+        "type": "number",
+        "id": "collection_limit",
+        "label": "Collection Limit",
+        "default": 4
+        }
+    ],
+    "presets": [{"name": "List product sidebar","category": "Single product"}]
+  }
+{% endschema %}

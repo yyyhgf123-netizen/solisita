@@ -1,0 +1,181 @@
+{%- assign collection 			= collections[block.settings.collection] -%}
+{%- assign collection_handle 	= collection.handle -%}
+{%- assign image 		= block.settings.image -%}
+<div class="collection-item bwp-effect-{{ block.settings.effects }}">
+    {%- if collection == blank -%}
+        {%- assign collection_title = 'home_page.onboarding.collection_title' | t -%}
+    {%- else -%}
+        {%- assign collection_title = collections[collection_handle].title | escape -%}
+    {%- endif -%}
+    <div class="collection-item__image image-parent">
+        <a href="{{ collections[collection_handle].url }}" class="collection-image__link image-effect">
+            {%- if image -%}
+                {% render 'img-global' with image: image, class: "featured-banner__img", effect: "fade-in" %}
+            {%- else -%}
+                <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="330" height="489" />
+            {%- endif -%}
+        </a>
+    </div>
+    <div class="collection-item__title">
+        <a href="{{ collections[collection_handle].url }}" class="collection-item__link">
+            <span>{{ collection_title }} <i class="icon-box-arrow"></i></span>
+            {% if block.settings.count %}<span class="count">{{ collection.products_count }}<p>{{ block.settings.text_count }}</p></span>{% endif %}
+        </a>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Collection image",
+    "settings": [
+        {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image Collection"
+        },
+        {
+            "type": "checkbox",
+            "id": "count",
+            "label": "Show count product"
+        },
+        {
+            "type": "text",
+            "id": "text_count",
+            "label": "Text Count"
+        },
+        {
+          "type": "select",
+          "id": "effects",
+          "label": "Effect",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "grow",
+              "label": "Grow"
+            },
+            {
+              "value": "shrink",
+              "label": "Shrink"
+            },
+            {
+              "value": "pulse",
+              "label": "Pulse"
+            },
+            {
+              "value": "pulse-grow",
+              "label": "Pulse Grow"
+            },
+            {
+              "value": "pulse-shrink",
+              "label": "Pulse Shrink"
+            },
+            {
+              "value": "push",
+              "label": "Push"
+            },
+            {
+              "value": "pop",
+              "label": "Pop"
+            },
+            {
+              "value": "bounce-in",
+              "label": "Bounce In"
+            },
+            {
+              "value": "bounce-out",
+              "label": "Bounce Out"
+            },
+            {
+              "value": "rotate",
+              "label": "Rotate"
+            },
+            {
+              "value": "grow-rotate",
+              "label": "Grow Rotate"
+            },
+            {
+              "value": "float",
+              "label": "Float"
+            },
+            {
+              "value": "sink",
+              "label": "Sink"
+            },
+            {
+              "value": "bob",
+              "label": "Bob"
+            },
+            {
+              "value": "hang",
+              "label": "Hang"
+            },
+            {
+              "value": "skew",
+              "label": "Skew"
+            },
+            {
+              "value": "skew-forward",
+              "label": "Skew Forward"
+            },
+            {
+              "value": "skew-backward",
+              "label": "Skew Backward"
+            },
+            {
+              "value": "wobble-vertical",
+              "label": "Wobble Vertical"
+            },
+            {
+              "value": "wobble-horizontal",
+              "label": "Wobble Horizontal"
+            },
+            {
+              "value": "wobble-to-bottom-right",
+              "label": "Wobble To Bottom Right"
+            },
+            {
+              "value": "wobble-to-top-right",
+              "label": "Wobble To Top Right"
+            },
+            {
+              "value": "wobble-top",
+              "label": "Wobble Top"
+            },
+            {
+              "value": "wobble-bottom",
+              "label": "Wobble Bottom"
+            },
+            {
+              "value": "wobble-skew",
+              "label": "Wobble Skew"
+            },
+            {
+              "value": "buzz",
+              "label": "Buzz"
+            },
+            {
+              "value": "buzz-out",
+              "label": "Buzz Out"
+            },
+            {
+              "value": "shine-out",
+              "label": "Shine Out"
+            },
+            {
+              "value": "shine",
+              "label": "Shine"
+            }
+          ],
+          "default": "none"
+        }
+    ],
+    "presets": [{"name": "Collection image"}]
+  }
+{% endschema %}

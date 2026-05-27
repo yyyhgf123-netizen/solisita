@@ -1,0 +1,10 @@
+{%- if shop.customer_accounts_enabled -%}
+<div class="header-account">
+	<a class="login-account" href="{{ routes.account_login_url }}">
+		{%- if section.settings.show_text_user != blank -%}
+			<div class="content-text-header">{{ section.settings.header_user_title }}</div>
+		{%- endif -%}
+		<i class="icon-account"></i>
+	</a>
+</div>
+{%- endif -%}

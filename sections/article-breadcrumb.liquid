@@ -1,0 +1,63 @@
+<section class="wpbingo-breadcrumbs" style="--color-breadcrumb:{{ section.settings.color_breadcrumb }}">
+	<div class="container">
+		<ol class="breadcrumb" style="justify-content:{{ section.settings.text_align }}" itemscope itemtype="http://schema.org/BreadcrumbList">
+			<li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+				<a class="breadcrumb__link" href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}" itemprop="item">
+					<span itemprop="name">{{ 'general.breadcrumbs.home_link_title' | t }}</span>
+				</a>
+				<meta itemprop="position" content="1" />
+			</li>
+			{%- if request.page_type == 'article' -%}
+				<li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a class="breadcrumb__link" href="{{ blog.url }}" title="{{ blog.title }}" itemprop="item">
+						<span itemprop="name">{{ blog.title }}</span>
+					</a>
+					<meta itemprop="position" content="2" />
+				</li>
+				<li class="breadcrumb__item active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<span class="breadcrumb__text">
+						<span itemprop="name">{{ article.title }}</span>
+					</span>
+					<meta itemprop="position" content="3" />
+				</li>
+			{%- endif -%}
+		</ol>
+	</div>
+</section>
+{% schema %}
+  {
+    "name": "Breadcrumb",
+    "settings": [
+		{
+			"type": "header",
+			"content": "Settings"
+		},
+		{
+			"type": "color",
+			"id": "color_breadcrumb",
+			"label": "Color breadcrumb",
+			"default": "#000000"
+		},
+		{
+		  "type": "select",
+		  "id": "text_align",
+		  "label": "Text align",
+		  "default": "left",
+		  "options": [
+			{
+			  "value": "left",
+			  "label": "Left"
+			},
+			{
+			  "value": "right",
+			  "label": "Right"
+			},
+			{
+			  "value": "center",
+			  "label": "Center"
+			}
+		  ]
+		}
+	]
+  }
+{% endschema %}

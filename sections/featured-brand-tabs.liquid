@@ -1,0 +1,452 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- elsif section.settings.max_width != blank -%}
+	{%- assign container = 'bwp-container' -%}
+{%- else -%}
+	{%- assign container = 'container' -%}
+{%- endif -%}
+
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- assign width_container = section.settings.max_width | plus: 0 -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+
+{%- assign margin = '' -%}
+{%- if section.settings.margin != blank -%}
+  {%- capture margin -%}margin: {{ section.settings.margin }};{%- endcapture -%}
+{%- endif -%}
+{% assign margin 			= section.settings.margin | split: "|" %}
+{% assign padding 			= section.settings.padding | split: "|" %}
+
+{%- style -%}
+	{%- if section.settings.fullwidth == blank and section.settings.max_width != blank and width_container > 1200 -%}
+		@media (max-width: {{ section.settings.max_width }}) and (min-width: 1200px){
+			#shopify-section-{{ section.id }} .bwp-container{
+				padding-left:30px;
+				padding-right:30px;
+			}
+		}
+	{%- endif -%}
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--brand-tabs{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1200px){
+			#shopify-section-{{ section.id }} .wpbingo-section--brand-tabs{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-section-{{ section.id }} .wpbingo-section--brand-tabs{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-section--brand-tabs{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+		{%- for block in section.blocks -%}
+			{%- if block.type == 'css' -%}
+                #shopify-section-{{ section.id }} .wpbingo-section--brand-tabs .wpbingo-section__inner .brand-card {
+					text-align:{{ block.settings.text_align }};
+				}
+                #shopify-section-{{ section.id }} .wpbingo-section--brand-tabs .product-tabs__nav ul{
+                    justify-content:{{ block.settings.text_align }};
+                }
+				#shopify-section-{{ section.id }} .wpbingo-section--brand-tabs .title-banner{
+					font-size: {{ block.settings.font_size_title }}px;
+					line-height: {{ block.settings.line_height_title }}px;
+					font-weight: {{ block.settings.font_weight_title }};
+					letter-spacing:{{ block.settings.letter_spacing_title }}px;
+					color:{{ block.settings.color_title }};
+					margin:{{ block.settings.margin_title }};
+                    font-family:var({{ block.settings.font_title }});
+				}
+				#shopify-section-{{ section.id }} .wpbingo-section--brand-tabs .desc-banner{
+					font-size: {{ block.settings.font_size_desc }}px;
+					line-height: {{ block.settings.line_height_desc }}px;
+                    font-weight: {{ block.settings.font_weight_desc }};
+					color:{{ block.settings.color_desc }};
+					margin:{{ block.settings.margin_desc }};
+                    font-family:var({{ block.settings.font_desc }});
+				}
+				@media(max-width:767px){
+					#shopify-section-{{ section.id }} .wpbingo-section--brand-tabs .title-banner{
+						font-size: {{ block.settings.font_size_title_mobi }}px;
+						line-height: {{ block.settings.line_height_title_mobi }}px;
+						margin:{{ block.settings.margin_title_mobi }};
+					}
+					#shopify-section-{{ section.id }} .wpbingo-section--brand-tabs .desc-banner{
+						font-size: {{ block.settings.font_size_desc_mobi }}px;
+						line-height: {{ block.settings.line_height_desc_mobi }}px;
+						margin:{{ block.settings.margin_desc_mobi }};
+					}
+				}
+			{%- endif -%}
+		{%- endfor -%}
+	{%- endif -%}
+{%- endstyle -%}
+<section class="wpbingo-section wpbingo-section--brand-tabs wpbingo-section--{{ section.id }}" data-id="{{ section.id }}"{% if section.settings.color != blank %} style="background-color:{{ section.settings.color }}"{% endif %}>
+	<div class="{{ container }}" {{ max_width }}>
+		<div class="wpbingo-section__inner">
+			<div class="wpbingo-brand__contents bwp_slider-carousel">
+				<div class="brand-simple-content js-carousel slick-carousel" data-infinite="false"
+					data-columns="1"
+					data-column1440="1"
+					data-column1="1"
+					data-column2="1"
+					data-column3="1"
+					data-column4="1">
+                    <div class="brand__item">
+                        <div class="wpbingo-brand__item">
+                            <div class="brand-card">
+                                <div class="brand-product bwp-swiper-slider"
+                                        data-infinite="false"
+                                        data-nav="false"
+                                        data-dots="false"
+                                        data-draggable="true"
+                                        data-columns="1"
+                                        data-column1440="1"
+                                        data-column1="1"
+                                        data-column2="1"
+                                        data-column3="1"
+                                        data-column4="1">
+                                    <div class="swiper-wrapper">
+                                        {%- for block in section.blocks -%}
+                                            {% if block.type == 'brand' %}
+                                            <div class="swiper-slide">
+                                                <div class="content-brand">
+                                                    {%- if block.settings.title -%}<h2 class="title-banner">{{ block.settings.title }}</h2>{%- endif -%}
+                                                    {%- if block.settings.desc -%}<div class="desc-banner">{{ block.settings.desc }}</div>{%- endif -%}
+                                                </div>  
+                                            </div>
+                                            {%- endif -%}
+                                        {%- endfor -%}
+                                    </div>
+                                </div>
+                                <div class="product-tabs__nav">
+                                    <ul class="nav">
+                                        {%- for block in section.blocks -%}
+                                            {%- if block.type == 'brand' -%}
+                                                {%- assign image 	= block.settings.image -%}
+                                                <li class="nav-item product-tabs__nav-item">
+                                                    <a class="product-tabs__nav-link{% if forloop.first %} active{% endif %}"data-slide="{{ forloop.index0 }}">
+                                                        {%- if image != blank -%}
+                                                            {% render 'img-global' with image: image, class: "featured-brand__img", effect: "fade-in" %}
+                                                        {%- else -%}
+                                                            <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="100" height="100" />
+                                                        {%- endif -%}
+                                                    </a>
+                                                </li>
+                                            {%- endif -%}
+                                        {%- endfor -%}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+    {
+        "name": "Brand Tabs",
+        "class": "wpbingo-framework",
+        "disabled_on": {
+		"groups": ["header"]
+	},
+        "settings": [
+            {
+                "type": "color",
+                "id": "color",
+                "label": "Background"
+            },
+            {
+                "type": "header",
+                "content": "Layout settings"
+            },
+            {
+                "type": "text",
+                "id": "max_width",
+                "label": "Width container",
+                "info": "Default: 1440px"
+            },
+            {
+                "type": "checkbox",
+                "id": "fullwidth",
+                "label": "Fullwidth"
+            },
+            {
+                "type": "text",
+                "id": "padding",
+                "label": "Padding",
+                "placeholder": "0px 0px 0px 0px",
+                "info":"Screen: desktop | 1200px | 991px | 767px"
+            },
+            {
+                "type": "text",
+                "id": "margin",
+                "label": "Margin",
+                "placeholder": "0px 0px 0px 0px",
+                "info":"Screen: desktop | 1200px | 991px | 767px"
+            }
+        ],
+        "blocks": [
+			{
+                "type": "brand",
+                "name": "Image brand",
+                "settings": [
+                    {
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image"
+					},
+                    {
+                        "type": "textarea",
+                        "id": "title",
+                        "label": "Heading",
+                        "default": "Heading"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "desc",
+                        "label": "Description",
+                        "default": "Image with text"
+                    }
+                ]
+            },
+            {
+                "type": "css",
+                "name": "Custom css",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "text_align",
+                        "label": "Text Align",
+                        "options": [
+                            {
+                                "value": "left",
+                                "label": "Left"
+                            },
+                            {
+                                "value": "center",
+                                "label": "Center"
+                            },
+                            {
+                                "value": "right",
+                                "label": "Right"
+                            }
+                        ],
+                        "default": "left"
+                    },
+                    {
+                        "type": "header",
+                        "content": "====== Title ======"
+                    },
+                    {
+                        "type": "select",
+                        "id": "font_title",
+                        "label": "Font family",
+                        "options": [
+                            {
+                                "value": "--font-family-second",
+                                "label": "Font Heading"
+                            },
+                            {
+                                "value": "--font-family-base",
+                                "label": "Font Body"
+                            },
+                            {
+                                "value": "--font-family-pre",
+                                "label": "Font preventive"
+                            }
+                        ],
+                        "default": "--font-family-pre"
+                    },
+                    {
+                        "type": "color",
+                        "id": "color_title",
+                        "label": "color",
+                        "default": "#000"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size_title",
+                        "label": "Font size",
+                        "default": 16,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height_title",
+                        "label": "Line height",
+                        "default": 22,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "letter_spacing_title",
+                        "label": "Letter spacing",
+                        "default": 0,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "font_weight_title",
+                        "label": "Font Weight",
+                        "default": "500"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_title",
+                        "label": "margin",
+                        "default": "0px 0px 0px 0px",
+                        "placeholder":"0px 0px 0px 0px"
+                    },
+                    {
+                        "type": "header",
+                        "content": "====== Description ======"
+                    },
+                    {
+                        "type": "select",
+                        "id": "font_desc",
+                        "label": "Font family",
+                        "options": [
+                            {
+                                "value": "--font-family-second",
+                                "label": "Font Heading"
+                            },
+                            {
+                                "value": "--font-family-base",
+                                "label": "Font Body"
+                            },
+                            {
+                                "value": "--font-family-pre",
+                                "label": "Font preventive"
+                            }
+                        ],
+                        "default": "--font-family-pre"
+                    },
+                    {
+                        "type": "color",
+                        "id": "color_desc",
+                        "label": "color",
+                        "default": "#000"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size_desc",
+                        "label": "Font size",
+                        "default": 16,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height_desc",
+                        "label": "Line height",
+                        "default": 20,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "font_weight_desc",
+                        "label": "Font Weight",
+                        "default": "500"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_desc",
+                        "label": "margin",
+                        "default": "0px 0px 0px 0px",
+                        "placeholder":"0px 0px 0px 0px"
+                    },
+                    {
+                        "type": "header",
+                        "content": "====== Mobile ======",
+                        "info": "screen < 767px"
+                    },
+                    {
+                        "type": "header",
+                        "content": "---------- Title"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size_title_mobi",
+                        "label": "Font size",
+                        "default": 16,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height_title_mobi",
+                        "label": "Line height",
+                        "default": 22,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_title_mobi",
+                        "label": "margin",
+                        "default": "0px 0px 0px 0px",
+                        "placeholder":"0px 0px 0px 0px"
+                    },
+                    {
+                        "type": "header",
+                        "content": "---------- Description"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size_desc_mobi",
+                        "label": "Font size",
+                        "default": 16,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height_desc_mobi",
+                        "label": "Line height",
+                        "default": 20,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_desc_mobi",
+                        "label": "margin",
+                        "default": "0px 0px 0px 0px",
+                        "placeholder":"0px 0px 0px 0px"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Brand Tabs",
+				"blocks": [
+					{
+						"type": "brand"
+					},
+					{
+						"type": "css"
+					}
+				]
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,21 @@
+{%- if footer_menu_title != blank -%}
+	{% capture block_heading %}
+		<h4 class="footer-block__title collapsed" data-toggle="collapse" data-target="#{{ footer_menu_id }}">{{ footer_menu_title }}</h4>
+	{% endcapture %}
+	{% capture block_content %}id="{{ footer_menu_id }}" class="footer-block__content collapse"{% endcapture %}
+{%- else -%}
+	{% capture block_heading %}{% endcapture %}
+	{% capture block_content %}class="footer-block__content"{% endcapture %}
+{%- endif -%}
+<div class="footer-block footer-block--menu">
+	{{ block_heading }}
+	<div {{ block_content }}>
+		<ul class="footer-menu">
+			{% for link in linklists[footer_menu].links %}
+				<li class="footer-menu__item">
+					<a class="footer-menu__link" href="{{ link.url }}" title="{{ link.title | escape }}">{{ link.title }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>

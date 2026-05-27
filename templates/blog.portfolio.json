@@ -1,0 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "portfolio-breadcrumb",
+      "settings": {
+        "enable": true,
+        "bgimage": false,
+        "image": "shopify://shop_images/bg-breadcrumb.jpg",
+        "show_pagetitle": true,
+        "show_breadcrumb": true,
+        "color_breadcrumb": "#000000",
+        "align_breadcrumb": "center"
+      }
+    },
+    "main": {
+      "type": "portfolio-template",
+      "settings": {
+        "limit": 16,
+        "limit-coloumn": 2,
+        "limit-coloumn2": 2,
+        "layout": "normal",
+        "select_pagination": "pagination"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

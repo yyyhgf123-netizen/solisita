@@ -1,0 +1,432 @@
+
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+    #shopify-block-{{ block.id }} .wpbingo-button-video .button-video{
+		{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+		{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+      font-size:{{ block.settings.font_size }}px;
+      line-height:{{ block.settings.line_height }}px;
+      font-weight:{{ block.settings.font_weight }};
+      letter-spacing:{{ block.settings.letter_spacing }}px;
+      color:{{ block.settings.color }};
+      background:{{ block.settings.background }};
+      overflow:hidden;
+      border-radius:{{ block.settings.border_radius }};
+      font-family:var({{ block.settings.font }});
+      width:{{block.settings.width}}px;
+     height:{{block.settings.height}}px;
+      {%- if block.settings.border -%}
+            border-width:{{ block.settings.border_width }};
+            border-color:{{ block.settings.border_color }};
+            border-style:solid;
+      {%- endif -%}
+    }
+  #shopify-block-{{ block.id }} .wpbingo-button-video{
+    text-align:{{ block.settings.align }};
+  }
+  #shopify-block-{{ block.id }} .wpbingo-button-video .button-video:hover{
+      background:{{ block.settings.background_hover }};
+      color:{{ block.settings.color_hover }};
+      {%- if block.settings.border -%}
+      border-color:{{ block.settings.border_color_hover }}; 
+      {%- endif -%}
+  }
+  {%- unless block.settings.icon_title == blank -%}
+      #shopify-block-{{ block.id }} .wpbingo-button-video .button-video> i{
+          font-size:{{ block.settings.font_icon }}px;
+          top:{{ block.settings.margin_icon }}px;
+          position:relative;
+      }
+  {%- endunless -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .wpbingo-button-video .button-video{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .wpbingo-button-video .button-video{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .wpbingo-button-video .button-video{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+    @media (max-width:767px){
+      #shopify-block-{{ block.id }} .wpbingo-button-video .button-video{
+        font-size:{{ block.settings.font_size_mobi }}px;
+        line-height:{{ block.settings.line_height_mobi }}px;
+        letter-spacing:{{ block.settings.letter_spacing_mobi }}px;
+        color:{{ block.settings.color_mobi }};
+        background:{{ block.settings.background_mobi }};
+        border-radius:{{ block.settings.border_radius_mobi }};
+        width:{{block.settings.width_mobi}}px;
+        height:{{block.settings.height_mobi}}px;
+        {%- if block.settings.border_mobi -%}
+        border-width:{{ block.settings.border_width_mobi }};
+        border-color:{{ block.settings.border_color_mobi }};
+        border-style:solid;
+        {%- endif -%}
+      }
+      #shopify-block-{{ block.id }} .wpbingo-button-video .button-video:hover{
+          background:{{ block.settings.background_hover_mobi }};
+          color:{{ block.settings.color_hover_mobi }};
+          {%- if block.settings.border_mobi -%}
+          border-color:{{ block.settings.border_color_hover_mobi }}; 
+          {%- endif -%}
+      }
+       #shopify-block-{{ block.id }} .wpbingo-button-video{
+          text-align:{{ block.settings.align_mobi }};
+      }
+      {%- unless block.settings.icon_title == blank -%}
+         #shopify-block-{{ block.id }} .wpbingo-button-video .button-video> i{
+              font-size:{{ block.settings.font_icon_mobi }}px;
+              top:{{ block.settings.margin_icon_mobi }}px;
+          }
+      {%- endunless -%}
+    }
+</style>
+<div class="wpbingo-button-video">
+    <div class="button-video">{{ block.settings.title }}{%- unless block.settings.icon_title == blank -%}
+            <i class="{{ block.settings.icon_title }}"></i>
+        {%- endunless -%}</div>
+    <div class="video-wrapper">
+        <div class="close-video close-full"></div>
+        <div class="video-iframe">
+            <div class="close-video close-button"></div>
+            {%- if block.settings.video_url == blank -%}
+                <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+            {%- else -%}
+                {%- if block.settings.video_url.type == "youtube" -%}
+                    <iframe src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                {%- endif -%}
+                {%- if block.settings.video_url.type == "vimeo" -%}
+                    <iframe src="//player.vimeo.com/video/{{ block.settings.video_url.id }}?color={{ settings.color_secondary | remove: "#" }}&byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                {%- endif -%}
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Button video",
+    "settings": [
+      {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video link",
+          "accept": [
+              "youtube",
+              "vimeo"
+          ]
+      },
+      {
+          "type": "text",
+          "id": "title",
+          "label": "Label",
+          "default": "Play"
+      },
+      {
+          "type": "select",
+          "id": "font",
+          "label": "Font family",
+          "options": [
+              {
+                  "value": "--font-family-second",
+                  "label": "Font Heading"
+              },
+              {
+                  "value": "--font-family-base",
+                  "label": "Font Body"
+              }
+          ],
+          "default": "--font-family-second"
+      },
+      {
+          "type": "text",
+          "id": "icon_title",
+          "label": "Icon",
+          "info": "You can use the font set [here](https://dropways.github.io/feathericons/)"
+      },
+      {
+            "type": "number",
+            "id": "width",
+            "label": "Width",
+            "default": 50,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "height",
+            "label": "Height",
+            "default": 50,
+            "info": "px"
+        },
+      {
+          "type": "number",
+          "id": "font_icon",
+          "label": "Font size icon",
+          "default": 14,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "margin_icon",
+          "label": "Position icon",
+          "default": 0,
+          "info": "px"
+      },
+      {
+          "type": "text",
+          "id": "border_radius",
+          "label": "Border radius",
+          "default": "0px 0px 0px 0px",
+          "info": "top right bottom left"
+      },
+      {
+          "type": "checkbox",
+          "id": "border",
+          "label": "Turn on border",
+          "default": false
+      },
+      {
+          "type": "text",
+          "id": "border_width",
+          "label": "Border width",
+          "default": "0px 0px 0px 0px",
+          "info": "top right bottom left"
+      },
+      {
+          "type": "header",
+          "content": "Color Default"
+      },
+      {
+          "type": "color",
+          "id": "color",
+          "label": "color",
+          "default": "#fff"
+      },
+      {
+          "type": "color",
+          "id": "background",
+          "label": "Background",
+          "default": "#ed5d43"
+      },
+      {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border color",
+          "default": "#fff"
+      },
+      {
+          "type": "header",
+          "content": "Color Hover"
+      },
+      {
+          "type": "color",
+          "id": "color_hover",
+          "label": "Color hover",
+          "default": "#fff"
+      },
+      {
+          "type": "color",
+          "id": "background_hover",
+          "label": "Background Hover",
+          "default": "#ed5d43"
+      },
+      {
+          "type": "color",
+          "id": "border_color_hover",
+          "label": "Border color hover",
+          "default": "#fff"
+      },
+      {
+          "type": "number",
+          "id": "font_size",
+          "label": "Font size",
+          "default": 14,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "line_height",
+          "label": "Line height",
+          "default": 20,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "letter_spacing",
+          "label": "Letter spacing",
+          "default": 0,
+          "info": "px"
+      },
+      {
+          "type": "text",
+          "id": "font_weight",
+          "label": "Font Weight",
+          "default": "500"
+      },
+     {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+      {
+          "type": "text_alignment",
+          "id": "align",
+          "label": "Text align",
+          "default": "left"
+      },
+      {
+          "type": "header",
+          "content": "Mobile ====================",
+          "info": "screen < 767px"
+      },
+      {
+            "type": "number",
+            "id": "width_mobi",
+            "label": "Width",
+            "default": 50,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "height_mobi",
+            "label": "Height",
+            "default": 50,
+            "info": "px"
+        },
+      {
+          "type": "number",
+          "id": "font_size_mobi",
+          "label": "Font size",
+          "default": 14,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "font_icon_mobi",
+          "label": "Font size icon",
+          "default": 14,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "margin_icon_mobi",
+          "label": "Position icon",
+          "default": 0,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "line_height_mobi",
+          "label": "Line height",
+          "default": 20,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "letter_spacing_mobi",
+          "label": "Letter spacing",
+          "default": 0,
+          "info": "px"
+      },
+      {
+          "type": "text",
+          "id": "border_radius_mobi",
+          "label": "Border radius",
+          "default": "0px 0px 0px 0px",
+          "info": "top right bottom left"
+      },
+      {
+          "type": "checkbox",
+          "id": "border_mobi",
+          "label": "Turn on border",
+          "default": false
+      },
+      {
+          "type": "text",
+          "id": "border_width_mobi",
+          "label": "Border width",
+          "default": "0px 0px 0px 0px",
+          "info": "top right bottom left"
+      },
+      {
+          "type": "header",
+          "content": "Color Default"
+      },
+      {
+          "type": "color",
+          "id": "color_mobi",
+          "label": "color",
+          "default": "#fff"
+      },
+      {
+          "type": "color",
+          "id": "background_mobi",
+          "label": "Background",
+          "default": "#ed5d43"
+      },
+      {
+          "type": "color",
+          "id": "border_color_mobi",
+          "label": "Border color",
+          "default": "#fff"
+      },
+      {
+          "type": "header",
+          "content": "Color Hover"
+      },
+      {
+          "type": "color",
+          "id": "color_hover_mobi",
+          "label": "Color hover",
+          "default": "#fff"
+      },
+      {
+          "type": "color",
+          "id": "background_hover_mobi",
+          "label": "Background Hover",
+          "default": "#ed5d43"
+      },
+      {
+          "type": "color",
+          "id": "border_color_hover_mobi",
+          "label": "Border color hover",
+          "default": "#fff"
+      },
+      {
+          "type": "text_alignment",
+          "id": "align_mobi",
+          "label": "Text align",
+          "default": "left"
+      }
+  ],
+    "presets": [
+        {
+          "name": "Button video"
+        } 
+     ]
+  }
+{% endschema %}

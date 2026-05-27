@@ -1,0 +1,82 @@
+{%- assign collection = block.settings.buy_more_collection -%}
+{%- assign discount = false -%}
+{%- for product_discount in collections[collection].products -%}
+    {%- if product_discount.id == product.id -%}
+        {%- assign discount = true -%}
+    {%- endif -%}
+{%- endfor -%}
+{%- if discount -%}
+    <form method="post" id="buy_more_form" action="/cart/add" enctype="multipart/form-data" novalidate="novalidate">
+        <input type="hidden" name="form_type" value="product">
+        <input name="items[][quantity]" type="number" value="{{ block.settings.buy_more_quatily }}" class="hide hidden">
+            {%- for variant in product.variants -%}
+                {%- if forloop.first -%}
+                    <input name="items[][id]" type="hidden" value="{{ variant.id  }}">
+                {%- endif -%}
+            {%- endfor -%}
+        <div class="buy_more" style="--bg-buy-more:{{ block.settings.product_buy_more_color }}" data-quatily="{{ block.settings.buy_more_quatily }}"{% if block.settings.product_buy_more_margin != blank %} style="margin:{{ block.settings.product_buy_more_margin }}"{% endif %}>
+            <div class="buy_more-content">
+                {%- if block.settings.buy_more_title -%}
+                    <div class="title">{{ block.settings.buy_more_title }}</div>
+                {%- endif -%}
+                <div class="discount-content">
+                    {%- if block.settings.buy_more_content -%}
+                    <div class="content-left">
+                        {{ block.settings.buy_more_content }}
+                    </div>
+                    {%- endif -%}
+                    <div class="content-right">
+                        <button type="submit" class="btn--add-to-cart buy-more-cart">{{ 'products.product.add_discount' | t }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Single buy more",
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "See instructions for buy more [Document](https:\/\/info.bingomore.com/shopify\/document\/wpbingo\/product_pages.html#section2)"
+        },
+        {
+            "type": "text",
+            "id": "product_buy_more_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px"
+        },
+        {
+            "type": "color",
+            "id": "product_buy_more_color",
+            "label": "Background color",
+            "default":"#f6f6f6"
+        },
+        {
+            "type": "text",
+            "id": "buy_more_title",
+            "label": "Buy more title",
+            "default": "BUY MORE SAVE MORE!"
+        },
+        {
+            "type": "collection",
+            "id": "buy_more_collection",
+            "label": "List Product have discounts"
+        },
+        {
+            "type": "html",
+            "id": "buy_more_content",
+            "label": "Content discount",
+            "default": "5 item(s) get 10% OFF"
+        },
+        {
+            "type": "number",
+            "id": "buy_more_quatily",
+            "label": "number of products to get a discount",
+            "default": 5
+        }
+    ],
+    "presets": [{"name": "Single buy more","category": "Single product"}]
+  }
+{% endschema %}

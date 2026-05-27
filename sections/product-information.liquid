@@ -1,0 +1,197 @@
+{%- assign full_description 	= product.description -%}
+<section class="product-more-info {{ section.settings.tab_layout }}" style="margin:{{ section.settings.margin }}">
+	<div class="product-more-info__inner">
+		{%- if section.settings.tab_layout == 'full-content' -%}
+			<div class="container">
+				<div class="more-info-tabs__content tab-content">
+					{%- for block in section.blocks -%}
+						{%- case block.type -%}
+							{%- when '@app' -%}
+                                          {% render block %}
+							{%- when 'tab_review' -%}
+								<h3 class="more-info-tabs__nav-item">
+									{{ block.settings.title_review }}
+								</h3>
+								<div class="more-tab-container">
+									<div class="more-info-tabs__nav-link mobile" data-id="js-more-info-tabs-{{ forloop.index }}">
+										<span>{{ block.settings.title_review }}</span>
+									</div>
+									<!-- Start of Judge.me code --> 
+									<div style='clear:both'></div> 
+									<div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-auto-install='false'> 
+										{{ product.metafields.judgeme.widget }} 
+									</div> 
+									<!-- End of Judge.me code -->
+								</div>
+							{%- when 'tab_custom' -%}
+								<h3 class="more-info-tabs__nav-item">
+									{{ block.settings.title_custom }}
+								</h3>
+								<div class="more-tab-container">
+									<div class="more-info-tabs__nav-link mobile" data-id="js-more-info-tabs-{{ forloop.index }}">
+										<span>{{ block.settings.title_custom }}</span>
+									</div>
+									<div id="js-more-info-tabs-{{ forloop.index }}" class="tab-pane fade {{ classes }}">
+										<div class="rte">{{ block.settings.content_custom }}</div>
+									</div>
+								</div>
+						{%- endcase -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		{%- else -%}
+			<div class="container">
+				<div class="content-ul-tab">
+					<ul class="more-info-tabs__nav nav">
+						{%- for block in section.blocks -%}
+							{%- capture "classes" -%}
+								{%- if forloop.first -%}
+									active
+								{%- endif -%}
+							{%- endcapture %}
+							{%- case block.type -%}
+								{%- when '@app' -%}
+                                          {% render block %}
+								{%- when 'tab_review' -%}
+									<li class="more-info-tabs__nav-item">
+										<div class="more-info-tabs__nav-link {{ classes }}" data-id="js-more-info-tabs-{{ forloop.index }}">
+											<span>{{ block.settings.title_review }}</span>
+										</div>
+									</li>
+								{%- when 'tab_custom' -%}
+									<li class="more-info-tabs__nav-item">
+										<div class="more-info-tabs__nav-link {{ classes }}" data-id="js-more-info-tabs-{{ forloop.index }}">
+											<span>{{ block.settings.title_custom }}</span>
+										</div>
+									</li>
+							{%- endcase -%}
+						{%- endfor -%}
+					</ul>
+				</div>
+			</div>
+			<div class="container">
+				<div class="more-info-tabs__content tab-content">
+					{%- for block in section.blocks -%}
+						{%- capture "classes" -%}
+							{%- if forloop.first -%}
+								show
+							{%- endif -%}
+						{%- endcapture %}
+						{%- case block.type -%}
+							{%- when '@app' -%}
+                                          {% render block %}
+							{%- when 'tab_review' -%}
+								<div class="more-tab-container">
+									<div class="more-info-tabs__nav-link mobile" data-id="js-more-info-tabs-{{ forloop.index }}">
+										<span>{{ block.settings.title_review }}</span>
+									</div>
+									<div id="js-more-info-tabs-{{ forloop.index }}" class="tab-pane fade {{ classes }}">
+										<!-- Start of Judge.me code --> 
+										<div style='clear:both'></div> 
+										<div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-auto-install='false'> 
+											{{ product.metafields.judgeme.widget }} 
+										</div> 
+										<!-- End of Judge.me code -->
+
+									</div>
+								</div>
+							{%- when 'tab_custom' -%}
+								<div class="more-tab-container">
+									<div class="more-info-tabs__nav-link mobile" data-id="js-more-info-tabs-{{ forloop.index }}">
+										<span>{{ block.settings.title_custom }}</span>
+									</div>
+									<div id="js-more-info-tabs-{{ forloop.index }}" class="tab-pane fade {{ classes }}">
+										<div class="rte">{{ block.settings.content_custom }}</div>
+									</div>
+								</div>
+						{%- endcase -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		{%- endif -%}
+	</div>
+</section>
+{% schema %}
+  {
+    "name": "Product Tab",
+	"disabled_on": {
+		"groups": ["header"]
+	},
+    "settings": [
+		{
+			"type": "text",
+			"id": "margin",
+			"label": "Margin",
+			"default": "30px 0"
+		},
+		{
+			"type": "select",
+			"id": "tab_layout",
+			"label": "Tab layout",
+			"default": "tab",
+			"options": [
+				{
+					"value": "tab",
+					"label": "Tab"
+				},
+				{
+					"value": "vertical",
+					"label": "Vertical"
+				},
+				{
+					"value": "full-content",
+					"label": "Full Content"
+				}
+			]
+		}
+    ],
+	"blocks": [
+		{
+            "type": "@app"
+        },
+		{
+			"type": "tab_review",
+			"name": "Tab review",
+            "limit": 1,
+            "settings": [
+				{
+					"type": "text",
+					"id": "title_review",
+					"label": "Title review",
+					"default": "Review"
+				}
+            ]
+		},
+		{
+			"type": "tab_custom",
+			"name": "Tab custom",
+            "settings": [
+				{
+					"type": "text",
+					"id": "title_custom",
+					"label": "Title custom",
+					"default": "Custom"
+				},
+				{
+					"type": "richtext",
+					"id": "content_custom",
+					"label": "Content custom"
+				}
+            ]
+		}
+	],
+	"presets": [
+		{
+			"name": "Product Tab",
+			"blocks": [
+                {
+                    "type": "tab_custom"
+                },
+                {
+                    "type": "tab_review"
+                }
+			]
+		}
+    ]
+  }
+{% endschema %}

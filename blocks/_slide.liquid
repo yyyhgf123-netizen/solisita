@@ -1,0 +1,170 @@
+<div class="wpbingo-slideshow__item image-size--{{block.settings.size_img}} image-pos--{{block.settings.pos_img}} image-size-mobi--{{block.settings.size_img_mobi}} image-pos-mobi--{{block.settings.pos_img_mobi}}">
+  {%- if block.settings.image == blank -%}
+      <img class="lazyload fade-in" src="https://placehold.jp/1920x952.png" width="1920" height="952" />
+  {%- else -%}
+      {%- if block.settings.image_mobi != blank -%}
+          {% render 'img-global' with image: block.settings.image_mobi, class: "wpbingo-slideshow__item-image mobile swiper-slide-image swiper-slicer-image" %}
+          {% render 'img-global' with image: block.settings.image, class: "wpbingo-slideshow__item-image hide_mobile swiper-slide-image swiper-slicer-image" %}
+      {%- else -%}
+          {% render 'img-global' with image: block.settings.image, class: "wpbingo-slideshow__item-image swiper-slide-image swiper-slicer-image" %}
+      {%- endif -%}
+  {%- endif -%}
+  {% content_for "blocks" %}
+</div>
+{% schema %}
+  {
+    "name": "Slide",
+    "blocks": [{ "type": "_group-content-slide" },{"type": "@app" }],
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobi",
+            "label": "images mobile",
+            "info": "images used for screens smaller than 767"
+        },
+        {
+            "type": "select",
+            "id": "size_img",
+            "label": "Image size",
+            "default": "cover",
+            "options": [
+                {
+                    "value": "contain",
+                    "label": "Contain"
+                },
+                {
+                    "value": "cover",
+                    "label": "Cover"
+                },
+                {
+                    "value": "fill",
+                    "label": "Fill"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "pos_img",
+            "label": "Image position",
+            "default": "center_center",
+            "options": [
+                {
+                    "value": "left_top",
+                    "label": "Left Top"
+                },
+                {
+                    "value": "left_center",
+                    "label": "Left Center"
+                },
+                {
+                    "value": "left_bottom",
+                    "label": "Left Bottom"
+                },
+                {
+                    "value": "center_top",
+                    "label": "Center Top"
+                },
+                {
+                    "value": "center_center",
+                    "label": "Center Center"
+                },
+                {
+                    "value": "center_bottom",
+                    "label": "Center Bottom"
+                },
+                {
+                    "value": "right_top",
+                    "label": "Right Top"
+                },
+                {
+                    "value": "right_center",
+                    "label": "Right Center"
+                },
+                {
+                    "value": "right_bottom",
+                    "label": "Right Bottom"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "==Mobile",
+            "info": "screen < 767px"
+        },
+        {
+            "type": "select",
+            "id": "size_img_mobi",
+            "label": "Image size",
+            "default": "cover",
+            "options": [
+                {
+                    "value": "contain",
+                    "label": "Contain"
+                },
+                {
+                    "value": "cover",
+                    "label": "Cover"
+                },
+                {
+                    "value": "fill",
+                    "label": "Fill"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "pos_img_mobi",
+            "label": "Image position",
+            "default": "center_center",
+            "options": [
+                {
+                    "value": "left_top",
+                    "label": "Left Top"
+                },
+                {
+                    "value": "left_center",
+                    "label": "Left Center"
+                },
+                {
+                    "value": "left_bottom",
+                    "label": "Left Bottom"
+                },
+                {
+                    "value": "center_top",
+                    "label": "Center Top"
+                },
+                {
+                    "value": "center_center",
+                    "label": "Center Center"
+                },
+                {
+                    "value": "center_bottom",
+                    "label": "Center Bottom"
+                },
+                {
+                    "value": "right_top",
+                    "label": "Right Top"
+                },
+                {
+                    "value": "right_center",
+                    "label": "Right Center"
+                },
+                {
+                    "value": "right_bottom",
+                    "label": "Right Bottom"
+                }
+            ]
+        }
+    ],
+     "presets": [
+        {
+          "name": "Slide"
+        } 
+     ]
+  }
+{% endschema %}

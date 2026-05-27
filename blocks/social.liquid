@@ -1,0 +1,195 @@
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+    #shopify-block-{{ block.id }} .social-icons{
+        justify-content:{{block.settings.align}};
+        gap:{{block.settings.gap}}px;
+    }
+     #shopify-block-{{ block.id }} .social-icons a{
+         width:{{block.settings.width}}px;
+         height:{{block.settings.height}}px;
+         color: {{block.settings.color}};
+         font-size:{{block.settings.font_size}}px;
+         background: {{block.settings.background}};
+         fill: {{block.settings.color}};
+         display: inline-flex;
+        justify-content: center;
+        align-items: center;
+         border-radius:{{block.settings.border_radius}};
+        {%- if block.settings.border -%}
+            border-width:1px;
+            border-color:{{ block.settings.border_color }};
+            border-style:solid;
+        {%- endif -%}
+     }
+      #shopify-block-{{ block.id }} .social-icons a:hover{
+          color: {{block.settings.color_hover}};
+          fill: {{block.settings.color_hover}};
+          background: {{block.settings.background_hover}};
+          {%- if block.settings.border -%}
+              border-color:{{ block.settings.border_color_hover }};
+          {%- endif -%}
+     }
+     @media (max-width: 767px){
+       #shopify-block-{{ block.id }} .social-icons{
+          justify-content:{{block.settings.align_mobi}};
+      }
+     }
+	 {%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .wpbingo-widget--social{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--social{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--social{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--social{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="wpbingo-block wpbingo-widget--social wpbingo-block--{{ block.id }}">
+{% render 'social-media' %}
+</div>
+{% schema %}
+  {
+    "name": "Social",
+    "settings": [
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+            "type": "text_alignment",
+            "id": "align",
+            "label": "Text align",
+            "default": "left"
+        },
+        {
+            "type": "number",
+            "id": "gap",
+            "label": "Gap",
+            "default": 5,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "width",
+            "label": "Width",
+            "default": 50,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "height",
+            "label": "Height",
+            "default": 50,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "font_size",
+            "label": "Font Size",
+            "default": 14,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "border_radius",
+            "label": "Border radius",
+            "default": "50% 50% 50% 50%",
+            "info": "top right bottom left"
+        },
+        {
+            "type": "checkbox",
+            "id": "border",
+            "label": "Turn on border",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Color Default"
+        },
+        {
+            "type": "color",
+            "id": "color",
+            "label": "color",
+            "default": "#000"
+        },
+        {
+            "type": "color",
+            "id": "background",
+            "label": "Background",
+            "default": "rgba(0,0,0,0)"
+        },
+        {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border color",
+            "default": "#000"
+        },
+        {
+            "type": "header",
+            "content": "Color Hover"
+        },
+        {
+          "type": "color",
+          "id": "color_hover",
+          "label": "Color hover",
+          "default": "#fff"
+      },
+      {
+          "type": "color",
+          "id": "background_hover",
+          "label": "Background Hover",
+          "default": "#000"
+      },
+      {
+          "type": "color",
+          "id": "border_color_hover",
+          "label": "Border color hover",
+          "default": "#000"
+      },
+      {
+          "type": "header",
+          "content": "====== Mobile ======",
+          "info": "screen < 767px"
+      },
+      {
+          "type": "text_alignment",
+          "id": "align_mobi",
+          "label": "Text align",
+          "default": "left"
+      }
+    ],
+    "presets": [{"name": "Social"}]
+  }
+{% endschema %}

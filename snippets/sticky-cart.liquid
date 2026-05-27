@@ -1,0 +1,120 @@
+{%- assign external 				= product.metafields.bwp_fields.external -%}
+{%- assign group_product 			= product.metafields.bwp_fields.group_product -%}
+<div class="sticky-cart-single">
+	<div class="content">
+		<div class="content-product">
+			<div class="item-thumb">
+				{{ product.featured_image | product_img_url: '180x120' | img_tag }}
+			</div>
+			<div class="content-bottom">
+				<div class="item-title">{{ product.title }}</div>
+				<div id="price-sticky" class="price-sticky">
+					{% if group_product == blank %}
+						{% render 'product-price', variant: current_variant %}
+					{%- else -%}
+						<div class="price-container">
+							{% for product_group in group_product.value %}
+								{%- for variant in product_group.variants -%}
+									{% assign prices =  prices | append: variant.price | append: ',' %}
+								{% endfor %}
+							{% endfor %}
+							{% assign operator_prices	= prices | split: "," %}
+							{% assign min_price = operator_prices[0] | plus: 0 %}
+							{% assign max_price = operator_prices[0] | plus: 0 %}
+							{% for operator_price in operator_prices %}
+								{% assign operator = operator_price | plus: 0 %}
+								{% assign min_price		 = min_price | plus: 0 %}
+								{% assign max_price		 = max_price | plus: 0 %}
+								{% if operator < min_price %}
+									{% assign min_price = operator %}
+								{% endif %}
+								{% if operator > max_price %}
+									{% assign max_price = operator %}
+								{% endif %}		
+							{% endfor %}
+							{{  min_price | money }} - {{  max_price | money }}
+						</div>
+					{%- endif -%}
+				</div>
+				{% unless product.has_only_default_variant %}
+					<div id="option-selector" class="group-option-selector" >
+					{%- for option in product.options_with_values -%}
+							{%- for value in option.values -%}
+								{% if option.selected_value == value %}
+									<span>{{ value | escape }}</span>
+								{%- endif -%}
+							{%- endfor -%}
+					{%- endfor -%}
+					</div>
+				{% endunless %}
+			</div>
+		</div>
+		{%- if external == blank and group_product == blank -%}
+			{% form 'product', product, class:form_classes, data-product-form: '' %}
+				<select name="id" class="js-product-select--{{ section.id }} product-single__variants d-none">
+					{%- for variant in product.variants -%}
+						{%- if variant.available -%}
+							<option {% if variant == product.selected_or_first_available_variant %}
+								selected="selected" {% endif %}
+								data-sku="{{ variant.sku }}"
+								value="{{ variant.id }}">
+								{{ variant.title }} - {{ variant.price | money_with_currency }}
+							</option>
+						{%- else -%}
+							<option disabled="disabled">
+								{{ variant.title }} - {{ 'products.product.sold_out' | t }}
+							</option>
+						{%- endif -%}
+					{%- endfor -%}
+				</select>
+				<div class="product-single__buttons">
+					{% comment %}Product quantity{% endcomment %}
+					{%- if current_variant.available -%}
+					<div class="js-quantity-selector product-quantity">
+						<label for="Quantity" class="product-quantity__label">{{ 'products.product.quantity' | t }}</label>
+						<div class="product-quantity__selector">
+								<div class="wpbingo-qty">
+									<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+										<i class="feather-minus"></i>
+									</button>
+									<input type="text" name="quantity" class="js-qty-number wpbingo-qty__number" value="1" min="1" aria-label="quantity" pattern="[0-9]*">
+									<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}">
+										<i class="feather-plus"></i>
+									</button>
+								</div>
+						</div>
+					</div>
+					{%- endif -%}
+					{% comment %}Add to cart button{% endcomment %}
+					<div class="product-single__add-to-cart">
+						<button  class="btn btn--add-to-cart{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}"{% unless current_variant.available %} disabled="disabled"{% endunless %}
+							type="submit"
+							name="add">
+							<span class="btn__text">
+								{% if current_variant.available %}
+									{% if current_variant.inventory_quantity == 0 and current_variant.inventory_policy == "continue" %}
+										{{ 'products.product.pre_order' | t }}
+									{% else %}
+										{{ 'products.product.add_to_cart' | t }}
+									{% endif %}
+								{% else %}
+									{{ 'products.product.sold_out' | t }}
+								{% endif %}
+							</span>
+						</button>
+					</div>
+				</div>
+			{% endform %}
+		{%- elsif external != blank -%}
+			<div class="product-single__add-to-cart">
+				<a class="product-single__external" href="{{ external }}">{{ 'products.product.buy_product' | t }}</a>
+			</div>
+		{%- else -%}
+			<div class="product-single__add-to-cart">
+				<a class="product-single__external" href="#group_table_product">
+					{{ 'products.product.add_all_to_cart' | t }}
+				</a>
+			</div>
+		{%- endif -%}
+	</div>
+</div>

@@ -1,0 +1,254 @@
+{%- assign sidebar_enable = section.settings.sidebar_enable -%}
+{%- assign layout_filter = section.settings.layout_filter -%}
+{%- assign shop_full = section.settings.shop_full -%}
+{%- assign sidebar_left_class = 'col-12' -%}
+{%- assign sidebar_right_class = 'col-12' -%}
+{%- if sidebar_enable and layout_filter contains 'sidebar' -%}
+	{%- assign sidebar_left_class = 'col-12 col-lg-12 col-xl-3' -%}
+	{%- assign sidebar_right_class = 'col-12 col-lg-12 col-xl-9' -%}
+{%- endif -%}
+<section class="js-page-collection page-collection {{ section.settings.style_view_items }} {{ layout_filter }}{% if shop_full %} shop_full{% endif %}"{% if section.settings.style_view_items == 'viewmore' %} data-list_number="{{ section.settings.count_items }}"{% endif %}>
+	<div class="container">
+		<div class="page-collection__inner">
+			<div class="row">
+				{%- if sidebar_enable and layout_filter != 'dropdown' and layout_filter != 'on_top' -%}
+					<aside class="collection-sidebar {% if layout_filter contains 'sidebar' %}{{ sidebar_left_class }}{%- endif -%}">
+						<div class="collection-sidebar__overlay"></div>
+						<div class="collection-sidebar__wapper">
+							<button class="js-sidebar-toggle collection-sidebar__close" type="button">
+								<span>{{ 'collections.sidebar.close' | t }}</span>
+							</button>
+							<div class="content-sidebar">
+								{% content_for "block", type: "collection-sidebartop", id: "collection-sidebartop" %}
+								{% content_for "block", type: "collection-sidebarbottom", id: "collection-sidebarbottom" %}
+							</div>
+						</div>
+					</aside>
+				{%- elsif sidebar_enable and layout_filter == 'dropdown' -%}
+					<aside class="collection-sidebar">
+						<div class="collection-sidebar__overlay"></div>
+					</aside>
+				{%- elsif sidebar_enable and layout_filter == 'on_top' -%}
+					<aside class="collection-sidebar">
+						<div class="collection-sidebar__overlay"></div>
+					</aside>
+				{%- endif -%}
+				<div class="collection-content {{ sidebar_right_class }}">
+					{% content_for "block", type: "collection-template", id: "collection-template" %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+      {
+        "type": "header",
+        "content": "Collection page"
+      },
+      {
+        "type": "checkbox",
+        "id": "shop_full",
+        "default": true,
+        "label": "Shop Full"
+      },
+      {
+        "type": "select",
+        "id": "layout_filter",
+        "label": "Layout Filter",
+        "info": "Types of sidebars",
+        "options": [
+          {
+            "value": "sidebar_1",
+            "label": "Sidebar 1"
+          },
+          {
+            "value": "sidebar_2",
+            "label": "Sidebar 2"
+          },
+          {
+            "value": "sidebar_3",
+            "label": "Sidebar 3"
+          },
+          {
+            "value": "sidebar_4",
+            "label": "Sidebar 4"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          },
+          {
+            "value": "filter_drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "side_out",
+            "label": "Side Out"
+          },
+          {
+            "value": "on_top",
+            "label": "On Top"
+          }
+        ],
+        "default": "sidebar_1"
+      },
+      {
+        "type": "checkbox",
+        "id": "sidebar_enable",
+        "label": "Enable Filter",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "style_view_items",
+        "label": "Style view items",
+        "info": "Select style view list items in sidebar shop",
+        "options": [
+          {
+            "value": "scroll",
+            "label": "Scroll"
+          },
+          {
+            "value": "viewmore",
+            "label": "View More"
+          }
+        ],
+        "default": "viewmore"
+      },
+      {
+        "type": "range",
+        "id": "count_items",
+        "min": 3,
+        "max": 20,
+        "step": 1,
+        "label": "number of items displayed",
+        "info": "Use only when you choose 'Style view items : View More'",
+        "default": 5,
+        "visible_if": "{{ section.settings.style_view_items == \"viewmore\" }}"
+      },
+      {
+        "type": "header",
+        "content": "Grid/List Views"
+      },
+      {
+        "type": "checkbox",
+        "id": "views_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "select_columns",
+        "label": "Select columns shop",
+        "default": "grid-3",
+        "options": [
+          {
+            "value": "list",
+            "label": "One columns"
+          },
+          {
+            "value": "grid-2",
+            "label": "Two columns"
+          },
+          {
+            "value": "grid-3",
+            "label": "Three columns"
+          },
+          {
+            "value": "grid-4",
+            "label": "Four columns"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "select_columns_sm",
+        "label": "Select columns shop on ipad",
+        "default": "grid-sm-3",
+        "options": [
+          {
+            "value": "list",
+            "label": "One columns"
+          },
+          {
+            "value": "grid-sm-2",
+            "label": "Two columns"
+          },
+          {
+            "value": "grid-sm-3",
+            "label": "Three columns"
+          },
+          {
+            "value": "grid-sm-4",
+            "label": "Four columns"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "select_columns_xs",
+        "label": "Select columns shop on mobile",
+        "default": "grid-xs-2",
+        "options": [
+          {
+            "value": "grid-xs-1",
+            "label": "One columns"
+          },
+          {
+            "value": "grid-xs-2",
+            "label": "Two columns"
+          },
+          {
+            "value": "grid-xs-3",
+            "label": "Three columns"
+          },
+          {
+            "value": "grid-xs-4",
+            "label": "Four columns"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Sortby"
+      },
+      {
+        "type": "checkbox",
+        "id": "sortby_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "select_pagination",
+        "label": "Select Pagination",
+        "options": [
+          {
+            "value": "pagination",
+            "label": "Pagination"
+          },
+          {
+            "value": "loadmore",
+            "label": "Load More"
+          },
+          {
+            "value": "infinity",
+            "label": "Infinity"
+          }
+        ],
+        "default": "pagination"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      }
+    ],
+    "max_blocks": 10
+}
+{% endschema %}

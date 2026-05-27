@@ -1,0 +1,237 @@
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+{%- style -%}
+    #shopify-block-{{ block.id }}{
+        max-width:{{block.settings.width}}%;
+        flex:0 0 {{block.settings.width}}%;
+		{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+		{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+        border-radius:{{block.settings.border_radius}};
+        {%- if block.settings.border -%}
+            border-width:{{ block.settings.border_width }};
+            border-color:{{ block.settings.border_color }};
+            border-style:solid;
+        {%- endif -%}
+        {%- if block.settings.box_shadow != 'none' -%}
+          box-shadow: {{ block.settings.box_shadow }};
+        {%- endif -%}
+    }
+    @media (max-width:1199px){
+        #shopify-block-{{ block.id }}{
+            max-width:{{block.settings.width_lap}}%;
+            flex:0 0 {{block.settings.width_lap}}%;
+			{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+			{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+        }
+    }
+	
+	@media (max-width:991px){
+		#shopify-block-{{ block.id }}{
+			 max-width:{{block.settings.width_tab}}%;
+            flex:0 0 {{block.settings.width_tab}}%;
+			{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+			{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+		}
+	}
+    @media (max-width:767px){
+        #shopify-block-{{ block.id }}{
+             max-width:{{block.settings.width_mobi}}%;
+            flex:0 0 {{block.settings.width_mobi}}%;
+			{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+			{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+        }
+    }
+    {%- if block.settings.background != blank -%}
+        {%- assign background = block.settings.background | image_url -%}
+        #shopify-block-{{ block.id }} {
+            background-image: url('{{ background }}');
+            background-position: {{ block.settings.background_pos }};
+            background-size: {{ block.settings.background_size }};
+            {%- if block.settings.background_fixed -%}background-attachment: fixed;{%- endif -%}
+            z-index: 2;
+        }
+    {%- endif -%}
+{%- endstyle -%}
+<div class="bwp-block-column">
+    <div class="content-block-column">
+        {% content_for "blocks" %}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Column",
+    "blocks": [{ "type": "@theme" },{ "type": "@app" }],
+    "settings": [
+        {
+            "type": "number",
+            "id": "width",
+            "label": "Width",
+            "default": 100,
+            "info": "%"
+        },
+        {
+			"type": "image_picker",
+			"id": "background",
+			"label": "Background image"
+		},
+        {
+			"type": "checkbox",
+			"id": "background_fixed",
+			"label": "Background fixed",
+			"default":false,
+            "visible_if": "{{ block.settings.background }}"
+		},
+        {
+			"type": "select",
+			"id": "background_size",
+			"label": "Background Size",
+			"options": [
+				{
+					"value": "contain",
+					"label": "Contain"
+				},
+				{
+					"value": "auto",
+					"label": "Auto"
+				},
+				{
+					"value": "cover",
+					"label": "Cover"
+				}
+			],
+			"default": "cover",
+            "visible_if": "{{ block.settings.background }}"
+		},
+        {
+			"type": "select",
+			"id": "background_pos",
+			"label": "Background position",
+			"options": [
+				{
+					"value": "left top",
+					"label": "Left Top"
+				},
+				{
+					"value": "left  center",
+					"label": "Left Center"
+				},
+				{
+					"value": "left bottom",
+					"label": "Left Bottom"
+				},
+				{
+					"value": "center top",
+					"label": "Center Top"
+				},
+				{
+					"value": "center center",
+					"label": "Center Center"
+				},
+				{
+					"value": "center bottom",
+					"label": "Center Bottom"
+				},
+				{
+					"value": "right top",
+					"label": "Right Top"
+				},
+				{
+					"value": "right center",
+					"label": "Right Center"
+				},
+				{
+					"value": "right bottom",
+					"label": "Right Bottom"
+				}
+			],
+			"default": "center center",
+            "visible_if": "{{ block.settings.background }}"
+		},
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+            "type": "header",
+            "content": "Laptop ====================",
+            "info": "screen < 1200px"
+        },
+         {
+            "type": "number",
+            "id": "width_lap",
+            "label": "Width",
+            "default": 100,
+            "info": "%"
+        },
+		{
+            "type": "header",
+            "content": "Tablet ====================",
+            "info": "screen < 991px"
+        },
+         {
+            "type": "number",
+            "id": "width_tab",
+            "label": "Width",
+            "default": 100,
+            "info": "%"
+        },
+        {
+            "type": "header",
+            "content": "Mobile ====================",
+            "info": "screen < 767px"
+        },
+         {
+            "type": "number",
+            "id": "width_mobi",
+            "label": "Width",
+            "default": 100,
+            "info": "%"
+        },
+        {
+            "type": "checkbox",
+            "id": "border",
+            "label": "Turn on border",
+            "default": false
+        },
+        {
+            "type": "text",
+            "id": "border_width",
+            "label": "Border width",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left",
+            "visible_if": "{{ block.settings.border }}"
+        },
+        {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border color",
+            "default": "#fff",
+            "visible_if": "{{ block.settings.border }}"
+        },
+        {
+          "type": "text",
+          "id": "box_shadow",
+          "label": "Box shadow",
+          "default": "none"
+        },
+        {
+            "type": "text",
+            "id": "border_radius",
+            "label": "Border radius",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left"
+        }
+    ],
+    "presets": [{"name": "Column"}]
+  }
+{% endschema %}

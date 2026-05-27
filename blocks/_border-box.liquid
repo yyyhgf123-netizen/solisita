@@ -1,0 +1,145 @@
+
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+    #shopify-block-{{ block.id }} .content-box{
+        {%- if block.settings.border -%}
+            border-width:{{ block.settings.border_width }};
+            border-color:{{ block.settings.border_color }};
+            border-style:{{ block.settings.border_style }};
+        {%- endif -%}
+        border-radius:{{ block.settings.border_radius }};
+    }
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .content-box{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .content-box{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .content-box{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .content-box{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="content-box">
+    <div class="content">
+         {% content_for "blocks" %}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Content box",
+    "blocks": [{ "type": "@app" },{ "type": "@theme" }],
+    "settings": [
+          {
+              "type": "checkbox",
+              "id": "border",
+              "label": "Turn on border",
+              "default": false
+          },
+          {
+              "type": "text",
+              "id": "border_width",
+              "label": "Border width",
+              "default": "0px 0px 0px 0px",
+              "info": "top right bottom left"
+          },
+          {
+              "type": "select",
+              "id": "border_style",
+              "label": "Border Style",
+              "options": [
+                  {
+                      "value": "solid",
+                      "label": "Solid"
+                  },
+                  {
+                      "value": "dashed",
+                      "label": "Dashed"
+                  },
+                  {
+                      "value": "dotted",
+                      "label": "Dotted"
+                  },
+                  {
+                      "value": "double",
+                      "label": "Double"
+                  },
+                  {
+                      "value": "groove",
+                      "label": "Groove"
+                  },
+                  {
+                      "value": "outset",
+                      "label": "Outset"
+                  },
+                  {
+                      "value": "ridge",
+                      "label": "Ridge"
+                  }
+              ],
+              "default": "solid"
+          },
+          {
+              "type": "color",
+              "id": "border_color",
+              "label": "Border color",
+              "default": "#fff"
+          },
+          {
+              "type": "text",
+              "id": "border_radius",
+              "label": "Border radius",
+              "default": "0px 0px 0px 0px",
+              "info": "top right bottom left"
+          },
+         {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		}
+    ],
+    "presets": [
+        {
+            "name": "Content box",
+            "blocks": [
+             {
+                  "type": "title"
+              },
+              {
+                  "type": "text-block"
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

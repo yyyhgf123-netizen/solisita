@@ -1,0 +1,35 @@
+{% if settings.image_raito_product != blank %}
+	{% assign image_raito_product = settings.image_raito_product | split:'/' %}
+	{% assign padding_top = 100 | times: image_raito_product[1] | divided_by: image_raito_product[0] %}
+{% else %}
+	{% assign padding_top = image.height | times: 100 | divided_by: image.width %}
+{%- endif -%}
+<div class="preloading-img-product{% if  media.media_type == 'video' %} video{% if image_video %} have-variants{% endif %}{% endif %}" style="padding-top:{{ padding_top }}%">
+	{% if  media.media_type == 'video' %}
+		<video class="lazyloaded" playsinline="" loop="loop" autoplay="autoplay" muted="muted" src="{{ media.sources.last.url }}"></video>
+		{%- if image_video -%}
+			<img 
+			  class="lazyload {{ class }} {{ effect }}"
+			  loading="lazy"
+			  alt="{{ image.alt | default: image.src | split: '/' | last | split: '.' | first | replace: '-', ' ' | capitalize }}"
+			  src="{{ image | image_url: width: 1200 }}"
+			  srcset="{{ image | image_url: width: 480 }} 480w,
+					  {{ image | image_url: width: 768 }} 768w,
+					  {{ image | image_url: width: 1200 }} 1200w"
+			  sizes="(max-width: 768px) 100vw, 1200px" 
+			/>
+		{%- endif -%}
+	{% else %}
+		<img 
+		  class="lazyload {{ class }} {{ effect }}"
+		  loading="lazy"
+		  alt="{{ image.alt | default: image.src | split: '/' | last | split: '.' | first | replace: '-', ' ' | capitalize }}"
+		  src="{{ image | image_url: width: 1200 }}"
+		  srcset="{{ image | image_url: width: 480 }} 480w,
+				  {{ image | image_url: width: 768 }} 768w,
+				  {{ image | image_url: width: 1200 }} 1200w"
+		  sizes="(max-width: 768px) 100vw, 1200px" 
+		/>
+		{%- if settings.preload_product_image -%}{%- render 'preloading' -%}{% endif %}
+	{% endif %}
+</div>

@@ -1,0 +1,49 @@
+<div class="js-product-media-group js-product-media-group-{{ section.id }}{%- if varriant_array != blank -%}-{{ forloop.index }}{% endif %} product-single__media-group"{% if section.settings.media_layout == "slider" %} data-infinite="true" data-centeredslides="true" data-slidesperview="1.8"{%- endif -%}>
+  <div class="swiper-wrapper">
+	{%- assign width = 770 -%}
+	{%- assign height = 770 -%}
+	{%- assign first_3d_model = product.media | where: 'media_type', 'model' | first -%}
+    {%- if variants_group_image != blank -%}
+        {%- if variant_featured_media != blank -%}
+            <div class="swiper-slide js-product-media-item product-single__media-item" data-slick-media-label="{{ thumbnail_alt }}">
+                {%- render 'media' with media: variant_featured_media, featured: featured, width: width, height: height -%}
+            </div>
+        {%- endif -%}
+       {% for media_item in variants_group_image %}
+            <div class="swiper-slide js-product-media-item product-single__media-item" data-slick-media-label="{{ thumbnail_alt }}">
+                {%- render 'media' with media: media_item, featured: featured, width: width, height: height -%}
+            </div>
+        {% endfor %}
+    {%- else -%}
+    	{%- for media in product.media -%}
+    		{%- assign featured = false -%}
+    		{%- if media == featured_media -%}
+    			{%- assign featured = true -%}
+    		{%- endif -%}
+    		{%- capture thumbnail_alt -%}
+    			{%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+    				{{ 'products.product.video_thumbnail_alt' | t: imageAlt: media.alt | escape }}
+    			{%- elsif media.media_type == 'model' -%}
+    				{{ 'products.product.model_thumbnail_alt' | t: imageAlt: media.alt | escape }}
+    			{%- else -%}
+    				{{ 'products.product.gallery_thumbnail_alt' | t: imageAlt: media.alt | escape }}
+    			{%- endif -%}
+    		{%- endcapture -%}
+            <div class="swiper-slide js-product-media-item product-single__media-item" data-slick-media-label="{{ thumbnail_alt }}">
+                {%- render 'media' with media, featured: featured, width: width, height: height -%}
+            </div>
+    	{%- endfor -%}
+        {%- if image_360 != blank -%}
+            {%- assign count_image = 0 -%}
+            {%- for image in image_360 -%}
+                {%- assign count_image = count_image | plus: 1 -%}
+            {%- endfor -%}
+             <div class="swiper-slide js-product-media-item product-single__media-item">
+                <ul class="bwp-image-360" data-count="{{ count_image }}">{%- render 'media', featured: featured, width: width, height: height, image_360: image_360 -%}</ul>
+            </div>
+        {%- endif -%}
+    {%- endif -%}
+  </div>
+    <button class="slick-prev slick-arrow" data-slick-previous aria-label="Previous" type="button" style=""></button>
+    <button class="slick-next slick-arrow" data-slick-next aria-label="Next" type="button" style=""></button>
+</div>

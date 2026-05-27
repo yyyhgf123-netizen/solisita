@@ -1,0 +1,51 @@
+{%- assign final_date 	= block.settings.final_date | escape -%}
+<div class="countdown-deal">
+    <div class="content-countdown">
+        <div class="countdown" 
+            data-countdown="{{ block.settings.final_date }}" 
+            data-day="{{ block.settings.countdown_day }}" 
+            data-hour="{{ block.settings.countdown_hour }}" 
+            data-min="{{ block.settings.countdown_min }}" 
+            data-sec="{{ block.settings.countdown_sec }}">
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Countdown",
+    "settings": [
+        {
+            "type": "text",
+            "id": "final_date",
+            "label": "Final date",
+            "info": "Format: yyyy/MM/dd hh:mm:ss",
+            "default": "2021/01/01 00:00:00"
+        },
+        {
+            "type": "text",
+            "id": "countdown_day",
+            "label": "Text day",
+            "default": "d"
+        },
+        {
+            "type": "text",
+            "id": "countdown_hour",
+            "label": "Text hour",
+            "default": "h"
+        },
+        {
+            "type": "text",
+            "id": "countdown_min",
+            "label": "Text minutes",
+            "default": "m"
+        },
+        {
+            "type": "text",
+            "id": "countdown_sec",
+            "label": "Text second",
+            "default": "s"
+        },
+    ],
+    "presets": [{"name": "Countdown"}]
+  }
+{% endschema %}

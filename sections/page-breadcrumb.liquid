@@ -1,0 +1,101 @@
+{%- if section.settings.enable -%}
+	{%- assign is_bg_image = section.settings.bgimage -%}
+	{%- if is_bg_image -%}
+		{%- assign class_name = 'wpbingo-breadcrumbs--image' -%}
+	{%- else -%}
+		{%- assign class_name = 'wpbingo-breadcrumbs--no-image' -%}
+	{%- endif -%}
+	<section class="wpbingo-breadcrumbs about-contact {{ class_name }} {{ section.settings.align_breadcrumb }}" style="--color-breadcrumb:{{ section.settings.color_breadcrumb }}">
+		{%- assign bg_image = section.settings.image -%}
+		<div class="wpbingo-breadcrumbs__image" {%- if is_bg_image -%}
+			style="background-image: url('{{ bg_image | image_url }}');background-size:cover; background-position:center center"{%- endif -%}>
+			<div class="container">
+				<div class="wpbingo-breadcrumbs__inner">
+					{%- if section.settings.show_pagetitle -%}<h2 class="wpbingo-breadcrumbs__title">{{ page.title }}</h2>{%- endif -%}
+					{%- if section.settings.show_breadcrumb -%}
+					<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+						<li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+							<a class="breadcrumb__link" href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}" itemprop="item">
+								<span itemprop="name">{{ 'general.breadcrumbs.home_link_title' | t }}</span>
+							</a>
+							<meta itemprop="position" content="1" />
+						</li>
+						<li class="breadcrumb__item active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+							<span class="breadcrumb__text">
+								<span itemprop="name">{{ page.title }}</span>
+							</span>
+							<meta itemprop="position" content="2" />
+						</li>
+					</ol>
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	</section>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Breadcrumb",
+    "settings": [
+		{
+			"type": "header",
+			"content": "Settings"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable",
+			"label": "Enable",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "bgimage",
+			"label": "Use background image"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "Background image default",
+			"info": "Default size: 1920x480 pixels"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_pagetitle",
+			"label": "Show page title",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_breadcrumb",
+			"label": "Show breadcrumb",
+			"default": true
+		},
+		{
+			"type": "color",
+			"id": "color_breadcrumb",
+			"label": "Color breadcrumb",
+			"default": "#000000"
+		},
+		{
+			"type": "select",
+			"id": "align_breadcrumb",
+			"label": "Text align",
+			"options": [
+				{
+					"value": "left",
+					"label": "Left"
+				},
+				{
+					"value": "right",
+					"label": "Right"
+				},
+				{
+					"value": "center",
+					"label": "Center"
+				}
+			],
+			"default": "left"
+		}
+    ]
+  }
+{% endschema %}

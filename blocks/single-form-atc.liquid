@@ -1,0 +1,178 @@
+{%- assign current_variant 			= product.selected_or_first_available_variant -%}
+{%- assign external 				    = product.metafields.bwp_fields.external -%}
+{%- assign group_product 			  = product.metafields.bwp_fields.group_product -%}
+{%- if external == blank and group_product == blank -%}
+    <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+    <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+    {% capture "form_classes" %}
+        js-addtocart-form product-single__form{% if product.has_only_default_variant %} product-single__form--no-variants{% endif %}
+    {%- endcapture %}
+    {% form 'product', product, class:form_classes, data-product-form: '' %}
+        {% content_for "blocks" %}
+    {% endform %}
+    {% unless current_variant.available %}
+      {% render 'back-in-stock-form', block:block %}
+    {% endunless %}
+{%- elsif external != blank and group_product == blank -%}
+    <div class="product-single__buttons product-single__add-to-cart">
+      <a class="product-single__external" href="{{ external }}">{{ 'products.product.buy_product' | t }}</a>
+      {%- if product.handle != blank and section.settings.product_button_wishlist -%}
+        <div class="button-wishlist">
+          <button type="button" aria-label="Add to wishlist" class="" data-product-handle="{{ product.handle }}">
+          </button>
+        </div>
+      {%- endif -%}
+    </div>
+{%- elsif group_product != blank -%}
+    <form method="post" id="group_table_product" action="/cart/add"  enctype="multipart/form-data" novalidate="novalidate">
+      <input type="hidden" name="form_type" value="product">
+      <div class="group_table">
+        {% for product_group in group_product.value %}
+          <div data-product_id="{{ product_group.id }}" class="item-product-group">
+            <div class="product-content">
+              <div class="product-thumb">
+                <a href="{{ product.url }}">
+                  {% render 'img-global' with image: product_group.featured_image, class: "featured-banner__img", effect: "fade-in" %}
+                </a>
+              </div>
+              <div class="product-info">
+                <h3 class="product-title"><a href="{{ product_group.url }}">{{ product_group.title }}</a></h3>
+                {% assign number_variant = 0 %}
+                {%- for variant in product_group.variants -%}
+                  {% assign number_variant = number_variant | plus: 1 %}
+                {%- endfor -%}
+                {%- if number_variant == 1 -%}
+                  {%- for variant in product_group.variants -%}
+                    {% assign out_stock = '' %}
+                    {% if variant.inventory_management == "shopify" and variant.inventory_policy != "continue" %}
+                      {% if variant.inventory_quantity == 0 %}
+                        {% assign out_stock = true %}
+                      {%- endif -%}
+                    {%- endif -%}
+                    <div class="product-price">{{ product_group.price | money }}</div>
+                    <input name="items[][id]" type="hidden" value="{{ variant.id  }}" {% if out_stock != blank %}disabled="disabled"{%- endif -%}>
+                    {% if out_stock != blank %}
+                      <div class="stock">{{'products.product.out_stock' | t }}</div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- else -%}
+                  <select name="items[][id]" class="js-product-btp--{{ section.id }} product-single__variants">
+                    {%- for variant in product_group.variants -%}
+                      {%- if variant.available -%}
+                        <option {% if variant == product_group.selected_or_first_available_variant %}
+                          selected="selected" {% endif %}
+                          data-price="{{ variant.price }}"
+                          value="{{ variant.id }}">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {%- else -%}
+                        <option disabled="disabled">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </select>
+                {%- endif -%}
+              </div>
+            </div>
+            <div class="quantity-content">
+              {% if out_stock != blank %}
+                <div class="wpbingo-qty">
+                  <button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}" disabled="disabled">
+                    <i class="feather-minus"></i>
+                  </button>
+                  <input type="text" name="items[][quantity]" class="js-qty-number wpbingo-qty__number" value="0" min="0" aria-label="quantity" pattern="[0-9]*" disabled="disabled">
+                  <button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}" disabled="disabled">
+                    <i class="feather-plus"></i>
+                  </button>
+                </div>
+              {%- else -%}
+                <div class="wpbingo-qty">
+                  <button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+                    <i class="feather-minus"></i>
+                  </button>
+                  <input type="text" name="items[][quantity]" class="js-qty-number wpbingo-qty__number" value="1" min="0" aria-label="quantity" pattern="[0-9]*">
+                  <button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}">
+                    <i class="feather-plus"></i>
+                  </button>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% comment %}Add to cart button{% endcomment %}
+      <div class="product-group__add-to-cart product-single__buttons" style="--atc-bg:{{ block.settings.atc_button_color }};">
+        <button type="submit" class="add-group-to-cart">
+          {{ 'products.product.add_to_cart' | t }}
+        </button>
+        {%- if product.handle != blank and section.settings.product_button_wishlist -%}
+          <div class="button-wishlist">
+            <button type="button" aria-label="Add to wishlist" class="" button-wishlist data-product-handle="{{ product.handle }}">
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+    </form>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Single product form atc",
+    "blocks": [{ "type": "_variants-form" },{ "type": "_button-atc" },{ "type": "@theme" },{ "type": "@app" }],
+    "settings": [
+        {
+					"type": "header",
+					"content": "Back in stock button"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_back_in_stock",
+					"label": "Show Back in stock",
+					"default": true
+				},
+				{
+					"type": "text",
+					"id": "back_in_stock_title",
+					"label": "Back in stock label",
+					"default": "Notify me when available"
+				},
+				{
+					"type": "text",
+					"id": "back_in_stock_title_form",
+					"label": "Back in stock title",
+					"default": "Back in stock alert"
+				},
+				{
+					"type": "textarea",
+					"id": "back_in_stock_content",
+					"label": "Back in stock content",
+					"default": "We will send you a notification as soon as this product is available again."
+				},
+				{
+					"type": "color",
+					"id": "bis_color",
+					"label": "Button background",
+					"default": "#fff"
+				},
+				{
+					"type": "color",
+					"id": "bis_text_color",
+					"label": "Button color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "bis_hover_color",
+					"label": "Background hover",
+					"default": "#ed5d43"
+				},
+				{
+					"type": "color",
+					"id": "bis_text_hover_color",
+					"label": "Button color hover",
+					"default": "#fff"
+				}
+    ],
+    "presets": [{"name": "Single product form atc","category": "Single product"}]
+  }
+{% endschema %}

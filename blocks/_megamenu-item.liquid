@@ -1,0 +1,183 @@
+<style>#shopify-block-{{ block.id }}{width:{{ block.settings.menu_col }};flex:0 0 {{ block.settings.menu_col }};}</style>
+<div class="menu-row__col">
+    {%- assign menu_heading = block.settings.menu_heading -%}
+    {%- if block.settings.widget == 'menu' -%}
+        {%- assign menu_link_list = block.settings.menu_link_list_child -%}
+        <div class="megamenu-products">
+            {%- if menu_heading != blank -%}
+                <div class="megamenu-heading"><span>{{ menu_heading }}</span></div>
+            {%- endif -%}
+            {%- if menu_link_list != blank -%}
+            <ul class="menu-list">
+                {% for link in linklists[menu_link_list].links %}
+                    <li class="menu__item">
+                        <a class="menu__link" href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {%- endif -%}
+        </div>
+    {%- endif -%}
+    {%- if block.settings.widget == 'image' -%}
+        <div class="megamenu-banner">
+            <a href="{{ block.settings.banner_link }}">
+                {%- if block.settings.image -%}
+                    {% render 'img-global' with image: block.settings.image, class: "img-fluid", effect: "fade-in" %}
+                {%- else -%}
+                    <img class="lazyload fade-in" src="https://placehold.jp/330x390.png" width="330" height="390" />
+                {%- endif -%}
+            </a>
+            <div class="content">
+                {%- if block.settings.banner_button != blank -%}
+                    <a class="button" href="{{ block.settings.banner_link }}">{{ block.settings.banner_button }}</a>
+                {%- endif -%}
+            </div>
+            {%- if block.settings.banner_title != blank -%}
+                <h2 class="title"><a href="{{ block.settings.banner_link }}">{{ block.settings.banner_title }}</a></h2>
+            {%- endif -%}
+        </div>
+    {%- endif -%}
+    {%- if block.settings.widget == 'blog' -%}
+        {%- if menu_heading != blank -%}
+            <div class="megamenu-heading"><span>{{ menu_heading }}</span></div>
+        {%- endif -%}
+        <div class="megamenu-blog">
+            {% for article in block.settings.blog_widget.articles limit: 2 %}
+                <div class="featured-blog__post">
+                    <div class="article__image">
+                        <a class="article__featured-image-link" href="{{ article.url }}">
+                            <img class="img-fluid" src="{{ article.image | image_url: width: 600 }}" width="600" height="260">
+                        </a>
+                    </div>
+                    <div class="article__content">
+                        <div class="blog-category">
+                            <a href="{{ block.settings.blog_widget.url }}">{{ block.settings.blog_widget.title }}</a>
+                        </div>
+                        <h2 class="article__heading">
+                            <a class="article__heading-link" href="{{ article.url }}">{{ article.title }}</a>
+                        </h2>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {%- endif -%}
+    {%- if block.settings.widget == 'product' -%}
+        {%- if menu_heading != blank -%}
+            <div class="megamenu-heading"><span>{{ menu_heading }}</span></div>
+        {%- endif -%}
+        <div class="megamenu-product">
+            {%- if block.settings.banner_title -%}
+                <h2 class="title">{{ block.settings.banner_title }}</h2>
+            {%- endif -%}
+            <div class="wpbingo-section__content bwp_slider-carousel">
+                <div class="js-carousel slick-carousel" data-nav="false"
+                    data-columns="2"
+                    data-column1440="2"
+                    data-column1="2"
+                    data-column2="2"
+                    data-column3="1"
+                    data-column4="1">
+                    {%- for product in collections[block.settings.collection_widget].products limit: 3 -%}
+                        <div class="slick-carousel__item">
+                            {% render 'product-grid-item' %}
+                        </div>
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+    {%- endif -%}
+</div>
+{% schema %}
+  {
+    "name": "Block item",
+    "settings": [
+        {
+		  "type": "radio",
+		  "id": "widget",
+		  "label": "Widget",
+		  "options": [
+			{
+			  "value": "menu",
+			  "label": "Menu"
+			},
+			{
+			  "value": "image",
+			  "label": "Banner"
+			},
+			{
+			  "value": "blog",
+			  "label": "Blog"
+			},
+			{
+			  "value": "product",
+			  "label": "Product"
+			}
+		  ],
+		  "default": "menu"
+		},
+        {
+          "type": "text",
+          "id": "menu_col",
+          "label": "Block width",
+          "default": "20%"
+        },
+		{
+          "type": "text",
+          "id": "menu_heading",
+          "label": "Heading"
+        },
+		{
+		  "type": "header",
+		  "content": "Menu"
+		},
+        {
+		  "type": "link_list",
+		  "id": "menu_link_list_child",
+		  "label": "Menu"
+		},
+		{
+		  "type": "header",
+		  "content": "Banner"
+		},
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner image"
+        },
+		{
+          "type": "text",
+          "id": "banner_title",
+          "label": "Banner Title"
+        },
+		{
+          "type": "text",
+          "id": "banner_button",
+          "label": "Banner Button"
+        },
+		{
+          "type": "url",
+          "id": "banner_link",
+          "label": "Banner URL"
+        },
+		{
+		  "type": "header",
+		  "content": "Product"
+		},
+		{
+		  "type": "collection",
+		  "id": "collection_widget",
+		  "label": "Collection"
+		},
+		{
+		  "type": "header",
+		  "content": "Blog"
+		},
+		{
+		  "type": "blog",
+		  "id": "blog_widget",
+		  "label": "Blog"
+		}
+    ],
+    "presets": [{"name": "Megamenu item"}]
+  }
+{% endschema %}

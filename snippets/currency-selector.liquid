@@ -1,0 +1,45 @@
+{%- if settings.currency_type == '2' -%}
+	{%- assign supported_codes = settings.supported_currencies | split: '|' -%}
+	{%- assign cart_iso_code = cart.currency.iso_code -%}
+	<div class="bwp_currency header-selector currencies{% if settings.flag_currency %} have-flags{%- endif -%}">
+		<div class="header-selector__toggle" data-toggle="dropdown">
+			<span class="current flags_bwp-{{cart_iso_code}}">{{cart_iso_code}}</span>
+		</div>
+		<div class="dropdown-menu dropdown-menu-right header-selector__dropdown">
+			<ul class="bwp-currency">
+				{%- if settings.auto_currency -%}<li><a class="currency-item flags_bwp-BWP" href="/" data-no-instant rel="nofollow" data-currency="BWP"></a></li>{%- endif -%}
+				{%- for code in supported_codes -%}
+				   {%- assign array_money = code | split: '-' -%}
+				   {%- assign data_currency = array_money | first | upcase | strip | remove:' ' -%}
+				   {%- assign name_money = array_money | last | strip -%}
+					<li><a class="currency-item flags_bwp-{{data_currency}}" href="/" data-no-instant rel="nofollow" data-currency="{{data_currency}}">{{name_money}}</a></li>
+				{%- endfor -%}
+			</ul>
+		</div>
+	</div>
+{%- else -%}
+	{%- if shop.enabled_currencies.size > 1 -%}
+	  {%- form 'localization', class: selectors_form_class -%}
+		<div class="js-disclosure header-selector header-selector--currency dropdown" data-disclosure-currency>
+			<h4 class="d-none">{{ 'general.currency.dropdown_label' | t }}</h4>
+			<div class="header-selector__toggle" data-toggle="dropdown">
+				{% comment %}{% if form.current_currency.symbol %}{{ form.current_currency.symbol }}{% endif %}{% endcomment %}
+				{{ form.current_currency.iso_code }}
+			</div>
+			<div class="dropdown-menu dropdown-menu-right header-selector__dropdown">
+				<ul class="header-selector__list">
+					{%- for currency in form.available_currencies -%}
+						<li class="header-selector__item{% if currency.iso_code == form.current_currency.iso_code %} locale-selector__item--current{% endif %}">
+							<a data-disclosure-option href="#" data-value="{{ currency.iso_code }}">
+								{% comment %}{% if currency.symbol %}{{ currency.symbol }}{% endif %}{% endcomment %}
+								{{ currency.iso_code }}
+							</a>
+						</li>
+					{%- endfor -%}
+				</ul>
+				<input data-disclosure-input type="hidden" name="currency_code" value="{{ form.current_currency.iso_code }}" />
+			</div>
+		</div>
+	  {%- endform -%}
+	{%- endif -%}
+{%- endif -%}

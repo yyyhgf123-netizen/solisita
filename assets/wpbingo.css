@@ -1,0 +1,96 @@
+@font-face{
+  font-family:wpbingofont;
+  src:url(./wpbingo.eot?fzv6fp);
+  src:url(./wpbingo.eot?fzv6fp#iefix) format("embedded-opentype"),url(./wpbingo.ttf?fzv6fp) format("truetype"),url(./wpbingo.woff?fzv6fp) format("woff"),url(./wpbingo.svg?fzv6fp#wpbingo) format("svg");
+  font-weight:400;
+  font-style:normal;
+  font-display:block;
+}
+
+[class*=" wpb-icon-"],[class^=wpb-icon-]{
+  font-family:wpbingofont;
+  speak:none;
+  font-style:normal;
+  font-weight:400;
+  font-variant:normal;
+  text-transform:none;
+  line-height:1;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.wpb-icon-filter:before {
+  content: "\e929";
+}
+.wpb-icon-edit1:before {
+  content: "\e93f";
+}
+.wpb-icon-free-icon:before {
+  content: "\e92e";
+}
+.wpb-icon-quots:before {
+  content: "\e92d";
+}
+.wpb-icon-play:before {
+  content: "\e92c";
+}
+.wpb-icon-coupon:before {
+  content: "\e93d";
+}
+.wpb-icon-shipping3:before {
+  content: "\e93e";
+}
+.wpb-icon-gift:before {
+  content: "\e92b";
+}
+.wpb-icon-package:before {
+  content: "\e922";
+}
+.wpb-icon-out-stock:before {
+  content: "\e920";
+}
+.wpb-icon-in-stock:before {
+  content: "\e919";
+}
+.wpb-icon-right-arrow1:before {
+  content: "\e917";
+}
+.wpb-icon-left-arrow:before {
+  content: "\e908";
+}
+.wpb-icon-right-arrow:before {
+  content: "\e909";
+}
+.wpb-icon-ruler:before{
+  content:"\e90b";
+}
+.wpb-icon-share:before{
+  content:"\e90a";
+}
+.wpb-icon-eye:before{
+  content:"\e906";
+}
+.wpb-icon-star:before{
+  content:"\e907";
+}
+.wpb-icon-flash:before{
+  content:"\e900";
+}
+.wpb-icon-login:before{
+  content:"\e901";
+}
+.wpb-icon-coupon1:before{
+  content:"\e902";
+}
+.wpb-icon-delete:before{
+  content:"\e903";
+}
+.wpb-icon-dropdown:before{
+  content:"\e904";
+}
+.wpb-icon-edit:before{
+  content:"\e905";
+}
+.wpb-icon-short:before {
+  content: "\e921";
+}

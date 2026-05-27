@@ -1,0 +1,82 @@
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .list-item{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .list-item{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .list-item{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .list-item{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="list-item">
+    {% if block.settings.url != blank %}
+      <a href="{{ block.settings.url }}">{% if block.settings.icon != blank %}<i class="{{ block.settings.icon }}"></i>{% endif %}<span class="list-text">{{ block.settings.text }}</span></a>
+    {% else %}
+      {% if block.settings.icon != blank %}<i class="{{ block.settings.icon }}"></i>{% endif %}<span class="list-text">{{ block.settings.text }}</span>
+    {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "List item",
+    "tag":"li",
+    "settings": [
+        {
+            "type": "text",
+            "id": "text",
+            "label": "Content",
+            "default": "List item"
+        },
+         {
+            "type": "url",
+            "id": "url",
+            "label": "Url"
+        },
+        {
+            "type": "text",
+            "id": "icon",
+            "label": "Icon",
+            "info": "You can use the font set [here](https://dropways.github.io/feathericons/)"
+        },
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		}
+        
+    ],
+    "presets": [{"name": "List item"}]
+  }
+{% endschema %}

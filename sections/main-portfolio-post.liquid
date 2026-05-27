@@ -1,0 +1,140 @@
+<section class="page-article portfolio">
+	<div class="container">
+		<div class="page-article__inner">
+			{%- for block in section.blocks -%}
+				{%- case block.type -%}
+				{%- when 'image' -%}
+					{%- if block.settings.show_portfolio_image -%}
+					<div class="article__image"{% if block.settings.portfolio_image_margin != blank %} style="margin:{{ block.settings.portfolio_image_margin }}"{% endif %}>
+						<div class="article__featured-image-wrapper">
+							<img class="portfolio__featured-image fade-in lazyload" src="{{ article.image | image_url:width:article.image.width,height:article.image.height }}" alt="{{ article.image.alt | escape }}" width="{{ article.image.width }}" height="{{ article.image.height }}">
+						</div>
+					</div>
+					{%- endif -%}
+				{%- endcase -%}
+			{%- endfor -%}
+			<div class="content-single-portfolio">
+				{%- for block in section.blocks -%}
+					{%- case block.type -%}
+					{%- when 'title' -%}
+						<div class="content-single-info"{% if block.settings.portfolio_title_margin != blank %} style="margin:{{ block.settings.portfolio_title_margin }}"{% endif %}>
+							<div class="content-info">
+								{%- if block.settings.show_article_tags_title -%}
+									<div class="post-content-entry">
+										{% render 'tags-article' %}
+									</div>
+								{%- endif -%}
+								{%- if block.settings.show_article_title -%}
+									<h1 class="page-title">{{ article.title }}</h1>
+								{%- endif -%}
+							</div>
+							{%- if block.settings.client or block.settings.year -%}
+								<div class="content-client">
+									<ul>
+										{%- if block.settings.client -%}<li><label>{{ 'blogs.portfolio.client' | t }} : </label> {{ article.author }}</li>{%- endif -%}
+										{%- if block.settings.year -%}<li><label>{{ 'blogs.portfolio.year' | t }} : </label> {{ article.updated_at | date: "%Y" }}</li>{%- endif -%}
+									</ul>
+								</div>
+							{%- endif -%}
+						</div>
+					{%- when 'content' -%}
+						{%- if block.settings.show_article_content -%}
+							<div class="article__content"{% if block.settings.portfolio_content_margin != blank %} style="margin:{{ block.settings.portfolio_content_margin }}"{% endif %}>
+								<div class="rte" itemprop="articleBody">
+									{{ article.content }}
+								</div>
+							</div>
+						{%- endif -%}
+					{%- endcase -%}
+				{%- endfor -%}
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+	"name": "Main Portfolio",
+	"settings": [
+	],
+	"blocks": [
+		{
+            "type": "@app"
+        },
+		{
+            "type": "image",
+            "name": "Portfolio Image",
+            "limit": 1,
+            "settings": [
+				{
+					"type": "checkbox",
+					"id": "show_portfolio_image",
+					"label": "Show Portfolio Image",
+					"default": true
+				},
+				{
+					"type": "text",
+					"id": "portfolio_image_margin",
+					"label": "Margin",
+					"info": "Example(top left bottom right): 15px 15px 15px 15px"
+				}
+			]
+		},
+		{
+            "type": "title",
+            "name": "Portfolio Title",
+            "limit": 1,
+            "settings": [
+				{
+					"type": "text",
+					"id": "portfolio_title_margin",
+					"label": "Margin",
+					"info": "Example(top left bottom right): 15px 15px 15px 15px"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_article_tags_title",
+					"label": "Show article tags",
+					"default": true
+				},
+				{
+					"type": "checkbox",
+					"id": "show_article_title",
+					"label": "Show article title",
+					"default": true
+				},
+				{
+					"type": "checkbox",
+					"id": "client",
+					"label": "Show client",
+					"default": true
+				},
+				{
+					"type": "checkbox",
+					"id": "year",
+					"label": "Show article year",
+					"default": true
+				}
+			]
+		},
+		{
+            "type": "content",
+            "name": "Portfolio Content",
+            "limit": 1,
+            "settings": [
+				{
+					"type": "text",
+					"id": "portfolio_content_margin",
+					"label": "Margin",
+					"info": "Example(top left bottom right): 15px 15px 15px 15px"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_article_content",
+					"label": "Show article content",
+					"default": true
+				}
+			]
+		}
+	]
+}
+{% endschema %}

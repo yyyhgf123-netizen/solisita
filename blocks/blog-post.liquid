@@ -1,0 +1,484 @@
+
+{%- assign blog 	= block.settings.blog -%}
+{%- assign limit 	= block.settings.post_limit -%}
+{%- assign nav 		= block.settings.navigation -%}
+{%- assign infinite = block.settings.infinite -%}
+{%- assign autoplay = block.settings.autoplay -%}
+{%- assign autoplay_speed = block.settings.autoplay_speed | escape -%}
+{%- assign rows 			        = block.settings.rows -%}
+{%- assign columns 			        = block.settings.columns -%}
+{%- assign space_columns 			= block.settings.space_columns -%}
+{%- assign pergroup_columns 		= block.settings.pergroup_columns -%}
+{%- assign column1440 		        = block.settings.column1440 -%}
+{%- assign space_column1440 		= block.settings.space_column1440 -%}
+{%- assign pergroup_column1440 		= block.settings.pergroup_column1440 -%}
+{%- assign column1 			        = block.settings.column1 -%}
+{%- assign space_column1 			= block.settings.space_column1 -%}
+{%- assign pergroup_column1 		= block.settings.pergroup_column1 -%}
+{%- assign column2 			        = block.settings.column2 -%}
+{%- assign space_column2 			= block.settings.space_column2 -%}
+{%- assign pergroup_column2 		= block.settings.pergroup_column2 -%}
+{%- assign column3 			        = block.settings.column3 -%}
+{%- assign space_column3 			= block.settings.space_column3 -%}
+{%- assign pergroup_column3 		= block.settings.pergroup_column3 -%}
+{%- assign column4 			        = block.settings.column4 -%}
+{%- assign space_column4 			= block.settings.space_column4 -%}
+{%- assign pergroup_column4 		= block.settings.pergroup_column4 -%}
+{%- assign show_date = block.settings.blog_show_date -%}
+{%- assign show_image = block.settings.blog_show_image -%}
+{%- assign show_excerpt = block.settings.blog_show_excerpt -%}
+{%- assign show_author = block.settings.blog_show_author -%}
+{%- assign lenght_excerpt = block.settings.lenght_excerpt -%}
+{%- assign show_button = block.settings.show_button -%}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+{%- style -%}
+{%- if margin[0] != blank or padding[0] != blank -%}
+	#shopify-block-{{ block.id }} .wpbingo-widget--featured-blog{
+		{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+		{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+	}
+{%- endif -%}
+{%- if margin[1] != blank or padding[1] != blank -%}
+	@media (max-width:1199px){
+		#shopify-block-{{ block.id }} .wpbingo-widget--featured-blog{
+			{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+			{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[2] != blank or padding[2] != blank -%}
+	@media (max-width:991px){
+		#shopify-block-{{ block.id }} .wpbingo-widget--featured-blog{
+			{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+			{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[3] != blank or padding[3] != blank -%}
+	@media (max-width:767px){
+		#shopify-block-{{ block.id }} .wpbingo-widget--featured-blog{
+			{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+			{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- endstyle -%}
+{% content_for "block", type: "custom-blog-post", id: "custom-blog-post" %}
+<div class="wpbingo-block wpbingo-widget--featured-blog wpbingo-block--{{ block.id }}">
+    <div class="featured-blog wpbingo-section__content bwp_slider-carousel">
+        {% if blog == blank %}
+             <h4>{{ 'blogs.block.select_blog' | t }}</h4>
+        {% else %}
+            {% unless blog.articles_count == 0 %}
+               <div class="content-swiper-nav">
+                <div class="bwp-swiper-slider" data-infinite="{{ infinite }}" data-rows={{ rows }}
+            					data-autoplay="{{ autoplay }}"
+  					data-autoplayspeed="{{ autoplay_speed }}"
+  					data-columns="{{ columns }}"
+                    data-space-columns="{{ space_columns }}"
+                    data-pergroup-columns="{{ pergroup_columns }}"
+  					data-column1440="{{ column1440 }}"
+                    data-space-column1440="{{ space_column1440 }}"
+                    data-pergroup-column1440="{{ pergroup_column1440 }}"
+  					data-column1="{{ column1 }}"
+                    data-space-column1="{{ space_column1 }}"
+                    data-pergroup-column1="{{ pergroup_column1 }}"
+  					data-column2="{{ column2 }}"
+                    data-space-column2="{{ space_column2 }}"
+                    data-pergroup-column2="{{ pergroup_column2 }}"
+  					data-column3="{{ column3 }}"
+                    data-space-column3="{{ space_column3 }}"
+                    data-pergroup-column3="{{ pergroup_column3 }}"
+  					data-column4="{{ column4 }}"
+                    data-space-column4="{{ space_column4 }}"
+                    data-pergroup-column4="{{ pergroup_column4 }}">
+                  <div class="swiper-wrapper">
+                    {% for article in blog.articles limit: limit %}
+                        <div class="swiper-slide">
+                            <div class="featured-blog__post">
+                                <article class="article">
+                                	{% unless article.image == blank %}
+                                		{%- if show_image -%}
+                                			<div class="article__image">
+                                				<a class="article__featured-image-link" href="{{ article.url }}">
+                                					<div class="article__featured-image-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                                						{% render 'img-global' with image: article.image, class: "article__featured-image", effect: "fade-in" %}
+                                					</div>
+                                				</a>
+                                			</div>
+                                		{%- endif -%}
+                                	{% endunless %}
+                                	<div class="article__content">
+                                    <div class="author-comment">
+                                      {%- if show_author -%}
+                                        <div class="article__author">
+                                          <div class="article__meta-author"><i class="feather-user"></i>{{ 'blogs.article.by' | t }}: <a href="{{ blog.url }}">{{ article.author }}</a></div>
+                                        </div>
+                                      {%- endif -%}
+                                      {%- if block.settings.show_comments -%}
+                                        {%- assign number_of_comments = item.comments_count -%}
+                                        {%- if blog.comments_enabled? -%}
+                                          <div class="article__meta-comment"><i class="feather-message-square"></i><a href="#comments">{{ 'blogs.comments.with_count' | t: count:  article.comments_count }} </a></div>
+                                        {%- endif -%}
+                                      {%- endif -%}
+                                    </div>
+                                    {%- if block.settings.show_category -%}
+                                      <div class="article-category">
+                                        <a href="{{ blog.url }}">{{ blog.title }}</a>
+                                      </div>
+                                    {%- endif -%}
+                                		<h2 class="article__heading">
+                                			<a class="article__heading-link" href="{{ article.url }}">{{ article.title }}</a>
+                                		</h2>
+                                		{%- if show_excerpt -%}
+                                			<div class="rte article__excerpt">
+                                				{{ article.excerpt_or_content | strip_html | truncatewords: lenght_excerpt }}
+                                			</div>
+                                		{%- endif -%}
+                                    {%- if show_date -%}
+                                      <div class="article__meta">       					
+                                        <span class="article__meta-date"><time datetime="{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}" class="date">{{ article.published_at | date: "%B %d %Y" }}</time></span>                             					
+                                      </div>
+                                    {%- endif -%}
+                                		{%- if show_button -%}
+                                		<div class="button">
+                                			<a href="{{ article.url }}">{{ "blogs.article.read_more" | t }}</a>
+                                		</div>
+                                		{%- endif -%}
+                                	</div>
+                                </article>
+                            </div>
+                        </div>
+                    {% endfor %}
+                  </div>
+                  {%- if nav -%}
+                <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style=""></button>
+                <button class="slick-next slick-arrow" aria-label="Next" type="button" style=""></button>
+                {%- endif -%}
+                </div>
+                </div>
+            {% else %}
+                 <h4>{{ 'blogs.block.count_blog' | t }}</h4>
+            {% endunless %}
+        {% endif %}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Blog post",
+    "settings": [
+       {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+          "type": "header",
+          "content": "General Settings"
+        },
+        {
+          "id": "blog",
+          "type": "blog",
+          "label": "Blog features"
+        },
+        {
+          "type": "range",
+          "id": "post_limit",
+          "label": "Posts",
+          "min": 1,
+          "max": 8,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_date",
+          "label": "Show date",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_image",
+          "label": "Show cover image",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_category",
+          "label": "Show category",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_author",
+          "label": "Show author",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_comments",
+          "label": "Show comments",
+          "default": true
+        },
+    	  {
+          "type": "checkbox",
+          "id": "show_button",
+          "label": "Show button read more",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_excerpt",
+          "label": "Show excerpt",
+          "default": true
+        },
+    	{
+          "type": "number",
+          "id": "lenght_excerpt",
+          "label": "Lenght excerpt",
+          "default": 10
+        },
+        {
+          "type": "header",
+          "content": "Carousel Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "navigation",
+          "label": "Show navigation",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "infinite",
+          "label": "Infinite loop sliding",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Enable autoplay",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "autoplay_speed",
+          "label": "Autoplay speed",
+          "info": "Autoplay speed in milliseconds. Type: int(ms)",
+          "default": "10000"
+        },
+      {
+        "type": "range",
+        "id": "rows",
+        "min": 1,
+        "max": 7,
+        "step": 1,
+        "label": "Rows",
+        "default": 1
+      },
+       {
+            "type": "header",
+            "content": "-----Screen >1440px"
+          },
+      	{
+            "type": "range",
+            "id": "columns",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "pergroup_columns",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "space_columns",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 30,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 1200px to 1440px"
+          },
+      	{
+            "type": "range",
+            "id": "column1440",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "pergroup_column1440",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "space_column1440",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 30,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 992px to 1199px"
+          },
+          {
+            "type": "range",
+            "id": "column1",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "pergroup_column1",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "space_column1",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 768px to 991px"
+          },
+          {
+            "type": "range",
+            "id": "column2",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 3
+          },
+        {
+            "type": "range",
+            "id": "pergroup_column2",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 3
+          },
+          {
+            "type": "range",
+            "id": "space_column2",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 480px to 767px"
+          },
+          {
+            "type": "range",
+            "id": "column3",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "pergroup_column3",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "space_column3",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          },
+           {
+            "type": "header",
+            "content": "-----Screen < 480px"
+          },
+      	{
+            "type": "range",
+            "id": "column4",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 1
+          },
+           {
+            "type": "range",
+            "id": "pergroup_column4",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "space_column4",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          }
+    ],
+     "presets": [{"name": "Blog post"}]
+  }
+{% endschema %}

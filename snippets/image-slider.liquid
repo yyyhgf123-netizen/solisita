@@ -1,0 +1,41 @@
+{%- if settings.product_within_collection -%}
+	{%- assign product_url = product.url | within: collection -%}
+{%- else -%}
+	{%- assign product_url = product.url -%}
+{%- endif -%}
+{%- assign featured_image 		= product.featured_media.preview_image %}
+{%- assign media_featured		= product.featured_media %}
+
+{% if featured_image.src == blank %}
+<a class="product-card__image-link" href="{{ product_url }}">
+	<img class="product-card__image lazyload fade-in" src="https://placehold.jp/450x540.png"  width="450" height="540" alt="{{ featured_image.alt | escape }}">
+</a>
+{% else %}
+	<div class="bwp-swiper-slider product-card__image" data-columns="1"
+                          data-space-columns="0"
+      					data-column1440="1"
+                          data-space-column1440="0"
+      					data-column1="1"
+                          data-space-column1="0"
+      					data-column2="1"
+                          data-space-column2="0"
+      					data-column3="1"
+                          data-space-column3="0"
+      					data-column4="1"
+                          data-space-column4="0">
+      <div class="swiper-wrapper">
+		{%- for media in product.media -%}
+			<a class="swiper-slide product-card__image-link" href="{{ product_url }}" data-variant_id="{{ media.id }}" data-index="{{ forloop.index }}">
+				{% if forloop.first %}
+					{% render 'img-global-product' with image: media, media: media_featured, class: "product-card__img-visible variant", effect: "fade-in" %}
+				{% else %}
+					{% render 'img-global-product' with image: media, class: "product-card__img-visible", effect: "fade-in" %}
+				{% endif %}
+			</a>
+		{%- endfor -%}
+      </div>
+                      <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style=""></button>
+                      <button class="slick-next slick-arrow" aria-label="Next" type="button" style=""></button>
+
+	</div>
+{% endif %}

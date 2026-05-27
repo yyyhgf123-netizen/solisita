@@ -1,0 +1,60 @@
+{%- assign size_chart 				= product.metafields.bwp_fields.size_chart -%}
+{% unless product.has_only_default_variant %}
+    <div class="size-guide">
+        <i class="wpb-icon-ruler"></i><div class="title-size-guide">{{ block.settings.text_button }}</div>
+        <div class="img-size-guide">
+            <div class="img-size-content">
+                <div class="title-size-guide"></div>
+                {%- if size_chart -%}
+                    <img class="size_image" src="{{ size_chart | image_url:width:size_chart.width,height:size_chart.height }}" alt="{{ size_chart.alt | escape }}" width="{{ size_chart.width }}" height="{{ size_chart.height }}" />
+                {%- else -%}
+                    {%- if block.settings.type_sizechart == "image" -%}
+                        <img class="size_image" src="{{ settings.img_size_chart | image_url:width:settings.img_size_chart.width,height:settings.img_size_chart.height }}" alt="{{ settings.img_size_chart.alt | escape }}" width="{{ settings.img_size_chart.width }}" height="{{ settings.img_size_chart.height }}" />
+                    {%- else -%}
+                        {{ block.settings.html_size_chart.content }}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+{% endunless %}
+{% schema %}
+  {
+    "name": "Single Size guide",
+    "settings": [
+        {
+            "type": "text",
+            "id": "text_button",
+            "label": "Text button",
+            "default":"Size guide"
+        },
+        {
+            "type": "select",
+            "id": "type_sizechart",
+            "label": "Type size chart",
+            "options": [
+            {
+                "value": "html",
+                "label": "Html"
+            },
+            {
+                "value": "image",
+                "label": "Image"
+            }
+            ]
+        },
+        {
+            "type": "image_picker",
+            "id": "img_size_chart",
+            "label": "Size Table Image"
+        },
+        {
+            "type": "page",
+            "id": "html_size_chart",
+            "label": "Size Table html",
+            "info": "Config size guide page [Document](https://info.bingomore.com/shopify/document/wpbingo/theme_settings.html#size-chart)"
+        }
+    ],
+    "presets": [{"name": "Single Size guide","category": "Single product"}]
+  }
+{% endschema %}

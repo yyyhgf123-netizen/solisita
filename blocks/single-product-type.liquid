@@ -1,0 +1,18 @@
+<div class="product__organization">
+    <div class="product__organization__label">{{ block.settings.label }}</div>
+    <div class="product__organization__text">{{ product.type }}</div>
+</div>
+{% schema %}
+  {
+    "name": "Single product type",
+    "settings": [
+         {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "Product type"
+        }
+    ],
+    "presets": [{"name": "Single product type","category": "Single product"}]
+  }
+{% endschema %}

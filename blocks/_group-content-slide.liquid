@@ -1,0 +1,253 @@
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .slideshow-caption .slideshow-caption__inner{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .slideshow-caption .slideshow-caption__inner{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .slideshow-caption .slideshow-caption__inner{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .slideshow-caption .slideshow-caption__inner{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="slideshow-caption slideshow-vertical--{{ block.settings.vertical_align }} slideshow-vertical-mobi--{{ block.settings.vertical_align_mobi }}{% if block.settings.disable_absolute %} disable_absolute{% endif %}">
+      <div class="container{{ block.settings.caption_width }}">
+          <div class="slideshow-caption__inner slideshow-horizontal--{{ block.settings.horizontal_align }} slideshow-horizontal-mobi--{{ block.settings.horizontal_align_mobi }}">
+              <div class="slideshow-caption__content slideshow-text--{{block.settings.align}}  slideshow-text-mobi--{{block.settings.align_mobi}} animation-{{block.settings.animation}}">
+                  {% content_for "blocks" %}
+              </div>
+          </div>
+      </div>
+  </div>
+{% schema %}
+  {
+    "name": "Group Slide",
+     "blocks": [{ "type": "@theme" },{"type": "@app" }],
+    "settings": [
+        {
+            "type": "select",
+            "id": "caption_width",
+            "default": "",
+            "options": [
+             {
+                "value": "",
+                "label": "Container"
+             },
+             {
+                "value": "full",
+                "label": "Full Width"
+              }
+            ],
+            "label": "Caption Width"
+        },
+        {
+            "type": "select",
+            "id": "vertical_align",
+            "label": "Caption vertical position",
+            "default": "middle",
+            "options": [
+                {
+                    "value": "middle",
+                    "label": "Middle"
+                },
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "horizontal_align",
+            "label": "Caption horizontal position",
+            "default": "left",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "align",
+            "label": "Caption alignment",
+            "default": "left",
+            "options": [
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        },
+		{
+            "type": "select",
+            "id": "animation",
+            "label": "Caption animation",
+            "default": "left-to-right",
+            "options": [
+                {
+                    "value": "left-to-right",
+                    "label": "Left to right"
+                },
+                {
+                    "value": "right-to-left",
+                    "label": "Right to left"
+                },
+                {
+                    "value": "top-to-bottom",
+                    "label": "Top to bottom"
+                },
+				{
+                    "value": "bottom-to-top",
+                    "label": "Bottom to top"
+                },
+				{
+                    "value": "fade-in",
+                    "label": "Fade in"
+                },
+				{
+                    "value": "scale",
+                    "label": "Scale"
+                },
+				{
+                    "value": "zoom",
+                    "label": "Zoom"
+                }
+            ]
+        },
+       {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+       {
+            "type": "header",
+            "content": "==Mobile",
+            "info": "screen < 767px"
+        },
+        {
+            "type": "checkbox",
+            "id": "disable_absolute",
+            "label": "Disable absolute content in mobile",
+            "default": true
+        },
+        {
+            "type": "select",
+            "id": "vertical_align_mobi",
+            "label": "Caption vertical position",
+            "default": "middle",
+            "options": [
+                {
+                    "value": "middle",
+                    "label": "Middle"
+                },
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "horizontal_align_mobi",
+            "label": "Caption horizontal position",
+            "default": "left",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "align_mobi",
+            "label": "Caption alignment",
+            "default": "left",
+            "options": [
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+          "name": "Group Slide"
+        } 
+     ]
+  }
+{% endschema %}

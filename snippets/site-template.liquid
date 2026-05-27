@@ -1,0 +1,405 @@
+<div class="toast ajaxcart-toast fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+  <button type="button" class="ajaxcart-toast__close close" data-dismiss="toast" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="toast-body"></div>
+</div>
+
+{%- if settings.scroll_to_top -%}
+	<div class="js-scroll-to-top scroll-to-top">
+		<i class="feather-arrow-up"></i>
+	</div>
+{%- endif -%}
+
+{%- if settings.cookie_consent_enable -%}
+	<div class="cookie-consent" role="dialog" aria-label="cookieconsent">
+		<div class="cookie-consent__wrapper">
+			<div class="cookie-consent__message">{{ settings.cookie_consent_message }}</div>
+			<div class="cookie-consent__dismiss">
+				<button class="cookie-consent-dismiss btn btn-dismiss" type="button">{{ settings.cookie_consent_button | escape }}</button>
+				<button class="cookie-consent-agree btn btn-agree" type="button">{{ settings.cookie_agree_button | escape }}</button>
+			</div>
+		</div>
+	</div>
+{%- endif -%}
+
+{%- if settings.newsletter_popup_enable -%}
+	<div class="js-newsletter-popup newsletter-popup">
+		<div class="js-newsletter-popup-close newsletter-popup__overlay"></div>
+		<div class="newsletter-popup__inner">
+			<button class="js-newsletter-popup-close newsletter-popup__close" type="button">
+			</button>
+			<div class="image">
+				{%- if settings.newsletter_popup_image -%}
+					<img class="newsletter-popup__image" src="{{ settings.newsletter_popup_image | image_url }}" width="{{ settings.newsletter_popup_image.width }}" height="{{ settings.newsletter_popup_image.height }}" alt="{{ settings.newsletter_popup_image.alt | escape }}" data-image />
+				{%- else -%}
+					<img src="https://placehold.jp/360x460.png" width="360" height="460" />
+				{%- endif -%}
+			</div>
+			<div class="newsletter-popup__content">
+				<div class="newsletter-popup__content-inner">
+					<div class="title-newsletter">{{ settings.newsletter_popup_title }}</div>
+					<div class="text-newsletter">{{ settings.newsletter_popup_subtitle }}</div>
+					{%- if settings.newsletter_popup_form -%}
+						{%- assign mailchimp = settings.newsletter_popup_mailchimp -%}
+						{%- assign mailchimp_action = settings.newsletter_popup_form_action | replace: '/post?', '/post-json?' | append: '&amp;c=?' -%}
+						{%- if mailchimp -%}
+							<form class="js-wpbingo-newsletter" action="{{ mailchimp_action }}" method="post" name="mc-embedded-subscribe-form" target="_blank">
+								<div class="newsletter-form__wrap">
+									<input class="js-input-newsletter form-control newsletter-form__input" type="email" name="EMAIL"
+										value="{% if customer %}{{ customer.email }}{% endif %}"
+										placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" required />
+									<button class="btn newsletter-form__submit" type="submit">
+										<span>{{ 'general.newsletter_form.submit' | t }}</span>
+									</button>
+								</div>
+							</form>
+						{%- else -%}
+							{% form 'customer' %}
+								{{ form.errors | default_errors }}
+								{%- if form.posted_successfully? -%}
+									<div class="js-newsletter-popup-success alert alert-success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>
+								{%- else -%}
+									<input type="hidden" name="contact[tags]" value="newsletter">
+									<div class="newsletter-form__wrap">
+										<input value="{% if customer %}{{ customer.email }}{% endif %}"
+											placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}"
+											name="contact[email]" class="form-control newsletter-form__input" type="email" 
+											autocorrect="off"
+											autocapitalize="off"/>
+										<button class="js-newsletter-popup-submit btn newsletter-form__submit" type="submit">
+											<span>{{ 'general.newsletter_form.submit' | t }}</span>
+										</button>
+									</div>
+								{%- endif -%}
+							{% endform %}
+						{%- endif -%}
+					{%- endif -%}
+				</div>
+			</div>
+			
+		</div>
+	</div>
+{%- endif -%}
+
+{%- if settings.verify_popup_enable -%}
+	<div class="js-verify-popup verify-popup">
+		<div class="close-overlay"></div>
+		<div class="content-verify">
+			<div class="verify-info">
+				{%- if settings.verify_popup_title -%}<h2 class="title">{{ settings.verify_popup_title }}</h2>{%- endif -%}
+				{%- if settings.verify_popup_info -%}<div class="info">{{ settings.verify_popup_info }}</div>{%- endif -%}
+				{%- if settings.verify_popup_allow or settings.verify_popup_disallowance -%}<div class="group-button">
+					{%- if settings.verify_popup_allow -%}<button class="button-allow">{{ settings.verify_popup_allow }}</button>{%- endif -%}
+					{%- if settings.verify_popup_disallowance -%}<button class="button-not-allow">{{ settings.verify_popup_disallowance }}</button>{%- endif -%}
+				</div>{%- endif -%}
+			</div>
+			{%- if settings.verify_popup_disallowance_content -%}
+			<div class="alert-verify hidden">
+				<i class="feather-alert-triangle"></i>{{ settings.verify_popup_disallowance_content }}
+			</div>
+			{%- endif -%}
+		</div>
+	</div>
+{%- endif -%}
+
+{%- if settings.quickview_enable -%}
+	<div class="quickview" data-quickview data-stock-show="{{ settings.quickview_availability }}" data-type-show="{{ settings.quickview_protype }}" data-vendor-show="{{ settings.quickview_vendor }}" >
+		<div class="quickview__overlay" data-quickview-close></div>
+		<div class="quickview__content {{ settings.style_option }}">
+			<button type="button" class="quickview__btn-close" data-quickview-close></button>
+			<div data-quickview-container></div>
+		</div>
+	</div>
+{%- endif -%}
+
+{%- if settings.show_gift_card -%}
+	<div class="gift_card-container" data-gift-card >
+		<div class="gift_card__overlay" data-gift-card-close></div>
+		<div class="gift_card__content">
+			<button type="button" class="gift_card__btn-close" data-gift-card-close></button>
+			<div data-gift-card-container></div>
+		</div>
+	</div>
+{%- endif -%}
+<div class="edit_variant-cart-container" data-edit_variant-cart >
+	<div class="edit_variant-cart__content">
+		<button type="button" class="edit_variant__btn-close" data-edit_variant-cart-close></button>
+		<div data-edit_variant-cart-container></div>
+	</div>
+</div>
+{%- if settings.cart_type == 'modal' -%}
+<script id="ajaxcart-header-template" type="text/template">
+	{% raw %}
+    <div class="js-cart-modal cart-modal">
+		<div class="js-cart-modal-close cart-modal__overlay"></div>
+		<div class="cart-modal__inner">
+	{% endraw %}
+			<a class="js-cart-modal-close cart-modal__close" href="javascript:void(0)">
+			</a>
+			<div class="cart-modal__header">
+				<div class="cart-modal__messenger">{{ 'cart.general.added_to_cart' | t }}</div>
+				<div class="cart-modal-totalcount">{{ 'cart.general.cart_modal_count_html' | t: item_count: cart.item_count }}</div>
+			</div>
+			<form action="{{ routes.cart_url }}" id="form-modal-addtocart" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+				{% raw %}
+					<input type="hidden" data-modal-variant name="id" value="{{variant_id}}">
+				{% endraw %}
+				<div class="cart-modal__middle">
+					<div class="cart-modal__product">
+						<div class="image-product">
+							{% raw %}<img class="img-fluid" alt="{{name}}" src="{{image}}"/>{% endraw %}
+						</div>
+						<div class="info-product">
+							{% raw %}<div class="cart-modal__name">{{name}}</div>
+							{{#if variant}}
+								<div class="variant"></div>
+							{{/if}}
+							<div class="modalcart__quantity">
+									<button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{% endraw %}{{ 'cart.general.reduce_quantity' | t }}{% raw %}">
+										<i class="feather-minus" aria-hidden="true"></i>
+									</button>
+									<input type="text" name="quantity" class="ajaxcart__qty-num wpbingo-qty__number" value="{{quantity}}" min="0" aria-label="quantity" pattern="[0-9]*">
+									<button type="button" {{disabled}} class="ajaxcart__qty-adjust ajaxcart__qty--plus wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{% endraw %}{{ 'cart.general.increase_quantity' | t }}{% raw %}">
+										<i class="feather-plus" aria-hidden="true"></i>
+									</button>
+							</div>
+							{{#if discount}}
+								<div class="discount"></div>
+							{{/if}}
+							<div class="modalcart__line_price">
+								<div class="price_discount"></div>
+								<div class="price">{{{final_line_price}}}</div>{% endraw %}
+							</div>
+						</div>
+					</div>
+					<div class="cart-modal__content">
+						<div class="cart-modal-totalprice">{{ 'cart.general.cart_total' | t }}<span>{{ cart.total_price | money }}</span></div>
+						{%- if settings.currency_type == '2' and settings.notify_currency and settings.mess_currency != blank %}{% assign cart_iso_code = cart.currency.iso_code %}{% assign text1 = '{{ currency }}' -%}
+							<div class="ajaxcart-currency" data-currency-jsnotify>
+								<div class="content">
+									<div class="marquee">
+										<p>
+											{{ settings.mess_currency | replace:text1,cart_iso_code | replace:'[currency]',cart_iso_code | replace:'[original_currency]',cart_iso_code | replace:'[current_currency]','<span class="selected-currency"></span>' }}
+										</p>
+									</div>
+								</div>
+							</div>
+						{%- endif -%}
+						{% comment %} terms and conditions checkbox {% endcomment %}
+							{% if settings.show_terms_conditions %}
+								<p class="ajaxcart_terms_conditions">
+									<input style="float:none; vertical-align: middle;" type="checkbox" class="agree_terms_conditions" />
+									<label style="display:inline; float:none" for="agree">
+										{{ settings.content_terms_conditions }}
+									</label>
+								</p>
+							{% endif %}
+						{% comment %} end terms and conditions checkbox {% endcomment %}
+						<div class="cart-modal__funcs">
+							<button class="btn cart-modal__btn cart-modal__btn--viewcart" type="submit">
+								{{ 'cart.general.viewcart' | t }}
+							</button>
+							<button class="btn cart-modal__btn cart-modal__btn--checkout" type="submit" name="checkout">
+								{{ 'cart.general.checkout' | t }}
+							</button>
+						</div>
+						{%- if settings.price_shipping_bar != blank -%}
+							{%- assign price_shipping_bar 	= settings.price_shipping_bar | times: 100 -%}
+							{%- assign spend 				= price_shipping_bar | minus: cart.total_price -%}
+							{%- assign percent				= cart.total_price | times: 100 | divided_by: price_shipping_bar  -%}
+							{%- assign spend 				= spend | money -%}
+							<div class="shipping-bar-cart-container">
+								<div class="shipping-bar-cart hidden" data-price_shipping_bar="{{ price_shipping_bar }}">
+									<div class="title-spend">{{ 'cart.general.free_shipping_html' | t: spend: spend }}</div>
+									<div class="title-shipping hide">{{ 'cart.general.free_shipping' | t }}</div>
+									<div class="shipping-progress_bar"><div class="shipping-progress"></div></div>
+								</div>
+							</div>
+						{%- endif -%}
+					</div>
+				</div>
+			</form>
+	{% raw %}
+		</div>
+    </div>
+	{% endraw %}		
+</script>
+{%- endif -%}
+<script id="quickview-template" type="text/template">
+{% raw %}
+	<div class="product-quickview">
+		<div class="row">
+			<div class="img-quickview">
+				<div class="product-quickview__images">
+					<div class="quickview-images">{{{images}}}</div>
+				</div>
+			</div>
+			<div class="bwp-single-info">
+				<div class="content_product_detail">
+					<div class="product-review">
+						<!-- Start of Judge.me code --> 
+							<div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge'  data-id='{{ product.id }}'>
+							  {{ product.metafields.judgeme.badge }}
+							</div>  
+						<!-- End of Judge.me code -->
+					</div>
+					<h2 class="product-quickview_title">{{title}}</h2>
+					{% endraw %}<div class="product__vendor">
+						<div class="product__organization__label">{{ 'products.product.vendor' | t }}</div>
+						<div class="product__organization__text">{% raw %}<a href="/collections/vendors?q={{vendor}}">{{vendor}}</a></div>
+					</div>
+					<div class="product-quickview__price">{{{price}}}</div>
+					<div class="product-quickview__description"></div>
+					<div class="countdown-quickview hidden">{% endraw %}<div class="icon">{% render 'clock' %}</div>{% raw %}<div class="content"></div></div>
+					<div class="group-quickview"></div>
+					
+					<div class="product-quickview__variants wpb-variants-swatch">{{{variants}}}</div>
+					{% endraw %}
+					<form action="{{ routes.cart_add_url }}" id="form-simple-addtocart" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+						{% raw %}
+							<input type="hidden" data-quickview-variant name="id" value="{{variantID}}">
+						{% endraw %}
+						<div class="product-quickview__avaiable">
+							<div class="product-avaiable product-avaiable--active product-avaiable--instock">
+								<div class="js-product-avaiable-text product-avaiable__text product-avaiable__text--instock">{{'products.product.in_stock' | t }}</div>
+							</div>
+							<div class="product-avaiable product-avaiable--outstock">
+								<div class="js-product-avaiable-text product-avaiable__text product-avaiable__text--outstock">{{'products.product.out_stock' | t }}</div>
+							</div>
+						</div>
+						<div class="product-quickview__buttons">
+							<div class="product-quantity" data-quickview-quantity>
+								<label class="product-quantity__label">{{ 'products.product.quantity' | t }}</label>
+								<div class="product-quantity__selector">
+									{%- if settings.quickview_quantity_selector == 'text' -%}
+										<div class="wpbingo-qty">
+											<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+												<i class="feather-minus"></i>
+											</button>
+											<input type="text" name="quantity" class="js-qty-number wpbingo-qty__number" value="1" min="1" aria-label="quantity" pattern="[0-9]*">
+											<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}">
+												<i class="feather-plus"></i>
+											</button>
+										</div>
+									{%- else -%}
+									<select name="quantity" class="product-quantity__select">
+										{%- for i in (1..10) -%}
+											<option {% if forloop.first %}selected="selected"{% endif %} value="{{ i }}">{{ i }}</option>
+										{%- endfor -%}
+									</select>
+									{%- endif -%}
+								</div>
+							</div>
+							<div class="product-single__add-to-cart">
+								<button class="btn btn--add-to-cart" type="submit" name="add">
+									<span class="btn__text">{{ 'products.product.add_to_cart' | t }}</span>
+								</button>
+							</div>
+						</div>
+						<div class="product-quickview__buttons_external"></div>
+					</form>
+				</div>
+			{% raw %}
+			</div>
+		</div>
+	</div>
+{% endraw %}
+</script>
+<script id="gift-card-template" type="text/template">
+{% raw %}
+	<div class="product-giftcard">
+		<h2 class="product-giftcard_title">{{title}}</h2>
+		<div class="row">
+			<div class="img-giftcard">
+				<div class="product-giftcard__images">
+					<div class="giftcard-images">{{{images}}}</div>
+				</div>
+			</div>
+			<div class="bwp-single-info">
+				<div class="content_product_detail">
+					<div class="product-giftcard__variants wpb-variants-swatch">{{{variants}}}</div>
+					{% endraw %}
+					<form action="{{ routes.cart_add_url }}" id="form-gift-card-addtocart" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+						{% raw %}
+							<input type="hidden" data-edit_variant-variant name="id" value="{{variantID}}">
+							<div class="product-giftcard__price">{{{price}}}</div>
+						{% endraw %}
+						<div class="product-giftcard__buttons">
+							<div class="product-quantity" data-gift-card-quantity>
+								<label class="product-quantity__label">{{ 'products.product.quantity' | t }}</label>
+								<div class="product-quantity__selector">
+									<div class="wpbingo-qty">
+										<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+											<i class="feather-minus"></i>
+										</button>
+										<input type="text" name="quantity" class="js-qty-number wpbingo-qty__number" value="1" min="1" aria-label="quantity" pattern="[0-9]*">
+										<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}">
+											<i class="feather-plus"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="product-single__add-to-cart">
+								<button class="btn btn--add-to-cart" type="submit" name="add">
+									<span class="btn__text">{{ 'products.product.add_to_cart' | t }}</span>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			{% raw %}
+			</div>
+		</div>
+	</div>
+{% endraw %}
+</script>
+<script id="edit_variants-template" type="text/template">
+{% raw %}
+	<div class="product-edit_variants" data-line={{line}}>
+		<div class="row">
+			<div class="img-edit_variants">
+				<div class="product-edit_variants__images">
+					<div class="edit_variants-images">{{{images}}}</div>
+				</div>
+			</div>
+			<div class="bwp-single-info">
+				<div class="content_product_detail">
+					<h2 class="product-edit_variants_title">{{title}}</h2>
+					<div class="product-edit_variants__variants wpb-variants-swatch">{{{variants}}}</div>
+					{% endraw %}
+					<form action="{{ routes.cart_add_url }}" id="form-edit_variants-addtocart" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+						{% raw %}
+							<input type="hidden" data-edit_variant-variant name="id" value="{{variantID}}">
+							<div class="product-edit_variants__price">{{{price}}}</div>
+						{% endraw %}
+						<div class="product-edit_variants__buttons">
+							<div class="product-quantity" data-edit_variant-quantity>
+								<label class="product-quantity__label">{{ 'products.product.quantity' | t }}</label>
+								<div class="product-quantity__selector">
+									<div class="wpbingo-qty">
+										<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+											<i class="feather-minus"></i>
+										</button>
+										{% raw %}
+										<input type="text" name="quantity" class="js-qty-number wpbingo-qty__number" value="{{qty}}" min="1" aria-label="quantity" pattern="[0-9]*">{% endraw %}
+										<button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}">
+											<i class="feather-plus"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="product-single__add-to-cart">
+								<button class="btn btn--add-to-cart" type="submit" name="add" disabled>
+									<span class="btn__text">{{ 'products.product.replace_item' | t }}</span>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			{% raw %}
+			</div>
+		</div>
+	</div>
+{% endraw %}
+</script>

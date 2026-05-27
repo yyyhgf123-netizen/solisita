@@ -1,0 +1,37 @@
+{%- assign current_variant 			= product.selected_or_first_available_variant -%}
+<div class="content-variant_inventory">
+    {% if current_variant.inventory_management == "shopify" %}
+        {% if current_variant.inventory_quantity > 0 %}
+            {%- for item in cart.items -%}
+                {% if current_variant.id == item.variant_id %}
+                    {%- assign stock_cart = item.quantity -%}
+                {% endif %}
+            {%- endfor -%}
+            {%- assign stock = current_variant.inventory_quantity | minus: stock_cart -%}
+            {%- assign sold = block.settings.total_product_solid -%}
+            {%- assign total = stock | plus: sold -%}
+            {%- assign percent = stock | times: 100.00 | divided_by: total | round: 4 -%}
+            <div class="js-product-avaiable product-avaiable">
+                <div id="variant-inventory_percent" class="show" style="--progress-bar-width:{{ percent }}%">
+                    {{'products.product.left_in_stock_html' | t: current_variant: stock }}
+                    <div class="content-percent"><div class="percent"></div></div>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Single inventory quantity",
+    "settings": [
+        {	
+            "type": "number",
+            "id": "total_product_solid",
+            "label": "Count Total products sold",
+            "default": 80,
+            "info":"used to make the progress bar left in stock"
+        },
+    ],
+    "presets": [{"name": "Single inventory quantity","category": "Single product"}]
+  }
+{% endschema %}

@@ -1,0 +1,48 @@
+{%- assign count = block.settings.product_real_time_count | split: "-" -%}
+<div class="product-count-view" data-min="{{ count[0] }}" data-max="{{ count[1] }}" data-timeout="{{ block.settings.product_real_time_change }}" data-id_product="{{ product.id }}" style="margin:{{ block.settings.product_real_time_margin }};--real-time-color:{{ block.settings.real_time_color }};">
+    <i class="wpb-icon-eye"></i><span></span> {{ block.settings.product_real_time_text }}
+</div>
+{% schema %}
+  {
+    "name": "Single product real time",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_real_time_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px",
+            "default": "0 0 20px"
+        },
+        {
+            "type": "header",
+            "content": "Real time visitors"
+        },
+        {
+            "type": "text",
+            "id": "product_real_time_count",
+            "label": "Real time count",
+            "default": "30-40",
+            "info": "The number of viewers will vary during this interval. Example: 30-40"
+        },
+        {
+            "type": "text",
+            "id": "product_real_time_change",
+            "label": "Number change time",
+            "default": "5000"
+        },
+        {
+            "type": "text",
+            "id": "product_real_time_text",
+            "label": "Real time text",
+            "default": "people are viewing this right now"
+        },
+        {
+            "type": "color",
+            "id": "real_time_color",
+            "label": "Color",
+            "default":"#000"
+        }
+    ],
+    "presets": [{"name": "Single product real time","category": "Single product"}]
+  }
+{% endschema %}

@@ -1,0 +1,75 @@
+{%- assign current_variant 					= product.selected_or_first_available_variant -%}
+{%- assign featured_media 					= current_variant.featured_media | default: product.featured_media -%}
+{%- assign first_3d_model 					= product.media | where: 'media_type', 'model' | first -%}
+{%- assign stacked 							= false -%}
+ {% assign variants_group_image = '' %}
+{% if section.settings.media_layout 		== "stacked" %}{% assign stacked = true %}{% endif %}
+{% if section.settings.media_layout 		== "gird-mordern" %}{% assign gird-mordern = true %}{% endif %}
+{% if section.settings.media_layout 		== "gird-two" %}{% assign gird-two = true %}{% endif %}
+{% if section.settings.media_layout 		== "lagre-gallery" %}{% assign lagre-gallery = true %}{% endif %}
+{% if section.settings.media_layout 		== "slider" %}{% assign slider = true %}{% endif %}
+{% if section.settings.media_layout 		== "thumbnails" %}{% assign thumbnails = true %}{% endif %}
+{% if section.settings.media_layout 		== "gird-sticky" %}{% assign gird-sticky = true %}{% assign vertical = true %}{% endif %}
+{% if section.settings.position_thumbnails 	== "left" or section.settings.position_thumbnails == "right" %}{% assign vertical = true %}{% endif %}
+{%- assign image_360 		                = product.metafields.bwp.image_360.value -%}
+{%- if thumbnails or gird-sticky -%}{% assign img_thumbnail = true %}{% endif %}
+{% for variant in product.variants %}
+  {% assign variants_group_image = variant.metafields.bwp.variants_group_image.value %}
+{% endfor %}
+<div class="js-product-single-media normal product-single__media product-single__media--{{ section.settings.media_layout }}{% if product.has_only_default_variant %} no-variants{% endif %}">
+  {%- if variants_group_image != blank -%}
+		{% for variant in product.variants %}
+            {% assign variants_title = variant.title | strip | replace: ' ', '_' %}
+            {% assign variants_group_image = variant.metafields.bwp.variants_group_image.value %}
+           {% assign current_options = product.selected_or_first_available_variant.options %}
+            {% assign current = current_options | join: '_' | replace: ' ', '_' %}
+             {% if variants_group_image != blank %}
+    			<div class="row mutil_slider-single {{ variants_title }}{% if current == variants_title %} active{% endif %}">
+    				<div class="{%- if img_thumbnail and vertical -%}col-md-10 {% if gird-sticky %} left{% else %} {{ section.settings.position_thumbnails }}{% endif %}{%- else -%}col-md-12{%- endif -%}">
+    					<div class="product-single__main-media">
+    						{% render 'product-card_label',product: product %}
+    						<div class="main_media-content">
+    							{%- render 'product-media-image',product: product, variants_group_image: variants_group_image, loop: forloop.index, variant_featured_media: variant.featured_media -%}
+    						</div>
+    					</div>
+    					{%- if first_3d_model -%}
+    						{%- render 'xr-button' with model_id: first_3d_model.id, multi: false -%}
+    					{%- endif -%}
+    				</div>
+    				{%- unless stacked or gird-mordern or lagre-gallery or slider  or gird-two -%}
+    					<div class="{% if img_thumbnail and vertical %}col-md-2 {% else %}col-md-12{% endif %}">
+    						<div class="product-single__main-thumbnail">
+    							<div class="main_thumbnail-content">
+    								{%- render 'product-media-thumbnails',product: product, variants_group_image: variants_group_image, loop: forloop.index, vertical: vertical, img_thumbnail:img_thumbnail, variant_featured_media: variant.featured_media -%}
+    							</div>
+    						</div>
+    					</div>
+    				{%- endunless -%}
+    			</div>
+            {% endif %}
+		{%- endfor -%}
+	{%- else -%}
+		<div class="row">
+			<div class="{%- if img_thumbnail and vertical -%}col-md-10 {% if gird-sticky %} left{% else %} {{ section.settings.position_thumbnails }}{% endif %}{%- else -%}col-md-12{%- endif -%}">
+				<div class="product-single__main-media">
+					{% render 'product-card_label',product: product %}
+					<div class="main_media-content">
+						{%- render 'product-media-image',product: product, loop: forloop.index, image_360: image_360 -%}
+					</div>
+				</div>
+				{%- if first_3d_model -%}
+					{%- render 'xr-button' with model_id: first_3d_model.id, multi: false -%}
+				{%- endif -%}
+			</div>
+			{%- unless stacked or gird-mordern or lagre-gallery or slider  or gird-two -%}
+				<div class="{% if img_thumbnail and vertical %}col-md-2 {% else %}col-md-12{% endif %}">
+					<div class="product-single__main-thumbnail">
+						<div class="main_thumbnail-content">
+							{%- render 'product-media-thumbnails',product: product, loop: forloop.index, vertical: vertical, img_thumbnail:img_thumbnail, image_360: image_360 -%}
+						</div>
+					</div>
+				</div>
+			{%- endunless -%}
+		</div>
+	{%- endif -%}
+</div>

@@ -1,0 +1,20 @@
+{%- if product.selected_or_first_available_variant.sku != blank -%}
+<div class="product__organization">
+    <div class="product__organization__label">{{ block.settings.label }}</div>
+    <div class="js-variant-sku product__organization__text">{{ product.selected_or_first_available_variant.sku }}</div>
+</div>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Single sku",
+    "settings": [
+        {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "Sku"
+        }
+    ],
+    "presets": [{"name": "Single sku","category": "Single product"}]
+  }
+{% endschema %}

@@ -1,0 +1,230 @@
+<div class="mini-cart layout-{{ settings.cart_type }} {% if settings.cart_type == 'modal' %} hidden{% endif %}">
+	<div class="drawer__overlay js-drawer-close"></div>
+	<div class="js-drawer drawer drawer--right drawer--has-fixed-footer">
+		<div class="drawer__header">
+			<button type="button" class="drawer__close-button js-drawer-close"></button>
+		</div>
+		<div class="drawer__inner">
+			<div class="ajaxcart-container" data-cart-container>
+				{%- if cart.item_count == 0 -%}
+					<p class="cart-empty-message">{{ 'cart.general.empty' | t }}</p>
+					 <p class="cookie-message">{{ 'cart.general.cookies_required' | t }}</p>
+				{%- else -%}
+				<form action="{{ routes.cart_url }}" method="post" novalidate class="cart ajaxcart ajaxcart--header">
+					<div class="ajaxcart__inner">
+						{%- if settings.price_shipping_bar != blank -%}
+							{%- assign price_shipping_bar 	= settings.price_shipping_bar | times: 100 -%}
+							{%- assign spend 				= price_shipping_bar | minus: cart.total_price -%}
+							{%- assign spend 				= spend | money -%}
+							{%- assign shipping_bar_progress 	= cart.total_price | times: 100 | divided_by: price_shipping_bar -%}
+							{%- if cart.total_price >=  price_shipping_bar -%}
+								{%- assign shipping_bar_progress 	= 100 -%}
+							{%- endif -%}
+							<div class="shipping-bar-cart-container">
+								<div class="shipping-bar-cart{% if cart.total_price >=  price_shipping_bar %} full{% endif %}" data-price_shipping_bar="{{ price_shipping_bar }}">
+									<div class="title-freeship"><i class="wpb-icon-flash"></i> {{ 'cart.general.title' | t }} {{ settings.price_shipping_bar | times: 100 | money }}</div>
+									<div class="title-spend{% if cart.total_price >=  price_shipping_bar %} hide{% endif %}">{{ 'cart.general.free_shipping_html' | t: spend: spend }}</div>
+									<div class="title-shipping{% if cart.total_price <  price_shipping_bar %} hide{% endif %}">{{ 'cart.general.free_shipping' | t }}</div>
+									<div class="shipping-progress_bar"><div class="shipping-progress{% if cart.total_price >=  price_shipping_bar %} fire-done{% endif %}" style="width: {{ shipping_bar_progress }}%;"></div></div>
+								</div>
+							</div>
+						{%- endif -%}
+						{% for item in cart.items %}
+						<div class="ajaxcart__product item-cart data-edit_variant-popup-item" data-line="{{ forloop.index }}">
+							<div class="ajaxcart__line-item content-edit_variant-popup">
+								<div class="ajaxcart__line-item--left">
+									<div class="ajaxcart__product-image-wrapper image-popup">
+										<a href="{{ item.url }}" class="ajaxcart__product-image"><img src="{{ item.image | image_url: width: 600 }}" width="" height="" alt="{{ item.product.title }}"></a>
+									</div>
+								</div>
+								<div class="ajaxcart__line-item--right">
+									<div class="ajaxcart__product-description">
+										<div class="ajaxcart__product-name-wrapper">
+											<a href="{{ item.url }}" class="ajaxcart__product-name">{{ item.product.title }}</a>
+											<div class="variant-content">
+												{% if item.variant.title != 'Default Title' %}
+												<div class="ajaxcart__product-meta">
+													{% for option in item.options_with_values %}
+														<span>{{ option.name }}: {{ option.value }}</span>
+													{% endfor %}
+												</div>
+												{% endif %}
+												{% if item.properties %}
+													{% for property in item.properties %}
+														{% if property %}
+															<span class="ajaxcart__product-metas">{{ property.first }}: {{ property.last }}</span>
+														{% endif %}
+													{% endfor %}
+												{% endif %}
+												{% if item.line_level_total_discount > 0 %}
+													<ul class="product-discount product-discount--ajax-cart" aria-label="{{ 'customer.order.discount' | t }}">
+														{% for item in item.line_level_discount_allocations %}
+															<li class="product-discount__item">
+																<span class="fa fa-tag" aria-hidden="true"></span>{{ item.discount_application.title }} (-{{ item.formattedAmount }})
+															</li>
+														{% endfor %}
+													</ul>
+												{% endif %}
+												{% if item.variant.title != 'Default Title' %}
+													{% assign handle = item.url | split: '/' | last | split: '?' | first %}
+													<div class="cart-product-edit_variant" data-title="{{ 'cart.general.edit_variant' | t }}" data-id_variant="{{ item.variant_id }}" data-line="{{ forloop.index }}" data-value="{{ item.quantity }}" data-handle="{{ handle }}">
+														<i class="wpb-icon-edit"></i>
+													</div>
+												{%- endif -%}
+											</div>
+											<div class="ajaxcart__product-price-wrapper">
+												{% if item.line_level_discount_allocations.size > 0 %}
+												  <del class="ajaxcart__price ajaxcart__price--regular">{{ item.original_line_price | money }}</del>
+												  <span class="ajaxcart__price ajaxcart__price--sale">{{ item.final_line_price | money }}</span>
+												{% else %}
+												  <span class="ajaxcart__price">{{ item.line_price | money }}</span>
+												{% endif %}
+												{% if item.unit_price_measurement %}
+													<span class="d-none">{{ 'products.general.unit_price' | t }}</span>
+													<span class="cart__unit-price">
+														{%- capture unit_price_separator -%}
+														  <span aria-hidden="true">/</span>
+														  <span class="d-none">&nbsp;{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+														{%- endcapture -%}
+														<span>{{ item.unit_price | money }}</span>{{- unit_price_separator -}}
+														{% if item.unit_price_measurement.reference_value != 1 %}
+														  {{ item.unit_price_measurement.reference_value }}
+														{% endif %}
+														{{ item.unit_price_measurement.reference_unit }}
+													</span>
+												{% endif %}
+												{% if item.variant.inventory_policy == 'continue' and item.variant.inventory_quantity == 0 %}
+													<div class="pre_order">( {{ 'products.product.pre_order' | t }} )</div>
+												{% endif %}
+											</div>
+											<div class="quantity-remove">
+												<div class="quantity-price">
+													<div class="drawer__quantity">
+														<div class="ajaxcart__qty wpbingo-qty">
+															<button type="button" class="ajaxcart__qty--minus wpbingo-qty__adjust wpbingo-qty__adjust--minus" data-qty="{{ item.quantity | minus: 1 }}"{% if item.variant.inventory_policy != 'continue' and item.variant.inventory_management == 'shopify' %} data-max-qty="{{ item.variant.inventory_quantity }}"{% endif %} data-line="{{ forloop.index }}" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+																	<i class="feather-minus" aria-hidden="true"></i>
+															</button>
+															<input type="number" name="updates[]" class="wpbingo-qty__number" value="{{ item.quantity }}" min="1" data-line="{{ forloop.index }}" aria-label="quantity" pattern="[0-9]*" data-variant_id="{{ item.variant_id }}" {% if item.variant.inventory_policy != 'continue' and item.variant.inventory_management == 'shopify' %} data-max-qty="{{ item.variant.inventory_quantity }}"{% endif %}>
+															<button type="button" class="ajaxcart__qty--plus wpbingo-qty__adjust wpbingo-qty__adjust--plus" data-line="{{ forloop.index }}" data-qty="{{ item.quantity | plus: 1 }}" {% if item.variant.inventory_policy != 'continue' and item.variant.inventory_management == 'shopify' %} data-max-qty="{{ item.variant.inventory_quantity }}"{% endif %} aria-label="{{ 'cart.general.increase_quantity' | t }}">
+																	<i class="feather-plus" aria-hidden="true"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+												<a class="ajaxcart__remove" href="javascript:void(0)" data-line="{{ forloop.index }}" data-cart-remove><i class="wpb-icon-delete"></i></a>
+											</div>
+											<div class="alert-cart hidden">{{ 'cart.general.alert_quantity' | t: inventory:item.variant.inventory_quantity }}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<div class="ajaxcart__footer">
+						{% if settings.cart_type == 'drawer' %}
+							<div class="ajaxcart__info">
+								<div class="ajaxcart__info_header">
+									{%- assign handle = settings.product_gift_card -%}
+									{% if settings.show_gift_card %}
+										<div class="gift-wrap">
+											<div class="gift-wrap-title" data-gift_card="{{ handle }}">
+												<div class="icon-gifts"><i class="wpb-icon-gift"></i></div>
+												<span>{{ settings.content_gift_card }}</span>
+											</div>
+										</div>
+									{% endif %}
+									{% if settings.cart_notes_enable %}
+										<div class="button_note"><i class="wpb-icon-edit1"></i><span>{{ 'cart.general.button_note' | t }}</span></div>
+									{% endif %}
+									{% if settings.cart_coupon_enable %}
+										<div class="button_discount"><i class="wpb-icon-coupon"></i>{{ 'cart.general.button_discount' | t }}</div>
+									{% endif %}
+								</div>
+							</div>
+						{% endif %}
+						{% if cart.cart_level_discount_applications.size > 0 %}
+						  <div class="ajaxcart__footer-discount">
+							{% for discount in cart.cart_level_discount_applications %}
+							  <div class="order-discount order-discount--ajax-cart">
+								<i class="fa fa-tag" aria-hidden="true"></i>
+								<span class="d-none">{{ 'customer.order.discount' | t }}:</span> {{ discount.title }}
+							  </div>
+							  <div class="order-discount__value text-right">
+								<span class="ajaxcart__price">-{{ discount.total_allocated_amount | money }}</span>
+							  </div>
+							{% endfor %}
+						  </div>
+						{% endif %}
+						{% if settings.cart_type == 'modal' %}
+							{% if settings.show_gift_card %}
+								{%- assign handle = settings.product_gift_card -%}
+								{%- assign item = all_products[handle] -%}
+								{%- assign price = item.price | money -%}
+								<div class="gift-wrap">
+									<div class="gift-wrap-title" data-gift_card="{{ handle }}">
+										<div class="icon-gifts"><i class="wpb-icon-gift"></i></div>
+										{{ settings.content_gift_card }} <label>{{ 'cart.general.gift_cards_price_html' | t: price: price }}</label>
+									</div>
+								</div>
+							{% endif %}
+						{% endif %}
+						<div class="ajaxcart__footer-price">
+							<span class="ajaxcart__subtotal-name">{{ 'cart.general.subtotal' | t }}</span>
+							<span class="ajaxcart__subtotal">{{ cart.total_price | money }}</span>
+						</div>
+						<p class="ajaxcart__policies">
+							{%- capture taxes_shipping_checkout -%}
+								{%- if shop.taxes_included and shop.shipping_policy.body != blank -%}
+									{{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+								{%- elsif shop.taxes_included -%}
+									{{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+								{%- elsif shop.shipping_policy.body != blank -%}
+									{{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+								{%- else -%}
+									{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
+								{%- endif -%}
+							{%- endcapture -%}
+							{{ taxes_shipping_checkout }}
+						</p>
+						{%- if settings.currency_type == '2' and settings.notify_currency and settings.mess_currency != blank %}{% assign cart_iso_code = cart.currency.iso_code %}{% assign text1 = '{{ currency }}' -%}
+							<div class="ajaxcart-currency" data-currency-jsnotify>
+								<div class="content">
+									<div class="marquee">
+										<p>
+											{{ settings.mess_currency | replace:text1,cart_iso_code | replace:'[currency]',cart_iso_code | replace:'[original_currency]',cart_iso_code | replace:'[current_currency]','<span class="selected-currency"></span>' }}
+										</p>
+									</div>
+								</div>
+							</div>
+						{%- endif -%}
+						{% comment %} terms and conditions checkbox {% endcomment %}
+							{% if settings.show_terms_conditions %}
+								<p class="ajaxcart_terms_conditions">
+									<input style="float:none; vertical-align: middle;" type="checkbox" class="agree_terms_conditions" />
+									<label style="display:inline; float:none">
+										{{ settings.content_terms_conditions }}
+									</label>
+								</p>
+							{% endif %}
+						{% comment %} end terms and conditions checkbox {% endcomment %}
+						<div class="ajaxcart__footer-buttons">
+							<div class="button-cart">
+								<button class="btn cart-modal__btn cart-modal__btn--checkout"{% if settings.show_terms_conditions %} disabled{% endif %}  type="submit" name="checkout">
+									{{ 'cart.general.checkout' | t }}
+								</button>
+							</div>
+							<div class="button-cart">
+								<button class="btn cart-modal__btn cart-modal__btn--viewcart" type="submit">
+									{{ 'cart.general.viewcart' | t }}
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+</div>
+

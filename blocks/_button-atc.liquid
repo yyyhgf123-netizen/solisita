@@ -1,0 +1,136 @@
+{%- assign current_variant 			= product.selected_or_first_available_variant -%}
+<div class="product-single__buttons" style="--payment-bg:{{ block.settings.payment_button_color }};--payment-color:{{ block.settings.payment_text_color }};">
+    {% comment %}Product quantity{% endcomment %}
+    {%- if block.settings.quantity_enabled and current_variant.available -%}
+    <div class="js-quantity-selector product-quantity">
+        <label for="Quantity" class="product-quantity__label">{{ 'products.product.quantity' | t }}</label>
+        <div class="product-quantity__selector">
+            {%- if block.settings.quantity_selector == 'text' -%}
+                <div class="wpbingo-qty">
+                    <button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+                        <i class="feather-minus"></i>
+                    </button>
+                    <input type="text" name="quantity" class="js-qty-number wpbingo-qty__number" value="1" min="1" aria-label="quantity" pattern="[0-9]*">
+                    <button type="button" class="js-qty-adjust wpbingo-qty__adjust wpbingo-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}">
+                        <i class="feather-plus"></i>
+                    </button>
+                </div>
+            {%- else -%}
+                <select name="quantity" id="Quantity" class="product-quantity__select">
+                    {%- for i in (1..10) -%}
+                        <option {% if forloop.first %}selected="selected"{% endif %} value="{{ i }}">{{ i }}</option>
+                    {%- endfor -%}
+                </select>
+            {%- endif -%}
+        </div>
+    </div>
+    {%- endif -%}
+    {% comment %}Add to cart button{% endcomment %}
+    <div class="product-single__add-to-cart" style="--atc-bg:{{ block.settings.atc_button_color }};">
+        <button  class="btn btn--add-to-cart{% if block.settings.enable_payment_button %} btn--secondary-accent{% endif %}"{% unless current_variant.available %} disabled="disabled"{% endunless %}
+            type="submit"
+            name="add">
+            <span class="btn__text">
+                {% if current_variant.available %}
+                    {% if current_variant.inventory_policy == "continue" %}
+                        {{ 'products.product.pre_order' | t }}
+                    {% else %}
+                        {{ 'products.product.add_to_cart' | t }}
+                    {% endif %}
+                {% else %}
+                    {{ 'products.product.sold_out' | t }}
+                {% endif %}
+            </span>
+        </button>
+        {%- if product.handle != blank and block.settings.product_button_wishlist -%}
+            <div class="button-wishlist">
+                <button type="button" aria-label="Add to wishlist" class="" button-wishlist data-product-handle="{{ product.handle }}">
+                </button>
+            </div>
+        {%- endif -%}
+    </div>
+    {% if block.settings.enable_payment_button and current_variant.available %}
+        {% comment %} terms and conditions checkbox {% endcomment %}
+            {% if settings.show_terms_conditions %}
+                <p class="ajaxcart_terms_conditions">
+                    <input name="agree" style="float:none; vertical-align: middle;" type="checkbox" class="agree_terms_conditions" />
+                    <label style="display:inline; float:none" for="agree">
+                        {{ settings.content_terms_conditions }}
+                    </label>
+                </p>
+            {% endif %}
+        {% comment %} end terms and conditions checkbox {% endcomment %}
+         {% form 'product', product, class:form_classes, data-product-form: '' %}
+         {{ form | payment_button }}
+    {% endform %}
+       
+    {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Button atc",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "product_button_wishlist",
+            "label": "Show Button Wishlist",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "quantity_enabled",
+            "label": "Show quantity picker",
+            "default": true
+        },
+        {
+            "type": "select",
+            "id": "quantity_selector",
+            "label": "Quantity type",
+            "options": [
+                {
+                    "value": "text",
+                    "label": "Text"
+                },
+                {
+                    "value": "select",
+                    "label": "Dropdown"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Add to cart button"
+        },
+        {
+            "type": "color",
+            "id": "atc_button_color",
+            "label": "Add to cart button background",
+            "default": "#000"
+        },
+        {
+            "type": "header",
+            "content": "Buy now button"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_payment_button",
+            "label": "Show dynamic checkout button",
+            "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+            "default": true
+        },
+        {
+            "type": "color",
+            "id": "payment_button_color",
+            "label": "Checkout button background",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "payment_text_color",
+            "label": "Checkout button color",
+            "default": "#ed5d43"
+        }
+    ],
+    "presets": [{"name": "Button atc","category": "Single product"}]
+  }
+{% endschema %}

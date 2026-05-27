@@ -1,0 +1,44 @@
+<section class="page-article portfolio prevNextArticle">
+	<div class="container">
+		<div class="page-article__inner">
+			<div class="content-single-portfolio">
+				{%- if blog.previous_article or blog.next_article -%}
+					<div class="prevNextArticle box"{% if section.settings.portfolio_prev_next_margin != blank %} style="margin:{{ section.settings.portfolio_prev_next_margin }}"{% endif %}>
+						<div class="previousArticle">
+						{%- if blog.previous_article -%}
+							<a href="{{ blog.previous_article.url }}" rel="{{ 'general.pagination.previous' | t }}">
+								<div class="hoverExtend active"><span>{{ 'general.pagination.previous' | t }}</span></div>
+								<h2 class="title">{{ blog.previous_article.title }}</h2>
+							</a>
+						{%- endif -%}
+						</div>
+						<div class="backto_category">
+							<a href="{{ blog.url }}" data-title="{{ 'blogs.article.back_to_blog_html' | t: title:blog.title }}"><i class="feather-more-horizontal"></i></a>
+						</div>
+						<div class="nextArticle">
+						{%- if blog.next_article -%}
+							<a href="{{ blog.next_article.url }}" rel="{{ 'general.pagination.next' | t }}">
+								<div class="hoverExtend active"><span>{{ 'general.pagination.next' | t }}</span></div>
+								<h2 class="title">{{ blog.next_article.title }}</h2>
+							</a>
+						{%- endif -%}
+						</div>
+					</div>
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+	"name": "Main Portfolio prevNext",
+	"settings": [
+		{
+			"type": "text",
+			"id": "portfolio_prev_next_margin",
+			"label": "Margin",
+			"info": "Example(top left bottom right): 15px 15px 15px 15px"
+		}
+	]
+}
+{% endschema %}

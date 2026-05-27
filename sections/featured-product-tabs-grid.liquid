@@ -1,0 +1,292 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- elsif section.settings.max_width != blank -%}
+	{%- assign container = 'bwp-container' -%}
+{%- else -%}
+	{%- assign container = 'container' -%}
+{%- endif -%}
+
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- assign width_container = section.settings.max_width | plus: 0 -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+
+{% assign margin 	= section.settings.margin | split: "|" %}
+{% assign padding 	= section.settings.padding | split: "|" %}
+{%- style -%}
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--product-tabs-grid{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1200px){
+			#shopify-section-{{ section.id }} .wpbingo-section--product-tabs-grid{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-section-{{ section.id }} .wpbingo-section--product-tabs-grid{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-section--product-tabs-grid{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+{%- endstyle -%}
+{%- assign columns = section.settings.columns -%}
+{%- assign column1440 = section.settings.column1440 -%}
+{%- assign column1 = section.settings.column1 -%}
+{%- assign column2 = section.settings.column2 -%}
+{%- assign column3 = section.settings.column3 -%}
+{%- assign column4 = section.settings.column4 -%}
+{% capture col_gird %}
+  {% if columns == 5 %} col-xl-2-5{% else %} col-xl-{{ 12 | divided_by: columns }}{% endif %}
+  {% if column1440 == 5 %} col-xx-2-5{% else %} col-xx-{{ 12 | divided_by: column1440 }}{% endif %}
+  {% if column1 == 5 %} col-lg-2-5{% else %} col-lg-{{ 12 | divided_by: column1 }}{% endif %}
+  {% if column2 == 5 %} col-md-2-5{% else %} col-md-{{ 12 | divided_by: column2 }}{% endif %}
+  {% if column3 == 5 %} col-sm-2-5{% else %} col-sm-{{ 12 | divided_by: column3 }}{% endif %}
+  {% if column4 == 5 %} col-2-5{% else %} col-{{ 12 | divided_by: column4 }}{% endif %}
+{% endcapture %}
+
+<section class="wpbingo-section--{{ section.id }} wpbingo-section--product-tabs-grid product-tabs overflow-hidden"{% if section.settings.color != blank %} style="background-color:{{ section.settings.color }}"{% endif %}>
+  <div class="{{ container }}" {{ max_width }}>
+    <div class="wpbingo-section__inner">
+      <div class="wpbingo-section__content">
+        {%- if section.blocks.size > 0 -%}
+			<div class="heading-tab">
+				<div class="product-tabs__nav">
+					{%- if section.settings.title != blank -%}<h2 class="title-tabs">{{ section.settings.title }}</h2>{%- endif -%}
+					<div class="menu-dropdown">
+						<span>{%- for block in section.blocks -%}{% if forloop.first %}{{ block.settings.title | escape }}{% endif %}{%- endfor -%}</span>
+						<ul class="nav">
+							{%- for block in section.blocks -%}
+								{%- assign tab_heading =  block.settings.title | escape -%}
+								<li class="nav-item product-tabs__nav-item">
+									<a class="product-tabs__nav-link{% if forloop.first %} active{% endif %}" data-toggle="tab" href="#product-tabs-{{ section.id }}{{ forloop.index }}">
+										{{ tab_heading }}
+									</a>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				</div>
+				{%- if section.settings.button != blank -%}
+					<div class="button-view">
+						<a href="{{ section.settings.button_url }}">{{ section.settings.button }}</a>
+					</div>
+				{%- endif -%}
+			</div>
+			<div class="tab-content product-tabs__content">
+				{%- for block in section.blocks -%}
+					{%- assign collection_handle = block.settings.collection -%}
+					{%- assign limit = block.settings.limit | plus: 0 -%}
+					<div class="tab-pane fade{% if forloop.first %} show active{% endif %}" id="product-tabs-{{ section.id }}{{ forloop.index }}">
+						<div class="row">
+							{%- if collection_handle == blank or collections[collection_handle] == empty or collections[collection_handle].products_count == 0 -%}
+								{% render 'onboarding-featured-products' %}
+							{%- else -%}
+								{%- for product in collections[collection_handle].products limit: limit -%}
+									<div class="slick-carousel__item {{ col_gird }}">
+										{% render 'product-grid-item', product: product %}
+									</div>
+								{%- endfor -%}
+							{%- endif -%}
+						</div>
+					</div>
+				{%- endfor -%}
+			</div>
+        {%- else -%}
+			<div class="wpbingo-section__empty">
+				<div class="rte text-center">
+					{{ 'home_page.onboarding.no_content' | t }}
+				</div>
+			</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product tabs grid",
+  "class": "wpbingo-framework",
+  "disabled_on": {
+		"groups": ["header"]
+	},
+  "settings": [
+    {
+		"type": "header",
+		"content": "Layout settings"
+	},
+	{
+		"type": "color",
+		"id": "color",
+		"label": "Background"
+	},
+	{
+		"type": "text",
+		"id": "max_width",
+		"label": "Width container",
+		"info": "Default: 1440px"
+	},
+	{
+		"type": "checkbox",
+		"id": "fullwidth",
+		"label": "Fullwidth"
+	},
+	{
+		"type": "text",
+		"id": "padding",
+		"label": "Padding",
+		"placeholder": "0px 0px 0px 0px",
+		"info":"Screen: desktop | 1200px | 991px | 767px"
+	},
+	{
+		"type": "text",
+		"id": "margin",
+		"label": "Margin",
+		"placeholder": "0px 0px 0px 0px",
+		"info":"Screen: desktop | 1200px | 991px | 767px"
+	},
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+	{
+		"type": "text",
+		"id": "title",
+		"label": "Title",
+		"default": "You are in "
+	},
+	{
+		"type": "text",
+		"id": "button",
+		"label": "Button",
+		"default": "Shop all product"
+	},
+	{
+		"type": "url",
+		"id": "button_url",
+		"label": "Button url"
+	},
+	{
+		"type": "range",
+		"id": "columns",
+		"min": 1,
+		"max": 5,
+		"step": 1,
+		"label": "Number of Columns >1440px",
+		"default": 4,
+		"info": "Desktops"
+	},
+	{
+		"type": "range",
+		"id": "column1440",
+		"min": 1,
+		"max": 5,
+		"step": 1,
+		"label": "Number of Columns 1200px to 1440px",
+		"default": 4,
+		"info": "Desktops"
+	},
+	{
+		"type": "range",
+		"id": "column1",
+		"min": 1,
+		"max": 5,
+		"step": 1,
+		"label": "Number of Columns on 992px to 1199px",
+		"default": 4,
+		"info": "Desktops"
+	},
+	{
+		"type": "range",
+		"id": "column2",
+		"min": 1,
+		"max": 5,
+		"step": 1,
+		"label": "Number of Columns on 768px to 991px",
+		"default": 3,
+		"info": "Laptop"
+	},
+	{
+		"type": "range",
+		"id": "column3",
+		"min": 1,
+		"max": 5,
+		"step": 1,
+		"label": "Number of Columns on 480px to 767px",
+		"default": 1,
+		"info": "Tablets"
+	},
+	{
+		"type": "range",
+		"id": "column4",
+		"min": 1,
+		"max": 5,
+		"step": 1,
+		"label": "Number of Columns in 480px or less than",
+		"default": 1,
+		"info": "Mobile phone"
+	}
+  ],
+	"blocks": [
+		{
+			"type": "tab",
+			"name": "Tab item",
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Heading",
+					"default": "Tab heading"
+				},
+				{
+					"type": "collection",
+					"id": "collection",
+					"label": "Collection"
+				},
+				{
+					"type": "range",
+					"id": "limit",
+					"min": 1,
+					"max": 20,
+					"step": 1,
+					"label": "Number of products",
+					"default": 8
+				}
+			]
+		}
+	],
+  "presets": [
+    {
+      "name": "Product tabs grid",
+      "blocks": [
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

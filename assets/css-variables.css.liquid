@@ -1,0 +1,76 @@
+/* $opacity-to-hex: (
+	0: '00',
+	0.05: '0C',
+	0.1: '19',
+	0.15: '26',
+	0.2: '33',
+	0.25: '3F',
+	0.3: '4C',
+	0.35: '59',
+	0.4: '66',
+	0.45: '72',
+	0.5: '7F',
+	0.55: '8C',
+	0.6: '99',
+	0.65: 'A5',
+	0.7: 'B2',
+	0.75: 'BF',
+	0.8: 'CC',
+	0.85: 'D8',
+	0.9: 'E5',
+	0.95: 'F2',
+	1: 'FF'
+); */
+body{
+	--white: #fff;
+    --theme-color:{{ settings.theme-color }}; 
+	--theme-color-15:{{ settings.theme-color }}26;
+	--theme-color-25:{{ settings.theme-color }}3F;
+	--theme-color-50:{{ settings.theme-color }}7F;
+	--theme-color-75:{{ settings.theme-color }}BF;
+	
+	--hover-color:{{ settings.hover-color }};
+	--secondary-color:{{ settings.color_secondary }};
+	--text-color:{{ settings.text-color }};
+	--text-color-50:{{ settings.text-color }}7F;
+	--text-color-75:{{ settings.text-color }}BF;
+	
+	--gray-dark-15:{{ settings.gray-dark }}26;
+	--gray-dark-25:{{ settings.gray-dark }}3F;
+	--gray-dark:{{ settings.gray-dark }};
+	--gray-dark-50:{{ settings.gray-dark }}7F;
+	--gray-dark-75:{{ settings.gray-dark }}BF;
+	
+	--body-bg-color:{{ settings.color_body_bg }};
+	--border-color:{{ settings.color_border }};
+	--border-color-50:{{ settings.color_border }}7F;
+	
+	--header-bg-color: {{ settings.color_header_bg }};
+	--footer-color: {{ settings.color_footer_text }};
+	--footer-color-hover: {{ settings.color_footer_text_hover }};
+	--menu-color: {{ settings.color_menu_text }};
+	--menu-hover-color: {{ settings.color_menu_text_hover }};
+	--menu-dropdown-bg: {{ settings.color_submenu_bg }};
+	--menu-dropdown-color: {{ settings.color_submenu_text }};
+	--menu-dropdown-hover-color: {{ settings.color_submenu_text_hover }};
+	
+	--font-family-second: {{ settings.font-family-second }};
+	--heading-font-weight-default: {{ settings.font-weight-second-default }};
+	--heading-font-weight-bold: {{ settings.font-weight-second-bold }};
+	--heading-font-weight-medium: {{ settings.font-weight-second-medium }};
+	--heading-font-weight-light: {{ settings.font-weight-second-light }};
+	--font-size-heading: {{ settings.font-size-heading | append: 'px' }};
+	
+	--font-family-base: {{ settings.font-family-base }};
+	--body-font-weight-default: {{ settings.font-weight-base-default }};
+	--body-font-weight-bold: {{ settings.font-weight-base-bold }};
+	--body-font-weight-medium: {{ settings.font-weight-base-medium }};
+	--body-font-weight-light: {{ settings.font-weight-base-light }};
+	--font-size-base: {{ settings.font-size-base | append: 'px' }};
+
+    --font-family-pre: {{ settings.font-family-pre }};
+	--pre-font-weight-default: {{ settings.font-weight-pre-default }};
+	--pre-font-weight-bold: {{ settings.font-weight-pre-bold }};
+	--pre-font-weight-medium: {{ settings.font-weight-pre-medium }};
+	--pre-font-weight-light: {{ settings.font-weight-pre-light }}; 
+}

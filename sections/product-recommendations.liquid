@@ -1,0 +1,242 @@
+{%- assign nav = section.settings.navigation -%}
+{%- assign infinite 		        = section.settings.infinite -%}
+{%- assign autoplay 		        = section.settings.autoplay -%}
+{%- assign autoplay_speed	        = section.settings.autoplay_speed | escape -%}
+{%- assign columns 			        = section.settings.columns -%}
+{%- assign space_columns 			= section.settings.space_columns -%}
+{%- assign column1440 		        = section.settings.column1440 -%}
+{%- assign space_column1440 		= section.settings.space_column1440 -%}
+{%- assign column1 			        = section.settings.column1 -%}
+{%- assign space_column1 			= section.settings.space_column1 -%}
+{%- assign column2 			        = section.settings.column2 -%}
+{%- assign space_column2 			= section.settings.space_column2 -%}
+{%- assign column3 			        = section.settings.column3 -%}
+{%- assign space_column3 			= section.settings.space_column3 -%}
+{%- assign column4 			        = section.settings.column4 -%}
+{%- assign space_column4 			= section.settings.space_column4 -%}
+<div class="product-recommendations" data-product-id="{{ product.id }}" >
+		<div class="container">
+			<div class="product-recommendations__inner">
+				{%- if section.settings.heading != blank -%}
+				<div class="wpbingo-title">
+					<h3 class="wpbingo-title__heading">{{ section.settings.heading }}</h3>
+				</div>
+				{%- endif -%}
+				<div class="js-product-recommendations"
+					data-infinite="{{ infinite }}"
+					data-autoplay="{{ autoplay }}"
+					data-autoplayspeed="{{ autoplay_speed }}"
+					data-columns="{{ columns }}"
+                    data-space-columns="{{ space_columns }}"
+					data-column1440="{{ column1440 }}"
+                    data-space-column1440="{{ space_column1440 }}"
+					data-column1="{{ column1 }}"
+                    data-space-column1="{{ space_column1 }}"
+					data-column2="{{ column2 }}"
+                    data-space-column2="{{ space_column2 }}"
+					data-column3="{{ column3 }}"
+                    data-space-column3="{{ space_column3 }}"
+					data-column4="{{ column4 }}"
+                    data-space-column4="{{ space_column4 }}">
+                    <div class="swiper-wrapper">
+    					{%- for product in recommendations.products -%}
+    					<div class="swiper-slide slick-carousel__item">
+    						{% render 'product-grid-item', product:product %}
+    					</div>
+    					{%- endfor -%}
+                    </div>
+                    {%- if nav -%}
+                    <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style=""></button>
+                    <button class="slick-next slick-arrow" aria-label="Next" type="button" style=""></button>
+                    {%- endif -%}
+				</div>
+			</div>
+		</div>
+</div>
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "settings": [
+    {
+		"type": "text",
+		"id": "margin",
+		"label": "Margin",
+		"default": "30px 0"
+	},
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    },
+	{
+      "type": "header",
+      "content": "Carousel Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "navigation",
+      "label": "Show navigation",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite loop sliding",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable autoplay",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed",
+      "info": "Autoplay speed in milliseconds. Type: int(ms)",
+      "default": "10000"
+    },
+    {
+      "type": "header",
+      "content": "-----Screen >1440px"
+    },
+	{
+      "type": "range",
+      "id": "columns",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "label": "Columns",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "space_columns",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "label": "Space",
+      "default": 30,
+      "info": "px"
+    },
+    {
+      "type": "header",
+      "content": "-----Screen 1200px to 1440px"
+    },
+	{
+      "type": "range",
+      "id": "column1440",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "label": "Columns",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "space_column1440",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "label": "Space",
+      "default": 30,
+      "info": "px"
+    },
+    {
+      "type": "header",
+      "content": "-----Screen 992px to 1199px"
+    },
+    {
+      "type": "range",
+      "id": "column1",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "label": "Columns",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "space_column1",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "label": "Space",
+      "default": 15,
+      "info": "px"
+    },
+    {
+      "type": "header",
+      "content": "-----Screen 768px to 991px"
+    },
+    {
+      "type": "range",
+      "id": "column2",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "label": "Columns",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "space_column2",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "label": "Space",
+      "default": 15,
+      "info": "px"
+    },
+    {
+      "type": "header",
+      "content": "-----Screen 480px to 767px"
+    },
+    {
+      "type": "range",
+      "id": "column3",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "label": "Columns",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "space_column3",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "label": "Space",
+      "default": 15,
+      "info": "px"
+    },
+     {
+      "type": "header",
+      "content": "-----Screen < 480px"
+    },
+	{
+      "type": "range",
+      "id": "column4",
+      "min": 1,
+      "max": 7,
+      "step": 0.5,
+      "label": "Columns",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "space_column4",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "label": "Space",
+      "default": 15,
+      "info": "px"
+    }
+  ]
+}
+{% endschema %}

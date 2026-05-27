@@ -1,0 +1,77 @@
+{%- if block.settings.show_back_in_stock -%}
+	{% assign full_url = request.host | append: request.path %}
+	<div class="product-back_in_stock">
+		<div class="open-back_in_stock" style="--bis-bg:{{ block.settings.bis_color }};--bis-bg-hover:{{ block.settings.bis_hover_color }};--bis-text-color:{{ block.settings.bis_text_color }};--bis-text-color-hover:{{ block.settings.bis_text_hover_color }};">
+			<span>{{ block.settings.back_in_stock_title }}</span>
+		</div>
+		{% form 'contact' %}
+			{% if form.posted_successfully? %}
+				<p class="alert alert-success">
+					{{ 'contact.form.post_success' | t }}
+				</p>
+			{% endif %}
+			{{ form.errors | default_errors }}
+			<input type="hidden" name="contact[product]" value="{{ product.title }}">
+			<input type="hidden" name="contact[product_url]" value="{{ full_url }}">
+			<div class="back_in_stock-form">
+				<div class="close-back_in_stock-form full"></div>
+				<div class="content-form">
+					<div class="close-back_in_stock-form"></div>
+					<div class="form-product">
+						<div class="image">
+							<img class="lazyload fade-in" data-src="{{ product.featured_media.preview_image | image_url:width:600 }}" 
+							alt="{{ product.featured_media.preview_image.alt | escape }}" 
+							width="{{ product.featured_media.preview_image.width }}" height="{{ product.featured_media.preview_image.height }}" >
+						</div>
+						<div class="content">
+							<div class="title-product">{{ product.title }}</div>
+							<div class="price">
+								{% if  product.price_min ==  product.price_max %}
+									{{ product.price | money }}
+								{% else %}
+									{{ product.price_min | money }} - {{ product.price_max | money }}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					<div class="content-info">
+						<div class="title"><h2>{{ block.settings.back_in_stock_title_form }}</h2></div>
+						<div class="content">{{ block.settings.back_in_stock_content }}</div>
+						<div class="row">
+							<div class="col-12 col-sm-12 col-md-6">
+								<div class="form-group">
+									<input id="contactFormName" class="form-control" type="text" name="contact[{{ 'contact.form.name' | t }}]"
+										value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+										placeholder="{{ 'contact.form.your_name' | t }}"
+										autocapitalize="words" requiredrequiredrequiredrequiredrequiredrequired/>
+								</div>
+							</div>
+							<div class="col-12 col-sm-12 col-md-6">
+								<div class="form-group">
+									<input id="contactFormEmail" class="form-control{% if form.errors contains 'email' %} is-invalid{% endif %}"
+										type="email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+										placeholder="{{ 'contact.form.your_email' | t }}" autocorrect="off" autocapitalize="off" required/>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<input id="contactFormPhone" class="form-control" type="tel" name="contact[{{ 'contact.form.phone' | t }}]"
+								value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+								placeholder="{{ 'contact.form.phone_number' | t }}"
+								pattern="[0-9\-]*" required/>
+						</div>
+						<div class="form-group">
+							<textarea id="contactFormMessage" class="form-control {% if form.errors contains 'body' %} is-invalid{% endif %}"
+								rows="10" name="contact[{{ 'contact.form.message' | t }}]" rows="4"
+								placeholder="{{ 'contact.form.your_message' | t }}"
+								required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
+						</div>
+						<div class="form-button">
+							<input type="submit" class="btn btn-primary" value="{{ 'contact.form.send' | t }}">
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endform %}
+	</div>
+{%- endif -%}

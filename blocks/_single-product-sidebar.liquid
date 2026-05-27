@@ -1,0 +1,85 @@
+<style>
+    #shopify-block-{{ block.id }} .bwp-single-sidebar {
+        {%- if block.settings.sticky -%}position: sticky;{%- endif -%}
+        top:{{ block.settings.top }}px;
+    }
+    {% assign padding 			= block.settings.padding | split: "|" %}
+    {% assign width 			= block.settings.width | split: "|" %}
+    {%- if padding[0] != blank or width[0] != blank -%}
+		#shopify-block-{{ block.id }}{
+		    {%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+            {%- if width[0] != blank -%}width:{{ width[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if padding[1] != blank or width[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }}{
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+                {%- if width[1] != blank -%} width:{{ width[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if padding[2] != blank or width[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }}{
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+                {%- if width[2] != blank -%}width:{{ width[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if padding[3] != blank or width[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }}{
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+                {%- if width[3] != blank -%}width:{{ width[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="toggle-sidebar">{{ block.settings.button_sidebar }}</div>
+<div class="bwp-single-sidebar {{ section.settings.position_sidebar }}">
+    <div class="toggle-sidebar top"><span></span></div>
+    <div class="bwp-single-sidebar-content">
+        {% content_for "blocks" %}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Single product sidebar",
+    "blocks": [{ "type": "@theme" },{ "type": "@app" }],
+    "settings": [
+        {
+            "type": "text",
+            "id": "button_sidebar",
+            "label": "button sidebar",
+            "default": "sidebar"
+        },
+        {
+            "type": "textarea",
+            "id": "width",
+            "label": "Width",
+            "default": "25%",
+            "info": "ex:100%"
+        },
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+			"type": "checkbox",
+			"id": "sticky",
+			"label": "Sticky"
+		},
+        {
+            "type": "number",
+            "id": "top",
+            "label": "Top",
+            "default": 0
+        }
+    ],
+    "presets": [{"name": "Single product sidebar","category": "Single product"}]
+  }
+{% endschema %}

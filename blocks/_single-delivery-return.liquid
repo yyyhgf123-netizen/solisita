@@ -1,0 +1,42 @@
+<div class="delivery_return">
+    <div class="delivery_return-title"><i class="wpb-icon-package"></i>{{ block.settings.delivery_return_title }}</div>
+    <div class="delivery_return-content">
+        <div class="delivery_return-close full"></div>
+        <div class="content-shipping">
+            <div class="delivery_return-close"></div>
+            {%- if block.settings.delivery_return_heading -%}
+                <div class="title_shiping"><h2>{{ block.settings.delivery_return_heading }}</h2></div>
+            {% endif %}
+            {%- if block.settings.delivery_return_content -%}
+            <div class="product-shipping">
+                {{ block.settings.delivery_return_content }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Single delivery return",
+    "settings": [
+        {
+            "type": "text",
+            "id": "delivery_return_title",
+            "label": "Heading",
+            "default": "Delivery & Return"
+        },
+        {
+            "type": "text",
+            "id": "delivery_return_heading",
+            "label": "Title Content",
+            "default": "Shipping info"
+        },
+        {
+            "type": "html",
+            "id": "delivery_return_content",
+            "label": "Content"
+        }
+    ],
+    "presets": [{"name": "Single delivery return","category": "Single product"}]
+  }
+{% endschema %}

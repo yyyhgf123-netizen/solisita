@@ -1,0 +1,29 @@
+{%- assign current_variant 			= product.selected_or_first_available_variant -%}
+{% if current_variant.available %}
+    <div class="section-estimated_delivery"{% if block.settings.product_estimated_delivery_margin != blank %} style="margin:{{ block.settings.product_estimated_delivery_margin }}"{% endif %}>
+        <div class="estimated_delivery"{%- if current_variant.next_incoming_date and current_variant.inventory_quantity == 0 -%} data-date_now="{{ current_variant.next_incoming_date }}"{%- endif -%} data-number_day="{{ block.settings.estimated_delivery_day }}">
+            <div class="icons"><i class="wpb-icon-shipping3"></i></div>
+            <div class="content">{{ 'products.product.time_delivery_html' | t }}</div>
+        </div>
+    </div>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Single delivery return",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_estimated_delivery_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px"
+        },
+        {
+            "type": "number",
+            "id": "estimated_delivery_day",
+            "label": "Estimated delivery days",
+            "default": 5
+        }
+    ],
+    "presets": [{"name": "Single delivery return","category": "Single product"}]
+  }
+{% endschema %}

@@ -1,0 +1,100 @@
+{%- assign pick_up_availabilities = product_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+{%- if pick_up_availabilities.size > 0 -%}
+	<div class="pickup-content">
+		<div class="pickup-availability">
+			{%- assign closest_location = pick_up_availabilities.first -%}
+			<div class="pickup-information">
+				{%- if closest_location.available -%}
+					<div class="content-info">
+						<div class="pickup-information__title">
+							{{ 'products.pickup_availability.pick_up_available_at_html' | t: location_name: closest_location.location.name }}
+						</div>
+						<div class="pickup-information__stock">
+							{{ closest_location.pick_up_time }}
+						</div>
+					</div>
+					<div class="button">
+						<button  class="pickup-availability-information">
+							{%- if pick_up_availabilities.size == 1 -%}
+								{{ 'products.pickup_availability.view_store_info' | t }}
+							{%- else -%}
+								{{ 'products.pickup_availability.check_other_stores' | t }}
+							{%- endif -%}
+						</button>
+					</div>
+				{%- else -%}
+					<div class="content-info">
+						<div class="pickup-information__title">
+							{{ 'products.pickup_availability.pick_up_unavailable_at_html' | t: location_name: closest_location.location.name }}
+						</div>
+					</div>
+					{%- if pick_up_availabilities.size > 1 -%}
+						<div class="button">
+							<button class="pickup-availability-information">
+								{{ 'products.pickup_availability.check_other_stores' | t }}
+							</button>
+						</div>
+					{%- endif -%}
+				{%- endif -%}
+			</div>
+		</div>
+		<div class="pickup-availabilities-modal">
+			<div class="pickup_modal-close full"></div>
+			<div class="pickup_modal-content">
+				<div class="pickup_modal-close"></div>
+				<div class="product-info">
+					{%- if product_variant.featured_image -%}
+						{%- assign img_url 	= product_variant.featured_image.src | image_url:width:100 -%}
+						{%- assign height 	= 100 | divided_by: product_variant.featured_image.aspect_ratio | ceil -%}
+					{%- else -%}
+						{%- assign img_url = product.featured_media.preview_image.src | image_url:width:100 -%}
+						{%- assign height 	= 100 | divided_by: product.featured_media.preview_image.aspect_ratio | ceil -%}
+					{%- endif -%}
+					<div class="content-image"><img class="lazyload fade-in" src="{{ img_url }}" width="100" height="{{ height }}" alt="{{ img_url.alt | escape }}"></div>
+					<div class="content-info">
+						<div class="title"></div>
+						{% unless product_variant.title contains 'Default Title' %}
+							<div class="variant">{{ product_variant.title }}</div>
+						{% endunless %}
+						<div class="price">
+							{%- if product_variant.compare_at_price -%}
+								<span class="price-regular">{{ product_variant.compare_at_price | money }}</span> <span class="price-sale">{{ product_variant.price | money }}</span>
+							{%- else -%}
+								<span class="product-price">{{ product_variant.price | money }}</span>
+							{%- endif -%}
+						</div>
+					</div>
+				</div>
+				<ul class="pickup_modal-list" role="list">
+					{%- for availability in pick_up_availabilities -%}
+						<li class="pickup-list__item">
+							<h3 class="pickup_modal-location">
+								{{ availability.location.name }}
+							</h3>
+							<div class="pickup_modal-availability">{{ 'products.pickup_availability.pick_up_available' | t }}, {{ closest_location.pick_up_time }}</div>
+							{%- assign address = availability.location.address -%}
+							<address class="pickup_modal-address">
+								{{ address | format_address }}
+							</address>
+							{%- if address.phone.size > 0 -%}
+								<div class="pickup_modal-phone">
+									{{ address.phone }}<br>
+								</div>
+							{%- endif -%}
+							<div class="pickup_modal-map">
+								<a href="https://maps.google.com?daddr={{ availability.location.address.address1 }} {{ availability.location.address.city }} {{ availability.location.address.province }} {{ availability.location.address.country }}" target="_blank">{{ 'products.pickup_availability.map' | t }}</a>
+							</div>
+						</li>
+					{%- endfor -%}
+				</ul>
+			</div>
+		</div>
+	</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pickup Product",
+  "settings": []
+}
+{% endschema %}

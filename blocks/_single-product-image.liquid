@@ -1,0 +1,59 @@
+<style>
+    {% assign padding 			= block.settings.padding | split: "|" %}
+    {% assign width 			= block.settings.width | split: "|" %}
+    {%- if padding[0] != blank or width[0] != blank -%}
+		#shopify-block-{{ block.id }}{
+		    {%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+            {%- if width[0] != blank -%}width:{{ width[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if padding[1] != blank or width[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }}{
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+                {%- if width[1] != blank -%} width:{{ width[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if padding[2] != blank or width[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }}{
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+                {%- if width[2] != blank -%}width:{{ width[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if padding[3] != blank or width[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }}{
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+                {%- if width[3] != blank -%}width:{{ width[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="bwp-single-image">
+    {% render 'product-media' %}
+</div>
+{% schema %}
+  {
+    "name": "Single product image",
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "width",
+            "label": "Width",
+            "default": "43.75%",
+            "info": "Screen: desktop | 1200px | 991px | 767px"
+        },
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		}
+    ],
+    "presets": [{"name": "Single product image","category": "Single product"}]
+  }
+{% endschema %}

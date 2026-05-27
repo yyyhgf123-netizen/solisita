@@ -1,0 +1,347 @@
+<section class="page-article portfolio related">
+	<div class="container">
+		<div class="page-article__inner">
+			{%- assign nav = section.settings.navigation -%}
+            {%- assign dot = section.settings.dots -%}
+            {%- assign infinite = section.settings.infinite -%}
+            {%- assign autoplay = section.settings.autoplay -%}
+            {%- assign autoplay_speed = section.settings.autoplay_speed | escape -%}
+            {%- assign columns 			        = section.settings.columns -%}
+            {%- assign space_columns 			= section.settings.space_columns -%}
+            {%- assign pergroup_columns 		= section.settings.pergroup_columns -%}
+            {%- assign column1440 		        = section.settings.column1440 -%}
+            {%- assign space_column1440 		= section.settings.space_column1440 -%}
+            {%- assign pergroup_column1440 		= section.settings.pergroup_column1440 -%}
+            {%- assign column1 			        = section.settings.column1 -%}
+            {%- assign space_column1 			= section.settings.space_column1 -%}
+            {%- assign pergroup_column1 		= section.settings.pergroup_column1 -%}
+            {%- assign column2 			        = section.settings.column2 -%}
+            {%- assign space_column2 			= section.settings.space_column2 -%}
+            {%- assign pergroup_column2 		= section.settings.pergroup_column2 -%}
+            {%- assign column3 			        = section.settings.column3 -%}
+            {%- assign space_column3 			= section.settings.space_column3 -%}
+            {%- assign pergroup_column3 		= section.settings.pergroup_column3 -%}
+            {%- assign column4 			        = section.settings.column4 -%}
+            {%- assign space_column4 			= section.settings.space_column4 -%}
+            {%- assign pergroup_column4 		= section.settings.pergroup_column4 -%}
+            {%- assign limit 			        = section.settings.number_related -%}
+			<div class="related-portfolio"{% if section.settings.portfolio_related_margin != blank %} style="margin:{{ section.settings.portfolio_related_margin }}"{% endif %}>
+				<h2 class="title-related">{{ section.settings.title_related }}</h2>
+				<div class="wpbingo-related__contents bwp_slider-carousel">
+                    <div class="content-swiper-nav">
+    					<div class="bwp-swiper-slider" 
+                        data-infinite="{{ infinite }}" 
+    					data-autoplay="{{ autoplay }}"
+      					data-autoplayspeed="{{ autoplay_speed }}"
+      					data-columns="{{ columns }}"
+                        data-space-columns="{{ space_columns }}"
+                        data-pergroup-columns="{{ pergroup_columns }}"
+      					data-column1440="{{ column1440 }}"
+                        data-space-column1440="{{ space_column1440 }}"
+                        data-pergroup-column1440="{{ pergroup_column1440 }}"
+      					data-column1="{{ column1 }}"
+                        data-space-column1="{{ space_column1 }}"
+                        data-pergroup-column1="{{ pergroup_column1 }}"
+      					data-column2="{{ column2 }}"
+                        data-space-column2="{{ space_column2 }}"
+                        data-pergroup-column2="{{ pergroup_column2 }}"
+      					data-column3="{{ column3 }}"
+                        data-space-column3="{{ space_column3 }}"
+                        data-pergroup-column3="{{ pergroup_column3 }}"
+      					data-column4="{{ column4 }}"
+                        data-space-column4="{{ space_column4 }}"
+                        data-pergroup-column4="{{ pergroup_column4 }}">
+                          <div class="swiper-wrapper">
+      						{%- for related in blog.articles -%}
+      							{%- if related.id == article.id -%}{% continue %}{% endif -%}
+      							{%- assign index = index |plus:1 -%}
+      								<div class="swiper-slide slick-carousel__item">
+      									<div class="item-related" style="--related-image-ratio:{{ section.settings.related_image_ratio }}">
+      										<div class="related-image">
+      											{%- assign image = related.image -%}
+      											<a href="{{related.url}}">
+      												{% render 'img-global' with image: image, class: "article__related-image", effect: "fade-in" %}
+      											</a>
+      										</div>
+      									   <h5 class="title-article-rel"><a href="{{related.url}}">{{related.title}}</a></h5>
+      									   <ul class="list-tag">
+      											{% for tag in related.tags %}
+      												<li class="item-tag">
+      													{{ tag | link_to_tag: tag }}
+      												</li>
+      											{% endfor %}
+      										</ul>
+      									</div>
+      								</div>
+      							{%- if index == limit -%}{% break %}{% endif -%}
+      						{%- endfor -%}
+                          </div>
+                          {%- if nav -%}
+                            <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style=""></button>
+                            <button class="slick-next slick-arrow" aria-label="Next" type="button" style=""></button>
+                          {%- endif -%}
+                      </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+	"name": "Main Portfolio related",
+	"settings": [
+		{
+			"type": "text",
+			"id": "portfolio_related_margin",
+			"label": "Margin",
+			"info": "Example(top left bottom right): 15px 15px 15px 15px"
+		},
+		{
+			"type": "text",
+			"id": "title_related",
+			"label": "Title related",
+			"default": "Related Portfolio"
+		},
+		{
+			"type": "number",
+			"id": "number_related",
+			"label": "Number related",
+			"default": 4
+		},
+		{
+			"type": "text",
+			"id": "related_image_ratio",
+			"label": "Image ratio",
+			"default": "1"
+		},
+		{
+			"type": "header",
+			"content": "Carousel Settings"
+		},
+		{
+			"type": "checkbox",
+			"id": "navigation",
+			"label": "Show navigation",
+			"default": true
+		},
+        {
+			"type": "checkbox",
+			"id": "nav_button_above",
+			"label": "Navigation Button Above",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "infinite",
+			"label": "Infinite loop sliding",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"label": "Enable autoplay",
+			"default": false
+		},
+		{
+			"type": "text",
+			"id": "autoplay_speed",
+			"label": "Autoplay speed",
+			"info": "Autoplay speed in milliseconds. Type: int(ms)",
+			"default": "10000"
+		},
+		{
+            "type": "header",
+            "content": "-----Screen >1440px"
+          },
+      	{
+            "type": "range",
+            "id": "columns",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "pergroup_columns",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "space_columns",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 30,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 1200px to 1440px"
+          },
+      	{
+            "type": "range",
+            "id": "column1440",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "pergroup_column1440",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "space_column1440",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 30,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 992px to 1199px"
+          },
+          {
+            "type": "range",
+            "id": "column1",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "pergroup_column1",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "space_column1",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 768px to 991px"
+          },
+          {
+            "type": "range",
+            "id": "column2",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 3
+          },
+        {
+            "type": "range",
+            "id": "pergroup_column2",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 3
+          },
+          {
+            "type": "range",
+            "id": "space_column2",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          },
+          {
+            "type": "header",
+            "content": "-----Screen 480px to 767px"
+          },
+          {
+            "type": "range",
+            "id": "column3",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "pergroup_column3",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "space_column3",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          },
+           {
+            "type": "header",
+            "content": "-----Screen < 480px"
+          },
+      	{
+            "type": "range",
+            "id": "column4",
+            "min": 1,
+            "max": 7,
+            "step": 0.5,
+            "label": "Columns",
+            "default": 1
+          },
+           {
+            "type": "range",
+            "id": "pergroup_column4",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Group",
+            "default": 1
+          },
+          {
+            "type": "range",
+            "id": "space_column4",
+            "min": 1,
+            "max": 100,
+            "step": 1,
+            "label": "Space",
+            "default": 15,
+            "info": "px"
+          }
+	]
+}
+{% endschema %}

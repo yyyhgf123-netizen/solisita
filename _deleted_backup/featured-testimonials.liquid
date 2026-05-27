@@ -1,0 +1,515 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- elsif section.settings.max_width != blank -%}
+	{%- assign container = 'bwp-container' -%}
+{%- else -%}
+	{%- assign container = 'container' -%}
+{%- endif -%}
+
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- assign width_container = section.settings.max_width | plus: 0 -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+
+{%- assign color_bg = section.settings.color_bg -%}
+{%- assign heading = section.settings.title | escape -%}
+{% assign margin 	= section.settings.margin | split: "|" %}
+{% assign padding 	= section.settings.padding | split: "|" %}
+{%- style -%}
+	{%- if section.settings.fullwidth == blank and section.settings.max_width != blank and width_container > 1200 -%}
+		@media (max-width: {{ section.settings.max_width }}) and (min-width: 1200px){
+			#shopify-section-{{ section.id }} .bwp-container{
+				padding-left:30px;
+				padding-right:30px;
+			}
+		}
+	{%- endif -%}
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--testimonials{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1200px){
+			#shopify-section-{{ section.id }} .wpbingo-section--testimonials{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-section-{{ section.id }} .wpbingo-section--testimonials{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-section--testimonials{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- for block in section.blocks -%}
+	{%- if block.type == 'custom_css' -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--testimonials{
+			text-align:{{ block.settings.text_align }};
+		}
+		#shopify-section-{{ section.id }} .wpbingo-section--testimonials .wpbingo-title__heading{
+			font-size: {{ block.settings.font_size_heading }}px;
+			line-height: {{ block.settings.line_height_heading }}px;
+			font-weight: {{ block.settings.font_weight_heading }};
+			color:{{ block.settings.color_heading }};
+			margin:{{ block.settings.margin_heading }};
+		}
+		#shopify-section-{{ section.id }} .wpbingo-section--testimonials .testimonial-card__content{
+			font-size: {{ block.settings.font_size_review }}px;
+			line-height: {{ block.settings.line_height_review }}px;
+			font-weight: {{ block.settings.font_weight_review }};
+			color:{{ block.settings.color_review }};
+			margin:{{ block.settings.margin_review }};
+			font-family:var({{ block.settings.font }});
+		}
+		#shopify-section-{{ section.id }} .wpbingo-section--testimonials .testimonial-card__name{
+			font-size: {{ block.settings.font_size_name }}px;
+			line-height: {{ block.settings.line_height_name }}px;
+			font-weight: {{ block.settings.font_weight_name }};
+			color:{{ block.settings.color_name }};
+			letter-spacing:{{ block.settings.letter_spacing_name }}px;
+		}
+		@media(max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-section--testimonials .title-testimonial{
+				font-size: {{ block.settings.font_size_heading_mobi }}px;
+				line-height: {{ block.settings.line_height_heading_mobi }}px;
+				margin:{{ block.settings.margin_heading_mobi }};
+			}
+			#shopify-section-{{ section.id }} .wpbingo-section--testimonials .testimonial-card__content{
+				font-size: {{ block.settings.font_size_review_mobi }}px;
+				line-height: {{ block.settings.line_height_review_mobi }}px;
+			}
+			#shopify-section-{{ section.id }} .wpbingo-section--testimonials .testimonial-card__name{
+				font-size: {{ block.settings.font_size_name_mobi }}px;
+				line-height: {{ block.settings.line_height_name_mobi }}px;
+			}
+		}
+	{%- endif -%}
+	{%- endfor -%}
+{%- endstyle -%}
+
+<section class="wpbingo-section wpbingo-section--testimonials overflow-hidden" style="background-color:{{ color_bg }};">
+	<div class="{{ container }}" {{ max_width }}>
+		<div class="wpbingo-section__inner">
+			<div class="section-content swiper-pair">
+				<div class="content-testimonial">
+					{%- if heading != blank -%}
+						<div class="wpbingo-title{% if settings.show_title_bg %} wpbingo-title--bg-img{% endif %}">
+							<h3 class="wpbingo-title__heading">{{ heading }}</h3>
+						</div>
+					{%- endif -%}
+					<div class="wpbingo-section__content">
+						{%- if section.blocks.size > 0 -%}
+							 <div class="content-swiper-nav">
+							<div class="bwp-swiper-slider" data-infinite="true"
+                              data-columns="1"
+							data-column1440="1"
+							data-column1="1"
+							data-column2="1"
+							data-column3="1"
+							data-column4="1">
+                              <div class="swiper-wrapper">
+								{%- for block in section.blocks -%}
+									{%- if block.type == 'testimonial' -%}
+									{%- assign name = block.settings.name | escape -%}
+									{%- assign avatar = block.settings.image -%}
+									{%- assign review = block.settings.review -%}
+									{%- assign rating = block.settings.rating -%}
+									<div class="swiper-slide">
+										<div class="testimonial-card">
+											<div class="testimonial-card__inner">
+												<div class="testimonial-card__rating testimonial-card__rating--{{ rating }}">
+												</div>
+												<div class="testimonial-card__content">{{ review }}</div>
+												<div class="testimonial-card__name">{{ name }}</div>
+											</div>
+										</div>
+									</div>
+									{%- endif -%}
+								{%- endfor -%}
+                              </div>
+                            </div>
+							</div>
+						{%- endif -%}
+					</div>
+				</div>
+				<div class="content-image">
+					{%- if section.blocks.size > 0 -%}
+						<div class="bwp-swiper-slider" data-infinite="true" data-swiper-thumb
+							data-columns="1"
+							data-column1440="1"
+							data-column1="1"
+							data-column2="1"
+							data-column3="1"
+							data-column4="1">
+                          <div class="swiper-wrapper">
+							{%- for block in section.blocks -%}
+								{%- if block.type == 'testimonial' -%}
+								{%- assign image 		= block.settings.image -%}
+								<div class="swiper-slide">
+									{%- if image -%}
+										{% render 'img-global' with image: image, class: "featured-banner__img", effect: "fade-in" %}
+									{%- else -%}
+										<img class="lazyload fade-in" src="https://placehold.jp/481x613.png" width="481" height="613" />
+									{%- endif -%}
+								</div>
+								{%- endif -%}
+							{%- endfor -%}
+                          </div>
+						</div>
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+  "name": "Wpbingo Testimonials",
+  "disabled_on": {
+		"groups": ["header"]
+	},
+  "settings": [
+    {
+		"type": "header",
+		"content": "Layout settings"
+    },
+	{
+		"type": "color",
+		"id": "color_bg",
+		"label": "Background color",
+		"default": "#f5f5f5"
+	},
+	{
+		"type": "text",
+		"id": "max_width",
+		"label": "Width container",
+		"info": "Default: 1440px"
+	},
+	{
+		"type": "checkbox",
+		"id": "fullwidth",
+		"label": "Fullwidth"
+	},
+	{
+		"type": "text",
+		"id": "padding",
+		"label": "Padding",
+		"placeholder": "0px 0px 0px 0px",
+		"info":"Screen: desktop | 1200px | 991px | 767px"
+	},
+	{
+		"type": "text",
+		"id": "margin",
+		"label": "Margin",
+		"placeholder": "0px 0px 0px 0px",
+		"info":"Screen: desktop | 1200px | 991px | 767px"
+	}
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer name",
+          "default": "John Doe"
+        },
+        {
+          "type": "textarea",
+          "id": "review",
+          "label": "Customer review",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non mattis dui, sit amet hendrerit nibh. Duis congue volutpat urna ut accumsan."
+        },
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "Image"
+		},
+        {
+          "type": "select",
+          "id": "rating",
+          "label": "Customer rating",
+          "default": "5",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 Stars"
+            },
+            {
+              "value": "2",
+              "label": "2 Stars"
+            },
+            {
+              "value": "3",
+              "label": "3 Stars"
+            },
+            {
+              "value": "4",
+              "label": "4 Stars"
+            },
+            {
+              "value": "5",
+              "label": "5 Stars"
+            }
+          ]
+        }
+      ]
+    },
+	{
+		"type": "custom_css",
+		"name": "Custom css",
+		"settings": [
+			{
+				"type": "select",
+				"id": "text_align",
+				"label": "Text Align",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					}
+				],
+				"default": "center"
+			},
+			{
+				"type": "header",
+				"content": "====== Customer Heading ======"
+			},
+			{
+				"type": "color",
+				"id": "color_heading",
+				"label": "color",
+				"default": "#000"
+			},
+			{
+				"type": "number",
+				"id": "font_size_heading",
+				"label": "Font size",
+				"default": 16,
+				"info": "px"
+			},
+			{
+				"type": "number",
+				"id": "line_height_heading",
+				"label": "Line height",
+				"default": 22,
+				"info": "px"
+			},
+			{
+				"type": "text",
+				"id": "font_weight_heading",
+				"label": "Font Weight",
+				"default": "500"
+			},
+			{
+				"type": "text",
+				"id": "margin_heading",
+				"label": "margin",
+				"default": "0px 0px 0px 0px",
+				"placeholder":"0px 0px 0px 0px"
+			},
+			{
+				"type": "header",
+				"content": "====== Customer review ======"
+			},
+			{
+				"type": "select",
+				"id": "font",
+				"label": "Font family",
+				"options": [
+					{
+						"value": "--font-family-second",
+						"label": "Font Heading"
+					},
+					{
+						"value": "--font-family-base",
+						"label": "Font Body"
+					}
+				],
+				"default": "--font-family-second"
+			},
+			{
+				"type": "color",
+				"id": "color_review",
+				"label": "color",
+				"default": "#000"
+			},
+			{
+				"type": "number",
+				"id": "font_size_review",
+				"label": "Font size",
+				"default": 16,
+				"info": "px"
+			},
+			{
+				"type": "number",
+				"id": "line_height_review",
+				"label": "Line height",
+				"default": 22,
+				"info": "px"
+			},
+			{
+				"type": "text",
+				"id": "font_weight_review",
+				"label": "Font Weight",
+				"default": "500"
+			},
+			{
+				"type": "text",
+				"id": "margin_review",
+				"label": "margin",
+				"default": "0px 0px 0px 0px",
+				"placeholder":"0px 0px 0px 0px"
+			},
+			{
+				"type": "header",
+				"content": "====== Customer name ======"
+			},
+			{
+				"type": "color",
+				"id": "color_name",
+				"label": "color",
+				"default": "#000"
+			},
+			{
+				"type": "number",
+				"id": "font_size_name",
+				"label": "Font size",
+				"default": 16,
+				"info": "px"
+			},
+			{
+				"type": "number",
+				"id": "line_height_name",
+				"label": "Line height",
+				"default": 22,
+				"info": "px"
+			},
+			{
+				"type": "text",
+				"id": "font_weight_name",
+				"label": "Font Weight",
+				"default": "500"
+			},
+			{
+				"type": "number",
+				"id": "letter_spacing_name",
+				"label": "Letter spacing",
+				"default": 0,
+				"info": "px"
+			},
+			{
+				"type": "header",
+				"content": "====== Mobile ======",
+				"info": "screen < 767px"
+			},
+			{
+				"type": "header",
+				"content": "----- Customer heading -----"
+			},
+			{
+				"type": "number",
+				"id": "font_size_heading_mobi",
+				"label": "Font size",
+				"default": 16,
+				"info": "px"
+			},
+			{
+				"type": "number",
+				"id": "line_height_heading_mobi",
+				"label": "Line height",
+				"default": 22,
+				"info": "px"
+			},
+			{
+				"type": "text",
+				"id": "margin_heading_mobi",
+				"label": "margin",
+				"default": "0px 0px 0px 0px",
+				"placeholder":"0px 0px 0px 0px"
+			},
+			{
+				"type": "header",
+				"content": "----- Customer review -----"
+			},
+			{
+				"type": "number",
+				"id": "font_size_review_mobi",
+				"label": "Font size",
+				"default": 16,
+				"info": "px"
+			},
+			{
+				"type": "number",
+				"id": "line_height_review_mobi",
+				"label": "Line height",
+				"default": 22,
+				"info": "px"
+			},
+			{
+				"type": "header",
+				"content": "----- Customer name -----"
+			},
+			{
+				"type": "number",
+				"id": "font_size_name_mobi",
+				"label": "Font size",
+				"default": 16,
+				"info": "px"
+			},
+			{
+				"type": "number",
+				"id": "line_height_name_mobi",
+				"label": "Line height",
+				"default": 22,
+				"info": "px"
+			}
+		]
+	}
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+		{
+          "type": "custom_css"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

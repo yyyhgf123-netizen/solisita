@@ -1,0 +1,126 @@
+
+{%- assign mailchimp = block.settings.mailchimp -%}
+{%- assign mailchimp_action = block.settings.form_action | replace: '/post?', '/post-json?' | append: '&amp;c=?' -%}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+      {%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .wpbingo-widget--newsletter{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--newsletter{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--newsletter{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--newsletter{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="wpbingo-block wpbingo-widget--newsletter wpbingo-block--{{ block.id }}">
+    <div class="newsletter__content {{block.settings.layout}}">
+        <div class="newsletter-form">
+            {%- if mailchimp -%}
+                <form class="js-wpbingo-newsletter" action="{{ mailchimp_action }}" method="post" name="mc-embedded-subscribe-form" target="_blank">
+                    <div class="newsletter-form__wrap">
+                        <input class="js-input-newsletter form-control newsletter-form__input" type="email" name="EMAIL"
+                            value="{% if customer %}{{ customer.email }}{% endif %}"
+                            placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" required />
+                        <button class="btn newsletter-form__submit" type="submit">
+                            <span>{{ 'general.newsletter_form.submit' | t }}</span>
+                        </button>
+                    </div>
+                </form>
+            {%- else -%}
+                {% form 'customer' %}
+                    {{ form.errors | default_errors }}
+                    {%- if form.posted_successfully? -%}
+                        <div class="alert alert-success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>
+                    {%- else -%}
+                        <input type="hidden" name="contact[tags]" value="newsletter">
+                        <div class="newsletter-form__wrap">
+                            <input value="{% if customer %}{{ customer.email }}{% endif %}"
+                                placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}"
+                                name="contact[email]" class="form-control newsletter-form__input" type="email" 
+                                autocorrect="off" autocapitalize="off"/>
+                            <button class="btn newsletter-form__submit" type="submit">
+                                <span>{{ 'general.newsletter_form.submit' | t }}</span>
+                            </button>
+                        </div>
+                    {%- endif -%}
+                {% endform %}
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+			"type": "header",
+			"content": "Mailchimp Settings"
+		},
+		{
+			"type": "checkbox",
+			"id": "mailchimp",
+			"label": "Use mailchimp",
+			"default": true
+		},
+		{
+			"type": "text",
+			"id": "form_action",
+			"label": "MailChimp form action URL",
+			"info": "[Where do I find my MailChimp form action URL?](https:\/\/getpublii.com\/docs\/mailchimp-form-integration.html)"
+		},
+		{
+  			"type": "select",
+			"id": "layout",
+			"label": "List style",
+			"options": [
+                {
+					"value": "layout-1",
+					"label": "Layout 1"
+				},
+                {
+					"value": "layout-2",
+					"label": "Layout 2"
+				}
+            ]
+        }
+    ],
+    "presets": [{ "name": "Newsletter" }]
+  }
+{% endschema %}

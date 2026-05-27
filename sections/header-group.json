@@ -1,0 +1,1697 @@
+{
+  "name": "Header Group",
+  "type": "header",
+  "sections": {
+    "custom_liquid_RVjHNw": {
+      "type": "custom-liquid",
+      "name": "条幅",
+      "settings": {
+        "custom_liquid": "<div class=\"solisita-announcement\" role=\"region\" aria-label=\"Store announcement\">\n  <div class=\"solisita-announcement__viewport\" aria-live=\"polite\">\n    <div class=\"solisita-announcement__track\">\n      <div class=\"solisita-announcement__slide is-active\">\n        FIRST ORDER: 15% OFF 1 ITEM | 20% OFF 2+ ITEMS\n      </div>\n\n      <div class=\"solisita-announcement__slide\">\n        FREE SHIPPING £59+\n      </div>\n    </div>\n  </div>\n</div>\n\n<script>\n  (function () {\n    function initSolisitaAnnouncement() {\n      var bars = document.querySelectorAll('.solisita-announcement');\n\n      bars.forEach(function (bar) {\n        if (bar.dataset.initialized === 'true') return;\n        bar.dataset.initialized = 'true';\n\n        var slides = Array.prototype.slice.call(\n          bar.querySelectorAll('.solisita-announcement__slide')\n        );\n\n        if (slides.length <= 1) return;\n\n        var currentIndex = 0;\n        var intervalTime = 4000;\n        var timer = null;\n\n        function showSlide(index) {\n          slides[currentIndex].classList.remove('is-active');\n          currentIndex = (index + slides.length) % slides.length;\n          slides[currentIndex].classList.add('is-active');\n        }\n\n        function nextSlide() {\n          showSlide(currentIndex + 1);\n        }\n\n        function startAutoplay() {\n          stopAutoplay();\n          timer = window.setInterval(nextSlide, intervalTime);\n        }\n\n        function stopAutoplay() {\n          if (timer) {\n            window.clearInterval(timer);\n            timer = null;\n          }\n        }\n\n        bar.addEventListener('mouseenter', stopAutoplay);\n        bar.addEventListener('mouseleave', startAutoplay);\n\n        startAutoplay();\n      });\n    }\n\n    if (document.readyState === 'loading') {\n      document.addEventListener('DOMContentLoaded', initSolisitaAnnouncement);\n    } else {\n      initSolisitaAnnouncement();\n    }\n\n    document.addEventListener('shopify:section:load', initSolisitaAnnouncement);\n  })();\n</script>"
+      }
+    },
+    "header_campar_kBVbbz": {
+      "type": "header-campar",
+      "disabled": true,
+      "name": "Header Campar",
+      "settings": {
+        "show_campar": true,
+        "max_width": "1440px",
+        "fullwidth": true,
+        "padding": "8px 0",
+        "margin": "",
+        "bg_background": "#000000",
+        "content_campar": "15% OFF 1 ITEM | 20% OFF 2+ ITEMS | FREE UK SHIPPING £59+",
+        "url_campar": "",
+        "color_content": "#ffffff",
+        "color_span": "#ffffff",
+        "font_size": 12,
+        "font_weight": "600",
+        "marquee_content": true,
+        "marquee_loop": 10,
+        "marquee_time": 6,
+        "show_mobile": true
+      }
+    },
+    "header_topbar_34WPTr": {
+      "type": "header-topbar",
+      "blocks": {
+        "text_with_icon_6prGcW": {
+          "type": "text-with-icon",
+          "disabled": true,
+          "settings": {
+            "text_icon_content1": "15% OFF 1 ITEM | 20% OFF 2+ ITEMS | FREE UK SHIPPING £59+",
+            "color_text_icon1": "#ffffff",
+            "text_icon_content2": "",
+            "color_text_icon2": "#ffffff",
+            "show_mobile_text_icon": true
+          }
+        },
+        "custom_text_R4w3fP": {
+          "type": "custom-text",
+          "settings": {
+            "custom_text_content": "15% OFF 1 ITEM | 20% OFF 2+ ITEMS | FREE UK SHIPPING £59+",
+            "color_custom_text": "#ffffff",
+            "color_custom_text_link": "#ffffff",
+            "color_custom_text_link_hover": "#d8d8d8",
+            "text_align": "center",
+            "show_mobile_custom_text": true,
+            "text_align_mobi": "center"
+          }
+        },
+        "language_currency_FXhUXn": {
+          "type": "language-currency",
+          "disabled": true,
+          "settings": {
+            "show_mobile_currency": true
+          }
+        }
+      },
+      "block_order": [
+        "text_with_icon_6prGcW",
+        "custom_text_R4w3fP",
+        "language_currency_FXhUXn"
+      ],
+      "disabled": true,
+      "name": "Header Topbar",
+      "settings": {
+        "show_topbar": true,
+        "max_width": "1890px",
+        "fullwidth": false,
+        "padding": "8px 0",
+        "margin": "",
+        "bg_background": "#000000",
+        "topbar_absolute": false,
+        "bg_background2": "#000000",
+        "font_size": 12,
+        "color_text": "#ffffff",
+        "font_weight": "400",
+        "border": false,
+        "border_width": "0",
+        "border_color": "#f2f2f2",
+        "border_opacity": 1,
+        "show_mobile": false
+      }
+    },
+    "header_1": {
+      "type": "header_1",
+      "blocks": {
+        "mainmenu_item_QQpjG4": {
+          "type": "_mainmenu-item",
+          "settings": {
+            "title": "Home",
+            "menu_url": "/",
+            "submenu_format": "list",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#ff0000"
+          },
+          "blocks": {
+            "menu_list_pCQMLC": {
+              "type": "_menu-list",
+              "settings": {
+                "menu_link_list": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "menu_list_pCQMLC"
+          ]
+        },
+        "mainmenu_item_XzFrRn": {
+          "type": "_mainmenu-item",
+          "settings": {
+            "title": "Shop",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_cDayJU": {
+              "type": "_megamenu-container",
+              "settings": {
+                "width": "full",
+                "width_custom": "1440px"
+              },
+              "blocks": {
+                "megamenu_item_ztdj38": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "22%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "New Arrivals",
+                    "banner_link": "shopify://products/africa-chair",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_KKrQcA": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "22%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "Best Sellers",
+                    "banner_link": "shopify://products/boho-chair",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_zUPPhd": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "19%",
+                    "menu_heading": "Layout",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_7qtmYf": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Filter",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_Uz7MDJ": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "17%",
+                    "menu_heading": "Loader & Cart",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_ztdj38",
+                "megamenu_item_KKrQcA",
+                "megamenu_item_zUPPhd",
+                "megamenu_item_7qtmYf",
+                "megamenu_item_Uz7MDJ"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_cDayJU"
+          ]
+        },
+        "mainmenu_item_f9pHmD": {
+          "type": "_mainmenu-item",
+          "settings": {
+            "title": "Product",
+            "menu_url": "shopify://products/18k-gold-vermeil-lotus-birthstone",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_keiKic": {
+              "type": "_megamenu-container",
+              "settings": {
+                "width": "full",
+                "width_custom": "1440px"
+              },
+              "blocks": {
+                "megamenu_item_Vy9M4k": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Product Layout",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_hDN64E": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Featured",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_Pq8nLc": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Featured",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_VrYC9Y": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Product Card",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_Vy9M4k",
+                "megamenu_item_hDN64E",
+                "megamenu_item_Pq8nLc",
+                "megamenu_item_VrYC9Y"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_keiKic"
+          ]
+        },
+        "mainmenu_item_Ugidhx": {
+          "type": "_mainmenu-item",
+          "settings": {
+            "title": "Blog",
+            "menu_url": "shopify://blogs/uncategorized",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_4giUfD": {
+              "type": "_megamenu-container",
+              "settings": {
+                "width": "custom",
+                "width_custom": "670px"
+              },
+              "blocks": {
+                "megamenu_item_qdq6VT": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "35%",
+                    "menu_heading": "Layout & Post",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_PjUtFL": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "blog",
+                    "menu_col": "65%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": "uncategorized"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_qdq6VT",
+                "megamenu_item_PjUtFL"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_4giUfD"
+          ]
+        },
+        "mainmenu_item_rwAF6f": {
+          "type": "_mainmenu-item",
+          "settings": {
+            "title": "Featured",
+            "menu_url": "",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_LXEH9D": {
+              "type": "_megamenu-container",
+              "settings": {
+                "width": "full",
+                "width_custom": "1440px"
+              },
+              "blocks": {
+                "megamenu_item_769DTm": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Page",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_YQKBMw": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Portfolio",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_pMzePN": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Featured",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_xxEVze": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Lookbook",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_6EfL8Q": {
+                  "type": "_megamenu-item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Instagram Shop",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_769DTm",
+                "megamenu_item_YQKBMw",
+                "megamenu_item_pMzePN",
+                "megamenu_item_xxEVze",
+                "megamenu_item_6EfL8Q"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_LXEH9D"
+          ]
+        }
+      },
+      "block_order": [
+        "mainmenu_item_QQpjG4",
+        "mainmenu_item_XzFrRn",
+        "mainmenu_item_f9pHmD",
+        "mainmenu_item_Ugidhx",
+        "mainmenu_item_rwAF6f"
+      ],
+      "disabled": true,
+      "settings": {
+        "width_header": "1890px",
+        "padding": "32px 0",
+        "header_sticky": true,
+        "header_absolute": true,
+        "color_homepage_text": "#ffffff",
+        "logo_max_width": 145,
+        "logo_max_width_mobi": 120,
+        "show_header_search": true,
+        "show_header_wishlist": true,
+        "page_wishlist": "wishlist",
+        "show_header_user": true,
+        "header_user_title": "Account",
+        "header_user_link_list": "",
+        "show_header_cart": true
+      }
+    },
+    "header_2_nKna3g": {
+      "type": "header_2",
+      "blocks": {
+        "mainmenu_item_yyCWYF": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "BESTSELLERS",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {}
+        },
+        "mainmenu_item_e4tRHY": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "NEW IN",
+            "menu_url": "shopify://collections/gifting",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {}
+        },
+        "mainmenu_item_6JFthy": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "JEWELLERY",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_KLPnrh": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_hiwT3w": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "",
+                    "menu_heading": "SHOP BY CATEGORY",
+                    "menu_link_list_child": "shop-by-category",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_XHT6WH": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "",
+                    "menu_heading": "SHOP BY FINISH",
+                    "menu_link_list_child": "the-finishes",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_n3V6PD": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "",
+                    "menu_heading": "CURATED EDITS",
+                    "menu_link_list_child": "shop-by-collection",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_Ecdr94": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "image": "shopify://shop_images/solisita-mega-menu-made-to-last.jpg",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_CpECQB": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "20%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "image": "shopify://shop_images/solisita-mega-menu-timeless-pieces.jpg",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_hiwT3w",
+                "megamenu_item_XHT6WH",
+                "megamenu_item_n3V6PD",
+                "megamenu_item_Ecdr94",
+                "megamenu_item_CpECQB"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_KLPnrh"
+          ]
+        },
+        "mainmenu_item_3zAyTG": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "WATERPROOF",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {}
+        },
+        "mainmenu_item_UpVN9b": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "GIFTS",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_FmKhrP": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_rFyPKc": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "",
+                    "menu_heading": "GIFT IDEAS",
+                    "menu_link_list_child": "gift-ideas",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_tgwmxV": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "image": "shopify://shop_images/solisita-mega-menu-trust-it-every-day.jpg",
+                    "banner_title": "",
+                    "banner_button": "Best Sellers",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_3Hk9kN": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "image": "shopify://shop_images/solisita-mega-menu-new-arrivals.jpg",
+                    "banner_title": "",
+                    "banner_button": "New Arrivals",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_rFyPKc",
+                "megamenu_item_tgwmxV",
+                "megamenu_item_3Hk9kN"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_FmKhrP"
+          ]
+        },
+        "mainmenu_item_P7adEP": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "OUR STORY",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "mainmenu_item_yyCWYF",
+        "mainmenu_item_e4tRHY",
+        "mainmenu_item_6JFthy",
+        "mainmenu_item_3zAyTG",
+        "mainmenu_item_UpVN9b",
+        "mainmenu_item_P7adEP"
+      ],
+      "custom_css": [],
+      "name": "页头",
+      "settings": {
+        "width_header": "",
+        "padding": "30px 0",
+        "header_sticky": true,
+        "header_absolute": true,
+        "color_homepage_text": "#ffffff",
+        "logo": "shopify://shop_images/solisita-logo-home.svg",
+        "logo_homepage": "shopify://shop_images/solisita-logo-icon.svg",
+        "logo_max_width": 145,
+        "logo_max_width_mobi": 120,
+        "show_header_search": true,
+        "show_header_wishlist": true,
+        "page_wishlist": "wishlist",
+        "show_header_user": true,
+        "header_user_title": "Account",
+        "header_user_link_list": "",
+        "show_header_cart": true
+      }
+    },
+    "header_3_xUQjcM": {
+      "type": "header_3",
+      "blocks": {
+        "mainmenu_item_mrKaTr": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Home",
+            "menu_url": "/",
+            "submenu_format": "list",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "menu_list_VnmxUr": {
+              "type": "_menu-list",
+              "name": "Menu list",
+              "settings": {
+                "menu_link_list": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "menu_list_VnmxUr"
+          ]
+        },
+        "mainmenu_item_AtCVae": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Shop",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_igjKyQ": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_VHn4pa": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "22%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "New Arrivals",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_wftNGm": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "22%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "New Arrivals",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_JeqtHg": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "19%",
+                    "menu_heading": "Layout",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_dUErXE": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Filter",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_UGcrDr": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "17%",
+                    "menu_heading": "Loader & Cart",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_VHn4pa",
+                "megamenu_item_wftNGm",
+                "megamenu_item_JeqtHg",
+                "megamenu_item_dUErXE",
+                "megamenu_item_UGcrDr"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_igjKyQ"
+          ]
+        },
+        "mainmenu_item_4WKMBd": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Product",
+            "menu_url": "shopify://products/18k-gold-vermeil-lotus-birthstone",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_w74Mxe": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_8DFJzn": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Product Layout",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_XRgJYN": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Featured",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_8feGkb": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Featured",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_jp9Hmk": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Product Card",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_8DFJzn",
+                "megamenu_item_XRgJYN",
+                "megamenu_item_8feGkb",
+                "megamenu_item_jp9Hmk"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_w74Mxe"
+          ]
+        },
+        "mainmenu_item_DyEpfD": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Blog",
+            "menu_url": "shopify://blogs/uncategorized",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_NEBcAg": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "custom",
+                "width_custom": "670px"
+              },
+              "blocks": {
+                "megamenu_item_JYpDHc": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "35%",
+                    "menu_heading": "Layout & Post",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_9FthGK": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "blog",
+                    "menu_col": "65%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": "uncategorized"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_JYpDHc",
+                "megamenu_item_9FthGK"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_NEBcAg"
+          ]
+        },
+        "mainmenu_item_A8HBYU": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Featured",
+            "menu_url": "",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_FyHqWU": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_7ckHFA": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Page",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_9gy4zx": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Portfolio",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_gbnt6D": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Featured",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_C94WjA": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Lookbook",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_pAEiiP": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Instagram Shop",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_7ckHFA",
+                "megamenu_item_9gy4zx",
+                "megamenu_item_gbnt6D",
+                "megamenu_item_C94WjA",
+                "megamenu_item_pAEiiP"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_FyHqWU"
+          ]
+        }
+      },
+      "block_order": [
+        "mainmenu_item_mrKaTr",
+        "mainmenu_item_AtCVae",
+        "mainmenu_item_4WKMBd",
+        "mainmenu_item_DyEpfD",
+        "mainmenu_item_A8HBYU"
+      ],
+      "disabled": true,
+      "name": "Header 3",
+      "settings": {
+        "width_header": "1790px",
+        "padding": "25px 0",
+        "header_sticky": false,
+        "header_absolute": false,
+        "color_homepage_text": "#ffffff",
+        "padding_bottom": "30px 0",
+        "bg_color_header_bottom": "#ffffff",
+        "logo_max_width": 145,
+        "logo_max_width_mobi": 120,
+        "show_header_search": true,
+        "show_header_wishlist": true,
+        "page_wishlist": "wishlist",
+        "show_header_user": true,
+        "show_text_user": false,
+        "header_user_title": "Sign in",
+        "header_user_title_2": "Sign Out",
+        "header_user_link_list": "",
+        "show_header_cart": true
+      }
+    },
+    "header_4": {
+      "type": "header_4",
+      "blocks": {
+        "mainmenu_item_TxcMPf": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Home",
+            "menu_url": "/",
+            "submenu_format": "list",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "menu_list_W8p964": {
+              "type": "_menu-list",
+              "name": "Menu list",
+              "settings": {
+                "menu_link_list": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "menu_list_W8p964"
+          ]
+        },
+        "mainmenu_item_e4tRHY": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Shop",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_9U6TKg": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_HCKLia": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "22%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "New Arrivals",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_WA4MCV": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "22%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "Best Sellers",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_tq87Ux": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "19%",
+                    "menu_heading": "Layout",
+                    "menu_link_list_child": "main-menu",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_QDGEcg": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Filter",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_mMyddG": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "17%",
+                    "menu_heading": "Loader & Cart",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_HCKLia",
+                "megamenu_item_WA4MCV",
+                "megamenu_item_tq87Ux",
+                "megamenu_item_QDGEcg",
+                "megamenu_item_mMyddG"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_9U6TKg"
+          ]
+        },
+        "mainmenu_item_iViNMa": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Product",
+            "menu_url": "shopify://products/18k-gold-vermeil-lotus-birthstone",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_8XeP8L": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_YWTmjU": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Product Layout",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_U8Yfyd": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Featured",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_bdgbcD": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Featured",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_3xReG8": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "25%",
+                    "menu_heading": "Product Card",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_YWTmjU",
+                "megamenu_item_U8Yfyd",
+                "megamenu_item_bdgbcD",
+                "megamenu_item_3xReG8"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_8XeP8L"
+          ]
+        },
+        "mainmenu_item_gBYdCN": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Blog",
+            "menu_url": "shopify://blogs/uncategorized",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_Vym3jk": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "custom",
+                "width_custom": "670px"
+              },
+              "blocks": {
+                "megamenu_item_bU6rmR": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "35%",
+                    "menu_heading": "Layout & Post",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_ryKRjr": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "blog",
+                    "menu_col": "65%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": "uncategorized"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_bU6rmR",
+                "megamenu_item_ryKRjr"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_Vym3jk"
+          ]
+        },
+        "mainmenu_item_KFNmNB": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "Featured",
+            "menu_url": "",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_b3zbV3": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_m3DtAc": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Page",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_YNQGFE": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Portfolio",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_VfGk7h": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Featured",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_D3rqyR": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Lookbook",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_VMUDDa": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "20%",
+                    "menu_heading": "Instagram Shop",
+                    "menu_link_list_child": "",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_m3DtAc",
+                "megamenu_item_YNQGFE",
+                "megamenu_item_VfGk7h",
+                "megamenu_item_D3rqyR",
+                "megamenu_item_VMUDDa"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_b3zbV3"
+          ]
+        }
+      },
+      "block_order": [
+        "mainmenu_item_TxcMPf",
+        "mainmenu_item_e4tRHY",
+        "mainmenu_item_iViNMa",
+        "mainmenu_item_gBYdCN",
+        "mainmenu_item_KFNmNB"
+      ],
+      "disabled": true,
+      "name": "Header 4",
+      "settings": {
+        "width_header": "1790px",
+        "padding": "20px 0",
+        "header_sticky": true,
+        "header_absolute": true,
+        "color_homepage_text": "#ffffff",
+        "padding_absolute": "30px 0",
+        "logo_max_width": 145,
+        "logo_max_width_mobi": 120,
+        "show_header_search": true,
+        "show_header_wishlist": true,
+        "page_wishlist": "wishlist",
+        "show_header_user": true,
+        "show_text_user": false,
+        "header_user_title": "Account",
+        "header_user_title_2": "Sign Out",
+        "header_user_link_list": "",
+        "show_header_cart": true
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_RVjHNw",
+    "header_campar_kBVbbz",
+    "header_topbar_34WPTr",
+    "header_1",
+    "header_2_nKna3g",
+    "header_3_xUQjcM",
+    "header_4"
+  ]
+}

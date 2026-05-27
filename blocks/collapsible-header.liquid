@@ -1,0 +1,136 @@
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+  #shopify-block-{{ block.id }} span{color:{{block.settings.icon_color}};font-size:{{block.settings.icon_size}}px;}
+  #shopify-block-{{ block.id }} .card-header{
+      border-radius:{{block.settings.border-radius}};
+      border-width:{{block.settings.border-width}};
+      border-style:solid;
+      border-color:{{block.settings.border-color}};
+      background:{{block.settings.background}};
+  }
+  {%- if margin[0] != blank or padding[0] != blank -%}
+	#shopify-block-{{ block.id }} .card-header{
+		{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+		{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+	}
+{%- endif -%}
+{%- if margin[1] != blank or padding[1] != blank -%}
+	@media (max-width:1199px){
+		#shopify-block-{{ block.id }} .card-header{
+			{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+			{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[2] != blank or padding[2] != blank -%}
+	@media (max-width:991px){
+		#shopify-block-{{ block.id }} .card-header{
+			{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+			{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[3] != blank or padding[3] != blank -%}
+	@media (max-width:767px){
+		#shopify-block-{{ block.id }} .card-header{
+			{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+			{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+</style>
+<div class="card-header">
+    <a class="card-link icon-{{ block.settings.position }}" data-toggle="collapse">
+         {% content_for "block", type: "title", id: "title" %}
+        {% if block.settings.icon_normal != blank %}<span class="normal"><i class="{{ block.settings.icon_normal }}"></i></span>{% endif %}
+        {% if block.settings.icon_active != blank %}<span class="active"><i class="{{ block.settings.icon_active }}"></i></span>{% endif %}
+    </a>
+</div>
+{% schema %}
+  {
+    "name": "Collapsible header",
+    "settings": [
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+            "type": "text",
+            "id": "icon_normal",
+            "label": "Icon normal",
+            "info": "You can use the font set [here](https://dropways.github.io/feathericons/)",
+            "default":"feather-plus"
+        },
+        {
+            "type": "text",
+            "id": "icon_active",
+            "label": "Icon active",
+            "info": "You can use the font set [here](https://dropways.github.io/feathericons/)",
+            "default":"feather-minus"
+        },
+        {
+            "type": "color",
+            "id": "icon_color",
+            "label": "Icon Color"
+        },
+        {
+            "type": "number",
+            "id": "icon_size",
+            "label": "Icon Size"
+        },
+         {
+  			"type": "select",
+			"id": "position",
+			"label": "Position icon",
+			"options": [
+				{
+					"value": "left",
+					"label": "Left"
+				},
+                {
+					"value": "right",
+					"label": "Right"
+				}
+            ],
+             "default":"right"
+         },
+        {
+            "type": "text",
+            "id": "border-radius",
+            "label": "Border radius",
+            "default":"0px 0px 0px 0px",
+            "info": "top right bottom left",
+            "placeholder": "0px 0px 0px 0px"
+        },
+        {
+            "type": "text",
+            "id": "border-width",
+            "label": "Border width",
+            "default":"0px 0px 0px 0px",
+            "info": "top right bottom left",
+            "placeholder": "0px 0px 0px 0px"
+        },
+        {
+            "type": "color",
+            "id": "border-color",
+            "label": "Border color"
+        },
+        {
+            "type": "color",
+            "id": "background",
+            "label": "Background"
+        }
+    ]
+  }
+{% endschema %}

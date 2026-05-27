@@ -1,0 +1,48 @@
+{%- assign  current_handle= collection.handle -%}
+{%- assign  index = 0 -%}
+<div class="facets__display">
+	<ul>
+		{% for link in linklists[categories_menu].links %}
+			{%- assign  index = index | plus: 1 -%}
+			<li{% if request.path != blank and request.path == link.url %} class="active" {% endif %}{% if index > settings.count_items and settings.style_view_items == 'viewmore' %} style="display:none"{% endif %}>
+				{% assign collection_handle = link.url | split: '/' | last %}
+				{% assign collection = collections[collection_handle] %}
+				<div class="link-collection">
+					<a href="{{ link.url }}" title="{{ link.title | escape }}">
+						<label class="name">{{ link.title }}{% if show_count %} <span>{{ collection.products_count }}</span>{% endif %}</label>
+					</a>
+					{%- if link.links != blank -%}<div class="toggle_collection-children"><i class="feather-plus"></i></div>{%- endif -%}
+				</div>
+				{%- if link.links != blank -%}
+					<ul class="collection-children">
+						{%- for link1 in link.links -%}
+							<li{% if request.path != blank and request.path == link1.url %} class="active" {% endif %}>
+								{% assign collection_handle1 = link1.url | split: '/' | last %}
+								{% assign collection1 = collections[collection_handle1] %}
+								<div class="link-collection">
+									<a href="{{ link1.url }}" title="{{ link1.title | escape }}">
+										<label class="name">{{ link1.title }}{% if show_count %} <span>{{ collection1.products_count }}</span>{% endif %}</label>
+									</a>
+									{%- if link1.links != blank -%}<div class="toggle_collection-children"><i class="feather-plus"></i></div>{%- endif -%}
+								</div>
+								{%- if link1.links != blank -%}
+									<ul class="collection-children">
+										{%- for link2 in link1.links -%}
+											<li{% if request.path != blank and request.path == link2.url %} class="active" {% endif %}>
+												{% assign collection_handle2 = link2.url | split: '/' | last %}
+												{% assign collection2 = collections[collection_handle2] %}
+												<a href="{{ link2.url }}" title="{{ link2.title | escape }}">
+													<label class="name">{{ link2.title }}{% if show_count %} <span>{{ collection2.products_count }}</span>{% endif %}</label>
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{%- endif -%}
+							</li>
+						{% endfor %}
+					</ul>
+				{%- endif -%}
+			</li>
+		{%- endfor -%}
+	</ul>
+</div>

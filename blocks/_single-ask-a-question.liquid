@@ -1,0 +1,100 @@
+{% assign full_url = request.host | append: request.path %}
+<div class="product-ask_a_question">
+    <div class="open-ask_a_question">
+        <i class="feather-help-circle"></i>
+        <span>{{ block.settings.ask_a_question_title }}</span>
+    </div>
+    {% form 'contact' %}
+        {% if form.posted_successfully? %}
+            <p class="alert alert-success">
+                {{ 'contact.form.post_success' | t }}
+            </p>
+        {% endif %}
+        {{ form.errors | default_errors }}
+        <input type="hidden" name="contact[product]" value="{{ product.title }}">
+        <input type="hidden" name="contact[product_url]" value="{{ full_url }}">
+        <div class="ask_a_question-form">
+            <div class="close-ask_a_question-form full"></div>
+            <div class="content-form">
+                <div class="close-ask_a_question-form"></div>
+                <div class="title"><h2>{{ block.settings.ask_a_question_title }}</h2></div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                            <input id="contactFormName" class="form-control" type="text" name="contact[name]"
+                                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                                placeholder="{{ block.settings.label_name }}"
+                                autocapitalize="words" required/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                            <input id="contactFormEmail" class="form-control{% if form.errors contains 'email' %} is-invalid{% endif %}"
+                                type="email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                                placeholder="{{ block.settings.label_email }}" autocorrect="off" autocapitalize="off" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input id="contactFormPhone" class="form-control" type="tel" name="contact[phone]"
+                        value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                        placeholder="{{ block.settings.label_phone }}"
+                        pattern="[0-9\-]*" required/>
+                </div>
+                <div class="form-group">
+                    <textarea id="contactFormMessage" class="form-control {% if form.errors contains 'body' %} is-invalid{% endif %}"
+                        rows="10" name="contact[message]" rows="4"
+                        placeholder="{{ block.settings.label_message }}"
+                        required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
+                </div>
+                <div class="form-button">
+                    <input type="submit" class="btn btn-primary" value="{{ block.settings.label_button }}">
+                </div>
+            </div>
+        </div>
+    {% endform %}
+</div>
+{% schema %}
+  {
+    "name": "Single ask a question",
+    "settings": [
+        {
+            "type": "text",
+            "id": "ask_a_question_title",
+            "label": "Heading",
+            "default": "Ask a question"
+        },
+        {
+            "type": "text",
+            "id": "label_name",
+            "label": "Label name",
+            "default": "Your name"
+        },
+        {
+            "type": "text",
+            "id": "label_email",
+            "label": "Label email",
+            "default": "Your email"
+        },
+        {
+            "type": "text",
+            "id": "label_phone",
+            "label": "Label phone",
+            "default": "Phone number"
+        },
+        {
+            "type": "text",
+            "id": "label_message",
+            "label": "Label message",
+            "default": "Your message..."
+        },
+        {
+            "type": "text",
+            "id": "label_button",
+            "label": "Label button",
+            "default": "Submit"
+        },
+    ],
+    "presets": [{"name": "Single ask a question","category": "Single product"}]
+  }
+{% endschema %}

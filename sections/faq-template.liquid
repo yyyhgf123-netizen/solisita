@@ -1,0 +1,132 @@
+{%- style -%}
+	{%- if section.blocks.size > 0 -%}
+		{% for block in section.blocks %}
+			{% assign width 		= block.settings.width | split: "|" %}
+			{% assign padding 		= block.settings.padding | split: "|" %}
+			.faq-page .faq-page__item-{{ forloop.index }}{
+				{%- if width[0] != blank -%}
+					max-width: {{ width[0] }};
+					flex:0 0 {{ width[0] }};
+				{%- endif -%}
+				{%- if padding[0] != blank -%}
+					padding: {{ padding[0] }};
+				{%- endif -%}
+			}
+		{% endfor %}
+	{%- endif -%}
+	@media (max-width:1200px){
+		{%- if section.blocks.size > 0 -%}
+			{% for block in section.blocks %}
+				{% assign width 		= block.settings.width | split: "|" %}
+				{% assign padding 		= block.settings.padding | split: "|" %}
+				{%- if width[1] != blank or padding[1] != blank -%}
+					.faq-page .faq-page__item-{{ forloop.index }}{
+						{%- if width[1] != blank -%}
+							max-width: {{ width[1] }};flex:0 0 {{ width[1] }};
+						{%- endif -%}
+						{%- if padding[1] != blank -%}
+							padding: {{ padding[1] }};
+						{%- endif -%}
+					}
+				{%- endif -%}
+			{% endfor %}
+		{%- endif -%}
+	}
+	@media (max-width:991px){
+		{%- if section.blocks.size > 0 -%}
+			{% for block in section.blocks %}
+				{% assign width 		= block.settings.width | split: "|" %}
+				{% assign padding 		= block.settings.padding | split: "|" %}
+				{%- if width[2] != blank or padding[2] != blank -%}
+					.faq-page .faq-page__item-{{ forloop.index }}{
+						{%- if width[2] != blank -%}
+							max-width: {{ width[2] }};flex:0 0 {{ width[2] }};
+						{%- endif -%}
+						{%- if padding[2] != blank -%}
+							padding: {{ padding[2] }};
+						{%- endif -%}
+					}
+				{%- endif -%}
+			{% endfor %}
+		{%- endif -%}
+	}
+	@media (max-width:767px){
+		{%- if section.blocks.size > 0 -%}
+			{% for block in section.blocks %}
+				{% assign width 		= block.settings.width | split: "|" %}
+				{% assign padding 		= block.settings.padding | split: "|" %}
+				{%- if width[3] != blank or padding[3] != blank -%}
+					.faq-page .faq-page__item-{{ forloop.index }}{
+						{%- if width[3] != blank -%}
+							max-width: {{ width[3] }};flex:0 0 {{ width[3] }};
+						{%- endif -%}
+						{%- if padding[3] != blank -%}
+							padding: {{ padding[3] }};
+						{%- endif -%}
+					}
+				{%- endif -%}
+			{% endfor %}
+		{%- endif -%}
+	}
+{%- endstyle -%}
+<section class="page-faqs">
+	<div class="container">
+		<div class="page__inner">
+			<div class="page__content">
+				<div class="faq-page row">
+					{%- if section.blocks.size > 0 -%}
+						{% for block in section.blocks %}
+							<div class="faq-page__item faq-page__item-{{ forloop.index }}">
+								<div class="faq-page__item-heading">
+									{{ block.settings.title }}
+								</div>
+								<div class="faq-content">
+									<div class="faq-page__item-content">{{ block.settings.content }}</div>
+								</div>
+							</div>
+						{% endfor %}
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Faqs page",
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "Faq item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+          },
+		   {
+            "type": "text",
+            "id": "width",
+            "label": "Width content",
+			"default": "100%",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+          },
+		  {
+            "type": "text",
+            "id": "padding",
+            "label": "padding content",
+			"default": "0 15px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+          }
+        ]
+      },
+	  { "type": "@app" }
+    ]
+  }
+{% endschema %}

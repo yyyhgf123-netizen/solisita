@@ -1,0 +1,174 @@
+{%- assign current_variant 			= product.selected_or_first_available_variant -%}
+{%- assign media_layout 			= section.settings.media_layout -%}
+{%- assign countdowns 				= product.metafields.bwp_fields.countdowns -%}
+{%- assign external 				= product.metafields.bwp_fields.external -%}
+{%- assign group_product 			= product.metafields.bwp_fields.group_product -%}
+{%- assign group_product_array		= group_product | split: "," -%}
+{%- assign bundler 					= product.metafields.bwp_fields.bundler -%}
+{%- assign buy_it_with 				= product.metafields.bwp_fields.buy_it_with -%}
+{%- assign full_description 		= product.description -%}
+
+{%- assign filter_name_1 			= settings.filter_name_1 -%}
+{%- assign select_filter_1 			= settings.select_filter_1 -%}
+{%- assign filter_name_2 			= settings.filter_name_2 -%}
+{%- assign select_filter_2 			= settings.select_filter_2 -%}
+{%- assign filter_name_3 			= settings.filter_name_3 -%}
+{%- assign select_filter_3 			= settings.select_filter_3 -%}
+{%- assign short_description 		= product.metafields.bwp_fields.shortdesc -%}
+
+{%- assign first_3d_model 			= product.media | where: "media_type", "model" | first -%}
+{%- assign full_width 				= false -%}
+
+{%- if media_layout == "slider" -%}
+	{%- assign full_width 			= true -%}
+{%- endif -%}
+{%- if media_layout == "thumbnails" or media_layout == "lagre-gallery" -%}
+	{%- assign sticky 				= true -%}
+{%- endif -%}
+{%- assign nothum = false -%}
+{%- if media_layout == "lagre-gallery" or media_layout == "slider" -%}
+	{%- assign nothum 				= true -%}
+{%- endif -%}
+
+<section class="wpbingo-section wpbingo-section--{{ section.id }}" style="background:{{ section.settings.bg_section }};padding:{{ section.settings.padding_section }};">
+<div class="container{% if full_width  %} container-full-image{% endif %}">
+	<div class="product" itemscope itemtype="http://schema.org/Product"
+    data-section-id="{{ section.id }}"
+    data-section-type="product-template"
+    data-enable-history-state="true"
+	data-nothum="{{ nothum }}"
+    data-stacked-layout="{% if media_layout == "stacked" or media_layout == "gird-mordern" or media_layout == "gird-two" or media_layout == "gird-sticky" %}true{% else %}false{% endif %}"
+    {% if first_3d_model %}data-has-model="true"{% endif %}>
+		<div class="product-single product__primary {{ media_layout }}" data-layout_thumb="{{ media_layout }}" data-popup="false">
+			<div class="row">
+				<div class="bwp-single-content{% if section.settings.show_sidebar %} {{ section.settings.position_sidebar }} col-xl-9 col-lg-12 col-md-12 col-12{% else %} col-12 col-lg-12 col-md-12 col-12{% endif %}">
+					<div class="row sticky">
+						{% content_for "blocks" %}
+					</div>
+					<div class="close-sticky"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+{% if section.settings.show_sticky_cart %}
+	{% render 'sticky-cart', product:product,current_variant:current_variant %}
+{% endif %}
+<div id="JsQty"></div>
+<div id="CartTemplate"></div>
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+  <script type="application/json" id="ModelJson-{{ section.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+{% endunless %}
+
+{% schema %}
+{
+  "name": "Main Product",
+	"blocks": [{ "type": "_single-product-sidebar" },{ "type": "_single-product-image" },{ "type": "_single-product-info" }],
+  "settings": [
+	{
+      "type": "color",
+      "id": "bg_section",
+      "label": "Background",
+	  "default": "#fff"
+    },
+	{
+      "type": "text",
+      "id": "padding_section",
+      "label": "Padding",
+	  "default": "0px 0px 0px 0px",
+	  "info":"top right bottom left",
+	  "placeholder":"0px 0px 0px 0px"
+    },
+	{
+      "type": "checkbox",
+      "id": "show_sticky_cart",
+      "label": "Enable sticky cart",
+      "default": true
+    },
+	{
+      "type": "header",
+      "content": "Media",
+      "info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
+    },
+    {
+      "type": "select",
+      "id": "media_layout",
+      "label": "Gallery layout",
+      "default": "thumbnails",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "Grid 1 columns"
+        },
+        {
+          "value": "gird-mordern",
+          "label": "Gird Mordern"
+        },
+		{
+          "value": "gird-two",
+          "label": "Gird 2 Column"
+        },
+		{
+          "value": "gird-sticky",
+          "label": "Gird sticky"
+        },
+		{
+          "value": "slider",
+          "label": "Slider full-width"
+        },
+		{
+          "value": "lagre-gallery",
+          "label": "Without Thumbnails"
+        },
+		{
+          "value": "thumbnails",
+          "label": "Thumbnails"
+        }
+      ]
+    },
+	{
+      "type": "select",
+      "id": "position_thumbnails",
+      "label": "Position Thumbnails of Gallery layout Thumbnails",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+	    	{
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "visible_if": "{{ section.settings.media_layout == \"thumbnails\" }}"
+    },
+	{
+	  "type": "range",
+	  "id": "thumbnail_count",
+	  "min": 1,
+	  "max": 6,
+	  "step": 1,
+	  "label": "Thumbnail Count",
+	  "default": 4,
+    "visible_if": "{{ section.settings.media_layout == \"thumbnails\" }}"
+	},
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "Enable video looping",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

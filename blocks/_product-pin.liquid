@@ -1,0 +1,94 @@
+{%- assign id = 0 -%}
+{%- assign j = 1 -%}
+
+{%- assign name_pin = block.settings.name_pin -%}
+{%- assign product_handle = block.settings.product -%}
+{%- assign top = block.settings.top -%}
+{%- assign left = block.settings.left -%}
+{%- assign alignment = block.settings.display -%}
+
+<div class="lookbook-card__item" style="top: {{ top }}%; left: {{ left }}%;">
+  <div class="lookbook-card__point">
+    <div class="lookbook-card__button">
+      <button class="lookbook-card__btn" data-toggle="modal" data-target="lookbook-{{ block.id }}">
+        <span>{{ j }}</span>
+      </button>
+    </div>
+  </div>
+  {%- render 'lookbook-item', product: all_products[product_handle], alignment: alignment, id:  block.id -%}
+</div>
+
+{% schema %}
+    {
+        "name": "Product Pin",
+        "class": "wpbingoFramework",
+        "settings": [
+            {
+                "type": "product",
+                "id": "product",
+                "label": "Choose product"
+            },
+            {
+                "type": "select",
+                "id": "display",
+                "label": "Display type",
+                "default": "top-left",
+                "options": [
+                    {
+                        "value": "top-left",
+                        "label": "Top left"
+                    },
+                    {
+                        "value": "top-right",
+                        "label": "Top right"
+                    },
+                    {
+                        "value": "center-left",
+                        "label": "Center left"
+                    },
+                    {
+                        "value": "center-top",
+                        "label": "Center top"
+                    },
+                    {
+                        "value": "center-right",
+                        "label": "Center right"
+                    },
+                    {
+                        "value": "center-bottom",
+                        "label": "Center bottom"
+                    },
+                    {
+                        "value": "bottom-left",
+                        "label": "Bottom left"
+                    },
+                    {
+                        "value": "bottom-right",
+                        "label": "Bottom right"
+                    }
+                ]
+            },
+            {
+                "type": "range",
+                "id": "top",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "label": "Offset top",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "left",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "label": "Offset left",
+                "default": 50
+            }
+        ],
+        "presets": [{"name": "Product Pin"}]
+    }
+{% endschema %}

@@ -1,0 +1,40 @@
+{%- if settings.product_within_collection -%}
+	{%- assign product_url = product.url | within: collection -%}
+{%- else -%}
+	{%- assign product_url = product.url -%}
+{%- endif -%}
+{%- assign featured_image 		= product.featured_media.preview_image %}
+{%- assign media_featured		= product.featured_media %}
+{%- if product.variants[0].featured_image.src -%}
+	{%- assign img_url = product.variants[0].featured_image.src | image_url:width:600 -%}
+	{%- assign height 	= 600 | divided_by: product.variants[0].featured_image.aspect_ratio | ceil -%}
+{%- else -%}
+	{%- assign img_url = featured_image | image_url:width:600 -%}
+	{%- assign height 	= 600 | divided_by: featured_image.aspect_ratio | ceil -%}
+{%- endif -%}
+{% if settings.image_raito_product != blank %}
+	{% assign image_raito_product = settings.image_raito_product | split:'/' %}
+	{% assign padding_top = 100 | times: image_raito_product[1] | divided_by: image_raito_product[0] %}
+{% else %}
+	{% assign featured_image_height = featured_image.height | plus: 0 %}
+	{% assign featured_image_width = featured_image.width | plus: 0 %}
+	{% assign padding_top = featured_image_height| times: 100 | divided_by: featured_image_width %}
+{%- endif -%}
+<a class="product-card__image-link" href="{{ product_url }}">
+	{% if featured_image.src == blank %}
+		<img class="product-card__image lazyload fade-in" src="https://placehold.jp/450x540.png"  width="450" height="540" alt="{{ featured_image.alt | escape }}">
+	{% else %}
+		<div class="product-card__image">
+			{% if media_featured.media_type != 'video' %}
+				<img class="product-card__img-visible variant" src="{{ img_url }}" width="600" height="{{ height }}" alt="{{ featured_image.alt | escape }}" data-image />
+			{% else %}
+				<div class="preloading-img-product video" style="padding-top:{{ padding_top }}%">
+					<video class="lazyloaded" playsinline="" loop="loop" autoplay="autoplay" muted="muted" src="{{ media_featured.sources.last.url }}"></video>
+					{%- if product.variants.size > 1 -%}
+						<img class="product-card__img-visible variant" src="{{ img_url }}" width="600" height="{{ height }}" alt="{{ featured_image.alt | escape }}" data-image />
+					{%- endif -%}
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+</a>

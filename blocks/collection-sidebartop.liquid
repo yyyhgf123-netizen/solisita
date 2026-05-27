@@ -1,0 +1,59 @@
+{%- assign categories_enable 	= block.settings.categories_enable -%}
+{%- assign categories_title 	= block.settings.categories_title -%}
+{%- assign show_count		 	= block.settings.show_count -%}
+{%- assign categories_menu		 	= block.settings.categories_menu -%}
+{%- assign layout_filter 	= section.settings.layout_filter -%}
+{% content_for "blocks" %}
+{%- if categories_enable -%}
+	<div class="sidebar-categories js-filter filter-list">
+		<h4 class="block-sidebar__title">{{ categories_title }}</h4>
+		{%- render 'collection-categories' with categories_menu:categories_menu, show_count: show_count -%}
+	</div>
+{%- endif -%}
+{%- if block.settings.enable_filtering -%}
+	{% render 'filter-sidebar', results: collection, enable_filtering: block.settings.enable_filtering, layout_filter:layout_filter %}
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Sidebar top",
+    "blocks": [{ "type": "@theme" },{ "type": "@app" }],
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collection"
+      },
+      {
+        "type": "checkbox",
+        "id": "categories_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "categories_title",
+        "label": "Heading",
+        "default": "Collection"
+      },
+	  {
+      "type": "link_list",
+      "id": "categories_menu",
+      "label": "Menu"
+    },
+	  {
+        "type": "checkbox",
+        "id": "show_count",
+        "label": "Show Count",
+        "default": true
+      },
+	   {
+        "type": "header",
+        "content": "Filter"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_filtering",
+        "label": "Enable"
+      }
+    ]
+  }
+{% endschema %}

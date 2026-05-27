@@ -1,0 +1,13 @@
+<img 
+  class="lazyload {{ class }} {{ effect }}"
+  loading="lazy"
+  alt="{{ image.alt | default: image.src | split: '/' | last | split: '.' | first | replace: '-', ' ' | capitalize }}"
+  src="{{ image | image_url: width: 1200 }}"
+  srcset="{{ image | image_url: width: 480 }} 480w,
+          {{ image | image_url: width: 768 }} 768w,
+          {{ image | image_url: width: 1200 }} 1200w,
+          {{ image | image_url: width: 1500 }} 1500w,
+          {{ image | image_url: width: 1900 }} 1900w,
+           {{ image | image_url: width: 2400 }} 2400w"
+  sizes="(max-width: 768px) 100vw, 2440px" 
+/>

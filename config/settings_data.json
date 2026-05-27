@@ -1,0 +1,2332 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "theme-color": "#000000",
+    "color_secondary": "#31373d",
+    "gray-dark": "#000000",
+    "hover-color": "#31373d",
+    "text-color": "#7e7e84",
+    "color_body_bg": "#ffffff",
+    "color_border": "#ededed",
+    "font-family-second-google-link": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap\" rel=\"stylesheet\">",
+    "font-family-second": "Manrope",
+    "font-size-heading": 25,
+    "font-weight-second-default": "400",
+    "font-weight-second-light": "400",
+    "font-weight-second-medium": "400",
+    "font-weight-second-bold": "400",
+    "font-family-base-google-link": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap\" rel=\"stylesheet\">",
+    "font-family-base": "Inter",
+    "font-size-base": 14,
+    "font-weight-base-default": "400",
+    "font-weight-base-medium": "500",
+    "font-weight-base-bold": "700",
+    "font-family-pre-google-link": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap\" rel=\"stylesheet\">",
+    "font-family-pre": "Manrope",
+    "font-weight-pre-default": "400",
+    "font-weight-pre-light": "300",
+    "font-weight-pre-medium": "500",
+    "font-weight-pre-bold": "700",
+    "menu_link_mobile": "main-menu-1",
+    "show_menu_bottom": true,
+    "color_header_bg": "#ffffff",
+    "color_menu_text": "#000000",
+    "color_menu_text_hover": "#000000",
+    "color_submenu_text": "#7e7e84",
+    "color_submenu_text_hover": "#000000",
+    "color_footer_text": "#878787",
+    "color_footer_text_hover": "#000000",
+    "enable_rtl": true,
+    "iso_rtl": "en-GB",
+    "scroll_to_top": true,
+    "preview_bar": true,
+    "show_search_blog": true,
+    "search_item_count": 8,
+    "show_compare": false,
+    "sortby_variants": false,
+    "number_variants": 5,
+    "show_category": false,
+    "product_vendor_enable": false,
+    "product_within_collection": false,
+    "product_card_review": false,
+    "product_atc_mobile": false,
+    "quickview_enable_mobile": false,
+    "hover_style": "hover_style_1",
+    "image_hover": "transform",
+    "countdown_style": "style_2",
+    "preload_product_image": false,
+    "preload_product_image_logo": "Solisita",
+    "image_raito_product": "",
+    "size_image": "cover",
+    "bg_raito": "#f5f5f5",
+    "quickview_enable": true,
+    "quickview_availability": true,
+    "quickview_quantity_selector": "text",
+    "quickview_variant_selector": "radio",
+    "filter_name_1": "",
+    "select_filter_1": "label",
+    "filter_name_2": "",
+    "select_filter_2": "color",
+    "filter_name_3": "",
+    "select_filter_3": "image",
+    "collection_nofication": "dresses",
+    "start_time": 3,
+    "start_time_unit": "minute",
+    "user_purchased": "",
+    "time_suggest": "5 minutes ago | 10 minutes ago | 15 minutes ago | 20 minutes ago | 35 minutes ago | 50 minutes ago | 1 hours ago | 2 hours ago | 3 hours ago | 4 hours ago",
+    "limit_nofication": 10,
+    "cart_type": "modal",
+    "price_shipping_bar": "100",
+    "cart_fire_work": true,
+    "show_gift_card": true,
+    "product_gift_card": "africa-chair",
+    "content_gift_card": "Add gift wrap",
+    "content_terms_conditions": "I agree with the <a href=\"#\">terms and conditions</a>",
+    "alert_terms_conditions": "<p>By using this website, you agree to our use of cookies and our Terms of Service. Please review our Privacy Policy for more information.</p>",
+    "cart_notes_enable": true,
+    "cart_coupon_enable": true,
+    "show_locale_selector": true,
+    "show_currency_selector": true,
+    "auto_currency": false,
+    "currency_type": "2",
+    "flag_currency": true,
+    "supported_currencies": "GBP - GBP | USD - USD | EUR - EUR",
+    "currency_format": "money_format",
+    "round_currency": true,
+    "mess_currency": "All charges are billed in <span>[original_currency]</span>. While the content of your cart is currently displayed in [current_currency], the checkout will use <span>[original_currency]</span> at the most current exchange rate.",
+    "hover_currency": true,
+    "show_come_back": false,
+    "show_you_leave": false,
+    "img_you_leave": "shopify://shop_images/Rectangle_758.jpg",
+    "title_you_leave": "BEFORE YOU<br> LEAVE...",
+    "desc_you_leave": "Take <span>15% off</span> your first order",
+    "url_you_leave": "shopify://collections/all",
+    "collection_you_leave": "rings",
+    "limit_you_leave": 3,
+    "time_you_leave": 5,
+    "social_facebook_link": "",
+    "social_twitter_link": "",
+    "social_pinterest_link": "",
+    "social_whatsapp_link": "",
+    "social_instagram_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_tiktok_link": "",
+    "share_facebook": true,
+    "favicon": "shopify://shop_images/80x80.png",
+    "cookie_consent_enable": true,
+    "cookie_consent_message": "At Solisita, we use cookies to ensure you have the best experience. By clicking \"Agree\", you consent to our use of cookies in accordance with our <a href=\"/policies/privacy-policy\">Privacy Policy</a>.",
+    "cookie_agree_button": "Accept All",
+    "cookie_consent_button": "Customise",
+    "newsletter_popup_enable": false,
+    "newsletter_popup_image": "shopify://shop_images/tarnish-free-everyday-jewellery-solisita.png",
+    "newsletter_popup_title": "Unlock Up to 20% Off Your First Order",
+    "newsletter_popup_subtitle": "Join the Solisita Club.<br> Get <strong>15% OFF</strong> your first piece,<br> or <strong>20% OFF</strong> when you buy 2+ items.",
+    "newsletter_popup_form": true,
+    "newsletter_popup_mailchimp": true,
+    "verify_popup_enable": false,
+    "checkout_logo_image": "shopify://shop_images/logo_6c2c83c7-d9df-4e56-bdfb-2f8cda3894ce.png",
+    "checkout_logo_size": "small",
+    "layout_footer": "1",
+    "login_style": "sideout",
+    "layout_header": "1",
+    "shop_full": false,
+    "layout_filter": "sidebar_1",
+    "sidebar_enable": true,
+    "style_view_items": "scroll",
+    "count_items": 4,
+    "views_enable": true,
+    "select_columns": "grid-3",
+    "select_columns_sm": "grid-sm-3",
+    "select_columns_xs": "grid-xs-1",
+    "sortby_enable": true,
+    "select_pagination": "pagination",
+    "show_size_chart": true,
+    "type_sizechart": "html",
+    "img_size_chart": "shopify://shop_images/1sizeguide-clothes.webp",
+    "html_size_chart": "size-guid",
+    "sidebar_position": "left",
+    "layout_blog": "standar",
+    "cart_shipping_enable": true,
+    "shipping_calculator_heading": "Get shipping estimates",
+    "shipping_calculator_submit_button_label": "ESTIMATE",
+    "menu_link_list": "main-menu",
+    "login_bg": "shopify://shop_images/Group_3_1d3a78dd-ee93-477c-bba0-25d5ba5387ba.jpg",
+    "id_ltr": "",
+    "id_rtl": "",
+    "custom_css": "",
+    "select-font-base": "google",
+    "font-family-base-google": "Jost",
+    "select-font-second": "google",
+    "font-family-second-google": "Jost",
+    "select-font-pre": "google",
+    "font-family-pre-google": "Jost",
+    "menu_link_list2": "menu-right",
+    "headertop_link_list-3": "sidebar-collection",
+    "color_header_text": "#000000",
+    "menu_collection_search": "collection-search",
+    "cookie_policy_button": "<a href=\"/policies/privacy-policy\">Learn more</a>",
+    "color_footer_bg": "#f8f8f8",
+    "header_overlay": true,
+    "mlvedaACS_autoSwitch": false,
+    "mlvedaACS_isCustomized": true,
+    "layout_article": "sidebar_left",
+    "mlvedaACS_borderLook": true,
+    "mlvedaACS_textColor": "inherit",
+    "mlvedaACS_flagStyle": "circle",
+    "mlvedaACS_isMessageDisplay": true,
+    "mlvedaACS_messageColor": "inherit",
+    "mlvedaACS_roundDecimal": false,
+    "mlvedaACS_messageContent": "<<shop.name>> process all orders in <<shop.currency>>. While the content of your cart is currently displayed in <<shop.selected_currency>>, you will checkout using <<shop.currency>> at the most current exchange rate.",
+    "cart_quantity_selector": "text",
+    "mlvedaACS_os2": false,
+    "mlvedaACS_positionTop": "10px",
+    "mlvedaACS_positionRight": "10px",
+    "show_shipping_bar": true,
+    "mlvedaACS_positionLeft": "10px",
+    "mlvedaACS_defaultCurrency": "USD",
+    "mlvedaACS_positionBottom": "10px",
+    "mlvedaACS_messageBackgroundColor": "inherit",
+    "style_option": "circle",
+    "mlvedaACS_roundDecimalValue": 1,
+    "mlvedaACS_backgroundColor": "#ffffff",
+    "mlvedaACS_position": "top_with_right",
+    "style_nofication": "style_2",
+    "mlvedaACS_textHoverColor": "inherit",
+    "mlvedaACS_enable": true,
+    "mlvedaACS_supportedCurrencies": "USD GBP EUR CAD AUD INR JPY VND",
+    "mlvedaACS_hideDecimal": false,
+    "mlvedaACS_hoverBackgroundColor": "inherit",
+    "mlvedaACS_currencyFormat": "money_format",
+    "mlvedaACS_borderLineColor": "inherit",
+    "size_option": 30,
+    "mlvedaACS_displayFlag": false,
+    "sections": {
+      "page-breadcrumb": {
+        "type": "page-breadcrumb",
+        "settings": {
+          "enable": true,
+          "bgimage": false,
+          "show_pagetitle": true,
+          "show_breadcrumb": true,
+          "color_breadcrumb": "#000000",
+          "align_breadcrumb": "left"
+        }
+      },
+      "search-breadcrumb": {
+        "type": "search-breadcrumb",
+        "settings": {
+          "enable": true,
+          "bgimage": false
+        }
+      },
+      "blog-breadcrumb": {
+        "type": "blog-breadcrumb",
+        "settings": {
+          "enable": true,
+          "bgimage": true,
+          "image": "shopify://shop_images/bg-breadcrumb.jpg",
+          "show_pagetitle": true,
+          "blog_categories_menu": "sidebar-blog",
+          "color_breadcrumb": "#000000",
+          "align_breadcrumb": "center"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "show_sticky_cart": false,
+          "media_layout": "thumbnails",
+          "position_thumbnails": "bottom",
+          "thumbnail_count": 6,
+          "enable_video_looping": false
+        }
+      },
+      "portfolio-template": {
+        "type": "portfolio-template",
+        "settings": {
+          "limit": 3,
+          "limit-coloumn": 3,
+          "limit-coloumn2": 3,
+          "layout": "normal",
+          "select_pagination": "pagination"
+        }
+      },
+      "product-breadcrumb": {
+        "type": "product-breadcrumb",
+        "settings": {}
+      },
+      "main-search": {
+        "type": "main-search",
+        "settings": {}
+      },
+      "faq-template": {
+        "type": "faq-template",
+        "blocks": {
+          "b0ee95f9-a491-4ee7-b4df-d17e9163c68f": {
+            "type": "faq",
+            "settings": {
+              "title": "01. The order",
+              "content": "<p><strong>When do I receive my order?</strong><br/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br/><br/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?</strong><br/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.</p><p><br/><strong>When will I receive the invoice for my order?</strong><br/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>",
+              "width": "50% | | | 100%",
+              "padding": "0 15px"
+            }
+          },
+          "e0973b19-7458-4486-b7b0-6786c38b8dd0": {
+            "type": "faq",
+            "settings": {
+              "title": "02. Shipment",
+              "content": "<p><strong>When do I receive my order?</strong><br/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br/><br/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?</strong><br/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.</p><p><br/><strong>When will I receive the invoice for my order?</strong><br/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>",
+              "width": "50% | | | 100%",
+              "padding": "0 15px"
+            }
+          },
+          "1b943bbd-3c41-4d20-b1ba-5154c3f784d7": {
+            "type": "faq",
+            "settings": {
+              "title": "03. The order",
+              "content": "<p><strong>When do I receive my order?</strong><br/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br/><br/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?</strong><br/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.</p><p><br/><strong>When will I receive the invoice for my order?</strong><br/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>",
+              "width": "50% | | | 100%",
+              "padding": "0 15px"
+            }
+          },
+          "91f8c21c-0dd4-49ce-a52b-35de564327e4": {
+            "type": "faq",
+            "settings": {
+              "title": "04. Returns, exchanges and complaints",
+              "content": "<p><strong>When do I receive my order?</strong><br/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br/><br/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?</strong><br/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.</p><p><br/><strong>When will I receive the invoice for my order?</strong><br/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>",
+              "width": "50% | | | 100%",
+              "padding": "0 15px"
+            }
+          }
+        },
+        "block_order": [
+          "b0ee95f9-a491-4ee7-b4df-d17e9163c68f",
+          "e0973b19-7458-4486-b7b0-6786c38b8dd0",
+          "1b943bbd-3c41-4d20-b1ba-5154c3f784d7",
+          "91f8c21c-0dd4-49ce-a52b-35de564327e4"
+        ],
+        "settings": {}
+      },
+      "product-information": {
+        "type": "product-information",
+        "settings": {
+          "tab_layout": "tab"
+        }
+      },
+      "recently-viewed": {
+        "type": "recently-viewed",
+        "settings": {
+          "heading": "Recently Viewed Products",
+          "navigation": true,
+          "limit": 5,
+          "infinite": true,
+          "autoplay": true,
+          "autoplay_speed": "10000",
+          "columns": 4,
+          "column1440": 4,
+          "column1": 4,
+          "column2": 3,
+          "column3": 1,
+          "column4": 1
+        }
+      },
+      "collection-breadcrumb": {
+        "type": "collection-breadcrumb",
+        "blocks": {
+          "d43272b8-2a5b-432a-a9a5-59cabbd244ad": {
+            "type": "item",
+            "settings": {
+              "collection": "dresses"
+            }
+          },
+          "item_UEgbKj": {
+            "type": "item",
+            "settings": {
+              "collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "d43272b8-2a5b-432a-a9a5-59cabbd244ad",
+          "item_UEgbKj"
+        ],
+        "settings": {
+          "enable": true,
+          "bgimage": true,
+          "show_pagetitle": true,
+          "show_breadcrumb": true,
+          "color_breadcrumb": "#000000",
+          "align_breadcrumb": "center",
+          "enable_collection": true,
+          "categories_menu": "",
+          "style_collection": "style_2",
+          "navigation": true,
+          "infinite": true,
+          "columns": 4,
+          "column1440": 4,
+          "column1": 4,
+          "column2": 4,
+          "column3": 3,
+          "column4": 2
+        }
+      },
+      "article-breadcrumb": {
+        "type": "article-breadcrumb",
+        "settings": {}
+      },
+      "portfolio-breadcrumb": {
+        "type": "portfolio-breadcrumb",
+        "settings": {
+          "enable": true,
+          "bgimage": false
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "heading": "You may also like",
+          "navigation": true,
+          "infinite": true,
+          "autoplay": false,
+          "autoplay_speed": "10000",
+          "columns": 4,
+          "column1440": 4,
+          "column1": 4,
+          "column2": 3,
+          "column3": 3,
+          "column4": 2
+        }
+      },
+      "header-campar": {
+        "type": "header-campar",
+        "settings": {
+          "show_campar": false,
+          "max_width": "1625px",
+          "fullwidth": true,
+          "padding": "15px 0",
+          "margin": "",
+          "bg_background": "#302926",
+          "content_campar": "Free Standard Shipping For Orders <span>Over $120</span>",
+          "url_campar": "",
+          "color_content": "#ffffff",
+          "color_span": "#ff0000",
+          "font_size": 14,
+          "font_weight": "500",
+          "marquee_content": false,
+          "marquee_loop": 1,
+          "marquee_time": 4,
+          "show_mobile": true
+        }
+      },
+      "header-topbar": {
+        "type": "header-topbar",
+        "blocks": {
+          "social_Mj6EmP": {
+            "type": "social",
+            "disabled": true,
+            "settings": {
+              "show_mobile_social": true,
+              "color_social": "#000000"
+            }
+          },
+          "6c61b96d-e6bb-48ca-a054-b41dca76ae11": {
+            "type": "text-with-icon",
+            "settings": {
+              "text_icon_content1": "",
+              "color_text_icon1": "#000000",
+              "text_icon_content2": "<i class=\"icon-contact\"></i><a href=\"tel:Needhelp:(+84)123567712\">Need Help: (+84) 123 567 712</a>",
+              "color_text_icon2": "#000000",
+              "show_mobile_text_icon": true
+            }
+          },
+          "a4de579f-d8d5-4a1b-99c0-69d98b156b3c": {
+            "type": "custom-text",
+            "settings": {
+              "custom_text_content": "Free Standard Shipping On US Orders Over $99",
+              "color_custom_text": "#000000",
+              "color_custom_text_link": "#000000",
+              "color_custom_text_link_hover": "#000000",
+              "text_align": "center",
+              "show_mobile_custom_text": true,
+              "text_align_mobi": "center"
+            }
+          },
+          "login_AkYcLa": {
+            "type": "login",
+            "settings": {
+              "header_user_title": "Account",
+              "color_login": "#000000",
+              "font_size_login": "15px",
+              "color_login_hover": "#000000"
+            }
+          },
+          "23ef5a9e-a1eb-427c-a447-31f77dbb6477": {
+            "type": "language-currency",
+            "disabled": true,
+            "settings": {
+              "show_mobile_currency": true
+            }
+          }
+        },
+        "block_order": [
+          "social_Mj6EmP",
+          "6c61b96d-e6bb-48ca-a054-b41dca76ae11",
+          "a4de579f-d8d5-4a1b-99c0-69d98b156b3c",
+          "login_AkYcLa",
+          "23ef5a9e-a1eb-427c-a447-31f77dbb6477"
+        ],
+        "settings": {
+          "show_topbar": false,
+          "max_width": "1470px",
+          "fullwidth": false,
+          "padding": "14px 0",
+          "margin": "",
+          "bg_background": "#ffffff",
+          "topbar_absolute": false,
+          "bg_background2": "rgba(0,0,0,0)",
+          "font_size": 15,
+          "color_text": "#000000",
+          "font_weight": "400",
+          "border": true,
+          "border_width": "0 0 1px 0",
+          "border_color": "#e9e9e9",
+          "border_opacity": 1,
+          "show_mobile": false
+        }
+      },
+      "header_1": {
+        "type": "header_1",
+        "blocks": {
+          "mainmenu_item_QQpjG4": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Home",
+              "menu_url": "/",
+              "submenu_format": "list",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#ff0000"
+            },
+            "blocks": {
+              "menu_list_pCQMLC": {
+                "type": "_menu-list",
+                "settings": {
+                  "menu_link_list": "menu-home"
+                },
+                "blocks": {}
+              }
+            },
+            "block_order": [
+              "menu_list_pCQMLC"
+            ]
+          },
+          "mainmenu_item_XzFrRn": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Shop",
+              "menu_url": "shopify://collections/all",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_cDayJU": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_ztdj38": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "22%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "image": "shopify://shop_images/banner-shop.png",
+                      "banner_title": "",
+                      "banner_button": "New Arrivals",
+                      "banner_link": "shopify://products/africa-chair",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_KKrQcA": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "22%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "image": "shopify://shop_images/banner-14.jpg",
+                      "banner_title": "",
+                      "banner_button": "Best Sellers",
+                      "banner_link": "shopify://products/boho-chair",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_zUPPhd": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "19%",
+                      "menu_heading": "Layout",
+                      "menu_link_list_child": "layout",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_7qtmYf": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Filter",
+                      "menu_link_list_child": "filter",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_Uz7MDJ": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "17%",
+                      "menu_heading": "Loader & Cart",
+                      "menu_link_list_child": "loader-cart",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_ztdj38",
+                  "megamenu_item_KKrQcA",
+                  "megamenu_item_zUPPhd",
+                  "megamenu_item_7qtmYf",
+                  "megamenu_item_Uz7MDJ"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_cDayJU"
+            ]
+          },
+          "mainmenu_item_f9pHmD": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Product",
+              "menu_url": "shopify://products/africa-chair",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_keiKic": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_Vy9M4k": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Layout",
+                      "menu_link_list_child": "product-layout",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_hDN64E": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured-1",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_Pq8nLc": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_VrYC9Y": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Card",
+                      "menu_link_list_child": "product-card",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_Vy9M4k",
+                  "megamenu_item_hDN64E",
+                  "megamenu_item_Pq8nLc",
+                  "megamenu_item_VrYC9Y"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_keiKic"
+            ]
+          },
+          "mainmenu_item_Ugidhx": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Blog",
+              "menu_url": "shopify://blogs/interior-styling",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_4giUfD": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "670px"
+                },
+                "blocks": {
+                  "megamenu_item_qdq6VT": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "35%",
+                      "menu_heading": "Layout & Post",
+                      "menu_link_list_child": "layout-post",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_PjUtFL": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "blog",
+                      "menu_col": "65%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": "interior-styling"
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_qdq6VT",
+                  "megamenu_item_PjUtFL"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_4giUfD"
+            ]
+          },
+          "mainmenu_item_rwAF6f": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Featured",
+              "menu_url": "",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_LXEH9D": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_769DTm": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Page",
+                      "menu_link_list_child": "page",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_YQKBMw": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Portfolio",
+                      "menu_link_list_child": "portfolio",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_pMzePN": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured-featured",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_6EfL8Q": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Instagram Shop",
+                      "menu_link_list_child": "instagram-shop",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_xxEVze": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Lookbook",
+                      "menu_link_list_child": "lookbook",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_769DTm",
+                  "megamenu_item_YQKBMw",
+                  "megamenu_item_pMzePN",
+                  "megamenu_item_6EfL8Q",
+                  "megamenu_item_xxEVze"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_LXEH9D"
+            ]
+          }
+        },
+        "block_order": [
+          "mainmenu_item_QQpjG4",
+          "mainmenu_item_XzFrRn",
+          "mainmenu_item_f9pHmD",
+          "mainmenu_item_Ugidhx",
+          "mainmenu_item_rwAF6f"
+        ],
+        "settings": {
+          "width_header": "1470px",
+          "padding": "32px 0",
+          "header_sticky": true,
+          "header_absolute": true,
+          "color_homepage_text": "#000000",
+          "logo": "shopify://shop_images/logo.svg",
+          "logo_max_width": 100,
+          "logo_max_width_mobi": 80,
+          "show_header_search": true,
+          "show_header_wishlist": true,
+          "page_wishlist": "wishlist",
+          "show_header_user": true,
+          "header_user_title": "Account",
+          "header_user_link_list": "",
+          "show_header_cart": true
+        }
+      },
+      "bccf919c-929e-43b6-9577-1510fb31e9d9": {
+        "type": "featured-instagram-shop",
+        "blocks": {
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-0": {
+            "type": "image",
+            "settings": {
+              "name": "look-1",
+              "image": "shopify://shop_images/1_5993ac0b-2ecf-4bcd-8b8a-c2106a2a8868.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "bfc0a4aa-1cd2-4a8b-8af5-7511dccadded": {
+            "type": "item",
+            "settings": {
+              "name_pin": "look-1",
+              "product": "floral-print-mini-dress",
+              "display": "top-right",
+              "top": 61,
+              "left": 42
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-1": {
+            "type": "image",
+            "settings": {
+              "name": "look-2",
+              "image": "shopify://shop_images/2_7ae08f32-5ffe-458c-8fed-7c0280758e46.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "540f4e69-2704-4c6a-bfed-3c2dd329759d": {
+            "type": "item",
+            "settings": {
+              "name_pin": "look-2",
+              "product": "short-shoulder-bag-black",
+              "display": "top-right",
+              "top": 50,
+              "left": 50
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-2": {
+            "type": "image",
+            "settings": {
+              "name": "",
+              "image": "shopify://shop_images/3_dbc32329-e2d7-4449-889f-579444323b98.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-3": {
+            "type": "image",
+            "settings": {
+              "name": "look-3",
+              "image": "shopify://shop_images/4_7106ab35-4b73-4495-beb1-c35e4bcc8871.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "affa65e3-caf2-490b-976d-b290835ec5b6": {
+            "type": "item",
+            "settings": {
+              "name_pin": "look-3",
+              "product": "wool-coat-for-women",
+              "display": "center-top",
+              "top": 65,
+              "left": 50
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-4": {
+            "type": "image",
+            "settings": {
+              "name": "",
+              "image": "shopify://shop_images/5_c0f71094-6c2b-4098-922f-8631193ee8fc.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-5": {
+            "type": "image",
+            "settings": {
+              "name": "",
+              "image": "shopify://shop_images/6_54d02926-6140-4e4b-975f-587cd4425b70.jpg",
+              "url_lookbook": "#"
+            }
+          }
+        },
+        "block_order": [
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-0",
+          "bfc0a4aa-1cd2-4a8b-8af5-7511dccadded",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-1",
+          "540f4e69-2704-4c6a-bfed-3c2dd329759d",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-2",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-3",
+          "affa65e3-caf2-490b-976d-b290835ec5b6",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-4",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-5"
+        ],
+        "settings": {
+          "max_width": "",
+          "fullwidth": true,
+          "padding": "",
+          "margin": "",
+          "margin_content": "0",
+          "padding_item": "0",
+          "margin_item": "0",
+          "navigation": true,
+          "infinite": true,
+          "autoplay": false,
+          "autoplay_speed": "10000",
+          "columns": 6,
+          "column1440": 5,
+          "column1": 4,
+          "column2": 3,
+          "column3": 2,
+          "column4": 2
+        }
+      },
+      "custom-product-card": {
+        "type": "custom-product-card",
+        "custom_css": [
+          "*{display:none!important}"
+        ],
+        "settings": {}
+      },
+      "header_2": {
+        "type": "header_2",
+        "blocks": {
+          "mainmenu_item_tKyNhJ": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Home",
+              "menu_url": "/",
+              "submenu_format": "list",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#ff0000"
+            },
+            "blocks": {
+              "menu_list_gwHwBm": {
+                "type": "_menu-list",
+                "settings": {
+                  "menu_link_list": "menu-home"
+                },
+                "blocks": {}
+              }
+            },
+            "block_order": [
+              "menu_list_gwHwBm"
+            ]
+          },
+          "mainmenu_item_78Vxxr": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Shop",
+              "menu_url": "shopify://collections/all",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_gF6ybd": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_Mh6Jtd": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "22%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "image": "shopify://shop_images/banner-shop.png",
+                      "banner_title": "",
+                      "banner_button": "New Arrivals",
+                      "banner_link": "shopify://products/africa-chair",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_xt97Vb": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "22%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "image": "shopify://shop_images/banner-14.jpg",
+                      "banner_title": "",
+                      "banner_button": "Best Sellers",
+                      "banner_link": "shopify://products/boho-chair",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_bmX9DB": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "19%",
+                      "menu_heading": "Layout",
+                      "menu_link_list_child": "layout",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_4dY7qw": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Filter",
+                      "menu_link_list_child": "filter",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_wtcyEH": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "17%",
+                      "menu_heading": "Loader & Cart",
+                      "menu_link_list_child": "loader-cart",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_Mh6Jtd",
+                  "megamenu_item_xt97Vb",
+                  "megamenu_item_bmX9DB",
+                  "megamenu_item_4dY7qw",
+                  "megamenu_item_wtcyEH"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_gF6ybd"
+            ]
+          },
+          "mainmenu_item_wKDVQU": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Product",
+              "menu_url": "shopify://products/africa-chair",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_QLqxEB": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_e7YgCg": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Layout",
+                      "menu_link_list_child": "product-layout",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_CrdQXn": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured-1",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_wFiJmh": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_3ARTiP": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Card",
+                      "menu_link_list_child": "product-card",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_e7YgCg",
+                  "megamenu_item_CrdQXn",
+                  "megamenu_item_wFiJmh",
+                  "megamenu_item_3ARTiP"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_QLqxEB"
+            ]
+          },
+          "mainmenu_item_i86GGA": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Blog",
+              "menu_url": "shopify://blogs/interior-styling",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_fHyTJ6": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "670px"
+                },
+                "blocks": {
+                  "megamenu_item_x9e7Yc": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "35%",
+                      "menu_heading": "Layout & Post",
+                      "menu_link_list_child": "layout-post",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_3iKTRH": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "blog",
+                      "menu_col": "65%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": "interior-styling"
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_x9e7Yc",
+                  "megamenu_item_3iKTRH"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_fHyTJ6"
+            ]
+          },
+          "mainmenu_item_LyMrLH": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Featured",
+              "menu_url": "",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_iCXwjd": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_WX8anX": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Page",
+                      "menu_link_list_child": "page",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_43U7n8": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Portfolio",
+                      "menu_link_list_child": "portfolio",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_mpqkUD": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured-featured",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_AidL89": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Instagram Shop",
+                      "menu_link_list_child": "instagram-shop",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_MLmizQ": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Lookbook",
+                      "menu_link_list_child": "lookbook",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_WX8anX",
+                  "megamenu_item_43U7n8",
+                  "megamenu_item_mpqkUD",
+                  "megamenu_item_AidL89",
+                  "megamenu_item_MLmizQ"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_iCXwjd"
+            ]
+          }
+        },
+        "block_order": [
+          "mainmenu_item_tKyNhJ",
+          "mainmenu_item_78Vxxr",
+          "mainmenu_item_wKDVQU",
+          "mainmenu_item_i86GGA",
+          "mainmenu_item_LyMrLH"
+        ],
+        "settings": {
+          "width_header": "1800px",
+          "padding": "25px 0 0",
+          "header_sticky": true,
+          "header_absolute": false,
+          "color_homepage_text": "#ffffff",
+          "logo": "shopify://shop_images/logo.svg",
+          "logo_max_width": 100,
+          "logo_max_width_mobi": 100,
+          "show_header_search": true,
+          "show_header_wishlist": true,
+          "page_wishlist": "wishlist",
+          "show_header_user": true,
+          "header_user_title": "Account",
+          "header_user_link_list": "",
+          "show_header_cart": true
+        }
+      },
+      "header_3": {
+        "type": "header_3",
+        "blocks": {
+          "mainmenu_item_KWBmNf": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Home",
+              "menu_url": "/",
+              "submenu_format": "list",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#ff0000"
+            },
+            "blocks": {
+              "menu_list_JDKaJW": {
+                "type": "_menu-list",
+                "settings": {
+                  "menu_link_list": "menu-home"
+                },
+                "blocks": {}
+              }
+            },
+            "block_order": [
+              "menu_list_JDKaJW"
+            ]
+          },
+          "mainmenu_item_94Lp76": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Shop",
+              "menu_url": "shopify://collections/all",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_TKkfHH": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_Q7Baxq": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "22%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "image": "shopify://shop_images/banner-shop.png",
+                      "banner_title": "",
+                      "banner_button": "New Arrivals",
+                      "banner_link": "shopify://products/africa-chair",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_XyQLFg": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "22%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "image": "shopify://shop_images/banner-14.jpg",
+                      "banner_title": "",
+                      "banner_button": "Best Sellers",
+                      "banner_link": "shopify://products/boho-chair",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_cMaHgU": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "19%",
+                      "menu_heading": "Layout",
+                      "menu_link_list_child": "layout",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_k3nVNc": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Filter",
+                      "menu_link_list_child": "filter",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_8ejUAK": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "17%",
+                      "menu_heading": "Loader & Cart",
+                      "menu_link_list_child": "loader-cart",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_Q7Baxq",
+                  "megamenu_item_XyQLFg",
+                  "megamenu_item_cMaHgU",
+                  "megamenu_item_k3nVNc",
+                  "megamenu_item_8ejUAK"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_TKkfHH"
+            ]
+          },
+          "mainmenu_item_FAE3Dk": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Product",
+              "menu_url": "shopify://products/africa-chair",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_yEcDpD": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_7H9ERh": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Layout",
+                      "menu_link_list_child": "product-layout",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_6QEkWb": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured-1",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_N4tXcG": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_Lxb9H4": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Card",
+                      "menu_link_list_child": "product-card",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_7H9ERh",
+                  "megamenu_item_6QEkWb",
+                  "megamenu_item_N4tXcG",
+                  "megamenu_item_Lxb9H4"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_yEcDpD"
+            ]
+          },
+          "mainmenu_item_wLxJYy": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Blog",
+              "menu_url": "shopify://blogs/interior-styling",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_3eWDpL": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "670px"
+                },
+                "blocks": {
+                  "megamenu_item_dVJpP4": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "35%",
+                      "menu_heading": "Layout & Post",
+                      "menu_link_list_child": "layout-post",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_RktkMa": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "blog",
+                      "menu_col": "65%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": "interior-styling"
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_dVJpP4",
+                  "megamenu_item_RktkMa"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_3eWDpL"
+            ]
+          },
+          "mainmenu_item_jJVQYa": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Featured",
+              "menu_url": "",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_6nKyRP": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_H8aDfe": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Page",
+                      "menu_link_list_child": "page",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_yLUDeh": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Portfolio",
+                      "menu_link_list_child": "portfolio",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_adPfAG": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured-featured",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_dCjafG": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Instagram Shop",
+                      "menu_link_list_child": "instagram-shop",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_7zeNCB": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Lookbook",
+                      "menu_link_list_child": "lookbook",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_H8aDfe",
+                  "megamenu_item_yLUDeh",
+                  "megamenu_item_adPfAG",
+                  "megamenu_item_dCjafG",
+                  "megamenu_item_7zeNCB"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_6nKyRP"
+            ]
+          }
+        },
+        "block_order": [
+          "mainmenu_item_KWBmNf",
+          "mainmenu_item_94Lp76",
+          "mainmenu_item_FAE3Dk",
+          "mainmenu_item_wLxJYy",
+          "mainmenu_item_jJVQYa"
+        ],
+        "settings": {
+          "width_header": "1470px",
+          "padding": "33px 0",
+          "header_sticky": true,
+          "header_absolute": false,
+          "color_homepage_text": "#ffffff",
+          "logo": "shopify://shop_images/logo.svg",
+          "logo_max_width": 100,
+          "logo_max_width_mobi": 100,
+          "show_header_search": true,
+          "show_header_wishlist": true,
+          "page_wishlist": "wishlist",
+          "show_header_user": true,
+          "header_user_link_list": "",
+          "show_header_cart": true
+        }
+      },
+      "header_4": {
+        "type": "header_4",
+        "blocks": {
+          "mainmenu_item_ePcPJL": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Home",
+              "menu_url": "/",
+              "submenu_format": "list",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#ff0000"
+            },
+            "blocks": {
+              "menu_list_LCQHqh": {
+                "type": "_menu-list",
+                "settings": {
+                  "menu_link_list": "menu-home"
+                },
+                "blocks": {}
+              }
+            },
+            "block_order": [
+              "menu_list_LCQHqh"
+            ]
+          },
+          "mainmenu_item_Gw496t": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Shop",
+              "menu_url": "shopify://collections/all",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_LBFX6j": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_8E6VaQ": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "22%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "image": "shopify://shop_images/banner-shop.png",
+                      "banner_title": "",
+                      "banner_button": "New Arrivals",
+                      "banner_link": "shopify://products/africa-chair",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_MtbPrX": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "22%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "image": "shopify://shop_images/banner-14.jpg",
+                      "banner_title": "",
+                      "banner_button": "Best Sellers",
+                      "banner_link": "shopify://products/boho-chair",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_wzEXaU": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "19%",
+                      "menu_heading": "Layout",
+                      "menu_link_list_child": "layout",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_FJt4MY": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Filter",
+                      "menu_link_list_child": "filter",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_gBBRTx": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "17%",
+                      "menu_heading": "Loader & Cart",
+                      "menu_link_list_child": "loader-cart",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_8E6VaQ",
+                  "megamenu_item_MtbPrX",
+                  "megamenu_item_wzEXaU",
+                  "megamenu_item_FJt4MY",
+                  "megamenu_item_gBBRTx"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_LBFX6j"
+            ]
+          },
+          "mainmenu_item_BgM9jK": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Product",
+              "menu_url": "shopify://products/africa-chair",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_LReka3": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_bbGkjg": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Layout",
+                      "menu_link_list_child": "product-layout",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_VVcVXP": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured-1",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_n8jFng": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_TMMzHR": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Card",
+                      "menu_link_list_child": "product-card",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_bbGkjg",
+                  "megamenu_item_VVcVXP",
+                  "megamenu_item_n8jFng",
+                  "megamenu_item_TMMzHR"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_LReka3"
+            ]
+          },
+          "mainmenu_item_Le4QVU": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Blog",
+              "menu_url": "shopify://blogs/interior-styling",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_jqnALc": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "670px"
+                },
+                "blocks": {
+                  "megamenu_item_i6HRtt": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "35%",
+                      "menu_heading": "Layout & Post",
+                      "menu_link_list_child": "layout-post",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_Gcr9ay": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "blog",
+                      "menu_col": "65%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": "interior-styling"
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_i6HRtt",
+                  "megamenu_item_Gcr9ay"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_jqnALc"
+            ]
+          },
+          "mainmenu_item_tKG3Wn": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Featured",
+              "menu_url": "",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_HeXDjC": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1440px"
+                },
+                "blocks": {
+                  "megamenu_item_fpaYBd": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Page",
+                      "menu_link_list_child": "page",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_3VV8kz": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Portfolio",
+                      "menu_link_list_child": "portfolio",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_9qdjBh": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "featured-featured",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_bTyytx": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Instagram Shop",
+                      "menu_link_list_child": "instagram-shop",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_giCjm3": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Lookbook",
+                      "menu_link_list_child": "lookbook",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_fpaYBd",
+                  "megamenu_item_3VV8kz",
+                  "megamenu_item_9qdjBh",
+                  "megamenu_item_bTyytx",
+                  "megamenu_item_giCjm3"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_HeXDjC"
+            ]
+          }
+        },
+        "block_order": [
+          "mainmenu_item_ePcPJL",
+          "mainmenu_item_Gw496t",
+          "mainmenu_item_BgM9jK",
+          "mainmenu_item_Le4QVU",
+          "mainmenu_item_tKG3Wn"
+        ],
+        "settings": {
+          "width_header": "1470px",
+          "padding": "32px 0",
+          "header_sticky": true,
+          "header_absolute": true,
+          "color_homepage_text": "#ffffff",
+          "padding_absolute": "32px 0",
+          "logo": "shopify://shop_images/logo.svg",
+          "logo_homepage": "shopify://shop_images/logo-white.svg",
+          "logo_max_width": 110,
+          "logo_max_width_mobi": 110,
+          "show_header_search": true,
+          "show_header_wishlist": true,
+          "page_wishlist": "wishlist",
+          "show_header_user": true,
+          "header_user_link_list": "",
+          "show_header_cart": true
+        }
+      },
+      "404-template": {
+        "type": "404-template",
+        "settings": {
+          "heading": "404",
+          "title": "Oops! That page can't be found.",
+          "description": "We're really sorry but we can't seem to find the page you were looking for.",
+          "btn_text": "Back The Homepage",
+          "btn_url": "/"
+        }
+      },
+      "password-template": {
+        "type": "password-template",
+        "settings": {
+          "title": "Opening Soon",
+          "logo_max_width": 135,
+          "newsletter_enable": true,
+          "newsletter_form_heading": "Be the first to know when we launch.",
+          "newsletter_form_subheading": "<p>A short sentence describing what someone will receive by subscribing</p>",
+          "newsletter_placeholder": "Email address",
+          "newsletter_button_text": "Submit",
+          "show_share_buttons": true,
+          "social_message": "Spread the word",
+          "show_copyright": true,
+          "copyright": "Copyright &copy; 2020 Wpbingo. All Rights Reserved"
+        }
+      }
+    },
+    "content_for_index": [
+      "bccf919c-929e-43b6-9577-1510fb31e9d9"
+    ]
+  },
+  "platform_customizations": {
+    "custom_css": []
+  }
+}

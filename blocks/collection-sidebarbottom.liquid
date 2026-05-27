@@ -1,0 +1,140 @@
+{%- if block.settings.products_enbale -%}
+  {%- assign pro_limit = block.settings.products_limit | plus:0 -%}
+  <div class="mobile-collapse block-sidebar block-sidebar--products js-filter">
+    <h4 class="js-collapse-mobile mobile-collapse__title block-sidebar__title"><span>{{ block.settings.products_title }}</span></h4>
+    <div class="mobile-collapse__content block-sidebar__content facets__display">
+      {%- assign collection_sidebar = collections[block.settings.collection_handle] -%}
+      {%- for product in collection_sidebar.products limit:pro_limit -%}
+        {%- assign on_sale = false -%}
+        {%- if product.compare_at_price > product.price -%}
+          {%- assign on_sale = true -%}
+        {%- endif -%}
+        <div class="product-sidebar">
+          <div class="product-sidebar__image">
+            <a href="{{ product.url }}">
+			  {% render 'img-global' with image: product.featured_image, class: "img-fluid", effect: "fade-in" %}
+            </a>
+          </div>
+          <div class="product-sidebar__content">
+            <h3 class="product-sidebar__name">
+              <a class="product-sidebar__name-link" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
+            </h3>
+            {%- if settings.product_reviews_enable and settings.product_card_review -%}
+              <div class="product-card__review product-review">
+                <!-- Start of Judge.me code --> 
+                  <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge'  data-id='{{ product.id }}'>
+                    {{ product.metafields.judgeme.badge }}
+                  </div>  
+                <!-- End of Judge.me code -->
+              </div>
+            {%- endif -%}
+            <div class="product-sidebar__price">
+              <div class="product-group-price">
+                {%- if on_sale -%}
+                  <div class="product-price product-price--regular">{{ product.compare_at_price | money }}</div>
+                {%- endif -%}
+                <div class="product-price">{{ product.price | money }}</div>
+                {%- if product.price_varies == false and variant.unit_price_measurement -%}
+                  {%- capture unit_price_separator -%}
+                    <span>/</span><span class="d-none">&nbsp;{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+                  {%- endcapture -%}
+                  {%- capture unit_price_base_unit -%}
+                    <span>
+                      {%- if variant.unit_price_measurement.reference_value != 1 -%}
+                        {{- variant.unit_price_measurement.reference_value -}}
+                      {%- endif -%}
+                      {{ variant.unit_price_measurement.reference_unit }}
+                    </span>
+                  {%- endcapture -%}
+                  <span class="product-unit-price">
+                    <span class="d-none">{{ 'products.general.unit_price' | t }}</span>
+                    <span>{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
+                  </span>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+{%- if block.settings.sidebar_banner_enable -%}
+  <div class="sidebar-banner">
+    <div class="sidebar-banner__content">
+      <div class="wpbingo-banner">
+        {%- if block.settings.link != blank -%}
+          {%- assign banner_url = block.settings.link -%}
+        {%- else -%}
+          {%- assign banner_url = 'javascript:void(0)' -%}
+        {%- endif -%}
+        <a href="{{ banner_url }}" title="{{ block.settings.image.alt | default: shop.name }}">
+          {%- if block.settings.image != blank -%}
+			{% render 'img-global' with image: block.settings.image, class: "img-fluid", effect: "fade-in" %}
+          {%- else -%}
+            <div class="no-image no-image--banner">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+        </a>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+{% content_for "blocks" %}
+{% schema %}
+  {
+    "name": "Sidebar bottom",
+    "blocks": [{ "type": "@theme" },{ "type": "@app" }],
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sidebar Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "products_enbale",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "products_title",
+        "label": "Heading",
+        "default": "Products"
+      },
+      {
+        "type": "collection",
+        "id": "collection_handle",
+        "label": "Collection"
+      },
+      {
+        "type": "text",
+        "id": "products_limit",
+        "label": "Limit",
+        "default": "3"
+      },
+      {
+        "type": "header",
+        "content": "Sidebar Banner"
+      },
+      {
+        "type": "checkbox",
+        "id": "sidebar_banner_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Banner URL",
+        "default": "/"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner image"
+      }
+    ]
+  }
+{% endschema %}

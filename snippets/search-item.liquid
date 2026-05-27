@@ -1,0 +1,10 @@
+<div class="search-item">
+  <div class="search-item__meta"><time datetime="{{ item.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}" class="date">{{ item.published_at | date: format: 'date' }}</time></div>
+  <h3 class="search-item__title"><a href="{{ item.url }}">{{ item.title }}</a></h3>
+  <div class="search-item__summary">
+    {{ item.content | strip_html | truncatewords: 60 }}
+  </div>
+  <div class="article__read-more">
+    <a class="article__read-more-url" href="{{ item.url }}">{{ 'blogs.article.read_more' | t }}</a>
+  </div>
+</div>

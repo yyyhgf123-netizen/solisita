@@ -1,0 +1,230 @@
+{%- assign image 		= block.settings.image -%}
+{%- assign image_url 	= block.settings.url -%}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+{%- style -%}
+  #shopify-block-{{ block.id }} .bwp-widget-banner .bwp-image{
+    border-radius:{{block.settings.border_radius_img}};
+  }
+{%- if margin[0] != blank or padding[0] != blank -%}
+	#shopify-block-{{ block.id }} .bwp-widget-banner{
+		{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+		{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+	}
+{%- endif -%}
+{%- if margin[1] != blank or padding[1] != blank -%}
+	@media (max-width:1199px){
+		#shopify-block-{{ block.id }} .bwp-widget-banner{
+			{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+			{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[2] != blank or padding[2] != blank -%}
+	@media (max-width:991px){
+		#shopify-block-{{ block.id }} .bwp-widget-banner{
+			{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+			{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[3] != blank or padding[3] != blank -%}
+	@media (max-width:767px){
+		#shopify-block-{{ block.id }} .bwp-widget-banner{
+			{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+			{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- endstyle -%}
+<div class="wpbingo-block bwp-widget-banner wpbingo-block--{{ block.id }} overflow-hidden">
+    <div class="featured-banner bwp-effect-{{ block.settings.effect }}">
+          <div class="bwp-image overflow-hidden" >
+              <a class="image image-effect" href="{{ image_url }}">
+                  {%- if image -%}
+                      {% render 'img-global' with image: image, class: "featured-banner__img", effect: "fade-in" %}
+                  {%- else -%}
+                      <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="960" height="730" />
+                  {%- endif -%}
+              </a>
+          </div>
+          {% content_for "blocks" %}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Banners box",
+    "blocks": [{ "type": "_banner-box" }],
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "url",
+            "id": "url",
+            "label": "Url"
+        },
+        {
+            "type": "text",
+            "id": "border_radius_img",
+            "label": "Border radius image",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left"
+        },
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+  			"type": "select",
+			"id": "effect",
+			"label": "Effect",
+			"options": [
+				{
+					"value": "none",
+					"label": "None"
+				},
+				{
+					"value": "grow",
+					"label": "Grow"
+				},
+				{
+					"value": "shrink",
+					"label": "Shrink"
+				},
+				{
+					"value": "pulse",
+					"label": "Pulse"
+				},
+				{
+					"value": "pulse-grow",
+					"label": "Pulse Grow"
+				},
+				{
+					"value": "pulse-shrink",
+					"label": "Pulse Shrink"
+				},
+				{
+					"value": "push",
+					"label": "Push"
+				},
+				{
+					"value": "pop",
+					"label": "Pop"
+				},
+				{
+					"value": "bounce-in",
+					"label": "Bounce In"
+				},
+				{
+					"value": "bounce-out",
+					"label": "Bounce Out"
+				},
+				{
+					"value": "rotate",
+					"label": "Rotate"
+				},
+				{
+					"value": "grow-rotate",
+					"label": "Grow Rotate"
+				},
+				{
+					"value": "float",
+					"label": "Float"
+				},
+				{
+					"value": "sink",
+					"label": "Sink"
+				},
+				{
+					"value": "bob",
+					"label": "Bob"
+				},
+				{
+					"value": "hang",
+					"label": "Hang"
+				},
+				{
+					"value": "skew",
+					"label": "Skew"
+				},
+				{
+					"value": "skew-forward",
+					"label": "Skew Forward"
+				},
+				{
+					"value": "skew-backward",
+					"label": "Skew Backward"
+				},
+				{
+					"value": "wobble-vertical",
+					"label": "Wobble Vertical"
+				},
+				{
+					"value": "wobble-horizontal",
+					"label": "Wobble Horizontal"
+				},
+				{
+					"value": "wobble-to-bottom-right",
+					"label": "Wobble To Bottom Right"
+				},
+				{
+					"value": "wobble-to-top-right",
+					"label": "Wobble To Top Right"
+				},
+				{
+					"value": "wobble-top",
+					"label": "Wobble Top"
+				},
+				{
+					"value": "wobble-bottom",
+					"label": "Wobble Bottom"
+				},
+				{
+					"value": "wobble-skew",
+					"label": "Wobble Skew"
+				},
+				{
+					"value": "buzz",
+					"label": "Buzz"
+				},
+				{
+					"value": "buzz-out",
+					"label": "Buzz Out"
+				},
+				{
+					"value": "shine-out",
+					"label": "Shine Out"
+				},
+				{
+					"value": "shine",
+					"label": "Shine"
+				}
+			],
+			"default": "none"
+		}
+    ],
+    "presets": [
+        {
+            "name": "Banners box",
+            "blocks": [
+              {
+                  "type": "_banner-box"
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

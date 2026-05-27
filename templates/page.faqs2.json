@@ -1,0 +1,695 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "page-breadcrumb",
+      "settings": {
+        "enable": false,
+        "bgimage": false,
+        "show_pagetitle": true,
+        "show_breadcrumb": true,
+        "color_breadcrumb": "#000000",
+        "align_breadcrumb": "left"
+      }
+    },
+    "main": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_FdCWN6": {
+          "type": "_column",
+          "settings": {
+            "width": 100,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0 15px",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "title_zTYUhb": {
+              "type": "title",
+              "settings": {
+                "heading_size": "h3",
+                "title": "Frequently Asked Questions.",
+                "font": "--font-family-second",
+                "text_transform": "capitalize",
+                "color": "#000000",
+                "font_size": 35,
+                "line_height": 40,
+                "letter_spacing": 0,
+                "font_weight": "600",
+                "align": "center",
+                "padding": "",
+                "margin": "0 0 40px",
+                "color_mobi": "#000000",
+                "font_size_mobi": 25,
+                "line_height_mobi": 30,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "center"
+              },
+              "blocks": {}
+            },
+            "collapsible_tYxi9L": {
+              "type": "collapsible",
+              "settings": {
+                "padding": "",
+                "margin": ""
+              },
+              "blocks": {
+                "collapsible_item_zHX6Hw": {
+                  "type": "_collapsible-item",
+                  "settings": {
+                    "padding": "",
+                    "margin": "",
+                    "border-radius": "0px 0px 0px 0px",
+                    "border-width": "0px 0px 0px 0px",
+                    "border-color": "",
+                    "background": ""
+                  },
+                  "blocks": {
+                    "collapsible-header": {
+                      "type": "collapsible-header",
+                      "static": true,
+                      "settings": {
+                        "padding": "15px 0",
+                        "margin": "",
+                        "icon_normal": "feather-plus",
+                        "icon_active": "feather-minus",
+                        "icon_color": "",
+                        "position": "right",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "title": {
+                          "type": "title",
+                          "static": true,
+                          "settings": {
+                            "heading_size": "h3",
+                            "title": "When do I receive my order?",
+                            "font": "--font-family-second",
+                            "text_transform": "none",
+                            "color": "#000000",
+                            "font_size": 18,
+                            "line_height": 25,
+                            "letter_spacing": 0,
+                            "font_weight": "500",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "0",
+                            "color_mobi": "#000000",
+                            "font_size_mobi": 18,
+                            "line_height_mobi": 25,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
+                    },
+                    "collapsible-body": {
+                      "type": "collapsible-body",
+                      "static": true,
+                      "settings": {
+                        "padding": "30px 0",
+                        "margin": "",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "text_block_Vk7tHD": {
+                          "type": "text-block",
+                          "settings": {
+                            "title": "When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.",
+                            "font": "--font-family-base",
+                            "text_transform": "none",
+                            "font_style": "normal",
+                            "color": "#888888",
+                            "font_size": 14,
+                            "line_height": 24,
+                            "letter_spacing": 0,
+                            "font_weight": "400",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "",
+                            "color_mobi": "#888888",
+                            "font_size_mobi": 14,
+                            "line_height_mobi": 24,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_block_Vk7tHD"
+                      ]
+                    }
+                  },
+                  "block_order": []
+                },
+                "collapsible_item_mhL6yE": {
+                  "type": "_collapsible-item",
+                  "settings": {
+                    "padding": "",
+                    "margin": "",
+                    "border-radius": "0px 0px 0px 0px",
+                    "border-width": "0px 0px 0px 0px",
+                    "border-color": "rgba(0,0,0,0)",
+                    "background": ""
+                  },
+                  "blocks": {
+                    "collapsible-header": {
+                      "type": "collapsible-header",
+                      "static": true,
+                      "settings": {
+                        "padding": "15px 0",
+                        "margin": "",
+                        "icon_normal": "feather-plus",
+                        "icon_active": "feather-minus",
+                        "icon_color": "",
+                        "position": "right",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "title": {
+                          "type": "title",
+                          "static": true,
+                          "settings": {
+                            "heading_size": "h3",
+                            "title": "I now see the longer delivery time of (a part of) my order. How can I cancel it?",
+                            "font": "--font-family-second",
+                            "text_transform": "none",
+                            "color": "#000000",
+                            "font_size": 18,
+                            "line_height": 25,
+                            "letter_spacing": 0,
+                            "font_weight": "500",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "0",
+                            "color_mobi": "#000000",
+                            "font_size_mobi": 18,
+                            "line_height_mobi": 25,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
+                    },
+                    "collapsible-body": {
+                      "type": "collapsible-body",
+                      "static": true,
+                      "settings": {
+                        "padding": "30px 0",
+                        "margin": "",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "text_block_LAHMfN": {
+                          "type": "text-block",
+                          "settings": {
+                            "title": "When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.",
+                            "font": "--font-family-base",
+                            "text_transform": "none",
+                            "font_style": "normal",
+                            "color": "#878787",
+                            "font_size": 15,
+                            "line_height": 24,
+                            "letter_spacing": 0,
+                            "font_weight": "400",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "",
+                            "color_mobi": "#878787",
+                            "font_size_mobi": 15,
+                            "line_height_mobi": 24,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_block_LAHMfN"
+                      ]
+                    }
+                  },
+                  "block_order": []
+                },
+                "collapsible_item_ELn8hC": {
+                  "type": "_collapsible-item",
+                  "settings": {
+                    "padding": "",
+                    "margin": "",
+                    "border-radius": "0px 0px 0px 0px",
+                    "border-width": "0px 0px 0px 0px",
+                    "border-color": "",
+                    "background": ""
+                  },
+                  "blocks": {
+                    "collapsible-header": {
+                      "type": "collapsible-header",
+                      "static": true,
+                      "settings": {
+                        "padding": "15px 0",
+                        "margin": "",
+                        "icon_normal": "feather-plus",
+                        "icon_active": "feather-minus",
+                        "icon_color": "",
+                        "position": "right",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "title": {
+                          "type": "title",
+                          "static": true,
+                          "settings": {
+                            "heading_size": "h3",
+                            "title": "When will I receive the invoice for my order?",
+                            "font": "--font-family-second",
+                            "text_transform": "none",
+                            "color": "#000000",
+                            "font_size": 18,
+                            "line_height": 25,
+                            "letter_spacing": 0,
+                            "font_weight": "500",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "0",
+                            "color_mobi": "#000000",
+                            "font_size_mobi": 18,
+                            "line_height_mobi": 25,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
+                    },
+                    "collapsible-body": {
+                      "type": "collapsible-body",
+                      "static": true,
+                      "settings": {
+                        "padding": "30px 0",
+                        "margin": "",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "text_block_W8ydHb": {
+                          "type": "text-block",
+                          "settings": {
+                            "title": "When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.",
+                            "font": "--font-family-base",
+                            "text_transform": "none",
+                            "font_style": "normal",
+                            "color": "#878787",
+                            "font_size": 15,
+                            "line_height": 24,
+                            "letter_spacing": 0,
+                            "font_weight": "400",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "",
+                            "color_mobi": "#878787",
+                            "font_size_mobi": 15,
+                            "line_height_mobi": 24,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_block_W8ydHb"
+                      ]
+                    }
+                  },
+                  "block_order": []
+                },
+                "collapsible_item_wFF977": {
+                  "type": "_collapsible-item",
+                  "settings": {
+                    "padding": "",
+                    "margin": "",
+                    "border-radius": "0px 0px 0px 0px",
+                    "border-width": "0px 0px 0px 0px",
+                    "border-color": "",
+                    "background": ""
+                  },
+                  "blocks": {
+                    "collapsible-header": {
+                      "type": "collapsible-header",
+                      "static": true,
+                      "settings": {
+                        "padding": "15px 0",
+                        "margin": "",
+                        "icon_normal": "feather-plus",
+                        "icon_active": "feather-minus",
+                        "icon_color": "",
+                        "position": "right",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "title": {
+                          "type": "title",
+                          "static": true,
+                          "settings": {
+                            "heading_size": "h3",
+                            "title": "How long will my order take to be delivered?",
+                            "font": "--font-family-second",
+                            "text_transform": "none",
+                            "color": "#000000",
+                            "font_size": 18,
+                            "line_height": 25,
+                            "letter_spacing": 0,
+                            "font_weight": "500",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "0",
+                            "color_mobi": "#000000",
+                            "font_size_mobi": 18,
+                            "line_height_mobi": 25,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
+                    },
+                    "collapsible-body": {
+                      "type": "collapsible-body",
+                      "static": true,
+                      "settings": {
+                        "padding": "30px 0",
+                        "margin": "",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "text_block_qxg9k8": {
+                          "type": "text-block",
+                          "settings": {
+                            "title": "When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.",
+                            "font": "--font-family-base",
+                            "text_transform": "none",
+                            "font_style": "normal",
+                            "color": "#878787",
+                            "font_size": 14,
+                            "line_height": 24,
+                            "letter_spacing": 0,
+                            "font_weight": "400",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "",
+                            "color_mobi": "#878787",
+                            "font_size_mobi": 14,
+                            "line_height_mobi": 24,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_block_qxg9k8"
+                      ]
+                    }
+                  },
+                  "block_order": []
+                },
+                "collapsible_item_jkcxNc": {
+                  "type": "_collapsible-item",
+                  "settings": {
+                    "padding": "",
+                    "margin": "",
+                    "border-radius": "0px 0px 0px 0px",
+                    "border-width": "0px 0px 0px 0px",
+                    "border-color": "",
+                    "background": ""
+                  },
+                  "blocks": {
+                    "collapsible-header": {
+                      "type": "collapsible-header",
+                      "static": true,
+                      "settings": {
+                        "padding": "15px 0",
+                        "margin": "",
+                        "icon_normal": "feather-plus",
+                        "icon_active": "feather-minus",
+                        "icon_color": "",
+                        "position": "right",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "title": {
+                          "type": "title",
+                          "static": true,
+                          "settings": {
+                            "heading_size": "h3",
+                            "title": "Do I need to create an account to place an order?",
+                            "font": "--font-family-second",
+                            "text_transform": "none",
+                            "color": "#000000",
+                            "font_size": 18,
+                            "line_height": 25,
+                            "letter_spacing": 0,
+                            "font_weight": "500",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "0",
+                            "color_mobi": "#000000",
+                            "font_size_mobi": 18,
+                            "line_height_mobi": 25,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
+                    },
+                    "collapsible-body": {
+                      "type": "collapsible-body",
+                      "static": true,
+                      "settings": {
+                        "padding": "30px 0",
+                        "margin": "",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "text_block_Bhk4FG": {
+                          "type": "text-block",
+                          "settings": {
+                            "title": "When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.",
+                            "font": "--font-family-base",
+                            "text_transform": "none",
+                            "font_style": "normal",
+                            "color": "#878787",
+                            "font_size": 15,
+                            "line_height": 24,
+                            "letter_spacing": 0,
+                            "font_weight": "400",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "",
+                            "color_mobi": "#878787",
+                            "font_size_mobi": 15,
+                            "line_height_mobi": 24,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_block_Bhk4FG"
+                      ]
+                    }
+                  },
+                  "block_order": []
+                },
+                "collapsible_item_jbDkFR": {
+                  "type": "_collapsible-item",
+                  "settings": {
+                    "padding": "",
+                    "margin": "",
+                    "border-radius": "0px 0px 0px 0px",
+                    "border-width": "0px 0px 0px 0px",
+                    "border-color": "",
+                    "background": ""
+                  },
+                  "blocks": {
+                    "collapsible-header": {
+                      "type": "collapsible-header",
+                      "static": true,
+                      "settings": {
+                        "padding": "15px 0",
+                        "margin": "",
+                        "icon_normal": "feather-plus",
+                        "icon_active": "feather-minus",
+                        "icon_color": "",
+                        "position": "right",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "title": {
+                          "type": "title",
+                          "static": true,
+                          "settings": {
+                            "heading_size": "h3",
+                            "title": "Can I choose my currency I pay in?",
+                            "font": "--font-family-second",
+                            "text_transform": "none",
+                            "color": "#000000",
+                            "font_size": 18,
+                            "line_height": 25,
+                            "letter_spacing": 0,
+                            "font_weight": "500",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "0",
+                            "color_mobi": "#000000",
+                            "font_size_mobi": 18,
+                            "line_height_mobi": 25,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": []
+                    },
+                    "collapsible-body": {
+                      "type": "collapsible-body",
+                      "static": true,
+                      "settings": {
+                        "padding": "30px 0",
+                        "margin": "",
+                        "border-radius": "0px 0px 0px 0px",
+                        "border-width": "0px 0px 1px 0px",
+                        "border-color": "#e9e9e9",
+                        "background": ""
+                      },
+                      "blocks": {
+                        "text_block_gDMkCp": {
+                          "type": "text-block",
+                          "settings": {
+                            "title": "When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.",
+                            "font": "--font-family-base",
+                            "text_transform": "none",
+                            "font_style": "normal",
+                            "color": "#878787",
+                            "font_size": 15,
+                            "line_height": 24,
+                            "letter_spacing": 0,
+                            "font_weight": "400",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "",
+                            "color_mobi": "#878787",
+                            "font_size_mobi": 15,
+                            "line_height_mobi": 24,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "text_block_gDMkCp"
+                      ]
+                    }
+                  },
+                  "block_order": []
+                }
+              },
+              "block_order": [
+                "collapsible_item_zHX6Hw",
+                "collapsible_item_mhL6yE",
+                "collapsible_item_ELn8hC",
+                "collapsible_item_wFF977",
+                "collapsible_item_jkcxNc",
+                "collapsible_item_jbDkFR"
+              ]
+            }
+          },
+          "block_order": [
+            "title_zTYUhb",
+            "collapsible_tYxi9L"
+          ]
+        }
+      },
+      "block_order": [
+        "column_FdCWN6"
+      ],
+      "settings": {
+        "max_width": "690px",
+        "fullwidth": false,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "",
+        "margin": "100px 0 | | | 50px 0",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

@@ -1,0 +1,179 @@
+{%- assign bundler 				= section.settings.metafields_buy_together -%}
+{%- if bundler != blank -%}
+	<section class="product_buy_together" style="margin:{{ section.settings.bundler_margin }}">
+		<div class="container">
+			<h3 class="bundler_title">
+				{{ section.settings.bundler_title }}
+			</h3>
+			<form method="post" id="buy_together_form" action="/cart/add"  enctype="multipart/form-data" novalidate="novalidate">
+				<input type="hidden" name="form_type" value="product">
+				<div class="buy-together-products">
+					{% assign number_item = 1 %}
+					<div class="item-products-wrap">
+						<div class="content-items">
+							<div data-product_id="{{ product.id }}" class="item-product-inner">
+								<div class="image">
+									<a href="{{ product.url }}">
+										{% if product.selected_or_first_available_variant.featured_image != blank %}
+											{% assign image = product.selected_or_first_available_variant.featured_image %}
+										{%- else -%}
+											{% assign image = product.featured_image %}
+										{%- endif -%}
+										{% render 'img-global' with image: image , class: "featured-banner__img", effect: "fade-in" %}
+									</a>
+								</div>
+							</div>
+							{% assign price = product.selected_or_first_available_variant.price %}
+                            {% for product in bundler %}
+                                    {% assign out_stock = '' %}
+                                    {% if product.selected_or_first_available_variant.inventory_management == "shopify" and product.selected_or_first_available_variant.inventory_policy != "continue" %}
+                                        {% if product.selected_or_first_available_variant.inventory_quantity == 0 %}
+                                            {% assign out_stock = true %}
+                                        {%- endif -%}
+                                    {%- endif -%}
+                                    {% if out_stock == blank %}
+                                        {% assign price = price | plus: product.selected_or_first_available_variant.price %}
+                                        {% assign number_item = number_item | plus: 1 %}
+                                    {%- endif -%}
+                                    <div data-product_id="{{ product.id }}" class="item-product-inner{% if out_stock != blank %} buy-together-hidden{%- endif -%}">
+                                        <div class="image">
+                                            <a href="{{ product.url }}">
+                                                {% if product.selected_or_first_available_variant.featured_image != blank %}
+                                                    {% assign image = product.selected_or_first_available_variant.featured_image %}
+                                                {%- else -%}
+                                                    {% assign image = product.featured_image %}
+                                                {%- endif -%}
+                                                {% render 'img-global' with image: image , class: "featured-banner__img", effect: "fade-in" %}
+                                            </a>
+                                        </div>
+                                    </div>
+							{% endfor %}
+						</div>
+						<div class="item-content-right">
+							<div class="total-price-html">{{ 'products.product.total_price' | t }} <span>{{ price | money }}</span></div>
+							<span class="for-items-text">For <span>{{ number_item }}</span> item(s)</span>
+							<div class="buy-together-cart"> 
+								<button type="submit" class="btn--add-to-cart buy-together-add-all-to-cart"><span>{{ 'products.product.add_all_to_cart' | t }}</span></button>
+							</div>
+						</div>
+					</div>
+					<div class="item-products-wrap wpb-check">
+						<div data-product_id="{{ product.id }}" class="item-product active">
+							<label>
+								<input data-price="{{ product.price }}" data-product_id="{{ product.id }}" type="checkbox" checked="checked" disabled>
+								<span class="item-product-title"><strong>{{ 'products.product.this_product' | t }}</strong>{{ product.title }}</span>
+								{% assign number_variant = 0 %}
+								{%- for variant in product.variants -%}
+									{% assign number_variant = number_variant | plus: 1 %}
+								{%- endfor -%}
+								{%- if number_variant == 1 -%}
+									{%- for variant in product.variants -%}
+										<span class="buy-together-price">{{ product.price | money }}</span>
+										<input name="items[][id]" type="hidden" value="{{ variant.id  }}">
+									{%- endfor -%}
+								{%- else -%}
+									<select name="items[][id]" class="js-product-btp--{{ section.id }} product-single__variants">
+										{%- for variant in product.variants -%}
+                                            {% assign variant_featured_image = '' %}
+											{%- if variant.available -%}
+                                                {%- if variant.featured_image.src -%}{% assign variant_featured_image = variant.featured_image.src %}{%- endif -%}
+												<option {% if variant == product.selected_or_first_available_variant %}
+													selected="selected" {% endif %}
+													data-price="{{ variant.price }}"
+													data-image="{{ variant_featured_image }}"
+													value="{{ variant.id }}">
+													{{ variant.title }}
+												</option>
+											{%- else -%}
+												<option disabled="disabled">
+													{{ variant.title }}
+												</option>
+											{%- endif -%}
+										{%- endfor -%}
+									</select>
+									<span class="buy-together-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+								{%- endif -%}
+								<input name="items[][quantity]" type="number" value="1" class="hide hidden">
+							</label>
+						</div>
+						 {% for product in bundler %}
+                              {% assign out_stock = '' %}
+                                {% if product.selected_or_first_available_variant.inventory_management == "shopify" and product.selected_or_first_available_variant.inventory_policy != "continue" %}
+                                    {% if product.selected_or_first_available_variant.inventory_quantity == 0 %}
+                                        {% assign out_stock = true %}
+                                    {%- endif -%}
+                                {%- endif -%}
+                              <div data-product_id="{{ product.id }}" class="item-product{% if out_stock == blank %} active{% endif %}">
+                                  <label{% if out_stock != blank %} class="disabled"{% endif %}>
+                                      <input data-price="{{ product.price }}" data-product_id="{{ product.id }}" type="checkbox"{% if out_stock == blank %} checked="checked"{% endif %}{% if out_stock != blank %} disabled="disabled"{% endif %}>
+                                      <span class="item-product-title">{{ product.title }}</span>
+                                      {% assign number_variant = 0 %}
+                                      {%- for variant in product.variants -%}
+                                          {% assign number_variant = number_variant | plus: 1 %}
+                                      {%- endfor -%}
+                                      {%- if number_variant == 1 -%}
+                                          {%- for variant in product.variants -%}
+                                              <span class="buy-together-price">{{ product.price | money }}</span>
+                                              <input name="items[][id]" type="hidden" value="{{ variant.id  }}"{% if out_stock != blank %}  disabled="disabled"{%- endif -%}>
+                                          {%- endfor -%}
+                                      {%- else -%}
+                                          <select name="items[][id]" class="js-product-btp--{{ section.id }} product-single__variants">
+                                              {%- for variant in product.variants -%}
+                                                 {% assign variant_featured_image = '' %}
+                                                  {%- if variant.available -%}
+                                                      {%- if variant.featured_image.src -%}{% assign variant_featured_image = variant.featured_image.src %}{%- endif -%}
+                                                      <option {% if variant == product.selected_or_first_available_variant %}
+                                                          selected="selected" {% endif %}
+                                                          data-price="{{ variant.price }}"
+                                                          data-image="{{ variant_featured_image }}"
+                                                          value="{{ variant.id }}">
+                                                          {{ variant.title }}
+                                                      </option>
+                                                  {%- else -%}
+                                                      <option disabled="disabled">
+                                                          {{ variant.title }}
+                                                      </option>
+                                                  {%- endif -%}
+                                              {%- endfor -%}
+                                          </select>
+                                          <span class="buy-together-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+                                      {%- endif -%}
+                                      {%- if out_stock != blank -%}
+                                          <input name="items[][quantity]" type="number" value="0" class="hide hidden" disabled="disabled">
+                                      {%- else -%}
+                                          <input name="items[][quantity]" type="number" value="1" class="hide hidden">
+                                      {%- endif -%}
+                                  </label>
+                              </div>
+						{% endfor %}
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Buy Together",
+    "settings": [
+        {
+        "type": "product_list",
+        "id": "metafields_buy_together",
+        "label": "Select metafields for Bought Together",
+        "info": "No products selected. Only metafields selected"
+    },
+	  {
+        "type": "text",
+        "id": "bundler_title",
+        "label": "Bundler heading",
+        "default": "Frequently Bought Together"
+      },
+	   {
+        "type": "text",
+        "id": "bundler_margin",
+        "label": "Bundler margin",
+        "default": "30px 0"
+      } 
+    ]
+  }
+{% endschema %}

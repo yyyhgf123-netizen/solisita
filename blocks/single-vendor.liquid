@@ -1,0 +1,18 @@
+<div class="product__vendor"{% if block.settings.product_vendor_margin != blank %} style="margin:{{ block.settings.product_vendor_margin }}"{% endif %}>
+    <div class="product__organization__label">{{ 'products.product.vendor' | t }}</div>
+    <div class="product__organization__text"><a href="{{ routes.collections_url }}/vendors?q={{ product.vendor }}">{{ product.vendor }}</a></div>
+</div>
+{% schema %}
+  {
+    "name": "Single product vendor",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_vendor_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px"
+        }
+    ],
+    "presets": [{"name": "Single product vendor","category": "Single product"}]
+  }
+{% endschema %}

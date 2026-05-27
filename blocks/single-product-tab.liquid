@@ -1,0 +1,68 @@
+<div class="product-more-info accordion"{% if block.settings.product_product_tab_margin != blank %} style="margin:{{ block.settings.product_product_tab_margin }}"{% endif %}>
+	<div class="product-more-info__inner">
+		{%- if block.settings.product_tab_selector == 'custom' -%}
+		<div class="accordion-item panel panel-default">
+			<a class="collapse_title collapsed" data-toggle="collapse" data-parent="#accordion" href="#js-tabs-{{ block.id }}"><span>{{ block.settings.tab_title }}</span></a>
+			<div id="js-tabs-{{ block.id }}" class="panel-collapse collapse">
+				<div class="panel-body">
+					{{ block.settings.tab_content }}
+				</div>
+			</div>
+		</div>
+		{%- endif -%}
+		{%- if settings.product_reviews_enable and block.settings.product_tab_selector == 'review' -%}
+			<div class="accordion-item panel panel-default">
+				<a class="collapse_title collapsed" data-toggle="collapse" data-parent="#accordion" href="#reviews"><span>{{ block.settings.tab_title }}</span></a>
+				<div id="reviews" class="panel-collapse collapse">
+					<div class="panel-body">
+						<!-- Start of Judge.me code --> 
+                        <div style='clear:both'></div> 
+                        <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-auto-install='false'> 
+                            {{ product.metafields.judgeme.widget }} 
+                        </div> 
+                        <!-- End of Judge.me code -->
+					</div>
+				</div>
+			</div>
+		{%- endif -%}
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Single product tabs",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_product_tab_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px"
+        },
+        {
+            "type": "text",
+            "id": "tab_title",
+            "label": "Tab title"
+        },
+        {
+            "type": "select",
+            "id": "product_tab_selector",
+            "label": "Product tab type",
+            "options": [
+                {
+                    "value": "custom",
+                    "label": "Custom"
+                },
+                {
+                    "value": "review",
+                    "label": "Review"
+                }
+            ]
+        },
+        {
+            "type": "richtext",
+            "id": "tab_content",
+            "label": "Tab Content.Use only when selecting the custom tab"
+        }
+    ],
+    "presets": [{"name": "Single product tabs","category": "Single product"}]
+  }
+{% endschema %}

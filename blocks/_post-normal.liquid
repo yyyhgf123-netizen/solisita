@@ -1,0 +1,62 @@
+{%- assign layout_article = block.settings.layout_article -%}
+<div class="container">
+    <div class="page-article__inner">
+        <div class="article__image">
+            <div class="article__featured-image-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                {% render 'img-global' with image: article.image, class: "article__featured-image", effect: "fade-in" %}
+            </div>
+        </div>
+        <div class="content-image-single">
+            <div class="content-info">
+                {%- if section.settings.show_category -%}
+                    <div class="blog-category">
+                        <a href="{{ blog.url }}">{{ blog.title }}</a>
+                    </div>
+                {%- endif -%}
+                <h1 class="page-title">{{ article.title }}</h1>
+                <div class="article__meta article__meta--post">
+                    {% if section.settings.show_author %} {{ 'blogs.article.by' | t }} <span> {{ article.author }} </span> {% endif %} {% if section.settings.show_date %} {{ 'blogs.article.on' | t }} {{ article.updated_at | date: "%b %d, %Y" }} {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {%- if layout_article !='one_column' -%}
+            <div class="col-xl-3 col-lg-3 col-md-12 col-12  {% if layout_article =='sidebar_left' %}order-1{% elsif layout_article =='sidebar_right' %}order-3{% endif %}">
+               {% content_for "block", type: "blog-sidebar", id: "blog-sidebar" %}
+            </div>
+            {%- endif -%}
+            <div class="{% if layout_article !='one_column' %}col-xl-9 col-lg-9 {% else %}col-xl-12 col-lg-12  {% endif %} col-md-12 col-12 post-single {{ layout_article }} order-2">
+                {% content_for "block", type: "article-template", id: "article-template" %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Post normal",
+    "blocks": [{ "type": "@theme" },{ "type": "@app" }],
+    "settings": [
+        {
+			"type": "select",
+			"id": "layout_article",
+			"label": "Layout Article",
+			"options": [
+				{
+					"value": "sidebar_left",
+					"label": "Sidebar Left"
+				},
+				{
+					"value": "sidebar_right",
+					"label": "Sidebar Right"
+				},
+				{
+					"value": "one_column",
+					"label": "One Column"
+				}
+			],
+			"default": "sidebar_left"
+		}
+    ],
+    "presets": [{"name": "Post normal"}]
+  }
+{% endschema %}

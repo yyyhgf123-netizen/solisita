@@ -1,0 +1,18 @@
+<div class="ask-share"{% if block.settings.product_ask-share_margin != blank %} style="margin:{{ block.settings.product_ask-share_margin }}"{% endif %}>
+    {% content_for "blocks" %}
+</div>
+{% schema %}
+  {
+    "name": "Single ask and share",
+    "blocks": [{ "type": "_single-button-compare" },{ "type": "_single-ask-a-question" },{ "type": "_single-delivery-return" },{ "type": "_single-social-sharing" },{ "type": "@app" }],
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_ask-share_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px"
+        }
+    ],
+    "presets": [{"name": "Single ask and share","category": "Single product"}]
+  }
+{% endschema %}

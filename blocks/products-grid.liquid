@@ -1,0 +1,157 @@
+{%- assign collection_handle = block.settings.featured_products -%}
+{%- assign columns = block.settings.columns -%}
+{%- assign column1 = block.settings.column1 -%}
+{%- assign column2 = block.settings.column2 -%}
+{%- assign column3 = block.settings.column3 -%}
+{%- assign column4 = block.settings.column4 -%}
+{%- assign limit = block.settings.limit | plus: 0 -%}
+{% capture col_gird %}
+  {% if columns == 5 %} col-xl-2-5{% else %} col-xl-{{ 12 | divided_by: columns }}{% endif %}
+  {% if column1 == 5 %} col-lg-2-5{% else %} col-lg-{{ 12 | divided_by: column1 }}{% endif %}
+  {% if column2 == 5 %} col-md-2-5{% else %} col-md-{{ 12 | divided_by: column2 }}{% endif %}
+  {% if column3 == 5 %} col-sm-2-5{% else %} col-sm-{{ 12 | divided_by: column3 }}{% endif %}
+  {% if column4 == 5 %} col-2-5{% else %} col-{{ 12 | divided_by: column4 }}{% endif %}
+{% endcapture %}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+      {%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .wpbingo-widget--products-grid{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--products-grid{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--products-grid{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .wpbingo-widget--products-grid{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="wpbingo-block wpbingo-widget--products-grid wpbingo-block--{{ block.id }}">
+    <div class="wpbingo-section__content">
+        <div class="row">
+            {%- if collection_handle == blank or collections[collection_handle] == empty or collections[collection_handle].products_count == 0 -%}
+                {% render 'onboarding-featured-products' %}
+            {%- else -%}
+                {%- for product in collections[collection_handle].products limit: limit -%}
+                    <div class="slick-carousel__item {{ col_gird }}">
+                        {% render 'product-grid-item', product: product %}
+                    </div>
+                {%- endfor -%}
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Product grid",
+    "settings": [
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+			"type": "header",
+			"content": "General Settings"
+		},
+		{
+			"type": "collection",
+			"id": "featured_products",
+			"label": "Collection"
+		},
+		{
+			"type": "range",
+			"id": "limit",
+			"min": 1,
+			"max": 20,
+			"step": 1,
+			"label": "Number of products",
+			"default": 8
+		},
+		{
+			"type": "header",
+			"content": "Columns Settings"
+		},
+		{
+			"type": "range",
+			"id": "columns",
+			"min": 1,
+			"max": 5,
+			"step": 1,
+			"label": "Number of Columns",
+			"default": 4,
+			"info": "Desktops"
+		},
+		{
+			"type": "range",
+			"id": "column1",
+			"min": 1,
+			"max": 5,
+			"step": 1,
+			"label": "Number of Columns on 992px to 1199px",
+			"default": 4,
+			"info": "Desktops"
+		},
+		{
+			"type": "range",
+			"id": "column2",
+			"min": 1,
+			"max": 5,
+			"step": 1,
+			"label": "Number of Columns on 768px to 991px",
+			"default": 3,
+			"info": "Laptop"
+		},
+		{
+			"type": "range",
+			"id": "column3",
+			"min": 1,
+			"max": 5,
+			"step": 1,
+			"label": "Number of Columns on 480px to 767px",
+			"default": 1,
+			"info": "Tablets"
+		},
+		{
+			"type": "range",
+			"id": "column4",
+			"min": 1,
+			"max": 5,
+			"step": 1,
+			"label": "Number of Columns in 480px or less than",
+			"default": 1,
+			"info": "Mobile phone"
+		}
+    ],
+    "presets": [{"name": "Product grid"}]
+  }
+{% endschema %}

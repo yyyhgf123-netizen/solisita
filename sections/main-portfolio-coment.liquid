@@ -1,0 +1,102 @@
+<section class="page-article portfolio">
+	<div class="container">
+		<div class="page-article__inner">
+			<div class="content-single-portfolio">
+				<div id="comments" class="article-comments"{% if section.settings.portfolio_comments_margin != blank %} style="margin:{{ section.settings.portfolio_comments_margin }}"{% endif %}>
+					{% if blog.comments_enabled? %}
+						{% if article.comments_count > 0 %}
+							<h2 class="article-comments__heading">{{ 'blogs.comments.with_count' | t: count: article.comments_count }}</h2>
+						{% endif %}
+						{% paginate article.comments by 5 %}
+							<div class="article-comments__content">
+								{% if comment and comment.created_at %}
+									<p class="alert alert-success">
+										{% if blog.moderated? %}
+											{{ 'blogs.comments.success_moderated' | t }}
+										{% else %}
+											{{ 'blogs.comments.success' | t }}
+										{% endif %}
+									</p>
+								{% endif %}
+								{% if article.comments_count > 0 %}
+									<ul class="comments_list">
+										{% for comment in article.comments %}
+											<li class="comments_item">
+												{% render 'comment', comment: comment %}
+											</li>
+										{% endfor %}
+									</ul>
+									{% if paginate.pages > 1 %}
+									<div class="comments__pagination">
+										{% render 'pagination' %}
+									</div>
+									{% endif %}
+								{% endif %}
+								<div class="comments__form">
+									<h2 class="article-comments__heading">{{ 'blogs.comments.title' | t }}</h2>
+									{% form 'new_comment', article %}
+										{{ form.errors | default_errors }}
+										<div class="form-row">
+											<div class="col-12 col-md-6">
+												<div class="form-group">
+													<label class="d-none" for="commentAuthor">{{ 'blogs.comments.name' | t }}</label>
+													<input id="commentAuthor" class="form-control{% if form.errors contains 'author' %} is-invalid{% endif %}"
+														type="text"
+														name="comment[author]"
+														placeholder="{{ 'blogs.comments.name' | t }}"
+														value="{{ form.author }}"
+														autocapitalize="words">
+												</div>
+											</div>
+											<div class="col-12 col-md-6">
+												<div class="form-group">
+													<label class="d-none" for="commentEmail">{{ 'blogs.comments.email' | t }}</label>
+													<input id="commentEmail"  class="form-control{% if form.errors contains 'email' %} is-invalid{% endif %}"
+														type="email"
+														name="comment[email]"
+														placeholder="{{ 'blogs.comments.email' | t }}"
+														value="{{ form.email }}"
+														autocorrect="off"
+														autocapitalize="off">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="d-none" for="commentBody">{{ 'blogs.comments.message' | t }}</label>
+											<textarea id="commentBody" class="form-control {% if form.errors contains 'body' %} is-invalid{% endif %}"
+												name="comment[body]"
+												rows="4"
+												placeholder="{{ 'blogs.comments.message' | t }}"
+												required>{{ form.body }}</textarea>
+										</div>
+										<div class="form-text">
+											{% if blog.moderated? %}
+												<p>{{ 'blogs.comments.moderated' | t }}</p>
+											{% endif %}
+										</div>
+										<div class="form-button">
+											<input type="submit" class="btn btn-primary" value="{{ 'blogs.comments.post' | t }}">
+										</div>
+									{% endform %}
+								</div>
+							</div>
+						{% endpaginate %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+	"name": "Main Portfolio comments",
+	"settings": [
+		{
+			"type": "text",
+			"id": "portfolio_comments_margin",
+			"label": "Margin",
+			"info": "Example(top left bottom right): 15px 15px 15px 15px"
+		}
+	]
+}
+{% endschema %}

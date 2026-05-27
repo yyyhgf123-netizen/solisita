@@ -1,0 +1,128 @@
+
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+    #shopify-block-{{ block.id }} .content-button .content{
+      display:{{ block.settings.display }};
+      flex-wrap: wrap;
+      align-items: {{ block.settings.vertical_align }};
+      justify-content: {{ block.settings.horizontal_align }};
+    }
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .content-button{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .content-button{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .content-button{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .content-button{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+</style>
+<div class="content-button">
+    <div class="content">
+         {% content_for "blocks" %}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Content button",
+    "blocks": [{ "type": "@app" },{ "type": "@theme" }],
+    "settings": [
+        {
+            "type": "text",
+            "id": "display",
+            "label": "Display",
+            "default": "block"
+        },
+        {
+			"type": "select",
+			"id": "vertical_align",
+			"label": "Vertical align",
+			"options": [
+				{
+					"value": "start",
+					"label": "Start"
+				},
+				{
+					"value": "center",
+					"label": "Center"
+				},
+				{
+					"value": "end",
+					"label": "End"
+				}
+			],
+			"default": "start"
+		},
+		{
+			"type": "select",
+			"id": "horizontal_align",
+			"label": "Horizontal align",
+			"options": [
+				{
+					"value": "left",
+					"label": "Left"
+				},
+				{
+					"value": "center",
+					"label": "Center"
+				},
+				{
+					"value": "right",
+					"label": "Right"
+				}
+			],
+			"default": "left"
+		},
+        {
+            "type": "header",
+            "content": "Content settings"
+        },
+         {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		}
+    ],
+    "presets": [
+        {
+            "name": "Content button",
+            "blocks": [
+              {
+                  "type": "button"
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

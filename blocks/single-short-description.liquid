@@ -1,0 +1,36 @@
+<div class="short_description" style="margin:{{ block.settings.description_margin }};--description-color:{{ block.settings.description_color }};--description-font-size:{{ block.settings.description_size }}px;">
+    {{ block.settings.content_short_description }}
+</div>
+{% schema %}
+  {
+    "name": "Single short description",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "content_short_description",
+            "label": "Short description"
+        },
+        {
+            "type": "text",
+            "id": "description_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px",
+            "default":"0 0 20px"
+        },
+        {
+            "type": "number",
+            "id": "description_size",
+            "label": "Font size",
+            "info": "px",
+            "default":14
+        },
+        {
+            "type": "color",
+            "id": "description_color",
+            "label": "Color",
+            "default":"#666"
+        }
+    ],
+    "presets": [{"name": "Single short description","category": "Single product"}]
+  }
+{% endschema %}

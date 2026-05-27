@@ -1,0 +1,2593 @@
+{
+  "sections": {
+    "slidershow_wFjjfz": {
+      "type": "slidershow",
+      "blocks": {
+        "slide_MrTEYU": {
+          "type": "_slide",
+          "settings": {
+            "image": "shopify://shop_images/HERO-3.jpg",
+            "size_img": "cover",
+            "pos_img": "center_center",
+            "size_img_mobi": "cover",
+            "pos_img_mobi": "center_center"
+          },
+          "blocks": {
+            "group_content_slide_GNPRbL": {
+              "type": "_group-content-slide",
+              "settings": {
+                "caption_width": "",
+                "vertical_align": "middle",
+                "horizontal_align": "left",
+                "align": "left",
+                "animation": "left-to-right",
+                "padding": "0px 0px 0px 110px",
+                "margin": "-20px 0px 0px 0px",
+                "disable_absolute": true,
+                "vertical_align_mobi": "bottom",
+                "horizontal_align_mobi": "center",
+                "align_mobi": "center"
+              },
+              "blocks": {
+                "title_WXFQwk": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Waterproof Jewellery<br>You’ll Wear On Repeat",
+                    "font": "--font-family-second",
+                    "text_transform": "capitalize",
+                    "color": "#ffffff",
+                    "font_size": 45,
+                    "line_height": 58,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "align": "left",
+                    "padding": "",
+                    "margin": "0px 0px 18px 0px",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 25,
+                    "line_height_mobi": 30,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                },
+                "text_block_k4er9A": {
+                  "type": "text-block",
+                  "name": "Text block",
+                  "settings": {
+                    "title": "Gift-ready pieces, made to shine every day",
+                    "font": "--font-family-base",
+                    "text_transform": "none",
+                    "font_style": "normal",
+                    "color": "#ffffff",
+                    "font_size": 18,
+                    "line_height": 28,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "align": "left",
+                    "padding": "",
+                    "margin": "0 0 35px | | | 0 0 20px",
+                    "color_mobi": "#7e7e84",
+                    "font_size_mobi": 16,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                },
+                "button_G44jdb": {
+                  "type": "button",
+                  "settings": {
+                    "title": "SHOP THE COLLECTION",
+                    "layout": "layout-1",
+                    "font": "--font-family-base",
+                    "text_transform": "uppercase",
+                    "icon_title": "",
+                    "font_icon": 14,
+                    "color_icon": "#000000",
+                    "background_icon": "rgba(0,0,0,0)",
+                    "color_icon_hover": "#ffffff",
+                    "background_icon_hover": "rgba(0,0,0,0)",
+                    "pos_icon": 1,
+                    "border_radius_icon": "",
+                    "width_icon": 15,
+                    "margin_icon": "0 0 0 0px",
+                    "button_link": "shopify://collections/all",
+                    "border_radius": "4",
+                    "border": false,
+                    "border_width": "1px",
+                    "color": "#000000",
+                    "background": "#f7f2ea",
+                    "border_color": "#f7f2ea",
+                    "color_hover": "#ffffff",
+                    "background_hover": "#000000",
+                    "border_color_hover": "#000000",
+                    "font_size": 12,
+                    "line_height": 40,
+                    "letter_spacing": 1,
+                    "font_weight": "600",
+                    "padding": "0 30px",
+                    "margin": "",
+                    "align": "left",
+                    "font_size_mobi": 12,
+                    "font_icon_mobi": 12,
+                    "margin_icon_mobi": 1,
+                    "line_height_mobi": 40,
+                    "letter_spacing_mobi": 0,
+                    "border_radius_mobi": "0",
+                    "border_mobi": true,
+                    "border_width_mobi": "1px",
+                    "color_mobi": "#000000",
+                    "background_mobi": "rgba(0,0,0,0)",
+                    "border_color_mobi": "#000000",
+                    "color_hover_mobi": "#ffffff",
+                    "background_hover_mobi": "#000000",
+                    "border_color_hover_mobi": "#000000",
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_WXFQwk",
+                "text_block_k4er9A",
+                "button_G44jdb"
+              ]
+            }
+          },
+          "block_order": [
+            "group_content_slide_GNPRbL"
+          ]
+        },
+        "slide_fKDnWN": {
+          "type": "_slide",
+          "settings": {
+            "image": "shopify://shop_images/HERO-6.jpg",
+            "size_img": "cover",
+            "pos_img": "center_center",
+            "size_img_mobi": "cover",
+            "pos_img_mobi": "center_center"
+          },
+          "blocks": {
+            "group_content_slide_CUGX9Y": {
+              "type": "_group-content-slide",
+              "settings": {
+                "caption_width": "",
+                "vertical_align": "middle",
+                "horizontal_align": "left",
+                "align": "left",
+                "animation": "left-to-right",
+                "padding": "0 | | | 30px 0 20px",
+                "margin": "",
+                "disable_absolute": true,
+                "vertical_align_mobi": "bottom",
+                "horizontal_align_mobi": "center",
+                "align_mobi": "center"
+              },
+              "blocks": {
+                "title_zx6qBV": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Discover Timeless<br> Elegance",
+                    "font": "--font-family-second",
+                    "text_transform": "capitalize",
+                    "color": "#ffffff",
+                    "font_size": 55,
+                    "line_height": 75,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "align": "left",
+                    "padding": "",
+                    "margin": "0px 0px 20px 0px | | | 0 0 10px",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 25,
+                    "line_height_mobi": 30,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                },
+                "text_block_6Fciej": {
+                  "type": "text-block",
+                  "name": "Text block",
+                  "settings": {
+                    "title": "Featuring bold and beautiful designs",
+                    "font": "--font-family-base",
+                    "text_transform": "none",
+                    "font_style": "normal",
+                    "color": "#ffffff",
+                    "font_size": 20,
+                    "line_height": 30,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "align": "left",
+                    "padding": "",
+                    "margin": "0 0 35px | | | 0 0 20px",
+                    "color_mobi": "#7e7e84",
+                    "font_size_mobi": 16,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                },
+                "button_FC64XF": {
+                  "type": "button",
+                  "settings": {
+                    "title": "Shop now",
+                    "layout": "layout-1",
+                    "font": "--font-family-base",
+                    "text_transform": "uppercase",
+                    "icon_title": "",
+                    "font_icon": 14,
+                    "color_icon": "#000000",
+                    "background_icon": "rgba(0,0,0,0)",
+                    "color_icon_hover": "#ffffff",
+                    "background_icon_hover": "rgba(0,0,0,0)",
+                    "pos_icon": 1,
+                    "border_radius_icon": "",
+                    "width_icon": 15,
+                    "margin_icon": "0 0 0 0px",
+                    "button_link": "",
+                    "border_radius": "0",
+                    "border": true,
+                    "border_width": "1px",
+                    "color": "#ffffff",
+                    "background": "rgba(0,0,0,0)",
+                    "border_color": "#ffffff",
+                    "color_hover": "#ffffff",
+                    "background_hover": "#000000",
+                    "border_color_hover": "#000000",
+                    "font_size": 12,
+                    "line_height": 40,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "padding": "0 30px",
+                    "margin": "",
+                    "align": "left",
+                    "font_size_mobi": 12,
+                    "font_icon_mobi": 12,
+                    "margin_icon_mobi": 1,
+                    "line_height_mobi": 40,
+                    "letter_spacing_mobi": 0,
+                    "border_radius_mobi": "0",
+                    "border_mobi": true,
+                    "border_width_mobi": "1px",
+                    "color_mobi": "#000000",
+                    "background_mobi": "rgba(0,0,0,0)",
+                    "border_color_mobi": "#000000",
+                    "color_hover_mobi": "#ffffff",
+                    "background_hover_mobi": "#000000",
+                    "border_color_hover_mobi": "#000000",
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_zx6qBV",
+                "text_block_6Fciej",
+                "button_FC64XF"
+              ]
+            }
+          },
+          "block_order": [
+            "group_content_slide_CUGX9Y"
+          ]
+        }
+      },
+      "block_order": [
+        "slide_MrTEYU",
+        "slide_fKDnWN"
+      ],
+      "custom_css": [],
+      "name": "头图",
+      "settings": {
+        "max_width": "1550px",
+        "fullwidth": true,
+        "navigation": true,
+        "pagination": true,
+        "effect": "slide",
+        "autoplay": false,
+        "autoplay_speed": "8000",
+        "min_height_slider": "600px | 500px | 400px | 200px",
+        "border_arrow": "0",
+        "border_radius_arrow": "50%",
+        "bg_arrow": "#ffffff",
+        "border_color_arrow": "rgba(0,0,0,0)",
+        "color_arrow": "#000000",
+        "bg_arrow_hover": "#000000",
+        "border_color_arrow_hover": "rgba(0,0,0,0)",
+        "color_arrow_hover": "#ffffff"
+      }
+    },
+    "featured_custom_section_fV7Xki": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_DBLXG6": {
+          "type": "_column",
+          "settings": {
+            "width": 25,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "",
+            "margin": "",
+            "width_lap": 25,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "policy_Yxdr9y": {
+              "type": "policy",
+              "name": "Policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "0px",
+                "margin_icon": "",
+                "align": "center",
+                "effects": "none",
+                "size_mobi": "",
+                "layout": "layout-1"
+              },
+              "blocks": {
+                "title_kVyYU9": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Waterproof Jewellery",
+                    "font": "--font-family-second",
+                    "text_transform": "none",
+                    "color": "#000000",
+                    "font_size": 14,
+                    "line_height": 20,
+                    "letter_spacing": 0.5,
+                    "font_weight": "600",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 20,
+                    "line_height_mobi": 25,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "left"
+                  },
+                  "blocks": {}
+                },
+                "text_block_xUkTf6": {
+                  "type": "text-block",
+                  "settings": {
+                    "title": "Made for everyday wear",
+                    "font": "--font-family-base",
+                    "text_transform": "none",
+                    "font_style": "normal",
+                    "color": "#555555",
+                    "font_size": 13,
+                    "line_height": 20,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 14,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_kVyYU9",
+                "text_block_xUkTf6"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_Yxdr9y"
+          ]
+        },
+        "column_zAKki6": {
+          "type": "_column",
+          "settings": {
+            "width": 25,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "",
+            "margin": "",
+            "width_lap": 25,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "policy_TAL9n8": {
+              "type": "policy",
+              "name": "Policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "0px",
+                "margin_icon": "",
+                "align": "center",
+                "effects": "none",
+                "size_mobi": "",
+                "layout": "layout-1"
+              },
+              "blocks": {
+                "title_AxeDBj": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Gift Box Included",
+                    "font": "--font-family-second",
+                    "text_transform": "none",
+                    "color": "#000000",
+                    "font_size": 14,
+                    "line_height": 20,
+                    "letter_spacing": 0.5,
+                    "font_weight": "600",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 20,
+                    "line_height_mobi": 25,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "left"
+                  },
+                  "blocks": {}
+                },
+                "text_block_J4X3Jx": {
+                  "type": "text-block",
+                  "settings": {
+                    "title": "Ready for thoughtful gifting",
+                    "font": "--font-family-base",
+                    "text_transform": "none",
+                    "font_style": "normal",
+                    "color": "#555555",
+                    "font_size": 13,
+                    "line_height": 20,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 14,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_AxeDBj",
+                "text_block_J4X3Jx"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_TAL9n8"
+          ]
+        },
+        "column_8cpFXw": {
+          "type": "_column",
+          "settings": {
+            "width": 25,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "",
+            "margin": "",
+            "width_lap": 25,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "policy_rNMdCM": {
+              "type": "policy",
+              "name": "Policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "0px",
+                "margin_icon": "",
+                "align": "center",
+                "effects": "none",
+                "size_mobi": "",
+                "layout": "layout-1"
+              },
+              "blocks": {
+                "title_66rMNK": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Tarnish-Resistant Finish",
+                    "font": "--font-family-second",
+                    "text_transform": "none",
+                    "color": "#000000",
+                    "font_size": 14,
+                    "line_height": 20,
+                    "letter_spacing": 0.5,
+                    "font_weight": "600",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 20,
+                    "line_height_mobi": 25,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "left"
+                  },
+                  "blocks": {}
+                },
+                "text_block_iyQzfh": {
+                  "type": "text-block",
+                  "settings": {
+                    "title": "Made to shine longer",
+                    "font": "--font-family-base",
+                    "text_transform": "none",
+                    "font_style": "normal",
+                    "color": "#555555",
+                    "font_size": 13,
+                    "line_height": 20,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 14,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_66rMNK",
+                "text_block_iyQzfh"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_rNMdCM"
+          ]
+        },
+        "column_Pn4fQ3": {
+          "type": "_column",
+          "settings": {
+            "width": 23,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "",
+            "margin": "",
+            "width_lap": 25,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "policy_zRWVB7": {
+              "type": "policy",
+              "name": "Policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "0px",
+                "margin_icon": "",
+                "align": "center",
+                "effects": "none",
+                "size_mobi": "",
+                "layout": "layout-1"
+              },
+              "blocks": {
+                "title_b3WMhg": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Easy UK Returns",
+                    "font": "--font-family-second",
+                    "text_transform": "none",
+                    "color": "#000000",
+                    "font_size": 14,
+                    "line_height": 20,
+                    "letter_spacing": 0.5,
+                    "font_weight": "600",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 20,
+                    "line_height_mobi": 25,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "left"
+                  },
+                  "blocks": {}
+                },
+                "text_block_tpgVdc": {
+                  "type": "text-block",
+                  "settings": {
+                    "title": "Shop with peace of mind",
+                    "font": "--font-family-base",
+                    "text_transform": "none",
+                    "font_style": "normal",
+                    "color": "#555555",
+                    "font_size": 13,
+                    "line_height": 20,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 14,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_b3WMhg",
+                "text_block_tpgVdc"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_zRWVB7"
+          ]
+        }
+      },
+      "block_order": [
+        "column_DBLXG6",
+        "column_zAKki6",
+        "column_8cpFXw",
+        "column_Pn4fQ3"
+      ],
+      "name": "四组字",
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "background_color": "linear-gradient(0deg, rgba(250, 248, 244, 1), rgba(250, 248, 244, 1) 100%)",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "8px 0px 24px 0px",
+        "margin": "",
+        "vertical_align": "middle",
+        "horizontal_align": "center"
+      }
+    },
+    "featured_custom_section_qGn94f": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_zUHNWt": {
+          "type": "_column",
+          "name": "Column",
+          "settings": {
+            "width": 25,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0 15px | 0 7.5px",
+            "margin": "| | 0 0 15px",
+            "width_lap": 25,
+            "width_tab": 50,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "banners_box_zFHbkh": {
+              "type": "banners-box",
+              "name": "Banners box",
+              "settings": {
+                "image": "shopify://shop_images/1.1.jpg",
+                "url": "",
+                "border_radius_img": "0px 0px 0px 0px",
+                "padding": "",
+                "margin": "",
+                "effect": "grow"
+              },
+              "blocks": {
+                "banner_box_EAALW3": {
+                  "type": "_banner-box",
+                  "settings": {
+                    "content_position": "absolute",
+                    "vertical_position": "bottom",
+                    "horizontal_position": "center",
+                    "text_align": "center",
+                    "background_content": "rgba(0,0,0,0)",
+                    "border_radius_content": "0px 0px 0px 0px",
+                    "padding": "0px 15px 45px",
+                    "margin": ""
+                  },
+                  "blocks": {
+                    "title_mb4djN": {
+                      "type": "title",
+                      "name": "Title",
+                      "settings": {
+                        "heading_size": "h3",
+                        "title": "Necklaces",
+                        "font": "--font-family-second",
+                        "text_transform": "uppercase",
+                        "color": "#ffffff",
+                        "font_size": 28,
+                        "line_height": 34,
+                        "letter_spacing": 2,
+                        "font_weight": "600",
+                        "align": "center",
+                        "padding": "",
+                        "margin": "0px 0px 0px 0px",
+                        "color_mobi": "#ffffff",
+                        "font_size_mobi": 25,
+                        "line_height_mobi": 30,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "center"
+                      },
+                      "blocks": {}
+                    },
+                    "button_mFKNgG": {
+                      "type": "button",
+                      "name": "Button",
+                      "disabled": true,
+                      "settings": {
+                        "title": "Shop now",
+                        "layout": "layout-1",
+                        "font": "--font-family-base",
+                        "text_transform": "capitalize",
+                        "icon_title": "",
+                        "font_icon": 14,
+                        "color_icon": "#000000",
+                        "background_icon": "#ffffff",
+                        "color_icon_hover": "#000000",
+                        "background_icon_hover": "#ffffff",
+                        "pos_icon": 0,
+                        "border_radius_icon": "0px 0px 0px 0px",
+                        "width_icon": 20,
+                        "margin_icon": "0px 0px 0px 0px",
+                        "button_link": "",
+                        "border_radius": "0px 0px 0px 0px",
+                        "border": false,
+                        "border_width": "0px 0px 0px 0px",
+                        "color": "#000000",
+                        "background": "#ffffff",
+                        "border_color": "#ffffff",
+                        "color_hover": "#ffffff",
+                        "background_hover": "#000000",
+                        "border_color_hover": "#000000",
+                        "font_size": 14,
+                        "line_height": 40,
+                        "letter_spacing": 0,
+                        "font_weight": "400",
+                        "padding": "0 30px",
+                        "margin": "",
+                        "align": "center",
+                        "font_size_mobi": 14,
+                        "font_icon_mobi": 14,
+                        "margin_icon_mobi": 0,
+                        "line_height_mobi": 40,
+                        "letter_spacing_mobi": 0,
+                        "border_radius_mobi": "0px 0px 0px 0px",
+                        "border_mobi": false,
+                        "border_width_mobi": "0px 0px 0px 0px",
+                        "color_mobi": "#000000",
+                        "background_mobi": "#ffffff",
+                        "border_color_mobi": "#ffffff",
+                        "color_hover_mobi": "#ffffff",
+                        "background_hover_mobi": "#000000",
+                        "border_color_hover_mobi": "#000000",
+                        "align_mobi": "center"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "title_mb4djN",
+                    "button_mFKNgG"
+                  ]
+                }
+              },
+              "block_order": [
+                "banner_box_EAALW3"
+              ]
+            }
+          },
+          "block_order": [
+            "banners_box_zFHbkh"
+          ]
+        },
+        "column_7W3PpE": {
+          "type": "_column",
+          "name": "Column",
+          "settings": {
+            "width": 25,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0 15px | 0 7.5px",
+            "margin": "| | 0 0 15px",
+            "width_lap": 25,
+            "width_tab": 50,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "banners_box_igYMGx": {
+              "type": "banners-box",
+              "name": "Banners box",
+              "settings": {
+                "image": "shopify://shop_images/3.1.jpg",
+                "url": "",
+                "border_radius_img": "0px 0px 0px 0px",
+                "padding": "",
+                "margin": "",
+                "effect": "grow"
+              },
+              "blocks": {
+                "banner_box_QqfTUU": {
+                  "type": "_banner-box",
+                  "settings": {
+                    "content_position": "absolute",
+                    "vertical_position": "bottom",
+                    "horizontal_position": "center",
+                    "text_align": "center",
+                    "background_content": "rgba(0,0,0,0)",
+                    "border_radius_content": "0px 0px 0px 0px",
+                    "padding": "0px 15px 45px",
+                    "margin": ""
+                  },
+                  "blocks": {
+                    "title_FtwYw4": {
+                      "type": "title",
+                      "name": "Title",
+                      "settings": {
+                        "heading_size": "h3",
+                        "title": "Earrings",
+                        "font": "--font-family-second",
+                        "text_transform": "uppercase",
+                        "color": "#ffffff",
+                        "font_size": 28,
+                        "line_height": 34,
+                        "letter_spacing": 2,
+                        "font_weight": "600",
+                        "align": "center",
+                        "padding": "",
+                        "margin": "0px 0px 0px 0px",
+                        "color_mobi": "#ffffff",
+                        "font_size_mobi": 25,
+                        "line_height_mobi": 30,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "center"
+                      },
+                      "blocks": {}
+                    },
+                    "button_BAFQ86": {
+                      "type": "button",
+                      "name": "Button",
+                      "disabled": true,
+                      "settings": {
+                        "title": "Shop now",
+                        "layout": "layout-1",
+                        "font": "--font-family-base",
+                        "text_transform": "capitalize",
+                        "icon_title": "",
+                        "font_icon": 14,
+                        "color_icon": "#000000",
+                        "background_icon": "#ffffff",
+                        "color_icon_hover": "#000000",
+                        "background_icon_hover": "#ffffff",
+                        "pos_icon": 0,
+                        "border_radius_icon": "0px 0px 0px 0px",
+                        "width_icon": 20,
+                        "margin_icon": "0px 0px 0px 0px",
+                        "button_link": "",
+                        "border_radius": "0px 0px 0px 0px",
+                        "border": false,
+                        "border_width": "0px 0px 0px 0px",
+                        "color": "#000000",
+                        "background": "#ffffff",
+                        "border_color": "#ffffff",
+                        "color_hover": "#ffffff",
+                        "background_hover": "#000000",
+                        "border_color_hover": "#000000",
+                        "font_size": 14,
+                        "line_height": 40,
+                        "letter_spacing": 0,
+                        "font_weight": "400",
+                        "padding": "0 30px",
+                        "margin": "",
+                        "align": "center",
+                        "font_size_mobi": 14,
+                        "font_icon_mobi": 14,
+                        "margin_icon_mobi": 0,
+                        "line_height_mobi": 40,
+                        "letter_spacing_mobi": 0,
+                        "border_radius_mobi": "0px 0px 0px 0px",
+                        "border_mobi": false,
+                        "border_width_mobi": "0px 0px 0px 0px",
+                        "color_mobi": "#000000",
+                        "background_mobi": "#ffffff",
+                        "border_color_mobi": "#ffffff",
+                        "color_hover_mobi": "#ffffff",
+                        "background_hover_mobi": "#000000",
+                        "border_color_hover_mobi": "#000000",
+                        "align_mobi": "center"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "title_FtwYw4",
+                    "button_BAFQ86"
+                  ]
+                }
+              },
+              "block_order": [
+                "banner_box_QqfTUU"
+              ]
+            }
+          },
+          "block_order": [
+            "banners_box_igYMGx"
+          ]
+        },
+        "column_7V7FNA": {
+          "type": "_column",
+          "settings": {
+            "width": 25,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0 15px | 0 7.5px",
+            "margin": "",
+            "width_lap": 25,
+            "width_tab": 50,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "banners_box_EfXtb8": {
+              "type": "banners-box",
+              "name": "Banners box",
+              "settings": {
+                "image": "shopify://shop_images/4.1.jpg",
+                "url": "",
+                "border_radius_img": "0px 0px 0px 0px",
+                "padding": "",
+                "margin": "",
+                "effect": "grow"
+              },
+              "blocks": {
+                "banner_box_ki6Vjd": {
+                  "type": "_banner-box",
+                  "settings": {
+                    "content_position": "absolute",
+                    "vertical_position": "bottom",
+                    "horizontal_position": "center",
+                    "text_align": "center",
+                    "background_content": "rgba(0,0,0,0)",
+                    "border_radius_content": "0px 0px 0px 0px",
+                    "padding": "0px 15px 45px",
+                    "margin": ""
+                  },
+                  "blocks": {
+                    "title_nWWwYk": {
+                      "type": "title",
+                      "name": "Title",
+                      "settings": {
+                        "heading_size": "h3",
+                        "title": "Rings",
+                        "font": "--font-family-second",
+                        "text_transform": "uppercase",
+                        "color": "#ffffff",
+                        "font_size": 28,
+                        "line_height": 34,
+                        "letter_spacing": 2,
+                        "font_weight": "600",
+                        "align": "center",
+                        "padding": "",
+                        "margin": "0px 0px 0px 0px",
+                        "color_mobi": "#ffffff",
+                        "font_size_mobi": 25,
+                        "line_height_mobi": 30,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "center"
+                      },
+                      "blocks": {}
+                    },
+                    "button_Y8c9Yd": {
+                      "type": "button",
+                      "name": "Button",
+                      "disabled": true,
+                      "settings": {
+                        "title": "Shop now",
+                        "layout": "layout-1",
+                        "font": "--font-family-base",
+                        "text_transform": "capitalize",
+                        "icon_title": "",
+                        "font_icon": 14,
+                        "color_icon": "#000000",
+                        "background_icon": "#ffffff",
+                        "color_icon_hover": "#000000",
+                        "background_icon_hover": "#ffffff",
+                        "pos_icon": 0,
+                        "border_radius_icon": "0px 0px 0px 0px",
+                        "width_icon": 20,
+                        "margin_icon": "0px 0px 0px 0px",
+                        "button_link": "",
+                        "border_radius": "0px 0px 0px 0px",
+                        "border": false,
+                        "border_width": "0px 0px 0px 0px",
+                        "color": "#000000",
+                        "background": "#ffffff",
+                        "border_color": "#ffffff",
+                        "color_hover": "#ffffff",
+                        "background_hover": "#000000",
+                        "border_color_hover": "#000000",
+                        "font_size": 14,
+                        "line_height": 40,
+                        "letter_spacing": 0,
+                        "font_weight": "400",
+                        "padding": "0 30px",
+                        "margin": "",
+                        "align": "left",
+                        "font_size_mobi": 14,
+                        "font_icon_mobi": 14,
+                        "margin_icon_mobi": 0,
+                        "line_height_mobi": 40,
+                        "letter_spacing_mobi": 0,
+                        "border_radius_mobi": "0px 0px 0px 0px",
+                        "border_mobi": false,
+                        "border_width_mobi": "0px 0px 0px 0px",
+                        "color_mobi": "#000000",
+                        "background_mobi": "#ffffff",
+                        "border_color_mobi": "#ffffff",
+                        "color_hover_mobi": "#ffffff",
+                        "background_hover_mobi": "#000000",
+                        "border_color_hover_mobi": "#000000",
+                        "align_mobi": "center"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "title_nWWwYk",
+                    "button_Y8c9Yd"
+                  ]
+                }
+              },
+              "block_order": [
+                "banner_box_ki6Vjd"
+              ]
+            }
+          },
+          "block_order": [
+            "banners_box_EfXtb8"
+          ]
+        },
+        "column_7y6UTh": {
+          "type": "_column",
+          "name": "Column",
+          "settings": {
+            "width": 25,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0 15px | 0 7.5px",
+            "margin": "| | 0 0 15px",
+            "width_lap": 25,
+            "width_tab": 50,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "banners_box_eAUhp7": {
+              "type": "banners-box",
+              "name": "Banners box",
+              "settings": {
+                "image": "shopify://shop_images/2.1.jpg",
+                "url": "",
+                "border_radius_img": "0px 0px 0px 0px",
+                "padding": "",
+                "margin": "",
+                "effect": "grow"
+              },
+              "blocks": {
+                "banner_box_fjH9CW": {
+                  "type": "_banner-box",
+                  "settings": {
+                    "content_position": "absolute",
+                    "vertical_position": "bottom",
+                    "horizontal_position": "center",
+                    "text_align": "center",
+                    "background_content": "rgba(0,0,0,0)",
+                    "border_radius_content": "0px 0px 0px 0px",
+                    "padding": "0px 15px 45px",
+                    "margin": ""
+                  },
+                  "blocks": {
+                    "title_YKeQrP": {
+                      "type": "title",
+                      "name": "Title",
+                      "settings": {
+                        "heading_size": "h3",
+                        "title": "Bracelets",
+                        "font": "--font-family-second",
+                        "text_transform": "uppercase",
+                        "color": "#ffffff",
+                        "font_size": 28,
+                        "line_height": 34,
+                        "letter_spacing": 2,
+                        "font_weight": "600",
+                        "align": "center",
+                        "padding": "",
+                        "margin": "0px 0px 0px 0px",
+                        "color_mobi": "#ffffff",
+                        "font_size_mobi": 25,
+                        "line_height_mobi": 30,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "center"
+                      },
+                      "blocks": {}
+                    },
+                    "button_t47p86": {
+                      "type": "button",
+                      "name": "Button",
+                      "disabled": true,
+                      "settings": {
+                        "title": "Shop now",
+                        "layout": "layout-1",
+                        "font": "--font-family-base",
+                        "text_transform": "capitalize",
+                        "icon_title": "",
+                        "font_icon": 14,
+                        "color_icon": "#000000",
+                        "background_icon": "#ffffff",
+                        "color_icon_hover": "#000000",
+                        "background_icon_hover": "#ffffff",
+                        "pos_icon": 0,
+                        "border_radius_icon": "0px 0px 0px 0px",
+                        "width_icon": 20,
+                        "margin_icon": "0px 0px 0px 0px",
+                        "button_link": "",
+                        "border_radius": "0px 0px 0px 0px",
+                        "border": false,
+                        "border_width": "0px 0px 0px 0px",
+                        "color": "#000000",
+                        "background": "#ffffff",
+                        "border_color": "#ffffff",
+                        "color_hover": "#ffffff",
+                        "background_hover": "#000000",
+                        "border_color_hover": "#000000",
+                        "font_size": 14,
+                        "line_height": 40,
+                        "letter_spacing": 0,
+                        "font_weight": "400",
+                        "padding": "0 30px",
+                        "margin": "",
+                        "align": "center",
+                        "font_size_mobi": 14,
+                        "font_icon_mobi": 14,
+                        "margin_icon_mobi": 0,
+                        "line_height_mobi": 40,
+                        "letter_spacing_mobi": 0,
+                        "border_radius_mobi": "0px 0px 0px 0px",
+                        "border_mobi": false,
+                        "border_width_mobi": "0px 0px 0px 0px",
+                        "color_mobi": "#000000",
+                        "background_mobi": "#ffffff",
+                        "border_color_mobi": "#ffffff",
+                        "color_hover_mobi": "#ffffff",
+                        "background_hover_mobi": "#000000",
+                        "border_color_hover_mobi": "#ffffff",
+                        "align_mobi": "center"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "title_YKeQrP",
+                    "button_t47p86"
+                  ]
+                }
+              },
+              "block_order": [
+                "banner_box_fjH9CW"
+              ]
+            }
+          },
+          "block_order": [
+            "banners_box_eAUhp7"
+          ]
+        }
+      },
+      "block_order": [
+        "column_zUHNWt",
+        "column_7W3PpE",
+        "column_7V7FNA",
+        "column_7y6UTh"
+      ],
+      "name": "四大品类",
+      "settings": {
+        "max_width": "1790px",
+        "fullwidth": false,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    },
+    "featured_product_tabs_qrXV6E": {
+      "type": "featured-product-tabs",
+      "blocks": {
+        "tab_XKJeJD": {
+          "type": "tab",
+          "settings": {
+            "heading": "TRENDING PIECES",
+            "collection": "jewellery-sets",
+            "limit": 10
+          }
+        },
+        "tab_nQtbbh": {
+          "type": "tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Best sellers",
+            "collection": "frontpage",
+            "limit": 5
+          }
+        },
+        "tab_TNDzCG": {
+          "type": "tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Featured products",
+            "collection": "earings",
+            "limit": 5
+          }
+        },
+        "css_qDnfgn": {
+          "type": "css",
+          "settings": {
+            "align": "center",
+            "color_heading": "#000000",
+            "color_heading_active": "#000000",
+            "background_hover": "#f0f0f0",
+            "font_weight_heading_active": "400",
+            "font_size_heading": 20,
+            "line_height_heading": 70,
+            "letter_spacing_heading": 0,
+            "font_weight_heading": "400",
+            "background_heading": "#ffffff",
+            "border_radius": "0px 0px 0px 0px",
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "border_color_hover": "#ffffff",
+            "font": "--font-family-second",
+            "text_transform": "uppercase",
+            "padding_heading": "0px 20px",
+            "align_mobi": "left",
+            "font_size_heading_mobi": 14,
+            "line_height_heading_mobi": 40,
+            "padding_heading_mobi": "0px 20px"
+          }
+        }
+      },
+      "block_order": [
+        "tab_XKJeJD",
+        "tab_nQtbbh",
+        "tab_TNDzCG",
+        "css_qDnfgn"
+      ],
+      "custom_css": [
+        ".product-tabs__nav {display: flex !important; justify-content: center !important; margin: 42px 0 10px !important;}",
+        ".product-tabs__nav * {font-size: 34px !important; font-weight: 700 !important; letter-spacing: 0.08em !important; color: #000 !important; background: 0 !important; border: 0 !important; padding: 0 !important; text-transform: uppercase !important;}",
+        ".slick-arrow {top: -38px !important; z-index: 9 !important;}",
+        ".slick-prev {left: calc(50% - 210px) !important;}",
+        ".slick-next {right: calc(50% - 210px) !important;}"
+      ],
+      "name": "产品滚动",
+      "settings": {
+        "color": "",
+        "max_width": "1790px",
+        "fullwidth": false,
+        "padding": "",
+        "margin": "0 0 100px | | | 0 0 60px",
+        "navigation": true,
+        "pagination": false,
+        "infinite": true,
+        "autoplay": false,
+        "autoplay_speed": "10000",
+        "rows": 1,
+        "columns": 4,
+        "pergroup_columns": 1,
+        "space_columns": 30,
+        "column1440": 4,
+        "pergroup_column1440": 1,
+        "space_column1440": 30,
+        "column1": 4,
+        "pergroup_column1": 1,
+        "space_column1": 15,
+        "column2": 3,
+        "pergroup_column2": 1,
+        "space_column2": 15,
+        "column3": 1,
+        "pergroup_column3": 1,
+        "space_column3": 15,
+        "column4": 1,
+        "pergroup_column4": 1,
+        "space_column4": 15
+      }
+    },
+    "custom_liquid_U88zjJ": {
+      "type": "custom-liquid",
+      "name": "滚动横幅",
+      "settings": {
+        "custom_liquid": "<div class=\"solisita-proof-marquee\">\n  <div class=\"solisita-proof-track\">\n    <div class=\"solisita-proof-group\">\n      <p class=\"solisita-proof-item\">Life Proof</p>\n      <p class=\"solisita-proof-item\">Waterproof</p>\n      <p class=\"solisita-proof-item\">Sweat Proof</p>\n      <p class=\"solisita-proof-item\">Life Proof</p>\n      <p class=\"solisita-proof-item\">Waterproof</p>\n      <p class=\"solisita-proof-item\">Sweat Proof</p>\n    </div>\n\n    <div class=\"solisita-proof-group\">\n      <p class=\"solisita-proof-item\">Life Proof</p>\n      <p class=\"solisita-proof-item\">Waterproof</p>\n      <p class=\"solisita-proof-item\">Sweat Proof</p>\n      <p class=\"solisita-proof-item\">Life Proof</p>\n      <p class=\"solisita-proof-item\">Waterproof</p>\n      <p class=\"solisita-proof-item\">Sweat Proof</p>\n    </div>\n  </div>\n</div>"
+      }
+    },
+    "featured_custom_section_beVixK": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_wxiPiM": {
+          "type": "_column",
+          "settings": {
+            "width": 100,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "line_nDzktK": {
+              "type": "line",
+              "name": "Line",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "width": "",
+                "height": 1,
+                "background": "#ededed",
+                "bg_opacity": 1,
+                "margin_line": "0px auto"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "line_nDzktK"
+          ]
+        }
+      },
+      "block_order": [
+        "column_wxiPiM"
+      ],
+      "disabled": true,
+      "name": "Custom Section",
+      "settings": {
+        "max_width": "",
+        "fullwidth": true,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "",
+        "margin": "",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    },
+    "featured_custom_section_4aPqd7": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_zriqJV": {
+          "type": "_column",
+          "settings": {
+            "width": 100,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "marquee_PJmz86": {
+              "type": "marquee",
+              "name": "Marquee",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "marquee_content": true,
+                "marquee_loop": 5,
+                "marquee_time": 20
+              },
+              "blocks": {
+                "text_block_wXENmY": {
+                  "type": "text-block",
+                  "settings": {
+                    "title": "Store Without Appointment<i class=\"icon-star\"></i>Expert Advice<i class=\"icon-star\"></i>Juwelier Solisita<i class=\"icon-star\"></i>Your Sparkle is waiting<i class=\"icon-star\"></i>",
+                    "font": "--font-family-second",
+                    "text_transform": "none",
+                    "font_style": "normal",
+                    "color": "#000000",
+                    "font_size": 48,
+                    "line_height": 50,
+                    "letter_spacing": 0,
+                    "font_weight": "400",
+                    "align": "left",
+                    "padding": "",
+                    "margin": "",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 30,
+                    "line_height_mobi": 32,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_block_wXENmY"
+              ]
+            }
+          },
+          "block_order": [
+            "marquee_PJmz86"
+          ]
+        }
+      },
+      "block_order": [
+        "column_zriqJV"
+      ],
+      "disabled": true,
+      "name": "Custom Section",
+      "settings": {
+        "max_width": "",
+        "fullwidth": true,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "",
+        "margin": "95px 0 | | | 60px 0",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    },
+    "featured_custom_section_jjnP7x": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_UMEhrh": {
+          "type": "_column",
+          "settings": {
+            "width": 50,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0px 20px 0px 0px",
+            "margin": "",
+            "width_lap": 50,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "image_xde8qA": {
+              "type": "image",
+              "name": "Image",
+              "settings": {
+                "image": "shopify://shop_images/waterproof-everyday-jewellery-collection-solisita.png",
+                "url": "",
+                "padding": "",
+                "margin": "",
+                "size": "",
+                "width": true,
+                "image_size": "cover",
+                "image_pos": "center center",
+                "align": "left",
+                "border_radius": "0px 0px 0px 0px",
+                "border": false,
+                "border_width": "0px 0px 0px 0px",
+                "border_color": "#ffffff",
+                "effect": "none",
+                "align_mobi": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_xde8qA"
+          ]
+        },
+        "column_y6gMMz": {
+          "type": "_column",
+          "name": "Column",
+          "settings": {
+            "width": 50,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0px 100px 0px 90px",
+            "margin": "",
+            "width_lap": 50,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "title_TiPfJc": {
+              "type": "title",
+              "name": "Title",
+              "settings": {
+                "heading_size": "h3",
+                "title": "Jewellery That Keeps Up",
+                "font": "--font-family-second",
+                "text_transform": "none",
+                "color": "#000000",
+                "font_size": 36,
+                "line_height": 44,
+                "letter_spacing": 0,
+                "font_weight": "500",
+                "align": "left",
+                "padding": "",
+                "margin": "0px 0px 18px 0px",
+                "color_mobi": "#000000",
+                "font_size_mobi": 20,
+                "line_height_mobi": 25,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "left"
+              },
+              "blocks": {}
+            },
+            "text_block_VCEQH9": {
+              "type": "text-block",
+              "name": "Text block",
+              "settings": {
+                "title": "Designed for everyday moments, our waterproof and tarnish-resistant pieces are made to stay with you — through busy days, slow weekends and everything in between.",
+                "font": "--font-family-base",
+                "text_transform": "none",
+                "font_style": "normal",
+                "color": "#333333",
+                "font_size": 15,
+                "line_height": 25,
+                "letter_spacing": 0,
+                "font_weight": "400",
+                "align": "left",
+                "padding": "",
+                "margin": "0px 0px 28px 0px",
+                "color_mobi": "#000000",
+                "font_size_mobi": 14,
+                "line_height_mobi": 24,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "left"
+              },
+              "blocks": {}
+            },
+            "button_4rx6jt": {
+              "type": "button",
+              "name": "Button",
+              "settings": {
+                "title": "SHOP WATERPROOF",
+                "layout": "layout-1",
+                "font": "--font-family-base",
+                "text_transform": "uppercase",
+                "icon_title": "",
+                "font_icon": 14,
+                "color_icon": "#000000",
+                "background_icon": "#ffffff",
+                "color_icon_hover": "#000000",
+                "background_icon_hover": "#ffffff",
+                "pos_icon": 0,
+                "border_radius_icon": "0px 0px 0px 0px",
+                "width_icon": 20,
+                "margin_icon": "0px 0px 0px 0px",
+                "button_link": "/collections/waterproof",
+                "border_radius": "0px 0px 0px 0px",
+                "border": true,
+                "border_width": "1px 1px 1px 1px",
+                "color": "#ffffff",
+                "background": "#ca3800",
+                "border_color": "#ca3800",
+                "color_hover": "#ffffff",
+                "background_hover": "#000000",
+                "border_color_hover": "#000000",
+                "font_size": 12,
+                "line_height": 42,
+                "letter_spacing": 1,
+                "font_weight": "600",
+                "padding": "0px 30px 0px 30px",
+                "margin": "",
+                "align": "left",
+                "font_size_mobi": 14,
+                "font_icon_mobi": 14,
+                "margin_icon_mobi": 0,
+                "line_height_mobi": 20,
+                "letter_spacing_mobi": 0,
+                "border_radius_mobi": "0px 0px 0px 0px",
+                "border_mobi": false,
+                "border_width_mobi": "0px 0px 0px 0px",
+                "color_mobi": "#ffffff",
+                "background_mobi": "#ed5d43",
+                "border_color_mobi": "#ffffff",
+                "color_hover_mobi": "#ffffff",
+                "background_hover_mobi": "#ed5d43",
+                "border_color_hover_mobi": "#ffffff",
+                "align_mobi": "left"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title_TiPfJc",
+            "text_block_VCEQH9",
+            "button_4rx6jt"
+          ]
+        }
+      },
+      "block_order": [
+        "column_UMEhrh",
+        "column_y6gMMz"
+      ],
+      "name": "主题卖点①",
+      "settings": {
+        "max_width": "1440px",
+        "fullwidth": false,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "70px 40px 70px 40px",
+        "margin": "",
+        "vertical_align": "middle",
+        "horizontal_align": "center"
+      }
+    },
+    "featured_custom_section_AkdbTN": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_eYhTH3": {
+          "type": "_column",
+          "name": "Column",
+          "settings": {
+            "width": 50,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0px 100px 0px 90px",
+            "margin": "",
+            "width_lap": 50,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "title_txb4A7": {
+              "type": "title",
+              "name": "Title",
+              "settings": {
+                "heading_size": "h3",
+                "title": "Gift-ready, Always",
+                "font": "--font-family-second",
+                "text_transform": "none",
+                "color": "#000000",
+                "font_size": 36,
+                "line_height": 44,
+                "letter_spacing": 0,
+                "font_weight": "500",
+                "align": "left",
+                "padding": "",
+                "margin": "0px 0px 18px 0px",
+                "color_mobi": "#000000",
+                "font_size_mobi": 20,
+                "line_height_mobi": 25,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "left"
+              },
+              "blocks": {}
+            },
+            "text_block_KYrXWA": {
+              "type": "text-block",
+              "name": "Text block",
+              "settings": {
+                "title": "Thoughtful pieces made to feel special from the moment they arrive — perfect for birthdays, little celebrations and everyday surprises.",
+                "font": "--font-family-base",
+                "text_transform": "none",
+                "font_style": "normal",
+                "color": "#333333",
+                "font_size": 15,
+                "line_height": 25,
+                "letter_spacing": 0,
+                "font_weight": "400",
+                "align": "left",
+                "padding": "",
+                "margin": "0px 0px 28px 0px",
+                "color_mobi": "#000000",
+                "font_size_mobi": 14,
+                "line_height_mobi": 24,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "left"
+              },
+              "blocks": {}
+            },
+            "button_wfGqiB": {
+              "type": "button",
+              "name": "Button",
+              "settings": {
+                "title": "SHOP GIFTS",
+                "layout": "layout-1",
+                "font": "--font-family-base",
+                "text_transform": "uppercase",
+                "icon_title": "",
+                "font_icon": 14,
+                "color_icon": "#000000",
+                "background_icon": "#ffffff",
+                "color_icon_hover": "#000000",
+                "background_icon_hover": "#ffffff",
+                "pos_icon": 0,
+                "border_radius_icon": "0px 0px 0px 0px",
+                "width_icon": 20,
+                "margin_icon": "0px 0px 0px 0px",
+                "button_link": "/collections/gifts",
+                "border_radius": "0px 0px 0px 0px",
+                "border": true,
+                "border_width": "1px 1px 1px 1px",
+                "color": "#ffffff",
+                "background": "#ca3800",
+                "border_color": "#ca3800",
+                "color_hover": "#ffffff",
+                "background_hover": "#000000",
+                "border_color_hover": "#000000",
+                "font_size": 12,
+                "line_height": 42,
+                "letter_spacing": 1,
+                "font_weight": "600",
+                "padding": "0px 30px 0px 30px",
+                "margin": "",
+                "align": "left",
+                "font_size_mobi": 14,
+                "font_icon_mobi": 14,
+                "margin_icon_mobi": 0,
+                "line_height_mobi": 20,
+                "letter_spacing_mobi": 0,
+                "border_radius_mobi": "0px 0px 0px 0px",
+                "border_mobi": false,
+                "border_width_mobi": "0px 0px 0px 0px",
+                "color_mobi": "#ffffff",
+                "background_mobi": "#ed5d43",
+                "border_color_mobi": "#ffffff",
+                "color_hover_mobi": "#ffffff",
+                "background_hover_mobi": "#ed5d43",
+                "border_color_hover_mobi": "#ffffff",
+                "align_mobi": "left"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title_txb4A7",
+            "text_block_KYrXWA",
+            "button_wfGqiB"
+          ]
+        },
+        "column_RQee44": {
+          "type": "_column",
+          "settings": {
+            "width": 50,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0px 20px 0px 0px",
+            "margin": "",
+            "width_lap": 50,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "image_eezJPz": {
+              "type": "image",
+              "name": "Image",
+              "settings": {
+                "image": "shopify://shop_images/solisita-matte-gold-butterfly-pearl-asymmetrical-set-mixed-link-close-up.png",
+                "url": "",
+                "padding": "",
+                "margin": "",
+                "size": "",
+                "width": true,
+                "image_size": "cover",
+                "image_pos": "center center",
+                "align": "left",
+                "border_radius": "0px 0px 0px 0px",
+                "border": false,
+                "border_width": "0px 0px 0px 0px",
+                "border_color": "#ffffff",
+                "effect": "none",
+                "align_mobi": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_eezJPz"
+          ]
+        }
+      },
+      "block_order": [
+        "column_eYhTH3",
+        "column_RQee44"
+      ],
+      "name": "主题卖点②",
+      "settings": {
+        "max_width": "1440px",
+        "fullwidth": false,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "70px 40px 70px 40px",
+        "margin": "",
+        "vertical_align": "middle",
+        "horizontal_align": "center"
+      }
+    },
+    "featured_lookbook_simple_8EQBk7": {
+      "type": "featured-lookbook-simple",
+      "blocks": {
+        "image_yQRYCf": {
+          "type": "image",
+          "settings": {
+            "title": "look-1",
+            "image": "shopify://shop_images/11_deec5286-0ede-4841-b859-22df229a0ce0.jpg"
+          }
+        },
+        "item_zEbrdg": {
+          "type": "item",
+          "settings": {
+            "name_pin": "look-1",
+            "product": "gold-crystal-teardrop-halo-ring",
+            "display": "top-left",
+            "top": 72,
+            "left": 44
+          }
+        },
+        "item_wHGWYd": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "name_pin": "look-1",
+            "product": "18k-gold-vermeil-no-rain",
+            "display": "top-left",
+            "top": 46,
+            "left": 35
+          }
+        },
+        "item_JytMXe": {
+          "type": "item",
+          "settings": {
+            "name_pin": "look-1",
+            "product": "gold-enamel-fish-sun-charm-bracelet",
+            "display": "top-left",
+            "top": 62,
+            "left": 68
+          }
+        },
+        "css_JrTGKL": {
+          "type": "css",
+          "settings": {
+            "text_align": "left",
+            "color_title": "#000000",
+            "font_size_title": 36,
+            "line_height_title": 44,
+            "letter_spacing_title": 0,
+            "font_weight_title": "500",
+            "margin_title": "0px 0px 14px 0px",
+            "color_desc": "#111111",
+            "font_size_desc": 15,
+            "line_height_desc": 24,
+            "font_weight_desc": "500",
+            "margin_desc": "0px 0px 30px 0px",
+            "font_icon": 14,
+            "pos_icon": 0,
+            "margin_icon": "0px 0px 0px 0px",
+            "border": true,
+            "border_radius": "0px 0px 0px 0px",
+            "border_width": 1,
+            "color": "#ffffff",
+            "background": "#ca3800",
+            "border_color": "#ca3800",
+            "color_hover": "#ffffff",
+            "background_hover": "#000000",
+            "border_color_hover": "#000000",
+            "font_size": 12,
+            "line_height": 42,
+            "letter_spacing": 1,
+            "font_weight": "600",
+            "margin": "0px 0px 0px 0px",
+            "padding": "0px 30px 0px 30px",
+            "font_size_title_mobi": 25,
+            "line_height_title_mobi": 30,
+            "margin_title_mobi": "0px 0px 10px 0px",
+            "font_size_desc_mobi": 16,
+            "line_height_desc_mobi": 24,
+            "margin_desc_mobi": "0px 0px 20px 0px",
+            "font_size_mobi": 14,
+            "line_height_mobi": 21,
+            "letter_spacing_mobi": 0,
+            "font_icon_mobi": 14,
+            "margin_icon_mobi": 0,
+            "border_mobi": false,
+            "border_radius_mobi": "0px 0px 0px 0px",
+            "border_width_mobi": 0,
+            "color_mobi": "#ffffff",
+            "background_mobi": "rgba(0,0,0,0)",
+            "border_color_mobi": "#ffffff",
+            "color_hover_mobi": "#ffffff",
+            "background_hover_mobi": "rgba(0,0,0,0)",
+            "border_color_hover_mobi": "#ffffff",
+            "margin_mobi": "0px 0px 0px 0px",
+            "padding_mobi": "0px 0px 0px 0px"
+          }
+        }
+      },
+      "block_order": [
+        "image_yQRYCf",
+        "item_zEbrdg",
+        "item_wHGWYd",
+        "item_JytMXe",
+        "css_JrTGKL"
+      ],
+      "custom_css": [],
+      "name": "产品大图，点点点那个",
+      "settings": {
+        "max_width": "1550px",
+        "fullwidth": true,
+        "padding": "0px 40px 0px 40px",
+        "margin": "70px 0px 70px 0px",
+        "title": "Styled for Every Day",
+        "desc": "Curated looks made for repeat wear — from simple stacks to gift-ready finishing touches",
+        "button": "SHOP THE LOOK",
+        "icon_title": "",
+        "url": "/collections/bestsellers"
+      }
+    },
+    "featured_custom_section_cUUkVG": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_RETrMc": {
+          "type": "_column",
+          "settings": {
+            "width": 100,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0 15px | 0 7.5px",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "title_U74fwF": {
+              "type": "title",
+              "name": "Title",
+              "settings": {
+                "heading_size": "h3",
+                "title": "The Holiday Gift Guide",
+                "font": "--font-family-second",
+                "text_transform": "none",
+                "color": "#000000",
+                "font_size": 45,
+                "line_height": 45,
+                "letter_spacing": 0,
+                "font_weight": "400",
+                "align": "center",
+                "padding": "",
+                "margin": "0 0 40px",
+                "color_mobi": "#000000",
+                "font_size_mobi": 25,
+                "line_height_mobi": 30,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "center"
+              },
+              "blocks": {}
+            },
+            "product_video_eN7RYX": {
+              "type": "product-video",
+              "name": "Product video",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "columns": 4,
+                "pergroup_columns": 1,
+                "space_columns": 30,
+                "column1440": 4,
+                "pergroup_column1440": 1,
+                "space_column1440": 30,
+                "column1": 3,
+                "pergroup_column1": 1,
+                "space_column1": 15,
+                "column2": 2,
+                "pergroup_column2": 1,
+                "space_column2": 15,
+                "column3": 1,
+                "pergroup_column3": 1,
+                "space_column3": 15,
+                "column4": 1,
+                "pergroup_column4": 1,
+                "space_column4": 15
+              },
+              "blocks": {
+                "product_video_NmjwJ4": {
+                  "type": "_product-video",
+                  "name": "Video Product",
+                  "settings": {
+                    "product": "vermeil-entwined-with-you",
+                    "padding": "",
+                    "margin": ""
+                  },
+                  "blocks": {}
+                },
+                "product_video_RTxURy": {
+                  "type": "_product-video",
+                  "name": "Video Product",
+                  "settings": {
+                    "product": "18k-gold-vermeil-lotus-birthstone",
+                    "padding": "",
+                    "margin": ""
+                  },
+                  "blocks": {}
+                },
+                "product_video_rhXTxt": {
+                  "type": "_product-video",
+                  "name": "Video Product",
+                  "settings": {
+                    "product": "18k-gold-vermeil-no-rain",
+                    "padding": "",
+                    "margin": ""
+                  },
+                  "blocks": {}
+                },
+                "product_video_XbDXC6": {
+                  "type": "_product-video",
+                  "name": "Video Product",
+                  "settings": {
+                    "product": "vermeil-awaken-necklace",
+                    "padding": "",
+                    "margin": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "product_video_NmjwJ4",
+                "product_video_RTxURy",
+                "product_video_rhXTxt",
+                "product_video_XbDXC6"
+              ]
+            }
+          },
+          "block_order": [
+            "title_U74fwF",
+            "product_video_eN7RYX"
+          ]
+        }
+      },
+      "block_order": [
+        "column_RETrMc"
+      ],
+      "disabled": true,
+      "name": "Custom Section",
+      "settings": {
+        "max_width": "1790px",
+        "fullwidth": false,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "",
+        "margin": "0 0 95px | | | 0 0 60px",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    },
+    "featured_custom_section_m6EnaJ": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "judge_me_reviews_testimonials_carousel_PBdmdm": {
+          "type": "shopify://apps/judge-me-reviews/blocks/testimonials_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "star_rating": "5_star",
+            "max_reviews": 12,
+            "quote_marks_size": "small",
+            "product_name_text_size": "small",
+            "verified_badge_style": "icon",
+            "card_height": "medium",
+            "text_size": "medium",
+            "stars_size": "medium",
+            "arrows_position": "bottom",
+            "max_width": 1300,
+            "corner_styling": "soft",
+            "quote_marks_style": "serif",
+            "card_color": "#ffffff",
+            "stars_and_quote_marks_color": "#ca3800",
+            "text_color": "#000000",
+            "arrows_color": "#000000",
+            "show_border": true,
+            "border_color": "#ca3800",
+            "show_drop_shadow": false,
+            "transition_speed": 5,
+            "header_text": "Loved by Everyday Jewellery Wearers",
+            "show_average_rating": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_testimonials_carousel_PBdmdm"
+      ],
+      "name": "评价",
+      "settings": {
+        "max_width": "1470px",
+        "fullwidth": false,
+        "background_color": "#F8F3ED",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "70px 0px 70px 0px",
+        "margin": "0px 0px 0px 0px",
+        "vertical_align": "top",
+        "horizontal_align": "center"
+      }
+    },
+    "featured_custom_section_T4df7A": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_a7pdD6": {
+          "type": "_column",
+          "settings": {
+            "width": 100,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0px 0px 0px 0px",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "title_yY3paH": {
+              "type": "title",
+              "name": "Title",
+              "settings": {
+                "heading_size": "h3",
+                "title": "JEWELLERY NOTES",
+                "font": "--font-family-second",
+                "text_transform": "uppercase",
+                "color": "#000000",
+                "font_size": 34,
+                "line_height": 42,
+                "letter_spacing": 2,
+                "font_weight": "400",
+                "align": "center",
+                "padding": "",
+                "margin": "0px 0px 0px 0px",
+                "color_mobi": "#000000",
+                "font_size_mobi": 25,
+                "line_height_mobi": 30,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "center"
+              },
+              "blocks": {}
+            },
+            "blog_post_NTPxNh": {
+              "type": "blog-post",
+              "name": "Blog post",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "blog": "news",
+                "post_limit": 3,
+                "blog_show_date": true,
+                "blog_show_image": true,
+                "show_category": false,
+                "blog_show_author": false,
+                "show_comments": false,
+                "show_button": true,
+                "blog_show_excerpt": true,
+                "lenght_excerpt": 10,
+                "navigation": true,
+                "infinite": true,
+                "autoplay": false,
+                "autoplay_speed": "10000",
+                "rows": 1,
+                "columns": 3,
+                "pergroup_columns": 1,
+                "space_columns": 30,
+                "column1440": 3,
+                "pergroup_column1440": 1,
+                "space_column1440": 30,
+                "column1": 2,
+                "pergroup_column1": 1,
+                "space_column1": 15,
+                "column2": 2,
+                "pergroup_column2": 1,
+                "space_column2": 15,
+                "column3": 1,
+                "pergroup_column3": 1,
+                "space_column3": 15,
+                "column4": 1,
+                "pergroup_column4": 1,
+                "space_column4": 15
+              },
+              "blocks": {
+                "custom-blog-post": {
+                  "type": "custom-blog-post",
+                  "static": true,
+                  "settings": {
+                    "text_align": "center",
+                    "color_category": "#000000",
+                    "font_size_category": 14,
+                    "line_height_category": 20,
+                    "letter_spacing_category": 0,
+                    "margin_category": "0px 0px 0px 0px",
+                    "color_title": "#000000",
+                    "font_size_title": 20,
+                    "line_height_title": 28,
+                    "letter_spacing_title": 0,
+                    "font_weight_title": "500",
+                    "margin_title": "0px 0px 12px 0px",
+                    "color_desc": "#555555",
+                    "font_size_desc": 14,
+                    "line_height_desc": 22,
+                    "margin_desc": "0px 0px 0px 0px",
+                    "color_date": "#7e7e84",
+                    "font_size_date": 16,
+                    "line_height_date": 24,
+                    "letter_spacing_date": 0,
+                    "margin_date": "0px 0px 0px 0px",
+                    "border": true,
+                    "border_width": 1,
+                    "bg_button": "#ca3800",
+                    "color_button": "#ffffff",
+                    "border_color_button": "#ca3800",
+                    "bg_hover_button": "#000000",
+                    "color_hover_button": "#ffffff",
+                    "border_color_hover_button": "#000000",
+                    "border_radius": "0px 0px 0px 0px",
+                    "font_size_button": 12,
+                    "line_height_button": 42,
+                    "letter_spacing_button": 1,
+                    "font_weight_button": "600",
+                    "padding_button": "0px 26px 0px 26px",
+                    "font_size_category_mobi": 16,
+                    "line_height_category_mobi": 20,
+                    "margin_category_mobi": "0px 0px 0px 0px",
+                    "font_size_title_mobi": 22,
+                    "line_height_title_mobi": 25,
+                    "margin_title_mobi": "0px 0px 10px 0px",
+                    "font_size_desc_mobi": 16,
+                    "line_height_desc_mobi": 20,
+                    "margin_desc_mobi": "0px 0px 0px 0px",
+                    "font_size_date_mobi": 16,
+                    "line_height_date_mobi": 20,
+                    "margin_date_mobi": "0px 0px 0px 0px",
+                    "border_radius_mobi": "0px 0px 0px 0px",
+                    "border_width_mobi": 0,
+                    "font_size_button_mobi": 16,
+                    "line_height_button_mobi": 22,
+                    "padding_button_mobi": "0px 0px 0px 0px"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            }
+          },
+          "block_order": [
+            "title_yY3paH",
+            "blog_post_NTPxNh"
+          ]
+        }
+      },
+      "block_order": [
+        "column_a7pdD6"
+      ],
+      "custom_css": [
+        "h3 {font-size: 34px !important; line-height: 42px !important; font-weight: 700 !important; letter-spacing: 0.08em !important; color: #000 !important; text-transform: uppercase !important; text-align: center !important; background: 0 !important; border: 0 !important; padding: 0 !important; margin: 0 0 18px !important;}"
+      ],
+      "name": "Blog",
+      "settings": {
+        "max_width": "1470px",
+        "fullwidth": false,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "70px 40px 70px 40px",
+        "margin": "0px 0px 0px 0px",
+        "vertical_align": "top",
+        "horizontal_align": "center"
+      }
+    },
+    "custom_liquid_YtEnxb": {
+      "type": "custom-liquid",
+      "name": "FAQ",
+      "settings": {
+        "custom_liquid": "<section class=\"solisita-accordion\">\n  <div class=\"solisita-accordion__inner\">\n\n    <details class=\"solisita-accordion__item\">\n      <summary><span>High-Quality Jewellery</span><span class=\"solisita-accordion__icon\"></span></summary>\n      <div class=\"solisita-accordion__content\">\n        <p>Our jewellery designs are made for <strong>everyday moments</strong> and inspired by the way women wear their favourite pieces — from simple daily styling to meaningful finishing touches. Solisita creates <strong>high-quality jewellery</strong> designed to feel effortless, versatile and easy to wear again and again.</p>\n        <p><strong>Designed for everyday wear.</strong></p>\n      </div>\n    </details>\n\n    <details class=\"solisita-accordion__item\">\n      <summary><span>Why Solisita Jewellery?</span><span class=\"solisita-accordion__icon\"></span></summary>\n      <div class=\"solisita-accordion__content\">\n        <p>Every Solisita piece is selected with care, from <strong>necklaces</strong> and <strong>earrings</strong> to <strong>rings</strong>, <strong>bracelets</strong> and <strong>gift-ready sets</strong>. We focus on jewellery that feels beautiful, wearable and easy to style, whether you are choosing something for yourself or finding a thoughtful gift.</p>\n        <p>Our <strong>waterproof</strong> and <strong>tarnish-resistant</strong> pieces are designed to keep their shine through <strong>everyday wear</strong>, so you can enjoy jewellery that works with your routine — from busy days to slower weekends.</p>\n      </div>\n    </details>\n\n    <details class=\"solisita-accordion__item\">\n      <summary><span>Jewellery Made For Everyday Styling</span><span class=\"solisita-accordion__icon\"></span></summary>\n      <div class=\"solisita-accordion__content\">\n        <p>We design our collections around pieces you can reach for every day. From <strong>delicate necklaces</strong> and <strong>statement earrings</strong> to <strong>stackable rings</strong>, bracelets and <strong>jewellery sets</strong>, Solisita makes it easy to build a look that feels personal to you.</p>\n        <p>Whether you prefer simple gold tones, pearl-inspired details, colourful accents or <strong>gift-ready finishing touches</strong>, our jewellery is made to complement your wardrobe and bring a little shine to everyday life.</p>\n      </div>\n    </details>\n\n    <details class=\"solisita-accordion__item\">\n      <summary><span>Don’t be shy, say hello!</span><span class=\"solisita-accordion__icon\"></span></summary>\n      <div class=\"solisita-accordion__content\">\n        <p>If you need help with your order, product details or choosing the right piece, please get in touch with us through our <strong>contact page</strong>. We are always happy to help with questions about <strong>jewellery care</strong>, <strong>delivery</strong>, <strong>gifting</strong> and <strong>styling</strong>.</p>\n        <p>You can also follow Solisita for new arrivals, styling notes and everyday jewellery inspiration.</p>\n      </div>\n    </details>\n\n  </div>\n</section>\n\n"
+      }
+    },
+    "featured_custom_section_8VBrRj": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_gWH9NJ": {
+          "type": "_column",
+          "settings": {
+            "width": 100,
+            "background_fixed": false,
+            "background_size": "cover",
+            "background_pos": "center center",
+            "padding": "0 15px | 0 7.5px",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "width_mobi": 100,
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "box_shadow": "none",
+            "border_radius": "0px 0px 0px 0px"
+          },
+          "blocks": {
+            "title_3DR8ie": {
+              "type": "title",
+              "name": "Title",
+              "settings": {
+                "heading_size": "h3",
+                "title": "Get Inspired",
+                "font": "--font-family-second",
+                "text_transform": "capitalize",
+                "color": "#000000",
+                "font_size": 45,
+                "line_height": 45,
+                "letter_spacing": 0,
+                "font_weight": "400",
+                "align": "center",
+                "padding": "",
+                "margin": "0",
+                "color_mobi": "#000000",
+                "font_size_mobi": 25,
+                "line_height_mobi": 30,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title_3DR8ie"
+          ]
+        }
+      },
+      "block_order": [
+        "column_gWH9NJ"
+      ],
+      "disabled": true,
+      "name": "Custom Section",
+      "settings": {
+        "max_width": "1470px",
+        "fullwidth": false,
+        "background_color": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "padding": "",
+        "margin": "0 0 40px",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    },
+    "featured_instagram_shop_dHTahj": {
+      "type": "featured-instagram-shop",
+      "blocks": {
+        "image_Yb3pQG": {
+          "type": "image",
+          "settings": {
+            "name": "",
+            "url_lookbook": "#"
+          }
+        },
+        "image_cMb7xU": {
+          "type": "image",
+          "settings": {
+            "name": "",
+            "url_lookbook": "#"
+          }
+        },
+        "image_p9ejTP": {
+          "type": "image",
+          "settings": {
+            "name": "",
+            "url_lookbook": "#"
+          }
+        },
+        "image_Uq8znt": {
+          "type": "image",
+          "settings": {
+            "name": "",
+            "url_lookbook": "#"
+          }
+        },
+        "image_ejJPPY": {
+          "type": "image",
+          "settings": {
+            "name": "",
+            "url_lookbook": "#"
+          }
+        },
+        "image_yWfHdT": {
+          "type": "image",
+          "settings": {
+            "name": "",
+            "url_lookbook": "#"
+          }
+        }
+      },
+      "block_order": [
+        "image_Yb3pQG",
+        "image_cMb7xU",
+        "image_p9ejTP",
+        "image_Uq8znt",
+        "image_ejJPPY",
+        "image_yWfHdT"
+      ],
+      "disabled": true,
+      "name": "Instagram Shop",
+      "settings": {
+        "max_width": "1470px",
+        "fullwidth": false,
+        "padding": "",
+        "margin": "0 0 90px | | | 0 0 60px",
+        "margin_content": "0",
+        "padding_item": "0",
+        "margin_item": "0 0 0 0",
+        "navigation": false,
+        "infinite": true,
+        "autoplay": false,
+        "autoplay_speed": "10000",
+        "rows": 1,
+        "columns": 5,
+        "pergroup_columns": 1,
+        "space_columns": 20,
+        "column1440": 4,
+        "pergroup_column1440": 1,
+        "space_column1440": 20,
+        "column1": 4,
+        "pergroup_column1": 1,
+        "space_column1": 15,
+        "column2": 3,
+        "pergroup_column2": 1,
+        "space_column2": 15,
+        "column3": 2,
+        "pergroup_column3": 1,
+        "space_column3": 15,
+        "column4": 2,
+        "pergroup_column4": 1,
+        "space_column4": 15
+      }
+    }
+  },
+  "order": [
+    "slidershow_wFjjfz",
+    "featured_custom_section_fV7Xki",
+    "featured_custom_section_qGn94f",
+    "featured_product_tabs_qrXV6E",
+    "custom_liquid_U88zjJ",
+    "featured_custom_section_beVixK",
+    "featured_custom_section_4aPqd7",
+    "featured_custom_section_jjnP7x",
+    "featured_custom_section_AkdbTN",
+    "featured_lookbook_simple_8EQBk7",
+    "featured_custom_section_cUUkVG",
+    "featured_custom_section_m6EnaJ",
+    "featured_custom_section_T4df7A",
+    "custom_liquid_YtEnxb",
+    "featured_custom_section_8VBrRj",
+    "featured_instagram_shop_dHTahj"
+  ]
+}

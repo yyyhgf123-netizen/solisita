@@ -1,0 +1,70 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "search-breadcrumb",
+      "settings": {
+        "enable": true,
+        "bgimage": false
+      }
+    },
+    "main": {
+      "type": "main-search",
+      "blocks": {
+        "blog-sidebar-search": {
+          "type": "blog-sidebar-search",
+          "static": true,
+          "settings": {
+            "search_enable": true,
+            "categories_enable": true,
+            "categories_title": "Categories",
+            "menu_categories": "sidebar-blog",
+            "relatedarticles_enable": true,
+            "relatedarticles_title": "Related Articles",
+            "relatedarticles_limit": 6
+          },
+          "blocks": {}
+        },
+        "blog-template-search": {
+          "type": "blog-template-search",
+          "static": true,
+          "settings": {
+            "limit": 5
+          },
+          "blocks": {}
+        },
+        "search-product": {
+          "type": "search-product",
+          "static": true,
+          "settings": {
+            "page_item": 12,
+            "shop_full": false,
+            "layout_filter": "sidebar_1",
+            "sidebar_enable": true,
+            "style_view_items": "viewmore",
+            "count_items": 5,
+            "views_enable": true,
+            "select_columns": "grid-3",
+            "select_columns_sm": "grid-sm-3",
+            "select_columns_xs": "grid-xs-2",
+            "sortby_enable": true
+          },
+          "blocks": {}
+        }
+      },
+      "settings": {}
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main"
+  ]
+}

@@ -1,0 +1,268 @@
+{%- assign nav = block.settings.navigation -%}
+{%- assign infinite = block.settings.infinite -%}
+{%- assign autoplay = block.settings.autoplay -%}
+{%- assign autoplay_speed = block.settings.autoplay_speed | escape -%}
+{%- assign columns = block.settings.columns -%}
+{%- assign column1440 = block.settings.column1440 -%}
+{%- assign column1 = block.settings.column1 -%}
+{%- assign column2 = block.settings.column2 -%}
+{%- assign column3 = block.settings.column3 -%}
+{%- assign column4 = block.settings.column4 -%}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+{%- style -%}
+    #shopify-block-{{ block.id }} .bwp-widget-border-box{
+        {%- if block.settings.border -%}
+            border-width:{{ block.settings.border_width }};
+            border-color:{{ block.settings.border_color }};
+            border-style:{{ block.settings.border_style }};
+        {%- endif -%}
+        border-radius:{{ block.settings.border_radius }};
+    }
+{%- if margin[0] != blank or padding[0] != blank -%}
+	#shopify-block-{{ block.id }} .bwp-widget-border-box{
+		{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+		{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+	}
+{%- endif -%}
+{%- if margin[1] != blank or padding[1] != blank -%}
+	@media (max-width:1199px){
+		#shopify-block-{{ block.id }} .bwp-widget-border-box{
+			{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+			{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[2] != blank or padding[2] != blank -%}
+	@media (max-width:991px){
+		#shopify-block-{{ block.id }} .bwp-widget-border-box{
+			{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+			{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[3] != blank or padding[3] != blank -%}
+	@media (max-width:767px){
+		#shopify-block-{{ block.id }} .bwp-widget-border-box{
+			{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+			{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- endstyle -%}
+<div class="wpbingo-block bwp-widget-border-box wpbingo-block--{{ block.id }} {{block.settings.layout}}">
+    <div class="wpbingo-section__content bwp_slider-carousel">
+      <div class="js-carousel slick-carousel slick-carousel--brands" data-nav="{{ nav }}" data-slidesToScroll="true" data-infinite="{{ infinite }}"
+              data-autoplay="{{ autoplay }}"
+              data-autoplayspeed="{{ autoplay_speed }}"
+              data-columns="{{ columns }}"
+              data-column1440="{{ column1440 }}"
+              data-column1="{{ column1 }}"
+              data-column2="{{ column2 }}"
+              data-column3="{{ column3 }}"
+              data-column4="{{ column4 }}">
+                {% content_for "blocks" %}
+      </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Border box",
+    "blocks": [{ "type": "_border-box" },{ "type": "@app" }],
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "border",
+            "label": "Turn on border",
+            "default": false
+        },
+        {
+            "type": "text",
+            "id": "border_width",
+            "label": "Border width",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left"
+        },
+        {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border color",
+            "default": "#fff"
+        },
+        {
+            "type": "select",
+            "id": "border_style",
+            "label": "Border Style",
+            "options": [
+                {
+                    "value": "solid",
+                    "label": "Solid"
+                },
+                {
+                    "value": "dashed",
+                    "label": "Dashed"
+                },
+                {
+                    "value": "dotted",
+                    "label": "Dotted"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                },
+                {
+                    "value": "groove",
+                    "label": "Groove"
+                },
+                {
+                    "value": "outset",
+                    "label": "Outset"
+                },
+                {
+                    "value": "ridge",
+                    "label": "Ridge"
+                }
+            ],
+            "default": "solid"
+        },
+        {
+            "type": "text",
+            "id": "border_radius",
+            "label": "Border radius",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left"
+        },
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+        {
+			"type": "header",
+			"content": "Carousel Settings"
+		},
+		{
+			"type": "checkbox",
+			"id": "navigation",
+			"label": "Show navigation",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "infinite",
+			"label": "Infinite loop sliding",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"label": "Enable autoplay",
+			"default": false
+		},
+		{
+			"type": "text",
+			"id": "autoplay_speed",
+			"label": "Autoplay speed",
+			"info": "Autoplay speed in milliseconds. Type: int(ms)",
+			"default": "10000"
+		},
+		{
+			"type": "range",
+			"id": "columns",
+			"min": 1,
+			"max": 8,
+			"step": 1,
+			"label": "Number of Columns >1440px",
+			"default": 4,
+			"info": "Desktops"
+		},
+		{
+			"type": "range",
+			"id": "column1440",
+			"min": 1,
+			"max": 7,
+			"step": 1,
+			"label": "Number of Columns 1200px to 1440px",
+			"default": 4,
+			"info": "Desktops"
+		},
+		{
+			"type": "range",
+			"id": "column1",
+			"min": 1,
+			"max": 6,
+			"step": 1,
+			"label": "Number of Columns on 992px to 1199px",
+			"default": 4,
+			"info": "Desktops"
+		},
+		{
+			"type": "range",
+			"id": "column2",
+			"min": 1,
+			"max": 5,
+			"step": 1,
+			"label": "Number of Columns on 768px to 991px",
+			"default": 3,
+			"info": "Laptop"
+		},
+		{
+			"type": "range",
+			"id": "column3",
+			"min": 1,
+			"max": 5,
+			"step": 1,
+			"label": "Number of Columns on 480px to 767px",
+			"default": 1,
+			"info": "Tablets"
+		},
+		{
+			"type": "range",
+			"id": "column4",
+			"min": 1,
+			"max": 5,
+			"step": 1,
+			"label": "Number of Columns in 480px or less than",
+			"default": 1,
+			"info": "Mobile phone"
+		},
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "List style",
+            "options": [
+                {
+                    "value": "layout-1",
+                    "label": "Layout 1"
+                },
+                {
+                    "value": "layout-2",
+                    "label": "Layout 2"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Border box",
+            "blocks": [
+              {
+                  "type": "_border-box"
+              },
+              {
+                  "type": "_border-box"
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

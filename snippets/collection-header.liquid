@@ -1,0 +1,91 @@
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign total_active_values = 0
+  if results.url
+    assign results_url = results.url
+  else 
+    assign terms = results.terms | escape
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+-%}
+{%- assign select_columns 	=  settings.select_columns -%}
+{%- for filter in collection.filters -%}
+	{%- for value in filter.active_values -%}
+		{%- assign active_facets = active_facets | plus: 1 -%}
+	{%- endfor -%}
+	{%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+		{%- assign active_facets = active_facets | plus: 1 -%}
+	{%- endif -%}
+{%- endfor -%}
+<div class="page-collection-header__left">
+	<div class="product_result_count hidden-md hidden-sm hidden-xs"></div>
+	{%- if settings.sidebar_enable or settings.layout_filter == 'dropdown' -%}
+		<div class="collection-filter">
+			<button class="js-sidebar-toggle collection-filter__button{% if active_facets > 0 %} active_count{% endif %}" type="button">
+				<span class="icon"><span></span><span></span><span></span></span>{{ 'collections.sidebar.filter' | t }}{%- if active_facets > 0 -%}<span class="count"></span>{%- endif -%}
+			</button>
+		</div>
+	{%- endif -%}
+</div>
+<div class="page-collection-header__center">
+	{%- if views_enable -%}
+		{%- assign view_grid_2 = 'grid-2' -%}
+		{%- assign view_grid_3 = 'grid-3' -%}
+		{%- assign view_grid_4 = 'grid-4' -%}
+		{%- assign view_list = 'list' -%}
+		<div class="collection-view">
+			<div class="collection-view__item">
+				<a 	class="{% if select_columns == 'list' %}active {% endif %} js-change-view collection-view__btn list collection-view__btn--grid"
+					href="javascript:void(0);"
+					title="{{ 'collections.general.grid_view' | t }}"
+					data-view="{{ view_list }}">
+					<span class="row-span"><span></span><span class="line"></span></span>
+					<span class="row-span"><span></span><span class="line"></span></span>
+				</a>
+			</div>
+			<div class="collection-view__item">
+				<a 	class="{% if select_columns == 'grid-2' %}active {% endif %}two js-change-view collection-view__btn collection-view__btn--grid"
+					href="javascript:void(0);"
+					title="{{ 'collections.general.grid_view' | t }}"
+					data-view="{{ view_grid_2 }}">
+					<span class="row-span"><span></span><span></span></span><span class="row-span"><span></span><span></span></span>
+				</a>
+			</div>
+			<div class="collection-view__item">
+				<a 	class="{% if select_columns == 'grid-3' %}active {% endif %}three js-change-view collection-view__btn collection-view__btn--grid"
+					href="javascript:void(0);"
+					title="{{ 'collections.general.grid_view' | t }}"
+					data-view="{{ view_grid_3 }}">
+					<span class="row-span"><span></span><span></span><span></span></span><span class="row-span"><span></span><span></span><span></span></span>
+				</a>
+			</div>
+			<div class="collection-view__item">
+				<a 	class="{% if select_columns == 'grid-4' %}active {% endif %}four js-change-view collection-view__btn collection-view__btn--grid"
+					href="javascript:void(0);"
+					title="{{ 'collections.general.grid_view' | t }}"
+					data-view="{{ view_grid_4 }}">
+					<span class="row-span"><span></span><span></span><span></span><span></span></span><span class="row-span"><span></span><span></span><span></span><span></span></span>
+				</a>
+			</div>
+		</div>
+	{%- endif -%}
+</div>
+{%- if sortby_enable -%}
+	<div class="page-collection-header__right">
+		<div class="facet-filters sorting caption">
+			<div class="facet-filters__field">
+				<div class="select">
+					{%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+					<select name="sort_by" class="facet-filters__sort select__select caption-large" aria-describedby="a11y-refresh-page-message">
+					{%- for option in results.sort_options -%}
+					<option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+					{%- endfor -%}
+					</select>
+				</div>
+			</div>
+			<noscript>
+			<button type="submit" class="facets__button-no-js button button--tertiary">{{ 'products.facets.sort_button' | t }}</button>
+			</noscript>
+		</div>
+	</div>
+{%- endif -%}

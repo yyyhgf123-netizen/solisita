@@ -1,0 +1,46 @@
+{%- assign collection 			= collections[settings.collection_nofication] -%}
+{%- assign limit 				= settings.limit_nofication -%}
+{%- assign start_time 			= settings.start_time -%}
+{%- assign start_time_unit 		= settings.start_time_unit -%}
+{%- assign stay_time 			= settings.stay_time -%}
+{%- assign show_timeago 		= settings.show_timeago -%}
+{%- assign show_verified 		= settings.show_verified -%}
+{%- assign show_close 			= settings.show_close -%}
+{%- assign stay_time_unit 		= settings.stay_time_unit -%}
+{%- assign animation_nofication = settings.animation_nofication -%}
+{% capture array_product %}
+	{%- for product in collection.products limit:limit -%}
+		{{ product.handle | json }}
+	{%- endfor -%}
+{% endcapture %}
+{% assign image_360 = array_product | split: ' '%}
+{%- if settings.collection_nofication != blank -%}
+	<div class="sale-nofication {{ animation_nofication }} {{ settings.style_nofication }}" data-start="{{ start_time }}"
+								data-start_unit="{{ start_time_unit }}"
+								data-stay="{{ stay_time }}"
+								data-stay_unit="{{ stay_time_unit }}"
+								data-limit="{{ limit }}"
+								data-id="{{ collection.id }}"
+								data-array_product='{{ image_360 }}'
+								>
+		<div class="notification-card">
+			<div class="notification-container">
+				<div class="notification-image">
+					<a href="#"><img id="image" width="auto" height="auto" alt="" src=""></a>
+				</div>
+				<div class="notification-content">
+					<div class="notification-purchased">
+						<span class="name"></span> {{ settings.text_purchased }}
+					</div>
+					<div class="product-title"><a href="#"></a></div>
+					<div class="suggest">
+						{%- if show_timeago -%} <div class="time-suggest"></div> {%- endif -%}
+						{%- if show_verified -%} <div class="verified">{{ settings.text_verified }}</div>{%- endif -%}
+					</div>
+				</div>
+			</div>
+			{%- if show_close -%}<div class="close-notification"><i class="feather-x"></i></div>{%- endif -%}
+			<div class="scroll-notification"></div>
+		</div>
+	</div>
+{%- endif -%}

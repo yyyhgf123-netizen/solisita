@@ -1,0 +1,220 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- elsif section.settings.max_width != blank -%}
+	{%- assign container = 'bwp-container' -%}
+{%- else -%}
+	{%- assign container = 'container' -%}
+{%- endif -%}
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- assign width_container = section.settings.max_width | plus: 0 -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+{% assign margin 			= section.settings.margin | split: "|" %}
+{% assign padding 			= section.settings.padding | split: "|" %}
+
+{%- if section.settings.show_campar -%}
+	{%- style -%}
+		{%- if margin[0] != blank or padding[0] != blank -%}
+			.bwp-header-campar{
+				{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+				{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+			}
+		{%- endif -%}
+		{%- if section.settings.bg_background -%}
+			.bwp-header-campar{
+				background:{{ section.settings.bg_background }};
+			}
+		{%- endif -%}
+		{%- if section.settings.marquee_content -%}
+			.bwp-header-campar li{
+				-webkit-animation-duration: {{ section.settings.marquee_time }}s;
+				animation-duration: {{ section.settings.marquee_time }}s;
+			}
+		{%- endif -%}
+		.bwp-header-campar a{
+			color:{{ section.settings.color_content }};
+			font-size: {{ section.settings.font_size }}px;
+			font-weight: {{ section.settings.font_weight }};
+		}
+		{%- if section.settings.color_span -%}
+			.bwp-header-campar a span{
+				color:{{ section.settings.color_span }};
+			}
+		{%- endif -%}
+		@media (max-width:1200px){
+			{%- if margin[1] != blank or padding[1] != blank -%}
+				.bwp-header-campar{
+					{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+					{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+				}
+			{%- endif -%}
+		}
+		@media (max-width:991px){
+			{%- if margin[2] != blank or padding[2] != blank -%}
+				.bwp-header-campar{
+					{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+					{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+				}
+			{%- endif -%}
+		}
+		@media (max-width:767px){
+			{%- if margin[3] != blank or padding[3] != blank -%}
+				.bwp-header-campar{
+					{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+					{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+				}
+			{%- endif -%}
+		}
+	{%- endstyle -%}
+	<div data-section-id="{{ section.id }}" data-section-type="header-campar-section" class="bwp-header-campar{% unless section.settings.show_mobile %} hide_mobile{%- endunless -%}">
+		<div class="header-campbar">
+			<div class="{{ container }}" {{ max_width }}>
+				<div class="content-campbar">
+					<div class="content-text">
+						<div class="marquee_text_content">
+							{%- if section.settings.marquee_content -%}
+								<ul>
+									{% for i in (1..section.settings.marquee_loop) %}
+										<li>
+											<a href="{{ section.settings.url_campar }}">
+												{{ section.settings.content_campar }}
+											</a>
+										</li>
+									{%- endfor -%}
+								</ul>
+							{%- else -%}
+								<a href="{{ section.settings.url_campar }}">
+									{{ section.settings.content_campar }}
+								</a>
+							{%- endif -%}
+						</div>
+					</div>
+					<div class="close-campbar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Header Campar",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+	{
+		"type": "checkbox",
+		"id": "show_campar",
+		"label": "Show Campar",
+		"default": true
+    },
+    {
+		"type": "header",
+		"content": "Layout settings"
+	},
+	{
+		"type": "text",
+		"id": "max_width",
+		"label": "Width container",
+		"info": "Default: 1440px"
+	},
+	{
+		"type": "checkbox",
+		"id": "fullwidth",
+		"label": "Fullwidth",
+		"default": false
+	},
+	{
+		"type": "text",
+		"id": "padding",
+		"label": "Padding",
+		"placeholder": "0px 0px 0px 0px",
+		"info":"Screen: desktop | 1200px | 991px | 767px"
+	},
+	{
+		"type": "text",
+		"id": "margin",
+		"label": "Margin",
+		"placeholder": "0px 0px 0px 0px",
+		"info":"Screen: desktop | 1200px | 991px | 767px"
+	},
+	{
+		"type": "color",
+		"id": "bg_background",
+		"label": "Background",
+		"default": "#000000"
+	},
+	{
+		"type": "header",
+		"content": "Content settings"
+	},
+	{
+		"type": "text",
+		"id": "content_campar",
+		"label": "Content",
+		"default":"Summer sale discount <span>off 60%</span>"
+	},
+	{
+		"type": "url",
+		"id": "url_campar",
+		"label": "Url"
+	},
+	{
+		"type": "color",
+		"id": "color_content",
+		"label": "Color text",
+		"default": "#fff"
+	},
+	{
+		"type": "color",
+		"id": "color_span",
+		"label": "Span tag color",
+		"default": "#fff"
+	},
+	{
+		"type": "number",
+		"id": "font_size",
+		"label": "Font size",
+		"default": 18,
+		"info": "px"
+	},
+	{
+		"type": "text",
+		"id": "font_weight",
+		"label": "Font Weight",
+		"default": "500"
+	},
+	{
+		"type": "checkbox",
+		"id": "marquee_content",
+		"label": "Enable horizontal text animation",
+		"default": true
+	},
+	{
+		"type": "number",
+		"id": "marquee_loop",
+		"label": "number of repetitions of content",
+		"default": 10
+	},
+	{
+		"type": "number",
+		"id": "marquee_time",
+		"label": "Time animation",
+		"default": 4,
+		"info":"Units in seconds"
+	},
+	{
+		"type": "checkbox",
+		"id": "show_mobile",
+		"label": "Show campar on mobile",
+		"default": true
+	}
+  ],
+  "presets": [
+    {
+      "name": "Header Campar"
+    }
+  ]
+}
+{% endschema %}

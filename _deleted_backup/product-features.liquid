@@ -1,0 +1,118 @@
+
+<div class="product-features"{% if block.settings.product_features_margin != blank %} style="margin:{{ block.settings.product_features_margin }}"{% endif %}>
+    <h3 class="product_features_title">
+        {{ block.settings.product_features_title }}
+    </h3>
+    <div class="content-policy">
+         <div class="col-policy">
+            <div class="featured-policy">
+                <div class="content-image image-parent">
+                    <div class="bwp-image">
+                       {%- if block.settings.image1 -%}
+                          <img class="lazyload fade-in" src="{{ block.settings.image1 | image_url }}" width="{{ block.settings.image1.width }}" height="{{ block.settings.image1.height }}" />
+                       {%- else -%}
+                          <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="200" height="200" />
+                       {%- endif -%}
+                    </div>
+                </div>
+                <div class="banner-wrapper-infor">
+                    <div class="info">
+                        <div class="content">
+                            {%- if block.settings.title1 != blank -%}<h3 class="title-banner">{{ block.settings.title1 }}</h3>{%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-policy">
+                <div class="content-image image-parent">
+                    <div class="bwp-image">
+                       {%- if block.settings.image2 -%}
+                          <img class="lazyload fade-in" src="{{ block.settings.image2 | image_url }}" width="{{ block.settings.image2.width }}" height="{{ block.settings.image2.height }}" />
+                       {%- else -%}
+                          <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="200" height="200" />
+                       {%- endif -%}
+                    </div>
+                </div>
+                <div class="banner-wrapper-infor">
+                    <div class="info">
+                        <div class="content">
+                            {%- if block.settings.title2 != blank -%}<h3 class="title-banner">{{ block.settings.title2 }}</h3>{%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-policy">
+                <div class="content-image image-parent">
+                    <div class="bwp-image">
+                       {%- if block.settings.image3 -%}
+                          <img class="lazyload fade-in" src="{{ block.settings.image3 | image_url }}" width="{{ block.settings.image3.width }}" height="{{ block.settings.image3.height }}" />
+                       {%- else -%}
+                          <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="200" height="200" />
+                       {%- endif -%}
+                    </div>
+                </div>
+                <div class="banner-wrapper-infor">
+                    <div class="info">
+                        <div class="content">
+                            {%- if block.settings.title3 != blank -%}<h3 class="title-banner">{{ block.settings.title3 }}</h3>{%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-policy">
+                <div class="content-image image-parent">
+                    <div class="bwp-image">
+                       {%- if block.settings.image4 -%}
+                          <img class="lazyload fade-in" src="{{ block.settings.image4 | image_url }}" width="{{ block.settings.image4.width }}" height="{{ block.settings.image4.height }}" />
+                       {%- else -%}
+                          <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="200" height="200" />
+                       {%- endif -%}
+                    </div>
+                </div>
+                <div class="banner-wrapper-infor">
+                    <div class="info">
+                        <div class="content">
+                            {%- if block.settings.title4 != blank -%}<h3 class="title-banner">{{ block.settings.title4 }}</h3>{%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-policy">
+                  <div class="content-image image-parent">
+                      <div class="bwp-image">
+                         {%- if block.settings.image5 -%}
+                            <img class="lazyload fade-in" src="{{ block.settings.image5 | image_url }}" width="{{ block.settings.image5.width }}" height="{{ block.settings.image5.height }}" />
+                         {%- else -%}
+                            <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="200" height="200" />
+                         {%- endif -%}
+                      </div>
+                  </div>
+                  <div class="banner-wrapper-infor">
+                      <div class="info">
+                          <div class="content">
+                              {%- if block.settings.title5 != blank -%}<h3 class="title-banner">{{ block.settings.title5 }}</h3>{%- endif -%}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <div class="featured-policy">
+                  <div class="content-image image-parent">
+                      <div class="bwp-image">
+                         {%- if block.settings.image6 -%}
+                            <img class="lazyload fade-in" src="{{ block.settings.image6 | image_url }}" width="{{ block.settings.image6.width }}" height="{{ block.settings.image6.height }}" />
+                         {%- else -%}
+                            <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="200" height="200" />
+                         {%- endif -%}
+                      </div>
+                  </div>
+                  <div class="banner-wrapper-infor">
+                      <div class="info">
+                          <div class="content">
+                              {%- if block.settings.title6 != blank -%}<h3 class="title-banner">{{ block.settings.title6 }}</h3>{%- endif -%}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>

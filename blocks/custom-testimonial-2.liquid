@@ -1,0 +1,379 @@
+{%- style -%}
+#shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2{
+    text-align:{{ block.settings.text_align }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .title-testimonial{
+    font-size: {{ block.settings.font_size_heading }}px;
+    line-height: {{ block.settings.line_height_heading }}px;
+    font-weight: {{ block.settings.font_weight_heading }};
+    color:{{ block.settings.color_heading }};
+    margin:{{ block.settings.margin_heading }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .testimonial-card__content{
+    font-size: {{ block.settings.font_size_review }}px;
+    line-height: {{ block.settings.line_height_review }}px;
+    font-weight: {{ block.settings.font_weight_review }};
+    color:{{ block.settings.color_review }};
+    margin:{{ block.settings.margin_review }};
+    font-family:var({{ block.settings.font }});
+}
+#shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .testimonial-card__title{
+    font-size: {{ block.settings.font_size_title }}px;
+    line-height: {{ block.settings.line_height_title }}px;
+    font-weight: {{ block.settings.font_weight_title }};
+    color:{{ block.settings.color_title }};
+    letter-spacing:{{ block.settings.letter_spacing_title }}px;
+    margin:{{ block.settings.margin_title }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .testimonial-card__name{
+    font-size: {{ block.settings.font_size_name }}px;
+    line-height: {{ block.settings.line_height_name }}px;
+    font-weight: {{ block.settings.font_weight_name }};
+    color:{{ block.settings.color_name }};
+    letter-spacing:{{ block.settings.letter_spacing_name }}px;
+    margin:{{ block.settings.margin_name }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .testimonial-card__avatar img{
+    max-width:{{ block.settings.width_avatar }};
+    flex:0 0 {{ block.settings.width_avatar }};
+    border-radius:{{ block.settings.border_avatar }};
+}
+@media(max-width:767px){
+    #shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .title-testimonial{
+        font-size: {{ block.settings.font_size_heading_mobi }}px;
+        line-height: {{ block.settings.line_height_heading_mobi }}px;
+        margin:{{ block.settings.margin_heading_mobi }};
+    }
+    #shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .testimonial-card__content{
+        font-size: {{ block.settings.font_size_review_mobi }}px;
+        line-height: {{ block.settings.line_height_review_mobi }}px;
+    }
+    #shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .testimonial-card__title{
+        font-size: {{ block.settings.font_size_title_mobi }}px;
+        line-height: {{ block.settings.line_height_title_mobi }}px;
+    }
+    #shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .testimonial-card__name{
+        font-size: {{ block.settings.font_size_name_mobi }}px;
+        line-height: {{ block.settings.line_height_name_mobi }}px;
+    }
+    #shopify-section-{{ section.id }} .wpbingo-widget--testimonials-2 .testimonial-card__avatar img{
+        max-width:{{ block.settings.width_avatar_mobi }};
+        flex:0 0 {{ block.settings.width_avatar_mobi }};
+    }
+}
+{%- endstyle -%}
+{% schema %}
+  {
+    "name": "Custom css",
+    "settings": [
+        {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text Align",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                }
+            ],
+            "default": "center"
+        },
+        {
+            "type": "header",
+            "content": "====== Customer Heading ======"
+        },
+        {
+            "type": "color",
+            "id": "color_heading",
+            "label": "color",
+            "default": "#000"
+        },
+        {
+            "type": "number",
+            "id": "font_size_heading",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_heading",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "font_weight_heading",
+            "label": "Font Weight",
+            "default": "500"
+        },
+        {
+            "type": "text",
+            "id": "margin_heading",
+            "label": "margin",
+            "default": "0px 0px 0px 0px",
+            "placeholder":"0px 0px 0px 0px"
+        },
+        {
+            "type": "header",
+            "content": "====== Customer review ======"
+        },
+        {
+            "type": "select",
+            "id": "font",
+            "label": "Font family",
+            "options": [
+                {
+                    "value": "--font-family-second",
+                    "label": "Font Heading"
+                },
+                {
+                    "value": "--font-family-base",
+                    "label": "Font Body"
+                }
+            ],
+            "default": "--font-family-second"
+        },
+        {
+            "type": "color",
+            "id": "color_review",
+            "label": "color",
+            "default": "#000"
+        },
+        {
+            "type": "number",
+            "id": "font_size_review",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_review",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "font_weight_review",
+            "label": "Font Weight",
+            "default": "500"
+        },
+        {
+            "type": "text",
+            "id": "margin_review",
+            "label": "margin",
+            "default": "0px 0px 0px 0px",
+            "placeholder":"0px 0px 0px 0px"
+        },
+        {
+            "type": "header",
+            "content": "====== Title ======"
+        },
+        {
+            "type": "color",
+            "id": "color_title",
+            "label": "color",
+            "default": "#000"
+        },
+        {
+            "type": "number",
+            "id": "font_size_title",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_title",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "font_weight_title",
+            "label": "Font Weight",
+            "default": "500"
+        },
+        {
+            "type": "number",
+            "id": "letter_spacing_title",
+            "label": "Letter spacing",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "margin_title",
+            "label": "margin",
+            "default": "0px 0px 0px 0px",
+            "placeholder":"0px 0px 0px 0px"
+        },
+        {
+            "type": "header",
+            "content": "====== Customer name ======"
+        },
+        {
+            "type": "color",
+            "id": "color_name",
+            "label": "color",
+            "default": "#000"
+        },
+        {
+            "type": "number",
+            "id": "font_size_name",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_name",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "font_weight_name",
+            "label": "Font Weight",
+            "default": "500"
+        },
+        {
+            "type": "number",
+            "id": "letter_spacing_name",
+            "label": "Letter spacing",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "margin_name",
+            "label": "margin",
+            "default": "0px 0px 0px 0px",
+            "placeholder":"0px 0px 0px 0px"
+        },
+        {
+            "type": "header",
+            "content": "====== Avatar ======"
+        },
+        {
+            "type": "textarea",
+            "id": "width_avatar",
+            "label": "width",
+            "default": "80px"
+        },
+        {
+            "type": "text",
+            "id": "border_avatar",
+            "label": "Border radius",
+            "default": "0px 0px 0px 0px"
+        },
+        {
+            "type": "header",
+            "content": "====== Mobile ======",
+            "info": "screen < 767px"
+        },
+        {
+            "type": "header",
+            "content": "----- Customer heading -----"
+        },
+        {
+            "type": "number",
+            "id": "font_size_heading_mobi",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_heading_mobi",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "margin_heading_mobi",
+            "label": "margin",
+            "default": "0px 0px 0px 0px",
+            "placeholder":"0px 0px 0px 0px"
+        },
+        {
+            "type": "header",
+            "content": "----- Customer review -----"
+        },
+        {
+            "type": "number",
+            "id": "font_size_review_mobi",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_review_mobi",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "header",
+            "content": "----- Title -----"
+        },
+        {
+            "type": "number",
+            "id": "font_size_title_mobi",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_title_mobi",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "header",
+            "content": "----- Customer name -----"
+        },
+        {
+            "type": "number",
+            "id": "font_size_name_mobi",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_name_mobi",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "header",
+            "content": "----- Avatar -----"
+        },
+        {
+            "type": "textarea",
+            "id": "width_avatar_mobi",
+            "label": "width",
+            "default": "80px"
+        }
+    ]
+  }
+{% endschema %}

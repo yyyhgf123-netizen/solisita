@@ -1,0 +1,838 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- elsif section.settings.max_width != blank -%}
+	{%- assign container = 'bwp-container' -%}
+{%- else -%}
+	{%- assign container = 'container' -%}
+{%- endif -%}
+
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- assign width_container = section.settings.max_width | plus: 0 -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+
+{%- assign margin = '' -%}
+{%- if section.settings.margin != blank -%}
+  {%- capture margin -%}margin: {{ section.settings.margin }};{%- endcapture -%}
+{%- endif -%}
+{% assign margin 			= section.settings.margin | split: "|" %}
+{% assign padding 			= section.settings.padding | split: "|" %}
+
+{%- style -%}
+	{%- if section.settings.fullwidth == blank and section.settings.max_width != blank and width_container > 1200 -%}
+		@media (max-width: {{ section.settings.max_width }}) and (min-width: 1200px){
+			#shopify-section-{{ section.id }} .bwp-container{
+				padding-left:30px;
+				padding-right:30px;
+			}
+		}
+	{%- endif -%}
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1200px){
+			#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-section--lookbook{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+		{%- for block in section.blocks -%}
+			{%- if block.type == 'css' -%}
+                #shopify-section-{{ section.id }} .lookbook-simple .wpbingo-section__inner .info {
+					text-align:{{ block.settings.text_align }};
+				}
+				#shopify-section-{{ section.id }} .lookbook-simple .title-banner{
+					font-size: {{ block.settings.font_size_title }}px;
+					line-height: {{ block.settings.line_height_title }}px;
+					font-weight: {{ block.settings.font_weight_title }};
+					letter-spacing:{{ block.settings.letter_spacing_title }}px;
+					color:{{ block.settings.color_title }};
+					margin:{{ block.settings.margin_title }};
+				}
+				#shopify-section-{{ section.id }} .lookbook-simple .desc-banner{
+					font-size: {{ block.settings.font_size_desc }}px;
+					line-height: {{ block.settings.line_height_desc }}px;
+                    font-weight: {{ block.settings.font_weight_desc }};
+					color:{{ block.settings.color_desc }};
+					margin:{{ block.settings.margin_desc }};
+				}
+                #shopify-section-{{ section.id }} .lookbook-simple .bwp-button{
+					font-size:{{ block.settings.font_size }}px;
+					line-height:{{ block.settings.line_height }}px;
+					font-weight:{{ block.settings.font_weight }};
+					letter-spacing:{{ block.settings.letter_spacing }}px;
+					color:{{ block.settings.color }};
+					background:{{ block.settings.background }};
+					padding:{{ block.settings.padding }};
+					margin:{{ block.settings.margin }};
+					overflow:hidden;
+					{%- if block.settings.border -%}
+						border:{{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+						border-radius:{{ block.settings.border_radius }};
+					{%- endif -%}
+				}
+				#shopify-section-{{ section.id }} .lookbook-simple .bwp-button:hover{
+					color:{{ block.settings.color_hover }};
+					background:{{ block.settings.background_hover }};
+                    border-color:{{ block.settings.border_color_hover }};
+				}
+				#shopify-section-{{ section.id }} .lookbook-simple .bwp-button i{
+					font-size:{{ block.settings.font_icon }}px;
+					top:{{ block.settings.pos_icon }}px;
+					position:relative;
+					margin: {{ block.settings.margin_icon }}
+				}
+				@media(max-width:767px){
+					#shopify-section-{{ section.id }} .lookbook-simple .title-banner{
+						font-size: {{ block.settings.font_size_title_mobi }}px;
+						line-height: {{ block.settings.line_height_title_mobi }}px;
+						margin:{{ block.settings.margin_title_mobi }};
+					}
+					#shopify-section-{{ section.id }} .lookbook-simple .desc-banner{
+						font-size: {{ block.settings.font_size_desc_mobi }}px;
+						line-height: {{ block.settings.line_height_desc_mobi }}px;
+						margin:{{ block.settings.margin_desc_mobi }};
+					}
+                    #shopify-section-{{ section.id }} .lookbook-simple .bwp-button{
+						font-size:{{ block.settings.font_size_mobi }}px;
+						line-height:{{ block.settings.line_height_mobi }}px;
+						letter-spacing:{{ block.settings.letter_spacing_mobi }}px;
+						padding:{{ block.settings.padding_mobi }};
+						margin:{{ block.settings.margin_mobi }};
+						color:{{ block.settings.color_mobi }};
+						background:{{ block.settings.background_mobi }};
+						{%- if block.settings.border_mobi -%}
+							border:{{ block.settings.border_width_mobi }}px solid {{ block.settings.border_color_mobi }};
+							border-radius:{{ block.settings.border_radius_mobi }};
+						{%- endif -%}
+					}
+					#shopify-section-{{ section.id }} .lookbook-simple .bwp-button:hover{
+						color:{{ block.settings.color_hover_mobi }};
+						background:{{ block.settings.background_hover_mobi }};
+                        border-color:{{ block.settings.border_color_hover }};
+					}
+					#shopify-section-{{ section.id }} .lookbook-simple .bwp-button i{
+						font-size:{{ block.settings.font_icon_mobi }}px;
+						top:{{ block.settings.margin_icon_mobi }}px;
+					}
+				}
+			{%- endif -%}
+		{%- endfor -%}
+	{%- endif -%}
+{%- endstyle -%}
+<section class="wpbingo-section wpbingo-section--lookbook lookbook-simple overflow-hidden wpbingo-section--{{ section.id }}" data-id="{{ section.id }}">
+	<div class="{{ container }}" {{ max_width }}>
+		<div class="wpbingo-section__inner">
+			<div class="wpbingo-lookbook__contents bwp_slider-carousel">
+				<div class="lookbook-simple-content js-carousel slick-carousel" data-nav="{{ nav }}" data-dots="false" data-infinite="false"
+					data-columns="1"
+					data-column1440="1"
+					data-column1="1"
+					data-column2="1"
+					data-column3="1"
+					data-column4="1">
+					{%- assign id = 0 -%}
+					{%- for block in section.blocks -%}
+						{% if block.type == 'image' %}
+							{%- assign j = 1 -%}
+							{%- assign i = 1 -%}
+							{%- assign image 	= block.settings.image -%}
+							{%- assign name 	= block.settings.title -%}
+							<div class="lookbook__item">
+								<div class="wpbingo-lookbook__item">
+                                    <div class="lookbook-card">
+										<div class="lookbook-image">
+											{%- if image != blank -%}
+												{% render 'img-global' with image: image, class: "featured-lookbook__img", effect: "fade-in" %}
+											{%- else -%}
+												<img class="lazyload fade-in" src="https://placehold.jp/690x765.png" width="690" height="765" />
+											{%- endif -%}
+                                            {%- for block in section.blocks -%}
+                                                {% if block.type == 'item' %}
+                                                    {%- assign name_pin = block.settings.name_pin -%}
+                                                    {%- assign product_handle = block.settings.product -%}
+                                                    {%- assign top = block.settings.top -%}
+                                                    {%- assign left = block.settings.left -%}
+                                                    {% if name_pin == name %}
+                                                        <div class="lookbook-card__item" style="top: {{ top }}%; left: {{ left }}%;">
+                                                            <div class="lookbook-card__point">
+                                                                <div class="lookbook-card__button">
+                                                                    <button class="lookbook-card__btn {% if j == 1 %} active{% endif %}" data-toggle="modal" data-target="lookbook-{{ section.id }}-{{ id }}">
+                                                                        <span>{{ j }}</span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {%- assign j = j | plus: 1 -%}
+                                                        {%- assign id = id | plus: 1 -%}
+                                                    {%- endif -%}
+                                                {%- endif -%}
+                                            {%- endfor -%}
+										</div>
+                                        <div class="lookbook-product bwp-swiper-slider"
+                                                data-infinite="false"
+                                                data-nav="false"
+                                                data-dots="false"
+                                                data-draggable="true"
+                                                data-columns="1"
+                                                data-column1440="1"
+                                                data-column1="1"
+                                                data-column2="1"
+                                                data-column3="1"
+                                                data-column4="1">
+                                            <div class="swiper-wrapper">
+                                                {%- assign ids = 0 -%}
+                                                {%- for block in section.blocks -%}
+                                                {% if block.type == 'item' %}
+                                                    {%- assign name_pin = block.settings.name_pin -%}
+                                                    {%- assign product_handle = block.settings.product -%}
+                                                    {%- assign alignment = block.settings.display -%}
+                                                    {% if name_pin == name %}
+                                                    <div class="swiper-slide" id="lookbook-{{ section.id }}-{{ ids }}">
+                                                        {% render 'lookbook-item', product: all_products[product_handle], id: ids, button: 'show' %}
+                                                    </div>
+                                                    {% endif %}
+                                                    {%- assign ids = ids | plus: 1 -%}
+                                                {% endif %}
+                                                {%- endfor -%}
+                                            </div>
+                                        </div>
+                                        <div class="col-banner">
+                                            <div class="content-banner">
+                                                <div class="info">
+                                                    {%- if section.settings.title -%}<h2 class="title-banner">{{ section.settings.title }}</h2>{%- endif -%}
+                                                    {%- if section.settings.desc -%}<div class="desc-banner">{{ section.settings.desc }}</div>{%- endif -%}
+                                                    {%- if section.settings.button != blank -%}
+                                                        <a class="bwp-button" href="{{ section.settings.url }}">
+                                                            {{ section.settings.button }}
+                                                            {%- if section.settings.icon_title -%}
+                                                                <i class="{{ section.settings.icon_title }}"></i>
+                                                            {%- endif -%}
+                                                        </a>
+                                                    {%- endif -%}
+                                                </div>  
+                                            </div>            
+                                        </div>
+									</div>
+								</div>
+							</div>
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+    {
+        "name": "Lookbook Simple",
+        "class": "wpbingo-framework",
+        "disabled_on": {
+		"groups": ["header"]
+	},
+        "settings": [
+            {
+                "type": "header",
+                "content": "Layout settings"
+            },
+            {
+                "type": "text",
+                "id": "max_width",
+                "label": "Width container",
+                "info": "Default: 1440px"
+            },
+            {
+                "type": "checkbox",
+                "id": "fullwidth",
+                "label": "Fullwidth"
+            },
+            {
+                "type": "text",
+                "id": "padding",
+                "label": "Padding",
+                "placeholder": "0px 0px 0px 0px",
+                "info":"Screen: desktop | 1200px | 991px | 767px"
+            },
+            {
+                "type": "text",
+                "id": "margin",
+                "label": "Margin",
+                "placeholder": "0px 0px 0px 0px",
+                "info":"Screen: desktop | 1200px | 991px | 767px"
+            },
+			{
+                "type": "textarea",
+                "id": "title",
+                "label": "Heading",
+                "default": "Heading"
+            },
+            {
+                "type": "textarea",
+                "id": "desc",
+                "label": "Description",
+                "default": "Image with text"
+            },
+            {
+                "type": "text",
+                "id": "button",
+                "label": "button",
+                "default": "SHOP NOW"
+            },
+            {
+                "type": "text",
+                "id": "icon_title",
+                "label": "Icon title"
+            },
+            {
+                "type": "url",
+                "id": "url",
+                "label": "Button URL",
+                "default": "/"
+            }
+        ],
+        "blocks": [
+			{
+                "type": "image",
+                "name": "Image Lookbook",
+                "settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Lookbook Name"
+					},
+                    {
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image"
+					}
+                ]
+            },
+            {
+                "type": "item",
+                "name": "Pin Product",
+                "settings": [
+					{
+						"type": "text",
+						"id": "name_pin",
+						"label": "Pin for Image"
+					},
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Choose product"
+                    },
+                    {
+                        "type": "select",
+                        "id": "display",
+                        "label": "Display type",
+                        "default": "top-left",
+                        "options": [
+                            {
+                                "value": "top-left",
+                                "label": "Top left"
+                            },
+                            {
+                                "value": "top-right",
+                                "label": "Top right"
+                            },
+                            {
+                                "value": "center-left",
+                                "label": "Center left"
+                            },
+                            {
+                                "value": "center-top",
+                                "label": "Center top"
+                            },
+                            {
+                                "value": "center-right",
+                                "label": "Center right"
+                            },
+                            {
+                                "value": "center-bottom",
+                                "label": "Center bottom"
+                            },
+                            {
+                                "value": "bottom-left",
+                                "label": "Bottom left"
+                            },
+                            {
+                                "value": "bottom-right",
+                                "label": "Bottom right"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "range",
+                        "id": "top",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Offset top",
+                        "default": 50
+                    },
+                    {
+                        "type": "range",
+                        "id": "left",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Offset left",
+                        "default": 50
+                    }
+                ]
+            },
+            {
+                "type": "css",
+                "name": "Custom css",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "text_align",
+                        "label": "Text Align",
+                        "options": [
+                            {
+                                "value": "left",
+                                "label": "Left"
+                            },
+                            {
+                                "value": "center",
+                                "label": "Center"
+                            },
+                            {
+                                "value": "right",
+                                "label": "Right"
+                            }
+                        ],
+                        "default": "left"
+                    },
+                    {
+                        "type": "header",
+                        "content": "====== Title ======"
+                    },
+                    {
+                        "type": "color",
+                        "id": "color_title",
+                        "label": "color",
+                        "default": "#000"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size_title",
+                        "label": "Font size",
+                        "default": 16,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height_title",
+                        "label": "Line height",
+                        "default": 22,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "letter_spacing_title",
+                        "label": "Letter spacing",
+                        "default": 0,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "font_weight_title",
+                        "label": "Font Weight",
+                        "default": "500"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_title",
+                        "label": "margin",
+                        "default": "0px 0px 0px 0px",
+                        "placeholder":"0px 0px 0px 0px"
+                    },
+                    {
+                        "type": "header",
+                        "content": "====== Description ======"
+                    },
+                    {
+                        "type": "color",
+                        "id": "color_desc",
+                        "label": "color",
+                        "default": "#000"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size_desc",
+                        "label": "Font size",
+                        "default": 16,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height_desc",
+                        "label": "Line height",
+                        "default": 20,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "font_weight_desc",
+                        "label": "Font Weight",
+                        "default": "500"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_desc",
+                        "label": "margin",
+                        "default": "0px 0px 0px 0px",
+                        "placeholder":"0px 0px 0px 0px"
+                    },
+                    {
+                        "type": "header",
+                        "content": "====== button banner ======"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_icon",
+                        "label": "Font size icon",
+                        "default": 14,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "pos_icon",
+                        "label": "Position icon",
+                        "default": 0,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_icon",
+                        "label": "Margin icon",
+                        "default": "0px 0px 0px 0px",
+                        "info": "top right bottom left"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "border",
+                        "label": "Turn on border",
+                        "default": false
+                    },
+                    {
+                        "type": "text",
+                        "id": "border_radius",
+                        "label": "Border radius",
+                        "default": "0px 0px 0px 0px",
+                        "info": "top right bottom left"
+                    },
+                    {
+                        "type": "number",
+                        "id": "border_width",
+                        "label": "Border width",
+                        "default": 0
+                    },
+                    {
+                        "type": "header",
+                        "content": "Color Default"
+                    },
+                    {
+                        "type": "color",
+                        "id": "color",
+                        "label": "color",
+                        "default": "#000"
+                    },
+                    {
+                        "type": "color",
+                        "id": "background",
+                        "label": "Background",
+                        "default": "#fff"
+                    },
+                    {
+                        "type": "color",
+                        "id": "border_color",
+                        "label": "Border color",
+                        "default": "#fff"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Color Hover"
+                    },
+                    {
+                        "type": "color",
+                        "id": "color_hover",
+                        "label": "Color hover",
+                        "default": "#fff"
+                    },
+                    {
+                        "type": "color",
+                        "id": "background_hover",
+                        "label": "Background Hover",
+                        "default": "#7F4227"
+                    },
+                    {
+                        "type": "color",
+                        "id": "border_color_hover",
+                        "label": "Border color hover",
+                        "default": "#fff"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size",
+                        "label": "Font size",
+                        "default": 15,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height",
+                        "label": "Line height",
+                        "default": 45,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "letter_spacing",
+                        "label": "Letter spacing",
+                        "default": 0,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "font_weight",
+                        "label": "Font Weight",
+                        "default": "400"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin",
+                        "label": "Margin",
+                        "default": "0px 0px 0px 0px",
+                        "info": "top right bottom left"
+                    },
+                    {
+                        "type": "text",
+                        "id": "padding",
+                        "label": "Padding",
+                        "default": "0px 0px 0px 0px",
+                        "info": "top right bottom left"
+                    },
+                    {
+                        "type": "header",
+                        "content": "====== Mobile ======",
+                        "info": "screen < 767px"
+                    },
+                    {
+                        "type": "header",
+                        "content": "---------- Title"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size_title_mobi",
+                        "label": "Font size",
+                        "default": 16,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height_title_mobi",
+                        "label": "Line height",
+                        "default": 22,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_title_mobi",
+                        "label": "margin",
+                        "default": "0px 0px 0px 0px",
+                        "placeholder":"0px 0px 0px 0px"
+                    },
+                    {
+                        "type": "header",
+                        "content": "---------- Description"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size_desc_mobi",
+                        "label": "Font size",
+                        "default": 16,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height_desc_mobi",
+                        "label": "Line height",
+                        "default": 20,
+                        "info": "px"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_desc_mobi",
+                        "label": "margin",
+                        "default": "0px 0px 0px 0px",
+                        "placeholder":"0px 0px 0px 0px"
+                    },
+                    {
+                        "type": "header",
+                        "content": "---------- Button"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_size_mobi",
+                        "label": "Font size",
+                        "default": 15,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "line_height_mobi",
+                        "label": "Line height",
+                        "default": 15,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "letter_spacing_mobi",
+                        "label": "Letter spacing",
+                        "default": 0,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "font_icon_mobi",
+                        "label": "Font size icon",
+                        "default": 14,
+                        "info": "px"
+                    },
+                    {
+                        "type": "number",
+                        "id": "margin_icon_mobi",
+                        "label": "Position icon",
+                        "default": 0,
+                        "info": "px"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "border_mobi",
+                        "label": "Turn on border",
+                        "default": false
+                    },
+                    {
+                        "type": "text",
+                        "id": "border_radius_mobi",
+                        "label": "Border radius",
+                        "default": "0px 0px 0px 0px",
+                        "info": "top right bottom left"
+                    },
+                    {
+                        "type": "number",
+                        "id": "border_width_mobi",
+                        "label": "Border width",
+                        "default": 0
+                    },
+                    {
+                        "type": "header",
+                        "content": "Color Default"
+                    },
+                    {
+                        "type": "color",
+                        "id": "color_mobi",
+                        "label": "color",
+                        "default": "#000"
+                    },
+                    {
+                        "type": "color",
+                        "id": "background_mobi",
+                        "label": "Background",
+                        "default": "#fff"
+                    },
+                    {
+                        "type": "color",
+                        "id": "border_color_mobi",
+                        "label": "Border color",
+                        "default": "#fff"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Color Hover"
+                    },
+                    {
+                        "type": "color",
+                        "id": "color_hover_mobi",
+                        "label": "Color hover",
+                        "default": "#fff"
+                    },
+                    {
+                        "type": "color",
+                        "id": "background_hover_mobi",
+                        "label": "Background Hover",
+                        "default": "#7F4227"
+                    },
+                    {
+                        "type": "color",
+                        "id": "border_color_hover_mobi",
+                        "label": "Border color hover",
+                        "default": "#fff"
+                    },
+                    {
+                        "type": "text",
+                        "id": "margin_mobi",
+                        "label": "Margin",
+                        "default": "0px 0px 0px 0px",
+                        "info": "top right bottom left"
+                    },
+                    {
+                        "type": "text",
+                        "id": "padding_mobi",
+                        "label": "Padding",
+                        "default": "0px 0px 0px 0px",
+                        "info": "top right bottom left"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Lookbook Simple",
+				"blocks": [
+					{
+						"type": "image",
+						"settings": {
+							"title": "look-1"
+						}
+					},
+					{
+						"type": "item",
+						"settings": {
+							"name_pin": "look-1"
+						}
+					}
+				]
+            }
+        ]
+    }
+{% endschema %}

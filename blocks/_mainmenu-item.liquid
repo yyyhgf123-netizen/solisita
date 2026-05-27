@@ -1,0 +1,82 @@
+{%- assign submenu_format = block.settings.submenu_format -%}
+<div class="main-menu__nav-item{% if submenu_format == "mega" %} menu-dropdown menu-dropdown--mega{% endif %}{% if submenu_format == "list" %} menu-dropdown menu-dropdown--basic{% endif %}{% if request.path == block.settings.menu_url %} active{% endif %}">
+	<a href="{{block.settings.menu_url}}"><span class="menu-item-text">{{ block.settings.title }}</span>{% if block.settings.badge != blank %}<span class="badge-menu {{ block.settings.position }}" style="background:{{ block.settings.badge_color }}">{{ block.settings.badge }}</span>{% endif %}</a>
+    {% content_for "blocks" %}
+</div>
+{% schema %}
+  {
+    "name": "Mainmenu item",
+    "blocks": [
+        {
+          "type": "_megamenu-container"},{"type": "_menu-list" },{"type": "@app" }
+    ],
+    "tag": "li",
+    "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Menu name",
+          "default": "Menu"
+        },
+        {
+          "type": "url",
+          "id": "menu_url",
+          "label": "Menu url"
+        },
+        {
+          "type": "select",
+          "id": "submenu_format",
+          "label": "Submenu format",
+          "options": [
+            {
+              "value": "",
+              "label": "None"
+            },
+            {
+              "value": "list",
+              "label": "List"
+            },
+            {
+              "value": "mega",
+              "label": "Mega menu"
+            }
+          ],
+          "default": ""
+        },
+        {
+          "type": "header",
+          "content": "Badge menu"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Label Badge"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "options": [
+            {
+              "value": "before",
+              "label": "Before"
+            },
+            {
+              "value": "after",
+              "label": "After"
+            }
+          ],
+          "default": "after",
+          "visible_if": "{{ block.settings.badge }}"
+        },
+        {
+          "type": "color",
+          "id": "badge_color",
+          "label": "Background Badge",
+          "default":"#000",
+          "visible_if": "{{ block.settings.badge }}"
+        }
+    ],
+    "presets": [{"name": "Mainmenu item"}]
+  }
+{% endschema %}

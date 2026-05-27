@@ -1,0 +1,46 @@
+{%- assign current_variant 			= product.selected_or_first_available_variant -%}
+<div class="inventory-content" style="margin:{{ block.settings.product_inventory_margin }};--inventory-color:{{ block.settings.inventory_color }};--inventory-outstock-color:{{ block.settings.inventory_outstock_color }};--inventory-font-size:{{ block.settings.inventory_size }}px;">
+    {% if current_variant.inventory_management == "shopify" and current_variant.inventory_policy != "continue" %}
+        {% if current_variant.inventory_quantity > 0 %}
+            <div id="variant-inventory"><i class="wpb-icon-in-stock"></i>{{'products.product.in_stock' | t }}</div>
+        {% else %}
+            <div id="variant-inventory" class="out_stock"><i class="wpb-icon-in-stock"></i>{{'products.product.out_stock' | t }}</div>
+        {% endif %}
+    {% else %}
+        <div id="variant-inventory"><i class="wpb-icon-in-stock"></i>{{'products.product.in_stock' | t }}</div>
+    {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Single product inventory",
+    "settings": [
+        {
+            "type": "text",
+            "id": "product_inventory_margin",
+            "label": "Margin",
+            "info": "Example(top left bottom right): 15px 15px 15px 15px",
+            "default":"0 0 15px"
+        },
+        {
+            "type": "number",
+            "id": "inventory_size",
+            "label": "Font size",
+            "info": "px",
+            "default":14
+        },
+        {
+            "type": "color",
+            "id": "inventory_color",
+            "label": "Color",
+            "default":"#108043"
+        },
+        {
+            "type": "color",
+            "id": "inventory_outstock_color",
+            "label": "Color outstock",
+            "default":"#e52828"
+        }
+    ],
+    "presets": [{"name": "Single product inventory","category": "Single product"}]
+  }
+{% endschema %}

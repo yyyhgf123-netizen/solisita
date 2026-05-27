@@ -1,0 +1,38 @@
+{%- assign width			= block.settings.width -%}
+{%- assign megamenu_width 	= block.settings.width_custom -%}
+<div class="menu-dropdown__content menu-dropdown__content--megamenu{% if megamenu_width != blank and width == "custom" %} width_custom_pos{% endif %}"{% if megamenu_width != blank and width == "custom" %} style="width:{{ megamenu_width }}"{% endif %}>
+    <div class="menu-row">
+           {% content_for "blocks" %}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Megamenu container",
+    "blocks": [{ "type": "_megamenu-item" },{"type": "@app" }],
+    "settings": [
+        {
+            "type": "select",
+            "id": "width",
+            "options": [
+                {
+                    "value": "custom",
+                    "label": "Custom"
+                },
+                {
+                    "value": "full",
+                    "label": "Full Width"
+                }
+            ],
+            "label": "Width Submenu:",
+            "default":"full"
+        },
+        {
+            "type": "text",
+            "id": "width_custom",
+            "label": "== Custom Width",
+            "visible_if": "{{ block.settings.width == \"custom\" }}"
+        }
+    ],
+    "presets": [{"name": "Megamenu container"}]
+  }
+{% endschema %}

@@ -1,0 +1,86 @@
+{%- assign main_menu = settings.menu_link_mobile -%}
+<div class="menu-mobile">
+	<div class="menu-mobile__overlay"></div>
+	<div class="menu-mobile__inner">
+		<button class="js-menu-mobile btn menu-mobile__btn" type="button"><span></span></button>
+		<div class="menu-mobile__nav">
+			{%- for menu_link in linklists[main_menu].links -%}
+				{%- if menu_link.links != blank -%}
+					<div class="menu-mobile__nav-item">
+						<div class="mm-nav__wrapper">
+							<a href="{{ menu_link.url }}" title="{{ menu_link.title | escape }}">{{ menu_link.title }}</a>
+							<button class="js-mm-nav-item mm-nav__btn" type="button"><i class="feather-chevron-right"></i></button>
+						</div>
+						<div class="mm-nav__links">
+							<div class="mm-nav__links-header">
+								<a class="js-mm-nav-item mm-nav__prev" href="javascript:void(0)">
+									<i class="feather-chevron-left"></i>
+									<span>{{ menu_link.title }}</span>
+								</a>
+							</div>
+							<div class="mm-nav__links-wrapper">
+								{%- for menu_link_child in menu_link.links -%}
+									{%- if menu_link_child.links != blank -%}
+										<div class="menu-mobile__nav-item">
+											<div class="mm-nav__wrapper">
+												<a href="{{ menu_link_child.url }}" title="{{ menu_link_child.title | escape }}">{{ menu_link_child.title }}</a>
+												<button class="js-mm-nav-item mm-nav__btn" type="button"><i class="feather-chevron-right"></i></button>
+											</div>
+											<div class="mm-nav__links">
+												<div class="mm-nav__links-header">
+													<a class="js-mm-nav-item mm-nav__prev" href="javascript:void(0)">
+														<i class="feather-chevron-left"></i>
+														<span>{{ menu_link_child.title }}</span>
+													</a>
+												</div>
+												<div class="mm-nav__links-wrapper 1">
+													{%- for menu_link_child1 in menu_link_child.links -%}
+														{%- if menu_link_child1.links != blank -%}
+															<div class="menu-mobile__nav-item">
+																<div class="mm-nav__wrapper">
+																	<a href="{{ menu_link_child1.url }}" title="{{ menu_link_child1.title | escape }}">{{ menu_link_child1.title }}</a>
+																	<button class="js-mm-nav-item mm-nav__btn" type="button"><i class="feather-chevron-right"></i></button>
+																</div>
+																<div class="mm-nav__links">
+																	<div class="mm-nav__links-header">
+																		<a class="js-mm-nav-item mm-nav__prev" href="javascript:void(0)">
+																			<i class="fa fa-long-arrow-left"></i>
+																			<span>{{ menu_link_child1.title }}</span>
+																		</a>
+																	</div>
+																	<div class="mm-nav__links-wrapper 2">
+																		{%- for menu_link_child2 in menu_link_child1.links -%}
+																			<div class="menu-mobile__nav-item">
+																				<a href="{{ menu_link_child2.url }}" title="{{ menu_link_child2.title | escape }}">{{ menu_link_child2.title }}</a>
+																			</div>
+																		{%- endfor -%}
+																	</div>
+																</div>
+															</div>
+														{%- else -%}
+															<div class="menu-mobile__nav-item">
+																<a href="{{ menu_link_child1.url }}" title="{{ menu_link_child1.title | escape }}">{{ menu_link_child1.title }}</a>
+															</div>
+														{%- endif -%}
+													{%- endfor -%}
+												</div>
+											</div>
+										</div>
+									{%- else -%}
+										<div class="menu-mobile__nav-item">
+											<a href="{{ menu_link_child.url }}" title="{{ menu_link_child.title | escape }}">{{ menu_link_child.title }}</a>
+										</div>
+									{%- endif -%}
+								{%- endfor -%}
+							</div>
+						</div>
+					</div>
+				{%- else -%}
+					<div class="menu-mobile__nav-item">
+						<a href="{{ menu_link.url }}" title="{{ menu_link.title | escape }}">{{ menu_link.title }}</a>
+					</div>
+				{%- endif -%}
+			{%- endfor -%}
+		</div>
+	</div>
+</div>

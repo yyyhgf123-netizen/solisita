@@ -1,0 +1,14 @@
+<div class="product-single__reviews product-review">
+    <!-- Start of Judge.me code --> 
+        <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge'  data-id='{{ product.id }}'>
+            {{ product.metafields.judgeme.badge }}
+        </div>  
+    <!-- End of Judge.me code -->
+</div>
+{% schema %}
+  {
+    "name": "Single product review",
+    "settings": [],
+    "presets": [{"name": "Single product review","category": "Single product"}]
+  }
+{% endschema %}

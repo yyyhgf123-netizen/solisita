@@ -1,0 +1,57 @@
+{% capture media_id %}{{ section.id }}-{{ media.id }}{% endcapture %}
+{% capture image_size %}{{ height }}x{{ height }}{% endcapture %}
+{%- assign class_name = '' -%}
+
+<div class="js-product-media product-media"
+	{% if media.media_type == 'video' or media.media_type == 'external_video' %}data-product-media-type-video
+	data-enable-video-looping="{{ section.settings.enable_video_looping }}"{% endif %}
+	{% if media.media_type == 'model' %} data-product-media-type-model{% endif %}
+	{% if media.media_type == 'external_video' %} data-video-id="{{ media.external_id }}"{% endif %}
+	data-media-id="{{ media_id }}"
+	tabindex="-1">
+	{% case media.media_type %}
+	{% when 'image' %}
+        <div class="product-media__wrapper product-media__wrapper--image">
+            {% assign img_url = media | image_url | replace: '_1x1.', '_{width}x.' %}
+            <img class="mfp-image lazyload fade-in"
+                src="{{ media | image_url: width:1080 }}"
+                data-sizes="auto"
+                data-image="true"
+                data-number= "{{ forloop.index | minus: 1 }}"
+                data-media-id="{{ media.id }}"
+                width="{{ media.width }}" height="{{ media.height }}" 
+                alt="{{ media.alt | escape }}">
+            <div class="gallery-cursor"></div>
+        </div>
+	{% when 'external_video' %}
+		<div class="product-media__wrapper product-media__wrapper--video">
+			{{ media | external_video_tag }}
+		</div>
+	{% when 'video' %}
+		<div class="product-media__wrapper product-media__wrapper--video">
+			{{ media | video_tag: controls: false, class: 'media-video', image_size: image_size }}
+		</div>
+	{% when 'model' %}
+		<div class="product-media__wrapper product-media__wrapper--model">
+			{{ media | model_viewer_tag: image_size: image_size, reveal: 'interaction', toggleable: true, data-model-id: media.id}}
+		</div>
+	{% else %}
+		<div class="product-media__wrapper">
+			{{ media | media_tag: class: 'media-item', image_size: image_size }}
+		</div>
+	{% endcase %}
+     {%- if image_360 -%}
+          {%- for image in image_360 -%}
+              <li  class="image-{{ forloop.index }}{% if forloop.first %} active{% endif %}" data-image_number={{ forloop.index }}>
+                  <img class="mfp-image"
+                      src="{{ image | image_url: width:1080 }}"
+                      data-sizes="auto"
+                      data-image="true"
+                      data-number= "{{ forloop.index | minus: 1 }}"
+                      data-media-id=""
+                      width="{{ image.width }}" height="{{ image.height }}"						
+                      alt="">
+              </li>
+          {%- endfor -%}
+      {%- endif -%}
+</div>
