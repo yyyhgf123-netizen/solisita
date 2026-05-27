@@ -209,40 +209,72 @@ class ProductFetcher:
 SYSTEM_PROMPT = textwrap.dedent("""\
 You are the senior copywriter for Solisita, a UK-based jewellery brand.
 
-Your task is to rewrite the product description below. Follow these rules strictly:
+Your task is to rewrite the product description below. Follow these rules strictly.
 
-VOICE & TONE:
-- Use pure British English spelling and phrasing (colour, jewellery, centre, favourite, etc.)
-- Elegant, conversational, understated — as if talking to a close friend over coffee.
+━━━ VOICE & TONE ━━━
+- Use pure British English spelling and phrasing (colour, jewellery, centre, favourite).
+- Elegant, conversational, understated — as if talking to a close friend.
 - "Clean Girl" aesthetic: minimalist, effortless, refined. Never loud or pushy.
-- Absolutely NO aggressive sales language: avoid "BUY NOW", "DON'T MISS OUT", "LIMITED TIME",
-  "MUST HAVE", exclamation marks, or ALL-CAPS hype.
+- Absolutely NO aggressive sales language: avoid "BUY NOW", "DON'T MISS OUT",
+  "LIMITED TIME", "MUST HAVE", exclamation marks, or ALL-CAPS hype.
+- Channel the understated confidence of Abbott Lyon and the seasonal storytelling of Orelia.
 
-STRUCTURE:
-- Keep the description compact — aim for 120–250 words.
-- Do NOT remove factual details: materials, dimensions, weight, metal type must remain.
-- Integrate 2–3 long-tail keywords naturally (e.g. "tarnish-resistant gold bracelet for daily wear",
-  "minimalist everyday ring UK", "vintage crystal drop earrings gift") without
-  making them feel forced. Each keyword MUST match the exact product category
-  shown in Title and Type — do not invent keywords for the wrong category.
+━━━ THREE-PART STRUCTURE (MANDATORY) ━━━
 
-CATEGORY-STRICT KEYWORD SYNCHRONISATION:
+You MUST structure every description in exactly three paragraphs, in this order:
+
+PARAGRAPH 1 — THE HOOK (1–2 sentences):
+- Open with an emotional, atmospheric scene that places the product in everyday life.
+- Use phrases like 'Your new everyday staple', 'Understated elegance',
+  'Effortless refinement for everyday wear', 'A piece you will reach for daily'.
+- This is the "Abbott Lyon" moment — warm, personal, never salesy.
+
+PARAGRAPH 2 — THE DETAILS (all facts — MANDATORY):
+- Translate ALL raw material, dimension, and weight data from the input into
+  graceful, informative prose. Example: transform "Gold-Tone Copper Alloy" into
+  "Crafted from premium gold-tone copper alloy with a durable, tarnish-resistant finish".
+- YOU MUST INCLUDE EVERY dimension number present in the input (cm, mm, g, etc.).
+  If the input says "17.5 cm + 3 cm Extension", BOTH numbers MUST appear.
+  If the input says "Approx. 7 g", the weight MUST appear.
+- Missing a single factual number from the input is a HARD FAILURE and will
+  cause your output to be rejected. This is the most critical quality gate.
+
+PARAGRAPH 3 — THE STYLING (1 sentence):
+- Offer one styling tip in the voice of Orelia: understated, seasonal, aspirational.
+- Examples: 'Style it solo for a refined look or stack with delicate chains.',
+  'Pairs beautifully with soft neutrals and a crisp white shirt.',
+  'The perfect finish for a polished, everyday uniform.'
+- Keep it light — never prescriptive or bossy.
+
+━━━ CATEGORY-STRICT KEYWORD SYNCHRONISATION ━━━
 - You MUST accurately identify the product's specific category from its Title and Tags
   (e.g. bracelet, ring, necklace, earrings, jewellery set, bangle).
 - Every long-tail SEO keyword you generate MUST match the exact product category.
-- For example: if the product is a bracelet, all keywords must reference "bracelet"
+- Example: if the product is a bracelet, all keywords must reference "bracelet"
   or "bangle" — NEVER inject "ring", "necklace", "earrings" or any other category.
 - If the product is a set, keywords may reference the set type or "jewellery set".
 - This is a HARD RULE. Violating it will cause the output to be rejected.
 
-OUTPUT FORMAT:
+━━━ OUTPUT FORMAT ━━━
 Return ONLY a valid JSON object with this exact structure:
 {
-  "description": "The rewritten product description...",
+  "description": "Paragraph 1: The Hook\n\nParagraph 2: The Details\n\nParagraph 3: The Styling",
   "keywords_used": ["keyword1", "keyword2", "keyword3"]
 }
 
-Do NOT include markdown code fences, explanations, or any text outside the JSON object.""")
+- Keep the total description between 150–250 words.
+- \\n\\n separates paragraphs. Do NOT use bullet points or markdown.
+- Do NOT include markdown code fences, explanations, or any text outside the JSON object.""")
+
+# ── Fact-extraction helper: pull numeric dimensions from raw description ──
+
+FACT_NUMBER_PATTERN = re.compile(
+    r'(?:(?:Approx\.?\s*)?\d+(?:\.\d+)?\s*(?:cm|mm|g|kg|grams|inches|in|oz)\b)',
+    re.IGNORECASE
+)
+
+def extract_fact_numbers(description: str) -> list[str]:
+    return FACT_NUMBER_PATTERN.findall(description or '')
 
 
 @dataclass
@@ -278,6 +310,7 @@ class DeepSeekClient:
 
     def rewrite(self, product: ProductCandidate) -> RewriteResult:
         correction_note = ''
+        src_facts = extract_fact_numbers(product.description)
         for attempt in range(1, MAX_RETRIES + 1):
             result = self._single_rewrite(product, correction_note)
             result.retries = attempt
@@ -289,12 +322,12 @@ class DeepSeekClient:
                     time.sleep(2)
                 continue
 
-            violation = self._validate_category(product, result)
-            if violation:
-                print(f'    ⚠️  Attempt {attempt}/{MAX_RETRIES} — category violation: {violation}')
+            cat_violation = self._validate_category(product, result)
+            if cat_violation:
+                print(f'    ⚠️  Attempt {attempt}/{MAX_RETRIES} — category violation: {cat_violation}')
                 if attempt < MAX_RETRIES:
                     correction_note = (
-                        f'YOUR PREVIOUS RESPONSE WAS REJECTED. Reason: {violation}. '
+                        f'YOUR PREVIOUS RESPONSE WAS REJECTED. Reason: {cat_violation}. '
                         f'CRITICAL RULE: The product is a {product.product_type}. '
                         f'Every keyword MUST contain "{product.product_type.lower()}" or a synonym of it. '
                         f'Do NOT reference any other jewellery category. This is a hard rule.'
@@ -303,14 +336,44 @@ class DeepSeekClient:
                     time.sleep(2)
                 else:
                     result.success = False
-                    result.error = f'Category violation after {MAX_RETRIES} retries: {violation}'
+                    result.error = f'Category violation after {MAX_RETRIES} retries: {cat_violation}'
                     print(f'    ❌ SKIPPED: {result.error}')
                 continue
+
+            if src_facts:
+                fact_violation = self._validate_facts(product, result, src_facts)
+                if fact_violation:
+                    print(f'    ⚠️  Attempt {attempt}/{MAX_RETRIES} — fact violation: {fact_violation}')
+                    if attempt < MAX_RETRIES:
+                        correction_note = (
+                            f'YOUR PREVIOUS RESPONSE WAS REJECTED. Reason: {fact_violation}. '
+                            f'The original description contained these dimension facts: {", ".join(src_facts)}. '
+                            f'EVERY one of these MUST appear in your rewritten description. '
+                            f'This is a hard requirement for quality assurance.'
+                        )
+                        print(f'    ↻ Retrying with fact correction ...')
+                        time.sleep(2)
+                    else:
+                        result.success = False
+                        result.error = f'Fact violation after {MAX_RETRIES} retries: {fact_violation}'
+                        print(f'    ❌ SKIPPED: {result.error}')
+                    continue
 
             print(f'    ✅ Validated (attempt {attempt})')
             return result
 
         return result
+
+    def _validate_facts(self, product: ProductCandidate, result: RewriteResult, src_facts: list[str]) -> str:
+        desc_lower = result.new_desc.lower()
+        missing = []
+        for fact in src_facts:
+            norm = re.sub(r'\s+', ' ', fact.strip()).lower()
+            if norm not in desc_lower:
+                missing.append(f'"{fact.strip()}"')
+        if missing:
+            return f'missing dimension(s): {", ".join(missing)} (product: {product.title})'
+        return ''
 
     def _validate_category(self, product: ProductCandidate, result: RewriteResult) -> str:
         forbidden = CATEGORY_FORBIDDEN_MAP.get(product.product_type)
