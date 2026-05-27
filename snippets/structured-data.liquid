@@ -28,31 +28,6 @@
   ]
 }
 </script>
-{% if template contains 'product' %}
-   <script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": {{ product.title | json }},
-  "image": [
-    {{ product.images | map: 'src' | json }}
-  ],
-  "description": {{ product.description | strip_html | json }},
-  "sku": {{ product.selected_or_first_available_variant.sku | json }},
-  "brand": {
-    "@type": "Brand",
-    "name": {{ product.vendor | json }}
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": {{ shop.url | append: product.url | json }},
-    "priceCurrency": {{ cart.currency.iso_code | json }},
-    "price": {{ product.selected_or_first_available_variant.price | money_without_currency | replace: ',', '.' }},
-    "availability": "https://schema.org/{% if product.selected_or_first_available_variant.available %}InStock{% else %}OutOfStock{% endif %}"
-  }
-}
-</script>
-{%- endif -%}
 {% if template contains 'collection' %}
     <script type="application/ld+json">
 {

@@ -1,0 +1,107 @@
+{%- comment -%}
+  ============================================================================
+  SOLISITA SEO — Product Structured Data Module
+  ============================================================================
+  Dependency: ZERO. Reads exclusively from Shopify's built-in product object.
+  Renders:    <script type="application/ld+json">Product</script>
+  Placement:  In <head> via theme.liquid — server‑side, zero render‑blocking.
+
+  Schema.org mapping:
+    Product ← product.title, description, images, vendor, type, tags
+    Offer   ← variant.price, available, sku, barcode
+    Brand   ← product.vendor
+    Review  ← metafields.custom (optional — omit if absent)
+  ============================================================================
+{%- endcomment -%}
+
+{%- if template contains 'product' and product -%}
+
+{%- assign variant = product.selected_or_first_available_variant -%}
+{%- assign brand_name = product.vendor | default: shop.name -%}
+
+{%- capture product_images -%}
+[{% for image in product.images limit: 10 %}"https:{{ image | image_url: 'master' }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
+{%- endcapture -%}
+
+{%- capture product_keywords -%}
+[{% for tag in product.tags %}{{ tag | json }}{% unless forloop.last %},{% endunless %}{% endfor %}]
+{%- endcapture -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": {{ shop.url | append: product.url | append: '#product' | json }},
+  "name": {{ product.title | json }},
+  "url": {{ shop.url | append: product.url | json }},
+  "description": {{ product.description | strip_html | strip_newlines | strip | json }},
+  "image": {{ product_images | strip_newlines | strip }},
+  "sku": {{ variant.sku | json }},
+  "gtin": {% if variant.barcode %}{{ variant.barcode | json }}{% else %}null{% endif %},
+  "category": {{ product.type | json }},
+  "keywords": {{ product_keywords }},
+  "brand": {
+    "@type": "Brand",
+    "name": {{ brand_name | json }},
+    "url": {{ shop.url | json }}
+  },
+  "offers": {
+    "@type": "Offer",
+    "@id": {{ shop.url | append: product.url | append: '#offer' | json }},
+    "url": {{ shop.url | append: product.url | json }},
+    "sku": {{ variant.sku | json }},
+    "price": {{ variant.price | money_without_currency | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+    "itemCondition": "https://schema.org/NewCondition",
+    "priceValidUntil": {{ 'now' | date: '%Y' | plus: 1 | append: '-01-01' | json }}
+    {%- if variant.compare_at_price and variant.compare_at_price > variant.price -%}
+    ,"priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": {{ variant.price | money_without_currency | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "wasPrice": {{ variant.compare_at_price | money_without_currency | json }}
+    }
+    {%- endif -%}
+  }
+  ,"shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "deliveryTime": {
+      "@type": "ShippingDeliveryTime",
+      "businessDays": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["https://schema.org/Monday","https://schema.org/Tuesday","https://schema.org/Wednesday","https://schema.org/Thursday","https://schema.org/Friday"]
+      },
+      "handlingTime": {
+        "@type": "QuantitativeValue",
+        "minValue": 1,
+        "maxValue": 3,
+        "unitCode": "d"
+      },
+      "transitTime": {
+        "@type": "QuantitativeValue",
+        "minValue": 7,
+        "maxValue": 10,
+        "unitCode": "d"
+      }
+    },
+    "shippingRate": {
+      "@type": "MonetaryAmount",
+      "value": "4.99",
+      "currency": "GBP"
+    },
+    "shippingDestination": {
+      "@type": "DefinedRegion",
+      "addressCountry": "GB"
+    }
+  }
+  {%- if variant.inventory_quantity > 0 %}
+  ,"hasInventoryLevel": {
+    "@type": "QuantitativeValue",
+    "value": {{ variant.inventory_quantity | json }},
+    "unitText": "items"
+  }
+  {%- endif -%}
+}
+</script>
+{%- endif -%}

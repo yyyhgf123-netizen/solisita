@@ -32,6 +32,7 @@
 		<meta name="theme-color" content="{{ settings.color_primary }}">
 		{% render 'header-styles' %}
 		{% render 'header-javascript' %}
+		{% render 'solisita-seo-product' %}
 		{{ content_for_header }}
 	</head>
 	<body id="{{ page_title | handle }}" class="{% if customer %} customer-logged-in {% endif %}template-{{ request.page_type | handle }}{% if is_rtl %} rtl{% endif %}">
