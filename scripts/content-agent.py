@@ -276,6 +276,32 @@ FACT_NUMBER_PATTERN = re.compile(
 def extract_fact_numbers(description: str) -> list[str]:
     return FACT_NUMBER_PATTERN.findall(description or '')
 
+# ── Trivial fact filter: skip ≤1cm / ≤10mm / ≤5g ──
+
+TRIVIAL_FACT_RE = re.compile(
+    r'^\s*(?:Approx\.?\s*)?(\d+(?:\.\d+)?)\s*(cm|mm|g)\s*$',
+    re.IGNORECASE
+)
+
+def is_trivial_fact(fact: str) -> bool:
+    """Return True if the dimension/weight is too small to enforce in prose."""
+    m = TRIVIAL_FACT_RE.match(fact.strip())
+    if not m:
+        return False
+    value = float(m.group(1))
+    unit = m.group(2).lower()
+    if unit == 'cm' and value <= 1.0:
+        return True
+    if unit == 'mm' and value <= 10.0:
+        return True
+    if unit == 'g' and value <= 5.0:
+        return True
+    return False
+
+def filter_significant_facts(facts: list[str]) -> list[str]:
+    """Return only facts that are significant enough to enforce."""
+    return [f for f in facts if not is_trivial_fact(f)]
+
 
 @dataclass
 class RewriteResult:
@@ -310,7 +336,11 @@ class DeepSeekClient:
 
     def rewrite(self, product: ProductCandidate) -> RewriteResult:
         correction_note = ''
-        src_facts = extract_fact_numbers(product.description)
+        all_facts = extract_fact_numbers(product.description)
+        src_facts = filter_significant_facts(all_facts)
+        skipped_facts = [f for f in all_facts if is_trivial_fact(f)]
+        if skipped_facts:
+            print(f'    ℹ️  Skipping trivial facts (left for spec table): {", ".join(skipped_facts)}')
         for attempt in range(1, MAX_RETRIES + 1):
             result = self._single_rewrite(product, correction_note)
             result.retries = attempt
