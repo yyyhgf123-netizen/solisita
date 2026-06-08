@@ -1,4 +1,4 @@
-{%- assign current_variant 			= product.selected_or_first_available_variant -%}
+﻿{%- assign current_variant 			= product.selected_or_first_available_variant -%}
 {%- assign media_layout 			= section.settings.media_layout -%}
 {%- assign countdowns 				= product.metafields.bwp_fields.countdowns -%}
 {%- assign external 				= product.metafields.bwp_fields.external -%}
@@ -32,7 +32,7 @@
 
 <section class="wpbingo-section wpbingo-section--{{ section.id }}" style="background:{{ section.settings.bg_section }};padding:{{ section.settings.padding_section }};">
 <div class="container{% if full_width  %} container-full-image{% endif %}">
-	<div class="product" itemscope itemtype="http://schema.org/Product"
+	<div class="product"
     data-section-id="{{ section.id }}"
     data-section-type="product-template"
     data-enable-history-state="true"
