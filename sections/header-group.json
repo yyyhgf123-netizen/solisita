@@ -524,7 +524,7 @@
           "type": "_mainmenu-item",
           "name": "Mainmenu item",
           "settings": {
-            "title": "BESTSELLERS",
+            "title": "New In",
             "menu_url": "shopify://collections/all",
             "submenu_format": "mega",
             "badge": "",
@@ -537,8 +537,8 @@
           "type": "_mainmenu-item",
           "name": "Mainmenu item",
           "settings": {
-            "title": "NEW IN",
-            "menu_url": "shopify://collections/gifting",
+            "title": "EARRINGS",
+            "menu_url": "shopify://collections/earrings",
             "submenu_format": "mega",
             "badge": "",
             "position": "after",
