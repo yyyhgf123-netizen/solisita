@@ -506,116 +506,43 @@
       "header_1": {
         "type": "header_1",
         "blocks": {
-          "mainmenu_item_QQpjG4": {
+          "mainmenu_item_n1": {
             "type": "_mainmenu-item",
             "settings": {
-              "title": "Home",
-              "menu_url": "/",
-              "submenu_format": "list",
+              "title": "NEW IN",
+              "menu_url": "/collections/new-in",
+              "submenu_format": "",
               "badge": "",
               "position": "after",
-              "badge_color": "#ff0000"
+              "badge_color": "#000000"
             },
-            "blocks": {
-              "menu_list_pCQMLC": {
-                "type": "_menu-list",
-                "settings": {
-                  "menu_link_list": "menu-home"
-                },
-                "blocks": {}
-              }
-            },
-            "block_order": [
-              "menu_list_pCQMLC"
-            ]
+            "blocks": {}
           },
-          "mainmenu_item_XzFrRn": {
+          "mainmenu_item_n2": {
             "type": "_mainmenu-item",
             "settings": {
-              "title": "Shop",
-              "menu_url": "shopify://collections/all",
+              "title": "EARRINGS",
+              "menu_url": "/collections/earrings",
               "submenu_format": "mega",
               "badge": "",
               "position": "after",
               "badge_color": "#000000"
             },
             "blocks": {
-              "megamenu_container_cDayJU": {
+              "megamenu_container_earrings": {
                 "type": "_megamenu-container",
                 "settings": {
                   "width": "custom",
-                  "width_custom": "1440px"
+                  "width_custom": "1200px"
                 },
                 "blocks": {
-                  "megamenu_item_ztdj38": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "image",
-                      "menu_col": "22%",
-                      "menu_heading": "",
-                      "menu_link_list_child": "",
-                      "image": "shopify://shop_images/banner-shop.png",
-                      "banner_title": "",
-                      "banner_button": "New Arrivals",
-                      "banner_link": "shopify://products/africa-chair",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_KKrQcA": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "image",
-                      "menu_col": "22%",
-                      "menu_heading": "",
-                      "menu_link_list_child": "",
-                      "image": "shopify://shop_images/banner-14.jpg",
-                      "banner_title": "",
-                      "banner_button": "Best Sellers",
-                      "banner_link": "shopify://products/boho-chair",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_zUPPhd": {
+                  "megamenu_item_earrings": {
                     "type": "_megamenu-item",
                     "settings": {
                       "widget": "menu",
-                      "menu_col": "19%",
-                      "menu_heading": "Layout",
-                      "menu_link_list_child": "layout",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_7qtmYf": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "20%",
-                      "menu_heading": "Filter",
-                      "menu_link_list_child": "filter",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_Uz7MDJ": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "17%",
-                      "menu_heading": "Loader & Cart",
-                      "menu_link_list_child": "loader-cart",
+                      "menu_col": "100%",
+                      "menu_heading": "SHOP BY STYLE",
+                      "menu_link_list_child": "earrings-menu",
                       "banner_title": "",
                       "banner_button": "",
                       "banner_link": "",
@@ -626,88 +553,39 @@
                   }
                 },
                 "block_order": [
-                  "megamenu_item_ztdj38",
-                  "megamenu_item_KKrQcA",
-                  "megamenu_item_zUPPhd",
-                  "megamenu_item_7qtmYf",
-                  "megamenu_item_Uz7MDJ"
+                  "megamenu_item_earrings"
                 ]
               }
             },
             "block_order": [
-              "megamenu_container_cDayJU"
+              "megamenu_container_earrings"
             ]
           },
-          "mainmenu_item_f9pHmD": {
+          "mainmenu_item_n3": {
             "type": "_mainmenu-item",
             "settings": {
-              "title": "Product",
-              "menu_url": "shopify://products/africa-chair",
+              "title": "NECKLACES",
+              "menu_url": "/collections/necklaces",
               "submenu_format": "mega",
               "badge": "",
               "position": "after",
               "badge_color": "#000000"
             },
             "blocks": {
-              "megamenu_container_keiKic": {
+              "megamenu_container_necklaces": {
                 "type": "_megamenu-container",
                 "settings": {
                   "width": "custom",
-                  "width_custom": "1440px"
+                  "width_custom": "1200px"
                 },
                 "blocks": {
-                  "megamenu_item_Vy9M4k": {
+                  "megamenu_item_necklaces": {
                     "type": "_megamenu-item",
                     "settings": {
                       "widget": "menu",
-                      "menu_col": "25%",
-                      "menu_heading": "Product Layout",
-                      "menu_link_list_child": "product-layout",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_hDN64E": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "25%",
-                      "menu_heading": "Featured",
-                      "menu_link_list_child": "featured-1",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_Pq8nLc": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "25%",
-                      "menu_heading": "Featured",
-                      "menu_link_list_child": "featured",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_VrYC9Y": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "25%",
-                      "menu_heading": "Product Card",
-                      "menu_link_list_child": "product-card",
+                      "menu_col": "100%",
+                      "menu_heading": "SHOP BY FINISH & STYLE",
+                      "menu_link_list_child": "necklaces-menu",
                       "banner_title": "",
                       "banner_button": "",
                       "banner_link": "",
@@ -718,161 +596,39 @@
                   }
                 },
                 "block_order": [
-                  "megamenu_item_Vy9M4k",
-                  "megamenu_item_hDN64E",
-                  "megamenu_item_Pq8nLc",
-                  "megamenu_item_VrYC9Y"
+                  "megamenu_item_necklaces"
                 ]
               }
             },
             "block_order": [
-              "megamenu_container_keiKic"
+              "megamenu_container_necklaces"
             ]
           },
-          "mainmenu_item_Ugidhx": {
+          "mainmenu_item_n4": {
             "type": "_mainmenu-item",
             "settings": {
-              "title": "Blog",
-              "menu_url": "shopify://blogs/interior-styling",
+              "title": "BRACELETS",
+              "menu_url": "/collections/bracelets",
               "submenu_format": "mega",
               "badge": "",
               "position": "after",
               "badge_color": "#000000"
             },
             "blocks": {
-              "megamenu_container_4giUfD": {
+              "megamenu_container_bracelets": {
                 "type": "_megamenu-container",
                 "settings": {
                   "width": "custom",
-                  "width_custom": "670px"
+                  "width_custom": "1200px"
                 },
                 "blocks": {
-                  "megamenu_item_qdq6VT": {
+                  "megamenu_item_bracelets": {
                     "type": "_megamenu-item",
                     "settings": {
                       "widget": "menu",
-                      "menu_col": "35%",
-                      "menu_heading": "Layout & Post",
-                      "menu_link_list_child": "layout-post",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_PjUtFL": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "blog",
-                      "menu_col": "65%",
-                      "menu_heading": "",
-                      "menu_link_list_child": "",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": "interior-styling"
-                    },
-                    "blocks": {}
-                  }
-                },
-                "block_order": [
-                  "megamenu_item_qdq6VT",
-                  "megamenu_item_PjUtFL"
-                ]
-              }
-            },
-            "block_order": [
-              "megamenu_container_4giUfD"
-            ]
-          },
-          "mainmenu_item_rwAF6f": {
-            "type": "_mainmenu-item",
-            "settings": {
-              "title": "Featured",
-              "menu_url": "",
-              "submenu_format": "mega",
-              "badge": "",
-              "position": "after",
-              "badge_color": "#000000"
-            },
-            "blocks": {
-              "megamenu_container_LXEH9D": {
-                "type": "_megamenu-container",
-                "settings": {
-                  "width": "custom",
-                  "width_custom": "1440px"
-                },
-                "blocks": {
-                  "megamenu_item_769DTm": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "20%",
-                      "menu_heading": "Page",
-                      "menu_link_list_child": "page",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_YQKBMw": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "20%",
-                      "menu_heading": "Portfolio",
-                      "menu_link_list_child": "portfolio",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_pMzePN": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "20%",
-                      "menu_heading": "Featured",
-                      "menu_link_list_child": "featured-featured",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_6EfL8Q": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "20%",
-                      "menu_heading": "Instagram Shop",
-                      "menu_link_list_child": "instagram-shop",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_xxEVze": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "20%",
-                      "menu_heading": "Lookbook",
-                      "menu_link_list_child": "lookbook",
+                      "menu_col": "100%",
+                      "menu_heading": "SHOP BY STYLE",
+                      "menu_link_list_child": "bracelets-menu",
                       "banner_title": "",
                       "banner_button": "",
                       "banner_link": "",
@@ -883,25 +639,121 @@
                   }
                 },
                 "block_order": [
-                  "megamenu_item_769DTm",
-                  "megamenu_item_YQKBMw",
-                  "megamenu_item_pMzePN",
-                  "megamenu_item_6EfL8Q",
-                  "megamenu_item_xxEVze"
+                  "megamenu_item_bracelets"
                 ]
               }
             },
             "block_order": [
-              "megamenu_container_LXEH9D"
+              "megamenu_container_bracelets"
+            ]
+          },
+          "mainmenu_item_n5": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "RINGS",
+              "menu_url": "/collections/rings",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_rings": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1200px"
+                },
+                "blocks": {
+                  "megamenu_item_rings": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "100%",
+                      "menu_heading": "SHOP BY STYLE",
+                      "menu_link_list_child": "rings-menu",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_rings"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_rings"
+            ]
+          },
+          "mainmenu_item_n6": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "WATERPROOF",
+              "menu_url": "/collections/waterproof",
+              "submenu_format": "",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {}
+          },
+          "mainmenu_item_n7": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "GIFTS",
+              "menu_url": "/collections/gifts",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_gifts": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "1200px"
+                },
+                "blocks": {
+                  "megamenu_item_gifts": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "100%",
+                      "menu_heading": "GIFT IDEAS",
+                      "menu_link_list_child": "gifts-menu",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_gifts"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_gifts"
             ]
           }
         },
         "block_order": [
-          "mainmenu_item_QQpjG4",
-          "mainmenu_item_XzFrRn",
-          "mainmenu_item_f9pHmD",
-          "mainmenu_item_Ugidhx",
-          "mainmenu_item_rwAF6f"
+          "mainmenu_item_n1",
+          "mainmenu_item_n2",
+          "mainmenu_item_n3",
+          "mainmenu_item_n4",
+          "mainmenu_item_n5",
+          "mainmenu_item_n6",
+          "mainmenu_item_n7"
         ],
         "settings": {
           "width_header": "1470px",
