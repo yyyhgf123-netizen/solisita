@@ -499,6 +499,7 @@
         "mainmenu_item_Ugidhx",
         "mainmenu_item_rwAF6f"
       ],
+      "disabled": true,
       "settings": {
         "width_header": "1890px",
         "padding": "32px 0",
@@ -1223,6 +1224,7 @@
         "mainmenu_item_DyEpfD",
         "mainmenu_item_A8HBYU"
       ],
+      "disabled": true,
       "name": "Header 3",
       "settings": {
         "width_header": "1790px",
@@ -1669,6 +1671,7 @@
         "mainmenu_item_gBYdCN",
         "mainmenu_item_KFNmNB"
       ],
+      "disabled": true,
       "name": "Header 4",
       "settings": {
         "width_header": "1790px",
