@@ -8,7 +8,7 @@
 	<section class="wpbingo-breadcrumbs {{ class_name }} {{ section.settings.align_breadcrumb }} {% if blog.all_tags %} have-blog-list{% endif %}" style="--color-breadcrumb:{{ section.settings.color_breadcrumb }}">
 		{%- assign bg_image = section.settings.image -%}
 		<div class="wpbingo-breadcrumbs__image"
-			{%- if is_bg_image -%}
+			{%- if is_bg_image and bg_image != blank -%}
 			style="background-image: url('{{ bg_image | image_url }}');background-size:cover; background-position:center center"{%- endif -%}>
 			<div class="container">
 				<div class="wpbingo-breadcrumbs__inner">
