@@ -1,4 +1,4 @@
-{%- assign nav = section.settings.navigation -%}
+﻿{%- assign nav = section.settings.navigation -%}
 {%- assign infinite = section.settings.infinite -%}
 
 {%- assign columns = section.settings.columns -%}
@@ -42,7 +42,7 @@
 			style="background-image: url('{{ bg_image | image_url:width:bg_image.width,height:bg_image.height }}');background-size:cover; background-position:center center"{%- endif -%}>
 			<div class="container">
 				<div class="wpbingo-breadcrumbs__inner">
-					{%- if section.settings.show_pagetitle -%}<h2 class="wpbingo-breadcrumbs__title">{{ collection.title }}</h2>{%- endif -%}
+					{%- if section.settings.show_pagetitle -%}<h1 class="wpbingo-breadcrumbs__title">{{ collection.title }}</h1>{%- endif -%}
 					{%- if section.settings.show_breadcrumb -%}
 					<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 						<li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">

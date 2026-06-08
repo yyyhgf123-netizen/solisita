@@ -1,4 +1,4 @@
-{%- if section.settings.enable -%}
+﻿{%- if section.settings.enable -%}
 	{%- assign is_bg_image = section.settings.bgimage -%}
 	{%- if is_bg_image -%}
 		{%- assign class_name = 'wpbingo-breadcrumbs--image' -%}
@@ -20,7 +20,7 @@
 			style="background-image: url('{{ bg_image | image_url }}');background-size:cover; background-position:center center"{%- endif -%}>
 			<div class="container">
 				<div class="wpbingo-breadcrumbs__inner">
-					<h2 class="wpbingo-breadcrumbs__title">{{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: search.results_count }}</h2>
+					<h1 class="wpbingo-breadcrumbs__title">{{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: search.results_count }}</h1>
 				</div>
 			</div>
 		</div>

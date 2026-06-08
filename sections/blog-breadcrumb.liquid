@@ -1,4 +1,4 @@
-{%- if section.settings.enable -%}
+﻿{%- if section.settings.enable -%}
 	{%- assign is_bg_image = section.settings.bgimage -%}
 	{%- if is_bg_image -%}
 		{%- assign class_name = 'wpbingo-breadcrumbs--image' -%}
@@ -20,7 +20,7 @@
 			style="background-image: url('{{ bg_image | image_url }}');background-size:cover; background-position:center center"{%- endif -%}>
 			<div class="container">
 				<div class="wpbingo-breadcrumbs__inner">
-					{%- if section.settings.show_pagetitle -%}<h2 class="wpbingo-breadcrumbs__title">{{ 'blogs.article.blogs' | t }}</h2>{%- endif -%}
+					{%- if section.settings.show_pagetitle -%}<h1 class="wpbingo-breadcrumbs__title">{{ 'blogs.article.blogs' | t }}</h1>{%- endif -%}
 					{%- if section.settings.blog_categories_menu -%}
 						<div class="wpbingo-blog-list">
 							{% for link in linklists[section.settings.blog_categories_menu].links %}
