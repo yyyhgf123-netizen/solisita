@@ -1,8 +1,17 @@
 /* ========== 修复 header-group 白条 ========== */
+#header-group {
+  background: #CA3800 !important;
+}
 #header-group .shopify-section,
-#header-group .shopify-section-group-header-group {
+#header-group .shopify-section-group-header-group,
+#header-group > div,
+#header-group > div > div {
   margin: 0 !important;
   padding: 0 !important;
+  min-height: 0 !important;
+}
+#header-group .shopify-section:empty {
+  display: none !important;
 }
 
 /* ========== 条幅公告栏 ========== */
