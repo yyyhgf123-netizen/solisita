@@ -785,7 +785,7 @@
         "width_header": "",
         "padding": "0",
         "header_sticky": true,
-        "header_absolute": true,
+        "header_absolute": false,
         "color_homepage_text": "#ffffff",
         "logo": "shopify://shop_images/solisita-logo-icon.png",
         "logo_homepage": "shopify://shop_images/solisita-logo-home.png",
