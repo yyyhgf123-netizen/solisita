@@ -517,6 +517,289 @@
         "show_header_cart": true
       }
     },
+    "header_2_nKna3g": {
+      "type": "header_2",
+      "blocks": {
+        "mainmenu_item_yyCWYF": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "BESTSELLERS",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {}
+        },
+        "mainmenu_item_e4tRHY": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "NEW IN",
+            "menu_url": "shopify://collections/gifting",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {}
+        },
+        "mainmenu_item_6JFthy": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "JEWELLERY",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_KLPnrh": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_hiwT3w": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "",
+                    "menu_heading": "SHOP BY CATEGORY",
+                    "menu_link_list_child": "shop-by-category",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_XHT6WH": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "",
+                    "menu_heading": "SHOP BY FINISH",
+                    "menu_link_list_child": "the-finishes",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_n3V6PD": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "",
+                    "menu_heading": "CURATED EDITS",
+                    "menu_link_list_child": "shop-by-collection",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_Ecdr94": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "image": "shopify://shop_images/solisita-mega-menu-made-to-last.jpg",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_CpECQB": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "20%",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "image": "shopify://shop_images/solisita-mega-menu-timeless-pieces.jpg",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_hiwT3w",
+                "megamenu_item_XHT6WH",
+                "megamenu_item_n3V6PD",
+                "megamenu_item_Ecdr94",
+                "megamenu_item_CpECQB"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_KLPnrh"
+          ]
+        },
+        "mainmenu_item_3zAyTG": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "WATERPROOF",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {}
+        },
+        "mainmenu_item_UpVN9b": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "GIFTS",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {
+            "megamenu_container_FmKhrP": {
+              "type": "_megamenu-container",
+              "name": "Megamenu container",
+              "settings": {
+                "width": "full",
+                "width_custom": ""
+              },
+              "blocks": {
+                "megamenu_item_rFyPKc": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "menu",
+                    "menu_col": "",
+                    "menu_heading": "GIFT IDEAS",
+                    "menu_link_list_child": "gift-ideas",
+                    "banner_title": "",
+                    "banner_button": "",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_tgwmxV": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "image": "shopify://shop_images/solisita-mega-menu-trust-it-every-day.jpg",
+                    "banner_title": "",
+                    "banner_button": "Best Sellers",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                },
+                "megamenu_item_3Hk9kN": {
+                  "type": "_megamenu-item",
+                  "name": "Megamenu item",
+                  "settings": {
+                    "widget": "image",
+                    "menu_col": "",
+                    "menu_heading": "",
+                    "menu_link_list_child": "",
+                    "image": "shopify://shop_images/solisita-mega-menu-new-arrivals.jpg",
+                    "banner_title": "",
+                    "banner_button": "New Arrivals",
+                    "banner_link": "",
+                    "collection_widget": "",
+                    "blog_widget": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "megamenu_item_rFyPKc",
+                "megamenu_item_tgwmxV",
+                "megamenu_item_3Hk9kN"
+              ]
+            }
+          },
+          "block_order": [
+            "megamenu_container_FmKhrP"
+          ]
+        },
+        "mainmenu_item_P7adEP": {
+          "type": "_mainmenu-item",
+          "name": "Mainmenu item",
+          "settings": {
+            "title": "OUR STORY",
+            "menu_url": "shopify://collections/all",
+            "submenu_format": "mega",
+            "badge": "",
+            "position": "after",
+            "badge_color": "#000000"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "mainmenu_item_yyCWYF",
+        "mainmenu_item_e4tRHY",
+        "mainmenu_item_6JFthy",
+        "mainmenu_item_3zAyTG",
+        "mainmenu_item_UpVN9b",
+        "mainmenu_item_P7adEP"
+      ],
+      "custom_css": [],
+      "name": "页头",
+      "settings": {
+        "width_header": "",
+        "padding": "30px 0",
+        "header_sticky": true,
+        "header_absolute": true,
+        "color_homepage_text": "#ffffff",
+        "logo": "shopify://shop_images/solisita-logo-icon.png",
+        "logo_homepage": "shopify://shop_images/solisita-logo-home.png",
+        "logo_max_width": 145,
+        "logo_max_width_mobi": 120,
+        "show_header_search": true,
+        "show_header_wishlist": true,
+        "page_wishlist": "wishlist",
+        "show_header_user": true,
+        "header_user_title": "Account",
+        "header_user_link_list": "",
+        "show_header_cart": true
+      }
+    },
     "header_3_xUQjcM": {
       "type": "header_3",
       "blocks": {
@@ -1423,6 +1706,7 @@
     "header_campar_kBVbbz",
     "header_topbar_34WPTr",
     "header_1",
+    "header_2_nKna3g",
     "header_3_xUQjcM",
     "header_4",
     "custom_liquid_XrGY3h"
