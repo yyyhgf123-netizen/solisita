@@ -1,23 +1,16 @@
-/* ========== 修复 header-group 白条 ========== */
-#header-group,
-#header-group > *,
-#header-group .shopify-section,
-#header-group .shopify-section-group-header-group {
+/* ========== 彻底修复顶部白条 ========== */
+html, body {
   margin-top: 0 !important;
-  margin-bottom: 0 !important;
   padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  background-color: #CA3800 !important;
 }
-#header-group .bwp-header,
-#header-group .header-desktop,
-#header-group .header-mobile {
-  background-color: transparent !important;
+#shopify-section-header-group,
+.shopify-section-group-header-group {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
-#header-group .shopify-section:empty {
+#shopify-section-header-group:empty {
   display: none !important;
 }
-
 /* ========== 条幅公告栏 ========== */
 .solisita-announcement {
     width: 100%;
