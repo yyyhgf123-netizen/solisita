@@ -783,7 +783,7 @@
       "name": "页头",
       "settings": {
         "width_header": "",
-        "padding": "30px 0",
+        "padding": "0",
         "header_sticky": true,
         "header_absolute": true,
         "color_homepage_text": "#ffffff",
